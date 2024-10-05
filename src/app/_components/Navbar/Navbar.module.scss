@@ -1,0 +1,22 @@
+.navbar {
+  border-width: 2px;
+  border-color: hsla(0, 0%, 90%, 0.5);
+  background-color: hsla(0, 0%, 98%, 0.8);
+  backdrop-filter: blur(64px);
+  z-index: 3;
+  .navbar__container {
+    .navbar__nav {
+      .navbar__link {
+        .link {
+          //font-size: 5em;
+        }
+      }
+      .dark__container {
+        margin-left: 20px;
+        .button {
+          margin-left: 15px;
+        }
+      }
+    }
+  }
+}

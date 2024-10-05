@@ -1,0 +1,10 @@
+.buttons__container {
+  display: flex;
+  //justify-content: space-between;
+  //gap: calc(1rem + 13vw);
+  .icons {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+}
