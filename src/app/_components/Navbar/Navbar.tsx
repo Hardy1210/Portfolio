@@ -14,7 +14,12 @@ export function NavbarComponent() {
   }
 
   return (
-    <nav className={cn(styles.navbar, 'rounded-xl max-w-5xl m-auto')}>
+    <nav
+      className={cn(
+        styles.navbar,
+        'rounded-xl max-w-5xl m-auto  dark:border-neutral-900 dark:bg-neutral-1000/80',
+      )}
+    >
       <div
         className={cn(
           styles.navbar__container,

@@ -5,7 +5,21 @@ import { cn } from '../lib/utils'
 import { Button } from './_components/Button/Button'
 import { Header } from './_components/Header/Header'
 import { ArrowUp } from './_components/icons/ArrowUp'
+import { CssIcon } from './_components/icons/CssIcon'
+import { FigmaIcon } from './_components/icons/FigmaIcon'
 import { GithubIcon } from './_components/icons/GithubIcon'
+import { HtmlIcon } from './_components/icons/HtmlIcon'
+import { JavascriptIcon } from './_components/icons/JavascriptIcon'
+import { MongoDbIcon } from './_components/icons/MongoDbIcon'
+import { NextIcon } from './_components/icons/NextIcon'
+import { NotionIcon } from './_components/icons/NotionIcon'
+import { NpmIcon } from './_components/icons/NpmIcon'
+import { ReactIcon } from './_components/icons/ReactIcon'
+import { SassIcon } from './_components/icons/SassIcon'
+import { SwaggerIcon } from './_components/icons/SwaggerIcon'
+import { TailwindIcon } from './_components/icons/TailwindIcon'
+import { TypescriptIcon } from './_components/icons/TypescriptIcon'
+import { VercelIcon } from './_components/icons/VercelIcon'
 import { Section } from './_components/Section/Section'
 import styles from './page.module.scss'
 
@@ -18,9 +32,42 @@ export default function Home() {
           <div
             className={cn(
               styles.container,
-              'flex flex-col h-fit gap-5 md:gap-10',
+              'relative flex flex-col h-fit w-full items-center gap-5 md:gap-10',
             )}
           >
+            <div
+              className={cn(
+                styles.bloque__vacio,
+                'absolute -z-50 h-64 w-64 bg-[conic-gradient(transparent,rgb(0,0,0))] opacity-15 blur-2xl dark:bg-[conic-gradient(transparent,rgb(255,255,255))] md:left-36',
+              )}
+            ></div>
+            <div
+              className={cn(
+                styles.hidden__imgs,
+                'absolute left-1/2 top-1/2 w-max -translate-x-1/2 -translate-y-1/2 opacity-10 dark:opacity-5 md:hidden',
+              )}
+            >
+              <Image
+                src="/images/m.webp"
+                alt="Robot hand light"
+                width={250}
+                height={325}
+                className={cn(
+                  styles.img,
+                  'w-96 object-cover  dark:hidden text-transparent',
+                )}
+              />
+              <Image
+                src="/images/m.webp"
+                alt="Robot hand dark"
+                width={250}
+                height={325}
+                className={cn(
+                  styles.img,
+                  'hidden w-96 dark:block text-transparent',
+                )}
+              />
+            </div>
             <div
               className={cn(
                 styles.container__presentationImage,
@@ -135,6 +182,124 @@ export default function Home() {
               </ul>
             </div>
           </div>
+        </Section>
+        <div>
+          <div className={cn(styles.marquee__container, 'overflow-hidden')}>
+            <div
+              className={cn(
+                styles.marquee__icons,
+                'flex w-full items-center whitespace-nowrap relative [mask-image:linear-gradient(to_right,rgba(0,0,0,0)_0%,rgb(0,0,0)_12.5%,rgb(0,0,0)_87.5%,rgba(0,0,0,0)_100%)]',
+              )}
+            >
+              <ul
+                className={cn(
+                  styles.marque__ul,
+                  'inline-flex items-center animate-marquee',
+                )}
+              >
+                <li className="mx-9">
+                  <GithubIcon size={70} />
+                </li>
+                <li className="mx-9">
+                  <ReactIcon size={70} />
+                </li>
+                <li className="mx-9">
+                  <NextIcon size={70} />
+                </li>
+                <li className="mx-9">
+                  <TypescriptIcon size={70} />
+                </li>
+                <li className="mx-9">
+                  <JavascriptIcon size={70} />
+                </li>
+                <li className="mx-9">
+                  <FigmaIcon size={70} />
+                </li>
+                <li className="mx-9">
+                  <HtmlIcon size={70} />
+                </li>
+                <li className="mx-9">
+                  <CssIcon size={70} />
+                </li>
+                <li className="mx-9">
+                  <MongoDbIcon size={70} />
+                </li>
+                <li className="mx-9">
+                  <NotionIcon size={70} />
+                </li>
+                <li className="mx-9">
+                  <TailwindIcon size={70} />
+                </li>
+                <li className="mx-9">
+                  <SwaggerIcon size={70} />
+                </li>
+                <li className="mx-9">
+                  <SassIcon size={70} />
+                </li>
+                <li className="mx-9">
+                  <VercelIcon size={70} />
+                </li>
+                <li className="mx-9">
+                  <NpmIcon size={70} />
+                </li>
+              </ul>
+              <ul
+                className={cn(
+                  styles.marque__ull,
+                  'inline-flex absolute top0 items-center animate-marquee2',
+                )}
+              >
+                <li className="mx-9">
+                  <GithubIcon size={70} />
+                </li>
+                <li className="mx-9">
+                  <ReactIcon size={70} />
+                </li>
+                <li className="mx-9">
+                  <NextIcon size={70} />
+                </li>
+                <li className="mx-9">
+                  <TypescriptIcon size={70} />
+                </li>
+                <li className="mx-9">
+                  <JavascriptIcon size={70} />
+                </li>
+                <li className="mx-9">
+                  <FigmaIcon size={70} />
+                </li>
+                <li className="mx-9">
+                  <HtmlIcon size={70} />
+                </li>
+                <li className="mx-9">
+                  <CssIcon size={70} />
+                </li>
+                <li className="mx-9">
+                  <MongoDbIcon size={70} />
+                </li>
+                <li className="mx-9">
+                  <NotionIcon size={70} />
+                </li>
+                <li className="mx-9">
+                  <TailwindIcon size={70} />
+                </li>
+                <li className="mx-9">
+                  <SwaggerIcon size={70} />
+                </li>
+                <li className="mx-9">
+                  <SassIcon size={70} />
+                </li>
+                <li className="mx-9">
+                  <VercelIcon size={70} />
+                </li>
+                <li className="mx-9">
+                  <NpmIcon size={70} />
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <Section>
+          <div className={cn(styles.projects___container, '')}></div>
         </Section>
       </main>
     </main>
