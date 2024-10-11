@@ -12,15 +12,15 @@ export const HtmlIcon = (
       xmlns="http://www.w3.org/2000/svg"
       {...props}
     >
-      <title>html [#124]</title>
+      <title>html</title>
       <desc>Created with Sketch.</desc>
       <defs></defs>
       <g
         id="Page-1"
         stroke="none"
-        stroke-width="1"
+        strokeWidth="1"
         fill="none"
-        fill-rule="evenodd"
+        fillRule="evenodd"
       >
         <g
           id="Dribbble-Light-Preview"

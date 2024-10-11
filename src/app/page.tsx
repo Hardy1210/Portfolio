@@ -8,18 +8,23 @@ import { ArrowUp } from './_components/icons/ArrowUp'
 import { CssIcon } from './_components/icons/CssIcon'
 import { FigmaIcon } from './_components/icons/FigmaIcon'
 import { GithubIcon } from './_components/icons/GithubIcon'
+import { GitLabIcon } from './_components/icons/GitLabIcon'
 import { HtmlIcon } from './_components/icons/HtmlIcon'
 import { JavascriptIcon } from './_components/icons/JavascriptIcon'
 import { MongoDbIcon } from './_components/icons/MongoDbIcon'
 import { NextIcon } from './_components/icons/NextIcon'
 import { NotionIcon } from './_components/icons/NotionIcon'
 import { NpmIcon } from './_components/icons/NpmIcon'
+import { PostmanIcon } from './_components/icons/PostmanIcon'
 import { ReactIcon } from './_components/icons/ReactIcon'
+import { ReduxIcon } from './_components/icons/ReduxIcon'
 import { SassIcon } from './_components/icons/SassIcon'
 import { SwaggerIcon } from './_components/icons/SwaggerIcon'
 import { TailwindIcon } from './_components/icons/TailwindIcon'
 import { TypescriptIcon } from './_components/icons/TypescriptIcon'
 import { VercelIcon } from './_components/icons/VercelIcon'
+import { ViteIcon } from './_components/icons/ViteIcon'
+import { VsCodeIcon } from './_components/icons/VsCodeIcon'
 import { Section } from './_components/Section/Section'
 import styles from './page.module.scss'
 
@@ -242,6 +247,21 @@ export default function Home() {
                 <li className="mx-9">
                   <NpmIcon size={70} />
                 </li>
+                <li className="mx-9">
+                  <GitLabIcon size={70} />
+                </li>
+                <li className="mx-9">
+                  <PostmanIcon size={70} />
+                </li>
+                <li className="mx-9">
+                  <ReduxIcon size={70} />
+                </li>
+                <li className="mx-9">
+                  <ViteIcon size={70} />
+                </li>
+                <li className="mx-9">
+                  <VsCodeIcon size={70} />
+                </li>
               </ul>
               <ul
                 className={cn(
@@ -294,11 +314,27 @@ export default function Home() {
                 <li className="mx-9">
                   <NpmIcon size={70} />
                 </li>
+                <li className="mx-9">
+                  <GitLabIcon size={70} />
+                </li>
+                <li className="mx-9">
+                  <PostmanIcon size={70} />
+                </li>
+                <li className="mx-9">
+                  <ReduxIcon size={70} />
+                </li>
+                <li className="mx-9">
+                  <ViteIcon size={70} />
+                </li>
+                <li className="mx-9">
+                  <VsCodeIcon size={70} />
+                </li>
               </ul>
             </div>
           </div>
         </div>
         <Section>
+          <div></div>
           <div className={cn(styles.projects___container, '')}></div>
         </Section>
       </main>
