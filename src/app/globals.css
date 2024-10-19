@@ -9,6 +9,7 @@ html {
 body {
   padding-left: 1rem;
   padding-right: 1rem;
+  overflow-x: hidden;
 }
 h1,
 h2,

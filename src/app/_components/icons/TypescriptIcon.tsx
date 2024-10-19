@@ -14,6 +14,7 @@ export const TypescriptIcon = (
       fill="currentColor"
       {...props}
     >
+      <title>Typescript</title>
       <rect width="100%" height="100%" rx="15%" fill="currentColor" />
       <path
         fill="#FAFAFA"

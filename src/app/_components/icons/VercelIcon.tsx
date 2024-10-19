@@ -12,6 +12,7 @@ export const VercelIcon = (
       xmlns="http://www.w3.org/2000/svg"
       {...props}
     >
+      <title>Vercel</title>
       <path d="M12 1L24 22H0L12 1Z" fill="currentColor" />
     </svg>
   )

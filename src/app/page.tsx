@@ -30,9 +30,9 @@ import styles from './page.module.scss'
 
 export default function Home() {
   return (
-    <main>
+    <>
       <Header />
-      <main>
+      <main className={cn(styles.main__container, 'space-y-28')}>
         <Section>
           <div
             className={cn(
@@ -193,13 +193,13 @@ export default function Home() {
             <div
               className={cn(
                 styles.marquee__icons,
-                'flex w-full items-center whitespace-nowrap relative [mask-image:linear-gradient(to_right,rgba(0,0,0,0)_0%,rgb(0,0,0)_12.5%,rgb(0,0,0)_87.5%,rgba(0,0,0,0)_100%)]',
+                'flex w-full items-center whitespace-nowrap relative [mask-image:linear-gradient(to_right,rgba(0,0,0,0)_0%,rgb(0,0,0)_12.5%,rgb(0,0,0)_87.5%,rgba(0,0,0,0)_100%)] group',
               )}
             >
               <ul
                 className={cn(
                   styles.marque__ul,
-                  'inline-flex items-center animate-marquee',
+                  'inline-flex items-center animate-marquee group-hover:[animation-play-state:paused]',
                 )}
               >
                 <li className="mx-9">
@@ -266,7 +266,7 @@ export default function Home() {
               <ul
                 className={cn(
                   styles.marque__ull,
-                  'inline-flex absolute top0 items-center animate-marquee2',
+                  'inline-flex absolute top0 items-center animate-marquee2 group-hover:[animation-play-state:paused]',
                 )}
               >
                 <li className="mx-9">
@@ -338,6 +338,6 @@ export default function Home() {
           <div className={cn(styles.projects___container, '')}></div>
         </Section>
       </main>
-    </main>
+    </>
   )
 }

@@ -66,6 +66,12 @@ const config: Config = {
       animation: {
         marquee: 'marquee 40s linear infinite',
         marquee2: 'marquee2 40s linear infinite',
+        slideDown: 'slideDown 0.3s ease-out forwards',
+        slideUp: 'slideUp 0.3s ease-out forwards',
+        fadeIn: 'fadeIn 0.3s ease-out forwards',
+        fadeOut: 'fadeOut 0.3s ease-out forwards',
+        expand: 'expand 0.3s ease-out forwards', // Puedes modificar la duración aquí
+        collapse: 'collapse 0.3s ease-in forwards',
       },
       keyframes: {
         marquee: {
@@ -75,6 +81,30 @@ const config: Config = {
         marquee2: {
           '0%': { transform: 'translateX(100%)' },
           '100%': { transform: 'translateX(0%)' },
+        },
+        slideDown: {
+          '0%': { transform: 'translateY(-100%)', opacity: '0' },
+          '100%': { transform: 'translateY(0)', opacity: '1' },
+        },
+        slideUp: {
+          '0%': { transform: 'translateY(0)', opacity: '1' },
+          '100%': { transform: 'translateY(-100%)', opacity: '0' },
+        },
+        fadeIn: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+        fadeOut: {
+          '0%': { opacity: '1' },
+          '100%': { opacity: '0' },
+        },
+        expand: {
+          '0%': { marginTop: '-100%', opacity: '0' }, // El navbar empieza contraído
+          '100%': { marginTop: '0', opacity: '1' }, // Se expande completamente
+        },
+        collapse: {
+          '0%': { marginTop: '0', opacity: '1' }, // El navbar está visible
+          '100%': { marginTop: '-100%', opacity: '0' }, // Se contrae completamente
         },
       },
     },

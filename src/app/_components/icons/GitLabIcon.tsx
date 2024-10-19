@@ -12,12 +12,12 @@ export const GitLabIcon = (
       xmlns="http://www.w3.org/2000/svg"
       {...props}
     >
-      <title>git lab</title>
+      <title>Git lab</title>
       <g
         id="页面-1"
         stroke="none"
         strokeWidth="1"
-        fill="currentColor"
+        fill="#FAFAFA"
         fillRule="evenodd"
       >
         <g id="Logo" transform="translate(-528.000000, -144.000000)">
