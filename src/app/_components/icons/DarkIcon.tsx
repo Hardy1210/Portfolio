@@ -14,7 +14,7 @@ export const Dark = (
       <path
         style={{
           opacity: 1,
-          fill: 'currentColor',
+          fill: '#171717',
           fillOpacity: 1,
           fillRule: 'nonzero',
           stroke: 'none',
@@ -29,7 +29,7 @@ export const Dark = (
       <path
         style={{
           opacity: 1,
-          fill: 'currentColor',
+          fill: '#171717',
           fillOpacity: 1,
           fillRule: 'nonzero',
           stroke: 'none',
@@ -44,7 +44,7 @@ export const Dark = (
       <circle
         style={{
           opacity: 1,
-          fill: '#currentColor',
+          fill: '##171717',
           fillOpacity: 1,
           fillRule: 'nonzero',
           stroke: 'none',
@@ -79,7 +79,7 @@ export const Dark = (
         cx="372.047"
         style={{
           opacity: 1,
-          fill: 'currentColor',
+          fill: '#171717',
           fillOpacity: 1,
           fillRule: 'nonzero',
           stroke: 'none',

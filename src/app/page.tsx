@@ -25,6 +25,8 @@ import { TypescriptIcon } from './_components/icons/TypescriptIcon'
 import { VercelIcon } from './_components/icons/VercelIcon'
 import { ViteIcon } from './_components/icons/ViteIcon'
 import { VsCodeIcon } from './_components/icons/VsCodeIcon'
+import { WebIcon } from './_components/icons/WebIcon'
+import ProjectCard from './_components/ProjectCard/ProjectCard'
 import { Section } from './_components/Section/Section'
 import styles from './page.module.scss'
 
@@ -102,11 +104,11 @@ export default function Home() {
                 <h2 className={cn(styles.dev, 'text-3xl text-center')}>
                   a Front-End Developer
                 </h2>
-                <h2 className={cn(styles.front, 'text-2xl md:mx-0 lg:mx-0')}>
+                <p className={cn(styles.front, 'text-2xl md:mx-0 lg:mx-0')}>
                   Welcome to my portfolio, where each project{' '}
                   <br className="hidden md:flex" />
                   tells a unique story.
-                </h2>
+                </p>
               </div>
 
               <div
@@ -334,8 +336,73 @@ export default function Home() {
           </div>
         </div>
         <Section>
-          <div></div>
-          <div className={cn(styles.projects___container, '')}></div>
+          <div className={cn(styles.Projets__container, '')}>
+            <h2 className="mb-10 text-3xl">Projets</h2>
+            <div className="mb-20 text-center">
+              <p>
+                À travers mes différents projets, j’ai exploré diverses
+                technologies telles que [React, Redux, Sass, etc.]. Chaque
+                réalisation m’a permis de développer mes compétences en
+                développement web, conception d’applications et résolution de
+                problèmes concrets. Mon portfolio reflète mon parcours
+                d’apprentissage et ma passion pour créer des solutions
+                efficaces.
+              </p>
+            </div>
+            <ul
+              className={cn(
+                styles.projects,
+                'grid grid-cols-1 gap-5 md:grid-cols-2',
+              )}
+            >
+              <li>
+                <ProjectCard
+                  layerImageSrc="/images/arb.webp"
+                  layerImageAlt="logo Argent Bank"
+                  secondaryImageSrc="/images/Argent-bank/ab-2-removebg.webp"
+                  secondaryImageAlt="MacBook Argent Bank"
+                  headerImageSrc="/images/logo_images/ab.webp"
+                  headerImageAlt=""
+                  icons={[
+                    <ReactIcon key="react" size={25} />,
+                    <ReduxIcon key="redux" size={25} />,
+                    <SassIcon key="sass" size={25} />,
+                  ]}
+                  title="Argent Bank"
+                  description="Argent Bank est une application web qui permet aux utilisateurs de gérer facilement leurs informations personnelles une fois connectée."
+                  modalDescription="Argent Bank est une application web sécurisée qui permet aux utilisateurs de gérer facilement leurs informations personnelles. Grâce à cette plateforme intuitive, les utilisateurs peuvent se connecter en toute sécurité, mettre à jour leurs informations telles que leur identifiant (ID) et leur nom d'utilisateur, ainsi que accéder à diverses fonctionnalités bancaires en ligne."
+                  technologies={['React', 'Redux', 'Sass']}
+                  repoLink="https://github.com/Hardy1210/ArgentBank-website"
+                  repoIcon={<GithubIcon size={20} />}
+                  repoLinkWeb="https://hardy1210.github.io/ArgentBank-website/"
+                  repoWebIcon={<WebIcon size={20} />}
+                />
+              </li>
+              <li>
+                <ProjectCard
+                  layerImageSrc=""
+                  layerImageAlt=""
+                  secondaryImageSrc=""
+                  secondaryImageAlt=""
+                  headerImageSrc=""
+                  headerImageAlt=""
+                  icons={[
+                    <ReactIcon key="react" size={25} />,
+                    <ReduxIcon key="redux" size={25} />,
+                    <SassIcon key="sass" size={25} />,
+                  ]}
+                  title="Argent Bank"
+                  description=""
+                  modalDescription=""
+                  technologies={['React', 'Redux', 'Sass']}
+                  repoLink="https://github.com/Hardy1210/ArgentBank-website"
+                  repoIcon={<GithubIcon size={20} />}
+                  repoLinkWeb="https://hardy1210.github.io/ArgentBank-website/"
+                  repoWebIcon={<WebIcon size={20} />}
+                />
+              </li>
+            </ul>
+          </div>
         </Section>
       </main>
     </>

@@ -1,0 +1,140 @@
+.projectCard {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.75rem;
+  border: 1px solid #e5e7eb;
+  box-shadow:
+    0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  //layer {/*relative flex items-center justify-center bg-[#1f1f1f]  */}
+  //iamge{/* object-contain transform scale-50*/}
+  .layers__container {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+    .layer {
+      // width: 600px;
+      //position: relative;
+      display: flex;
+      align-items: center; /* Alinea verticalmente la imagen */
+      justify-content: center;
+      background-color: #1f1f1f;
+      //propiedades para desaparicion de layer
+      position: absolute; //centrando la imagen
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      transition:
+        opacity 0.3s ease-in-out,
+        visibility 0.3s ease-in-out;
+      z-index: 2;
+      .image {
+        width: auto;
+        height: auto;
+        /* Ajusta la altura de la imagen también */
+        object-fit: contain; /* Asegura que la imagen mantenga sus proporciones */
+        transform: scale(0.5); // ajusta el tamano de la imagen
+      }
+    }
+    .secondary__layer {
+      display: flex;
+      align-items: center; /* Alinea verticalmente la imagen */
+      justify-content: center;
+      //parametros para el funcionamiento de hover
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0; /* Inicialmente invisible */
+      visibility: hidden; /* Inicialmente oculto */
+      transition:
+        opacity 0.3s ease-in-out,
+        visibility 0.3s ease-in-out;
+      z-index: 1;
+      background: rgb(232, 232, 232);
+      background: linear-gradient(
+        to bottom right,
+        rgba(238, 238, 238, 1) 0%,
+        rgba(226, 226, 226, 1) 51%,
+        rgba(186, 184, 184, 1) 100%
+      );
+      .secondary__image {
+        width: 70%;
+        height: auto;
+        object-fit: contain;
+      }
+    }
+    /* Al hacer hover en .layer, oculta su contenido y muestra el contenido de .secondary__layer */
+    &:hover {
+      .layer {
+        opacity: 0; /* Oculta la capa inicial */
+        visibility: hidden;
+      }
+
+      .secondary__layer {
+        opacity: 1; /* Muestra la capa secundaria */
+        visibility: visible;
+        z-index: 3; /* Mueve la secondary layer al frente */
+      }
+    }
+  }
+  //content
+  .content {
+    padding: 1rem;
+    .header__content {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      margin-bottom: 1rem;
+      gap: 20px;
+      .argent__logo {
+        border-radius: 0.75rem;
+      }
+      .icons__container {
+        .icons {
+          display: flex;
+          gap: 20px;
+        }
+        h3 {
+          margin-top: 7px;
+          font-size: 1.2em;
+          font-weight: bold;
+        }
+      }
+    }
+    .technologies__container {
+      .technologies {
+        display: flex;
+        gap: 15px;
+        margin-top: 1rem;
+        li {
+          font-size: 0.85rem;
+          padding: 3px 13px;
+          border-radius: 0.75rem;
+          background-color: rgba(64, 64, 64, 0.1);
+        }
+      }
+      .source__container {
+        margin: 2rem 0 1rem 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 30px;
+        .source__git {
+          display: flex;
+        }
+        .source__web {
+          display: flex;
+          color: #5a82f1;
+          &:hover {
+            transition: color 0.2s ease; // transition;
+            color: #ffffff;
+          }
+        }
+      }
+    }
+  }
+}

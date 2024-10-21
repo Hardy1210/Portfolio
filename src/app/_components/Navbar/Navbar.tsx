@@ -56,7 +56,7 @@ export function NavbarComponent() {
                   'text-neutral-500 p-2 rounded-lg text-lg font-medium hover:bg-neutral-200/50 hover:text-neutral-900 dark:text-neutral-400 hover:dark:bg-neutral-950 dark:hover:text-neutral-100',
                 )}
               >
-                Home
+                Accueil
               </Link>
               <Link
                 href="#projects"
@@ -65,7 +65,7 @@ export function NavbarComponent() {
                   'text-neutral-500 p-2 rounded-lg text-lg font-medium hover:bg-neutral-200/50 hover:text-neutral-900 dark:text-neutral-400 hover:dark:bg-neutral-950 dark:hover:text-neutral-100',
                 )}
               >
-                Projects
+                Projets
               </Link>
               <Link
                 href="#about"
@@ -74,7 +74,7 @@ export function NavbarComponent() {
                   'text-neutral-500 p-2 rounded-lg text-lg font-medium hover:bg-neutral-200/50 hover:text-neutral-900 dark:text-neutral-400 hover:dark:bg-neutral-950 dark:hover:text-neutral-100',
                 )}
               >
-                About
+                À propos
               </Link>
               <Link
                 href="#contact"
@@ -136,7 +136,7 @@ export function NavbarComponent() {
               className="flex items-center justify-center text-2xl w-full py-4 border-b-2 border-b-blue-950 text-neutral-900 dark:text-neutral-100"
             >
               <HouseIcon className="mr-2" />
-              Home
+              Acceuil
             </Link>
             <Link
               onClick={toggleMenu}
@@ -144,15 +144,14 @@ export function NavbarComponent() {
               className="flex items-center justify-center text-2xl w-full py-5 border-b-2 border-b-blue-950 text-neutral-900 dark:text-neutral-100"
             >
               <ProjectsIcon size={30} className="mr-2" />
-              Projects
+              Projets
             </Link>
             <Link
               onClick={toggleMenu}
               href="#about"
               className="flex items-center justify-center text-2xl w-full py-5 border-b-2 border-b-blue-950 text-neutral-900 dark:text-neutral-100"
             >
-              <AboutIcon size={25} className="mr-2" />
-              About
+              <AboutIcon size={25} className="mr-2" />À propos
             </Link>
             <Link
               onClick={toggleMenu}
