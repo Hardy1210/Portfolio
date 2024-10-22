@@ -13,6 +13,7 @@ import { HtmlIcon } from './_components/icons/HtmlIcon'
 import { JavascriptIcon } from './_components/icons/JavascriptIcon'
 import { MongoDbIcon } from './_components/icons/MongoDbIcon'
 import { NextIcon } from './_components/icons/NextIcon'
+import { NodeJsIcon } from './_components/icons/NodeJsIcon'
 import { NotionIcon } from './_components/icons/NotionIcon'
 import { NpmIcon } from './_components/icons/NpmIcon'
 import { PostmanIcon } from './_components/icons/PostmanIcon'
@@ -34,12 +35,14 @@ export default function Home() {
   return (
     <>
       <Header />
-      <main className={cn(styles.main__container, 'space-y-28')}>
+      <main
+        className={cn(styles.main__container, 'space-y-28 mt-20 md:mt-28 ')}
+      >
         <Section>
           <div
             className={cn(
               styles.container,
-              'relative flex flex-col h-fit w-full items-center gap-5 md:gap-10',
+              'relative flex flex-col h-fit w-full items-center gap-10 md:gap-10',
             )}
           >
             <div
@@ -51,7 +54,7 @@ export default function Home() {
             <div
               className={cn(
                 styles.hidden__imgs,
-                'absolute left-1/2 top-1/2 w-max -translate-x-1/2 -translate-y-1/2 opacity-10 dark:opacity-5 md:hidden',
+                'absolute left-1/2 top-1/2 w-max -translate-x-1/2 -translate-y-2/3 opacity-10 dark:opacity-5 md:hidden',
               )}
             >
               <Image
@@ -91,7 +94,7 @@ export default function Home() {
                   aria-label="Hardy Lino"
                   className={cn(
                     styles.hardy,
-                    'w-min text-7xl font-bold drop-shadow-xl dark:text-neutral-50 md:w-max',
+                    'w-min text-7xl font-extrabold drop-shadow-xl dark:text-neutral-50 md:w-max',
                   )}
                 >
                   <span aria-hidden="true" className="">
@@ -101,7 +104,12 @@ export default function Home() {
                   </span>{' '}
                   Hardy,
                 </h1>
-                <h2 className={cn(styles.dev, 'text-3xl text-center')}>
+                <h2
+                  className={cn(
+                    styles.dev,
+                    'mt-5 md:mt-10 text-3xl text-center',
+                  )}
+                >
                   a Front-End Developer
                 </h2>
                 <p className={cn(styles.front, 'text-2xl md:mx-0 lg:mx-0')}>
@@ -140,7 +148,7 @@ export default function Home() {
             <div
               className={cn(
                 styles.buttons__container,
-                'mt-5 md:mt-0  w-full md:max-w-full flex-col-reverse  gap-5 justify-between',
+                ' w-full md:max-w-full flex-col-reverse  gap-10 md:gap-5 justify-between',
               )}
             >
               <div
@@ -177,14 +185,14 @@ export default function Home() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <GithubIcon size={20} />
+                  <GithubIcon size={30} />
                 </Link>
                 <Link
                   href="https://www.linkedin.com/in/hardy-lino-30a616b1/"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <LinkedinIcon size={20} />
+                  <LinkedinIcon size={30} />
                 </Link>
               </ul>
             </div>
@@ -264,6 +272,9 @@ export default function Home() {
                 <li className="mx-9">
                   <VsCodeIcon size={70} />
                 </li>
+                <li className="mx-9">
+                  <NodeJsIcon size={70} />
+                </li>
               </ul>
               <ul
                 className={cn(
@@ -331,6 +342,9 @@ export default function Home() {
                 <li className="mx-9">
                   <VsCodeIcon size={70} />
                 </li>
+                <li className="mx-9">
+                  <NodeJsIcon size={70} />
+                </li>
               </ul>
             </div>
           </div>
@@ -367,12 +381,24 @@ export default function Home() {
                     <ReactIcon key="react" size={25} />,
                     <ReduxIcon key="redux" size={25} />,
                     <SassIcon key="sass" size={25} />,
+                    <NodeJsIcon key="sass" size={25} />,
+                    <MongoDbIcon key="sass" size={25} />,
                   ]}
                   title="Argent Bank"
                   description="Argent Bank est une application web qui permet aux utilisateurs de gérer facilement leurs informations personnelles une fois connectée."
-                  modalDescription="Argent Bank est une application web sécurisée qui permet aux utilisateurs de gérer facilement leurs informations personnelles. Grâce à cette plateforme intuitive, les utilisateurs peuvent se connecter en toute sécurité, mettre à jour leurs informations telles que leur identifiant (ID) et leur nom d'utilisateur, ainsi que accéder à diverses fonctionnalités bancaires en ligne."
-                  technologies={['React', 'Redux', 'Sass']}
-                  repoLink="https://github.com/Hardy1210/ArgentBank-website"
+                  modalDescription="La conception du projet est basée sur React en intégrant des composants réutilisables, ainsi que l'intégration du système de connexion qui permet aux utilisateurs de se connecter, de voir leurs informations relatives à leur propre profil et de changer leur pseudo s'ils le souhaitent. L'utilisation de Redux était nécessaire pour pouvoir gérer l'état global de l'application."
+                  modalImgSrc="/images/Argent-bank/ab-modal.webp"
+                  modalImgAlt=""
+                  modalImgSecondSrc="/images/Argent-bank/ab-modal-2.webp"
+                  modalImgSecondAlt=""
+                  technologies={[
+                    'React',
+                    'Redux',
+                    'Sass',
+                    'Node.js',
+                    'MongoDB',
+                  ]}
+                  repoLink="https://github.com/Hardy1210/ArgentBank-website/tree/Redux"
                   repoIcon={<GithubIcon size={20} />}
                   repoLinkWeb="https://hardy1210.github.io/ArgentBank-website/"
                   repoWebIcon={<WebIcon size={20} />}
@@ -380,22 +406,104 @@ export default function Home() {
               </li>
               <li>
                 <ProjectCard
-                  layerImageSrc=""
-                  layerImageAlt=""
-                  secondaryImageSrc=""
-                  secondaryImageAlt=""
-                  headerImageSrc=""
+                  layerImageSrc="/images/arb.webp"
+                  layerImageAlt="logo Argent Bank"
+                  secondaryImageSrc="/images/Argent-bank/ab-2-removebg.webp"
+                  secondaryImageAlt="MacBook Argent Bank"
+                  headerImageSrc="/images/logo_images/ab.webp"
                   headerImageAlt=""
                   icons={[
                     <ReactIcon key="react" size={25} />,
                     <ReduxIcon key="redux" size={25} />,
                     <SassIcon key="sass" size={25} />,
+                    <NodeJsIcon key="sass" size={25} />,
+                    <MongoDbIcon key="sass" size={25} />,
                   ]}
                   title="Argent Bank"
-                  description=""
-                  modalDescription=""
-                  technologies={['React', 'Redux', 'Sass']}
-                  repoLink="https://github.com/Hardy1210/ArgentBank-website"
+                  description="Argent Bank est une application web qui permet aux utilisateurs de gérer facilement leurs informations personnelles une fois connectée."
+                  modalDescription="La conception du projet est basée sur React en intégrant des composants réutilisables, ainsi que l'intégration du système de connexion qui permet aux utilisateurs de se connecter, de voir leurs informations relatives à leur propre profil et de changer leur pseudo s'ils le souhaitent. L'utilisation de Redux était nécessaire pour pouvoir gérer l'état global de l'application."
+                  modalImgSrc="/images/Argent-bank/ab-modal.webp"
+                  modalImgAlt=""
+                  modalImgSecondSrc="/images/Argent-bank/ab-modal-2.webp"
+                  modalImgSecondAlt=""
+                  technologies={[
+                    'React',
+                    'Redux',
+                    'Sass',
+                    'Node.js',
+                    'MongoDB',
+                  ]}
+                  repoLink="https://github.com/Hardy1210/ArgentBank-website/tree/Redux"
+                  repoIcon={<GithubIcon size={20} />}
+                  repoLinkWeb="https://hardy1210.github.io/ArgentBank-website/"
+                  repoWebIcon={<WebIcon size={20} />}
+                />
+              </li>
+              <li>
+                <ProjectCard
+                  layerImageSrc="/images/arb.webp"
+                  layerImageAlt="logo Argent Bank"
+                  secondaryImageSrc="/images/Argent-bank/ab-2-removebg.webp"
+                  secondaryImageAlt="MacBook Argent Bank"
+                  headerImageSrc="/images/logo_images/ab.webp"
+                  headerImageAlt=""
+                  icons={[
+                    <ReactIcon key="react" size={25} />,
+                    <ReduxIcon key="redux" size={25} />,
+                    <SassIcon key="sass" size={25} />,
+                    <NodeJsIcon key="sass" size={25} />,
+                    <MongoDbIcon key="sass" size={25} />,
+                  ]}
+                  title="Argent Bank"
+                  description="Argent Bank est une application web qui permet aux utilisateurs de gérer facilement leurs informations personnelles une fois connectée."
+                  modalDescription="La conception du projet est basée sur React en intégrant des composants réutilisables, ainsi que l'intégration du système de connexion qui permet aux utilisateurs de se connecter, de voir leurs informations relatives à leur propre profil et de changer leur pseudo s'ils le souhaitent. L'utilisation de Redux était nécessaire pour pouvoir gérer l'état global de l'application."
+                  modalImgSrc="/images/Argent-bank/ab-modal.webp"
+                  modalImgAlt=""
+                  modalImgSecondSrc="/images/Argent-bank/ab-modal-2.webp"
+                  modalImgSecondAlt=""
+                  technologies={[
+                    'React',
+                    'Redux',
+                    'Sass',
+                    'Node.js',
+                    'MongoDB',
+                  ]}
+                  repoLink="https://github.com/Hardy1210/ArgentBank-website/tree/Redux"
+                  repoIcon={<GithubIcon size={20} />}
+                  repoLinkWeb="https://hardy1210.github.io/ArgentBank-website/"
+                  repoWebIcon={<WebIcon size={20} />}
+                />
+              </li>
+              <li>
+                <ProjectCard
+                  layerImageSrc="/images/arb.webp"
+                  layerImageAlt="logo Argent Bank"
+                  secondaryImageSrc="/images/Argent-bank/ab-2-removebg.webp"
+                  secondaryImageAlt="MacBook Argent Bank"
+                  headerImageSrc="/images/logo_images/ab.webp"
+                  headerImageAlt=""
+                  icons={[
+                    <ReactIcon key="react" size={25} />,
+                    <ReduxIcon key="redux" size={25} />,
+                    <SassIcon key="sass" size={25} />,
+                    <NodeJsIcon key="sass" size={25} />,
+                    <MongoDbIcon key="sass" size={25} />,
+                  ]}
+                  title="Argent Bank"
+                  description="Argent Bank est une application web qui permet aux utilisateurs de gérer facilement leurs informations personnelles une fois connectée."
+                  modalDescription="La conception du projet est basée sur React en intégrant des composants réutilisables, ainsi que l'intégration du système de connexion qui permet aux utilisateurs de se connecter, de voir leurs informations relatives à leur propre profil et de changer leur pseudo s'ils le souhaitent. L'utilisation de Redux était nécessaire pour pouvoir gérer l'état global de l'application."
+                  modalImgSrc="/images/Argent-bank/ab-modal.webp"
+                  modalImgAlt=""
+                  modalImgSecondSrc="/images/Argent-bank/ab-modal-2.webp"
+                  modalImgSecondAlt=""
+                  technologies={[
+                    'React',
+                    'Redux',
+                    'Sass',
+                    'Node.js',
+                    'MongoDB',
+                  ]}
+                  repoLink="https://github.com/Hardy1210/ArgentBank-website/tree/Redux"
                   repoIcon={<GithubIcon size={20} />}
                   repoLinkWeb="https://hardy1210.github.io/ArgentBank-website/"
                   repoWebIcon={<WebIcon size={20} />}

@@ -11,7 +11,10 @@
   .layers__container {
     position: relative;
     width: 100%;
-    height: 250px;
+    //cuidadop con la altura para que la animation
+    //del layer se vea bien si no
+    //habra un salto de 2px molesto al scale()
+    height: 260px;
     overflow: hidden;
     .layer {
       // width: 600px;
@@ -29,6 +32,7 @@
       transition:
         opacity 0.3s ease-in-out,
         visibility 0.3s ease-in-out;
+      transition: all 0.2s ease-in-out;
       z-index: 2;
       .image {
         width: auto;
@@ -72,9 +76,11 @@
       .layer {
         opacity: 0; /* Oculta la capa inicial */
         visibility: hidden;
+        transform: scale(1.1);
       }
 
       .secondary__layer {
+        cursor: pointer;
         opacity: 1; /* Muestra la capa secundaria */
         visibility: visible;
         z-index: 3; /* Mueve la secondary layer al frente */
@@ -84,6 +90,9 @@
   //content
   .content {
     padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
     .header__content {
       display: flex;
       flex-direction: row;
@@ -105,11 +114,15 @@
         }
       }
     }
+    .text__content {
+      font-size: 0.875rem;
+    }
     .technologies__container {
       .technologies {
         display: flex;
         gap: 15px;
         margin-top: 1rem;
+        flex-wrap: wrap;
         li {
           font-size: 0.85rem;
           padding: 3px 13px;

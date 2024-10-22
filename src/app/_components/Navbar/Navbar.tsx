@@ -21,14 +21,14 @@ export function NavbarComponent() {
       <nav
         className={cn(
           styles.navbar,
-          'rounded-xl max-w-5xl m-auto transition-all backdrop-blur-3xl border-neutral-200/50 dark:border-neutral-900 dark:bg-neutral-1000/80',
+          'rounded-xl max-w-5xl m-auto transition-all backdrop-blur-3xl border border-neutral-200/50 dark:border-neutral-900 dark:bg-neutral-1000/80',
           'relative z-10', // Ensure nav is below the modal
         )}
       >
         <div
           className={cn(
             styles.navbar__container,
-            'rounded-xl flex justify-between items-center h-16 px-4',
+            'rounded-xl flex justify-between items-center  px-4 md:px-5',
           )}
         >
           <div className={cn(styles.logo__container, 'flex items-center')}>
@@ -36,7 +36,7 @@ export function NavbarComponent() {
               href="#home"
               className={cn(
                 styles.navbar__logo,
-                'font-bold py-3 text-2xl drop-shadow-lg md:px0',
+                'font-semibold py-3 text-2xl drop-shadow-lg md:px0',
               )}
             >
               Hardy L.
@@ -53,7 +53,7 @@ export function NavbarComponent() {
                 href="#home"
                 className={cn(
                   styles.link,
-                  'text-neutral-500 p-2 rounded-lg text-lg font-medium hover:bg-neutral-200/50 hover:text-neutral-900 dark:text-neutral-400 hover:dark:bg-neutral-950 dark:hover:text-neutral-100',
+                  'text-neutral-500 p-2 rounded-lg font-medium hover:bg-neutral-200/50 hover:text-neutral-900 dark:text-neutral-400 hover:dark:bg-neutral-950 dark:hover:text-neutral-100',
                 )}
               >
                 Accueil
@@ -62,7 +62,7 @@ export function NavbarComponent() {
                 href="#projects"
                 className={cn(
                   styles.link,
-                  'text-neutral-500 p-2 rounded-lg text-lg font-medium hover:bg-neutral-200/50 hover:text-neutral-900 dark:text-neutral-400 hover:dark:bg-neutral-950 dark:hover:text-neutral-100',
+                  'text-neutral-500 p-2 rounded-lg font-medium hover:bg-neutral-200/50 hover:text-neutral-900 dark:text-neutral-400 hover:dark:bg-neutral-950 dark:hover:text-neutral-100',
                 )}
               >
                 Projets
@@ -71,7 +71,7 @@ export function NavbarComponent() {
                 href="#about"
                 className={cn(
                   styles.link,
-                  'text-neutral-500 p-2 rounded-lg text-lg font-medium hover:bg-neutral-200/50 hover:text-neutral-900 dark:text-neutral-400 hover:dark:bg-neutral-950 dark:hover:text-neutral-100',
+                  'text-neutral-500 p-2 rounded-lg font-medium hover:bg-neutral-200/50 hover:text-neutral-900 dark:text-neutral-400 hover:dark:bg-neutral-950 dark:hover:text-neutral-100',
                 )}
               >
                 À propos
@@ -80,7 +80,7 @@ export function NavbarComponent() {
                 href="#contact"
                 className={cn(
                   styles.link,
-                  'text-neutral-500 p-2 rounded-lg text-lg font-medium hover:bg-neutral-200/50 hover:text-neutral-900 dark:text-neutral-400 hover:dark:bg-neutral-950 dark:hover:text-neutral-100',
+                  'text-neutral-500 p-2 rounded-lg font-medium hover:bg-neutral-200/50 hover:text-neutral-900 dark:text-neutral-400 hover:dark:bg-neutral-950 dark:hover:text-neutral-100',
                 )}
               >
                 Contact

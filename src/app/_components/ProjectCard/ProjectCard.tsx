@@ -12,6 +12,10 @@ interface ProjectCardProps {
   layerImageAlt: string
   secondaryImageSrc: string
   secondaryImageAlt: string
+  modalImgSrc: string //imagen para modal
+  modalImgAlt: string //alt para modal
+  modalImgSecondSrc: string //para modal
+  modalImgSecondAlt: string
   headerImageSrc: string //logo
   headerImageAlt: string //logo alt
   title: string
@@ -30,6 +34,10 @@ const ProjectCard: FC<ProjectCardProps> = ({
   layerImageAlt,
   secondaryImageSrc,
   secondaryImageAlt,
+  modalImgSrc, //modal
+  modalImgAlt, //modal
+  modalImgSecondSrc, //modal
+  modalImgSecondAlt,
   headerImageSrc, //logo
   headerImageAlt, //logo alt
   title,
@@ -128,13 +136,97 @@ const ProjectCard: FC<ProjectCardProps> = ({
       {/* Modal que se abrirá cuando el estado 'isModalOpen' sea true */}
       {isModalOpen && (
         <ModalProject onClose={toggleModal}>
-          <h2>{title}</h2> {/* Aquí pasas el title del proyecto al modal */}
-          <p>{modalDescription}</p> {/* Aquí pasas la descripción larga */}
-          <ul>
-            {technologies.map((tech, index) => (
-              <li key={index}>{tech}</li>
-            ))}
-          </ul>
+          <div
+            className={cn(styles.modal__container, 'flex flex-col gap-5 p-4')}
+          >
+            <div className={cn(styles.title__container, 'pb-5 text-center')}>
+              <h2 className="text-xl">{title}</h2>
+            </div>
+            <div
+              className={cn(
+                styles.image__container,
+                'flex flex-row justify-center items-center gap-2 max-w-full',
+              )}
+            >
+              <div className="w-full sm:w-auto">
+                <Image
+                  src={modalImgSrc}
+                  alt={modalImgAlt}
+                  layout="responsive"
+                  width={700}
+                  height={412}
+                  className="w-full h-auto"
+                />
+              </div>
+              <div className="w-full sm:w-auto">
+                <Image
+                  src={modalImgSecondSrc}
+                  alt={modalImgSecondAlt}
+                  layout="responsive"
+                  width={700}
+                  height={412}
+                  className="w-full h-auto"
+                />
+              </div>
+            </div>
+            <div
+              className={cn(
+                styles.description__container,
+                'sm:px-5 flex flex-col gap-5',
+              )}
+            >
+              <div className="flex flex-col gap-5">
+                <h3 className="pb-5 text-center text-xl font-semibold text-neutral-500">
+                  Description du projet
+                </h3>
+                <ul
+                  className={cn(
+                    styles.modal__icons,
+                    'flex gap-5 justify-center',
+                  )}
+                >
+                  {icons.map((icon, index) => (
+                    <li key={index}>{icon}</li>
+                  ))}
+                </ul>
+                <p className="text-neutral-500 text-sm">{modalDescription}</p>{' '}
+              </div>
+              <ul
+                className={cn(
+                  styles.techno__container,
+                  'text-neutral-500 flex flex-row flex-wrap gap-5 ',
+                )}
+              >
+                {technologies.map((tech, index) => (
+                  <li
+                    key={index}
+                    className="bg-neutral-700/10 rounded-xl px-3 py-1 text-xs"
+                  >
+                    {tech}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div
+              className={cn(
+                styles.buttons__conatiner,
+                'mt-5 flex flex-wrap justify-center items-center gap-7',
+              )}
+            >
+              <ButtonLink
+                text="Source"
+                href={repoLink}
+                icon={repoIcon} // Ícono dinámico pasado por prop
+                className={cn(styles.source__git, '')}
+              />
+              <ButtonLink
+                text="Website"
+                href={repoLinkWeb}
+                icon={repoWebIcon}
+                className={cn(styles.source__web, '')}
+              />
+            </div>
+          </div>
         </ModalProject>
       )}
     </article>
