@@ -52,10 +52,18 @@ const ProjectCard: FC<ProjectCardProps> = ({
 }) => {
   // Estado para controlar si el modal está abierto o cerrado
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isClosing, setIsClosing] = useState(false)
 
-  // Función para abrir y cerrar el modal
   const toggleModal = () => {
-    setIsModalOpen(!isModalOpen)
+    if (isModalOpen) {
+      setIsClosing(true)
+      setTimeout(() => {
+        setIsModalOpen(false)
+        setIsClosing(false)
+      }, 500) // 500ms para que la animación de cierre termine
+    } else {
+      setIsModalOpen(true)
+    }
   }
   return (
     <article
@@ -135,9 +143,16 @@ const ProjectCard: FC<ProjectCardProps> = ({
       </div>
       {/* Modal que se abrirá cuando el estado 'isModalOpen' sea true */}
       {isModalOpen && (
-        <ModalProject onClose={toggleModal}>
+        <ModalProject
+          onClose={toggleModal}
+          isModalOpen={isModalOpen}
+          isClosing={isClosing}
+        >
           <div
-            className={cn(styles.modal__container, 'flex flex-col gap-5 p-4')}
+            className={cn(
+              styles.modal__container,
+              'flex flex-col gap-5 px-0 sm:px-4 py-0 sm:py-4',
+            )}
           >
             <div className={cn(styles.title__container, 'pb-5 text-center')}>
               <h2 className="text-xl">{title}</h2>
@@ -145,7 +160,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
             <div
               className={cn(
                 styles.image__container,
-                'flex flex-row justify-center items-center gap-2 max-w-full',
+                'flex flex-col sm:flex-row justify-center items-center gap-2 max-w-full ',
               )}
             >
               <div className="w-full sm:w-auto">
@@ -176,7 +191,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
               )}
             >
               <div className="flex flex-col gap-5">
-                <h3 className="pb-5 text-center text-xl font-semibold text-neutral-500">
+                <h3 className="pb-5 text-center text-base md:text-xl font-semibold text-neutral-500">
                   Description du projet
                 </h3>
                 <ul
@@ -189,12 +204,14 @@ const ProjectCard: FC<ProjectCardProps> = ({
                     <li key={index}>{icon}</li>
                   ))}
                 </ul>
-                <p className="text-neutral-500 text-sm">{modalDescription}</p>{' '}
+                <p className="text-neutral-500 text-xs sm:text-sm">
+                  {modalDescription}
+                </p>{' '}
               </div>
               <ul
                 className={cn(
                   styles.techno__container,
-                  'text-neutral-500 flex flex-row flex-wrap gap-5 ',
+                  'text-neutral-500 flex flex-row flex-wrap gap-3 sm:gap-5 ',
                 )}
               >
                 {technologies.map((tech, index) => (
@@ -210,7 +227,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
             <div
               className={cn(
                 styles.buttons__conatiner,
-                'mt-5 flex flex-wrap justify-center items-center gap-7',
+                'mt-2 sm:mt-5 flex flex-wrap justify-center items-center gap-4 md:gap-7',
               )}
             >
               <ButtonLink

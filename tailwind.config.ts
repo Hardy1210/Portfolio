@@ -16,6 +16,9 @@ const config: Config = {
       sans: ['var(--font-inter)'],
     },
     extend: {
+      screens: {
+        'custom-xs': { max: '344px' }, //mobiles galaxy fold
+      },
       colors: {
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
@@ -64,14 +67,21 @@ const config: Config = {
         sm: 'calc(var(--radius) - 4px)',
       },
       animation: {
-        marquee: 'marquee 40s linear infinite',
-        marquee2: 'marquee2 40s linear infinite',
+        marquee: 'marquee 60s linear infinite',
+        marquee2: 'marquee2 60s linear infinite',
         slideDown: 'slideDown 0.3s ease-out forwards',
         slideUp: 'slideUp 0.3s ease-out forwards',
+        //el fade es utilizado por la modal navBar y el fondo de ProjectModal
         fadeIn: 'fadeIn 0.3s ease-out forwards',
         fadeOut: 'fadeOut 0.3s ease-out forwards',
         expand: 'expand 0.3s ease-out forwards', // Puedes modificar la duración aquí
         collapse: 'collapse 0.3s ease-in forwards',
+        //animation de entrada y cierre de la modal pero no en 3D
+        modalOpen: 'modalOpen 0.5s ease forwards',
+        modalClose: 'modalClose 0.5s ease forwards',
+        //animation de la modal en 3D
+        modalOpen3D: 'modalOpen3D 0.2s ease-out forwards',
+        modalClose3D: 'modalClose3D 0.2s ease-out forwards',
       },
       keyframes: {
         marquee: {
@@ -105,6 +115,37 @@ const config: Config = {
         collapse: {
           '0%': { marginTop: '0', opacity: '1' }, // El navbar está visible
           '100%': { marginTop: '-100%', opacity: '0' }, // Se contrae completamente
+        },
+        //animation de la modal inclinandose pero no es efecto 3D--cuidado que tienes que poner el nombre
+        //designado por el parametro
+        modalOpen: {
+          '0%': { transform: 'rotate(-10deg) scale(0.9)', opacity: '0' },
+          '100%': { transform: 'rotate(0deg) scale(1)', opacity: '1' },
+        },
+        modalClose: {
+          '0%': { transform: 'rotate(0deg) scale(1)', opacity: '1' },
+          '100%': { transform: 'rotate(10deg) scale(0.9)', opacity: '0' },
+        },
+        //animation 3D de la modal
+        modalOpen3D: {
+          '0%': {
+            opacity: '0',
+            transform: 'translateY(20px) perspective(600px) rotateX(10deg)', // Inicia con el desplazamiento y rotación
+          },
+          '100%': {
+            opacity: '1',
+            transform: 'translateY(0) perspective(600px) rotateX(0deg)', // Se endereza y desaparece el desplazamiento
+          },
+        },
+        modalClose3D: {
+          '0%': {
+            opacity: '1',
+            transform: 'translateY(0) perspective(600px) rotateX(0deg)', // El modal está en su posición inicial
+          },
+          '100%': {
+            opacity: '0',
+            transform: 'translateY(20px) perspective(600px) rotateX(10deg)', // Vuelve al desplazamiento y rotación
+          },
         },
       },
     },

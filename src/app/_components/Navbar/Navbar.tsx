@@ -28,7 +28,7 @@ export function NavbarComponent() {
         <div
           className={cn(
             styles.navbar__container,
-            'rounded-xl flex justify-between items-center  px-4 md:px-5',
+            'rounded-xl flex justify-between items-center m-auto px-4 md:px-5',
           )}
         >
           <div className={cn(styles.logo__container, 'flex items-center')}>

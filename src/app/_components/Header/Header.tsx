@@ -1,7 +1,7 @@
 import { NavbarComponent } from '../Navbar/Navbar'
 export const Header = () => {
   return (
-    <header className="sticky top-0 z-40 py-3 w-full max-w-5xl m-auto ">
+    <header className="fixed top-0 z-50 p-3 w-full m-auto ">
       <NavbarComponent />
     </header>
   )
