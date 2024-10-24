@@ -16,6 +16,11 @@ const config: Config = {
       sans: ['var(--font-inter)'],
     },
     extend: {
+      //para evitar que el navBar oculte el H2 despues de selectionar el elemento
+      scrollMargin: {
+        '4': '1rem', // Valor de 1rem (16px)
+        '16': '4rem', // Valor de 4rem (64px), ajusta este valor según la altura de tu header
+      },
       screens: {
         'custom-xs': { max: '344px' }, //mobiles galaxy fold
       },

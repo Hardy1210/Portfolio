@@ -3,6 +3,7 @@ import { HouseIcon, MailIcon, X } from 'lucide-react'
 import Link from 'next/link'
 import { useState } from 'react'
 import { cn } from '../../../lib/utils'
+import { satisfySans } from '../../../styles/fonts'
 import { Dark } from '../icons/DarkIcon'
 import { AboutIcon } from '../icons/modals/AboutIcon'
 import { MenuIcon } from '../icons/modals/MenuIcon'
@@ -37,6 +38,7 @@ export function NavbarComponent() {
               className={cn(
                 styles.navbar__logo,
                 'font-semibold py-3 text-2xl drop-shadow-lg md:px0',
+                satisfySans.className,
               )}
             >
               Hardy L.

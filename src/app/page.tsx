@@ -18,6 +18,7 @@ import { NotionIcon } from './_components/icons/NotionIcon'
 import { NpmIcon } from './_components/icons/NpmIcon'
 import { PostmanIcon } from './_components/icons/PostmanIcon'
 import { ReactIcon } from './_components/icons/ReactIcon'
+import { ReactRouterIcon } from './_components/icons/ReactRouterIcon'
 import { ReduxIcon } from './_components/icons/ReduxIcon'
 import { SassIcon } from './_components/icons/SassIcon'
 import { SwaggerIcon } from './_components/icons/SwaggerIcon'
@@ -39,7 +40,7 @@ export default function Home() {
         <main
           className={cn(
             styles.main__container,
-            'space-y-28 pt-36 md:pt-48  px-4 overflow-hidden',
+            'space-y-20 md:space-y-24 pt-36 md:pt-48  px-4 overflow-hidden',
           )}
         >
           <Section>
@@ -191,6 +192,7 @@ export default function Home() {
                     href="https://github.com/Hardy1210"
                     target="_blank"
                     rel="noopener noreferrer"
+                    className="transform transition duration-300 hover:scale-125"
                   >
                     <GithubIcon size={30} />
                   </Link>
@@ -198,6 +200,7 @@ export default function Home() {
                     href="https://www.linkedin.com/in/hardy-lino-30a616b1/"
                     target="_blank"
                     rel="noopener noreferrer"
+                    className="transform transition duration-300 hover:scale-125"
                   >
                     <LinkedinIcon size={30} />
                   </Link>
@@ -215,142 +218,184 @@ export default function Home() {
               >
                 <ul
                   className={cn(
-                    styles.marque__ul,
+                    styles.marquee__ul,
                     'inline-flex items-center animate-marquee group-hover:[animation-play-state:paused]',
                   )}
                 >
                   <li className="mx-9">
                     <GithubIcon size={70} />
+                    <p className={cn(styles.icon__title)}>GitHub</p>
                   </li>
                   <li className="mx-9">
                     <ReactIcon size={70} />
+                    <p className={cn(styles.icon__title)}>React</p>
                   </li>
                   <li className="mx-9">
                     <NextIcon size={70} />
+                    <p className={cn(styles.icon__title)}>Next.js</p>
                   </li>
                   <li className="mx-9">
                     <TypescriptIcon size={70} />
+                    <p className={cn(styles.icon__title)}>TypeScript</p>
                   </li>
                   <li className="mx-9">
                     <JavascriptIcon size={70} />
+                    <p className={cn(styles.icon__title)}>JavaScript</p>
                   </li>
                   <li className="mx-9">
                     <FigmaIcon size={70} />
+                    <p className={cn(styles.icon__title)}>Figma</p>
                   </li>
                   <li className="mx-9">
                     <HtmlIcon size={70} />
+                    <p className={cn(styles.icon__title)}>Html</p>
                   </li>
                   <li className="mx-9">
                     <CssIcon size={70} />
+                    <p className={cn(styles.icon__title)}>Css</p>
                   </li>
                   <li className="mx-9">
                     <MongoDbIcon size={70} />
+                    <p className={cn(styles.icon__title)}>MongoDB</p>
                   </li>
                   <li className="mx-9">
                     <NotionIcon size={70} />
+                    <p className={cn(styles.icon__title)}>Notion</p>
                   </li>
                   <li className="mx-9">
                     <TailwindIcon size={70} />
+                    <p className={cn(styles.icon__title)}>Tailwind</p>
                   </li>
                   <li className="mx-9">
                     <SwaggerIcon size={70} />
+                    <p className={cn(styles.icon__title)}>Swagger</p>
                   </li>
                   <li className="mx-9">
                     <SassIcon size={70} />
+                    <p className={cn(styles.icon__title)}>Sass</p>
                   </li>
                   <li className="mx-9">
                     <VercelIcon size={70} />
+                    <p className={cn(styles.icon__title)}>Vercel</p>
                   </li>
                   <li className="mx-9">
                     <NpmIcon size={70} />
+                    <p className={cn(styles.icon__title)}>Npm</p>
                   </li>
                   <li className="mx-9">
                     <GitLabIcon size={70} />
+                    <p className={cn(styles.icon__title)}>Git Lab</p>
                   </li>
                   <li className="mx-9">
                     <PostmanIcon size={70} />
+                    <p className={cn(styles.icon__title)}>Postman</p>
                   </li>
                   <li className="mx-9">
                     <ReduxIcon size={70} />
+                    <p className={cn(styles.icon__title)}>Redux</p>
                   </li>
                   <li className="mx-9">
                     <ViteIcon size={70} />
+                    <p className={cn(styles.icon__title)}>Vite</p>
                   </li>
                   <li className="mx-9">
                     <VsCodeIcon size={70} />
+                    <p className={cn(styles.icon__title)}>Visual Studio</p>
                   </li>
                   <li className="mx-9">
                     <NodeJsIcon size={70} />
+                    <p className={cn(styles.icon__title)}>Node.js</p>
                   </li>
                 </ul>
                 <ul
                   className={cn(
-                    styles.marque__ull,
-                    'inline-flex absolute top0 items-center animate-marquee2 group-hover:[animation-play-state:paused]',
+                    styles.marquee__ull,
+                    'inline-flex absolute items-center animate-marquee2 group-hover:[animation-play-state:paused]',
                   )}
                 >
                   <li className="mx-9">
                     <GithubIcon size={70} />
+                    <p className={cn(styles.icon__title)}>GitHub</p>
                   </li>
                   <li className="mx-9">
                     <ReactIcon size={70} />
+                    <p className={cn(styles.icon__title)}>React</p>
                   </li>
                   <li className="mx-9">
                     <NextIcon size={70} />
+                    <p className={cn(styles.icon__title)}>Next.js</p>
                   </li>
                   <li className="mx-9">
                     <TypescriptIcon size={70} />
+                    <p className={cn(styles.icon__title)}>TypeScript</p>
                   </li>
                   <li className="mx-9">
                     <JavascriptIcon size={70} />
+                    <p className={cn(styles.icon__title)}>JavaScript</p>
                   </li>
                   <li className="mx-9">
                     <FigmaIcon size={70} />
+                    <p className={cn(styles.icon__title)}>Figma</p>
                   </li>
                   <li className="mx-9">
                     <HtmlIcon size={70} />
+                    <p className={cn(styles.icon__title)}>Html</p>
                   </li>
                   <li className="mx-9">
                     <CssIcon size={70} />
+                    <p className={cn(styles.icon__title)}>Css</p>
                   </li>
                   <li className="mx-9">
                     <MongoDbIcon size={70} />
+                    <p className={cn(styles.icon__title)}>MongoDB</p>
                   </li>
                   <li className="mx-9">
                     <NotionIcon size={70} />
+                    <p className={cn(styles.icon__title)}>Notion</p>
                   </li>
                   <li className="mx-9">
                     <TailwindIcon size={70} />
+                    <p className={cn(styles.icon__title)}>Tailwind</p>
                   </li>
                   <li className="mx-9">
                     <SwaggerIcon size={70} />
+                    <p className={cn(styles.icon__title)}>Swagger</p>
                   </li>
                   <li className="mx-9">
                     <SassIcon size={70} />
+                    <p className={cn(styles.icon__title)}>Sass</p>
                   </li>
                   <li className="mx-9">
                     <VercelIcon size={70} />
+                    <p className={cn(styles.icon__title)}>Vercel</p>
                   </li>
                   <li className="mx-9">
                     <NpmIcon size={70} />
+                    <p className={cn(styles.icon__title)}>Npm</p>
                   </li>
                   <li className="mx-9">
                     <GitLabIcon size={70} />
+                    <p className={cn(styles.icon__title)}>Git Lab</p>
                   </li>
                   <li className="mx-9">
                     <PostmanIcon size={70} />
+                    <p className={cn(styles.icon__title)}>Postman</p>
                   </li>
                   <li className="mx-9">
                     <ReduxIcon size={70} />
+                    <p className={cn(styles.icon__title)}>Redux</p>
                   </li>
                   <li className="mx-9">
                     <ViteIcon size={70} />
+                    <p className={cn(styles.icon__title)}>Vite</p>
                   </li>
                   <li className="mx-9">
                     <VsCodeIcon size={70} />
+                    <p className={cn(styles.icon__title)}>Visual Studio</p>
                   </li>
                   <li className="mx-9">
                     <NodeJsIcon size={70} />
+                    <p className={cn(styles.icon__title)}>Node.js</p>
                   </li>
                 </ul>
               </div>
@@ -358,7 +403,9 @@ export default function Home() {
           </div>
           <Section>
             <div className={cn(styles.Projets__container, '')}>
-              <h2 className="mb-10 text-3xl">Projets</h2>
+              <h2 id="projects" className="mb-10 text-3xl scroll-mt-16">
+                Projets
+              </h2>
               <div className="mb-20 text-center">
                 <p>
                   À travers mes différents projets, j’ai exploré diverses
@@ -385,6 +432,7 @@ export default function Home() {
                     headerImageSrc="/images/logo_images/ab.webp"
                     headerImageAlt="Argent Bank leaf"
                     icons={[
+                      <ViteIcon key="vite" size={25} />,
                       <ReactIcon key="react" size={25} />,
                       <ReduxIcon key="redux" size={25} />,
                       <SassIcon key="sass" size={25} />,
@@ -420,13 +468,13 @@ export default function Home() {
                     headerImageSrc="/images/kasa/ka-logo.webp"
                     headerImageAlt="Logo Kasa"
                     icons={[
+                      <ViteIcon key="vite" size={25} />,
                       <ReactIcon key="react" size={25} />,
-                      <ReduxIcon key="redux" size={25} />,
+
                       <SassIcon key="sass" size={25} />,
-                      <NodeJsIcon key="sass" size={25} />,
-                      <MongoDbIcon key="sass" size={25} />,
+                      <ReactRouterIcon key="router" size={25} />,
                     ]}
-                    title="Argent Bank"
+                    title="Kasa"
                     description="Kasa est une application web de location d’appartements entre particuliers, développée avec React."
                     modalDescription="Kasa est une application web de location d’appartements entre particuliers, conçue avec React. Elle offre une navigation fluide entre les pages grâce à React Router. Parmi ses fonctionnalités, on retrouve un carrousel d’images interactif ainsi que des animations soignées, visant à améliorer l'expérience utilisateur. L'application est entièrement responsive, s’adaptant parfaitement à différents formats d'écrans pour offrir une expérience optimale sur mobile, tablette et ordinateur."
                     modalImgSrc="/images/kasa/ka-ph.webp"
@@ -442,7 +490,7 @@ export default function Home() {
                     ]}
                     repoLink="https://github.com/Hardy1210/ArgentBank-website/tree/Redux"
                     repoIcon={<GithubIcon size={20} />}
-                    repoLinkWeb="https://hardy1210.github.io/ArgentBank-website/"
+                    repoLinkWeb="https://hardy1210.github.io/kasa/"
                     repoWebIcon={<WebIcon size={20} />}
                   />
                 </li>

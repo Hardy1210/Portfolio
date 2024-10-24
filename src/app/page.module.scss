@@ -7,8 +7,82 @@
     //gap: calc(1rem + 13vw);
     .icons {
       display: flex;
-      gap: 10px;
+      gap: 20px;
       align-items: center;
+    }
+  }
+  .marquee__container {
+    .marquee__icons {
+      //margin: 1rem auto;
+      //padding Y o height ayuda a que los iconos
+      //no tengan un techo de limitacion
+      padding: 1.8rem 0;
+      .marquee__ul {
+        li {
+          position: relative;
+          //width: 4rem;
+          //padding: 6rem;
+          display: inline-block;
+          //margin: 0 1rem;
+          transition: all 0.2s ease-out;
+          .icon__title {
+            position: absolute;
+            //left: -1%;
+            z-index: 98;
+            opacity: 0;
+            height: 0;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-top: 0.2rem;
+            text-align: center;
+            width: 100%;
+            transition:
+              opacity 0.2s ease-out,
+              height 0.2s ease-out;
+          }
+          &:hover {
+            transform: scale(1.1); // Escala al 110% en hover
+            // Mostrar el .icon__title cuando li esté en hover
+            .icon__title {
+              opacity: 1; // Mostrar el texto
+              height: auto; // Ajustar la altura
+            }
+          }
+        }
+      }
+      .marquee__ull {
+        li {
+          position: relative;
+          //width: 4rem;
+          //padding: 6rem;
+          display: inline-block;
+          //margin: 0 1rem;
+          transition: all 0.2s ease-out;
+          .icon__title {
+            position: absolute;
+            //left: -1%;
+            z-index: 98;
+            opacity: 0;
+            height: 0;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-top: 0.2rem;
+            text-align: center;
+            width: 100%;
+            transition:
+              opacity 0.2s ease-out,
+              height 0.2s ease-out;
+          }
+          &:hover {
+            transform: scale(1.1); // Escala al 110% en hover
+            // Mostrar el .icon__title cuando li esté en hover
+            .icon__title {
+              opacity: 1; // Mostrar el texto
+              height: auto; // Ajustar la altura
+            }
+          }
+        }
+      }
     }
   }
 }
