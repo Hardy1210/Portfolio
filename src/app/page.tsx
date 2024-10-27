@@ -1,8 +1,10 @@
 import { LinkedinIcon } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { ComponentPropsWithoutRef } from 'react'
 import { cn } from '../lib/utils'
 import { Button } from './_components/Button/Button'
+import Footer from './_components/Footer/Footer'
 import { Header } from './_components/Header/Header'
 import { ArrowUp } from './_components/icons/ArrowUp'
 import { CssIcon } from './_components/icons/CssIcon'
@@ -11,11 +13,13 @@ import { GithubIcon } from './_components/icons/GithubIcon'
 import { GitLabIcon } from './_components/icons/GitLabIcon'
 import { HtmlIcon } from './_components/icons/HtmlIcon'
 import { JavascriptIcon } from './_components/icons/JavascriptIcon'
+import { LightHouseIcon } from './_components/icons/LightHouseIcon'
 import { MongoDbIcon } from './_components/icons/MongoDbIcon'
 import { NextIcon } from './_components/icons/NextIcon'
 import { NodeJsIcon } from './_components/icons/NodeJsIcon'
 import { NotionIcon } from './_components/icons/NotionIcon'
 import { NpmIcon } from './_components/icons/NpmIcon'
+import { PhotoshopIcon } from './_components/icons/PhotoshopIcon'
 import { PostmanIcon } from './_components/icons/PostmanIcon'
 import { ReactIcon } from './_components/icons/ReactIcon'
 import { ReactRouterIcon } from './_components/icons/ReactRouterIcon'
@@ -27,11 +31,18 @@ import { TypescriptIcon } from './_components/icons/TypescriptIcon'
 import { VercelIcon } from './_components/icons/VercelIcon'
 import { ViteIcon } from './_components/icons/ViteIcon'
 import { VsCodeIcon } from './_components/icons/VsCodeIcon'
+import { WaveIcon } from './_components/icons/WaveIcon'
 import { WebIcon } from './_components/icons/WebIcon'
 import ProjectCard from './_components/ProjectCard/ProjectCard'
 import { Section } from './_components/Section/Section'
 import styles from './page.module.scss'
+//skillcards y data
+import { SkillCard } from './_components/SkillCard/SkillCard'
+import { skillData } from './skillData/skillData'
 
+const Span = ({ className, ...props }: ComponentPropsWithoutRef<'span'>) => {
+  return <span className={cn(className, '')} {...props} />
+}
 export default function Home() {
   return (
     <>
@@ -47,7 +58,7 @@ export default function Home() {
             <div
               className={cn(
                 styles.container,
-                'relative flex flex-col h-fit w-full items-center gap-10 md:gap-10',
+                'relative flex flex-col h-fit w-full items-center gap-14 md:gap-14',
               )}
             >
               <div
@@ -95,6 +106,17 @@ export default function Home() {
                     'flex gap-3 flex-col m-auto md:m-0 items-center md:items-start',
                   )}
                 >
+                  <span
+                    aria-hidden="true"
+                    className="inline-flex flex-col items-center md:items-end md:flex-row gap-3"
+                  >
+                    <span className="text-6xl font-extrabold drop-shadow-xl">
+                      Hey !
+                    </span>
+                    <span className="text-5xl font-extrabold drop-shadow-xl">
+                      Je m&#39;appelle
+                    </span>
+                  </span>
                   <h1
                     aria-label="Hardy Lino"
                     className={cn(
@@ -102,25 +124,25 @@ export default function Home() {
                       'w-min text-7xl font-extrabold drop-shadow-xl dark:text-neutral-50 md:w-max',
                     )}
                   >
-                    <span aria-hidden="true" className="">
-                      Hi
-                      <br />
-                      I&#39;m
-                    </span>{' '}
                     Hardy,
                   </h1>
                   <h2
                     className={cn(
                       styles.dev,
-                      'mt-5 md:mt-10 text-3xl text-center',
+                      'mt-7 md:mt-10 text-3xl text-center font-semibold',
                     )}
                   >
-                    a Front-End Developer
+                    Developpeur Front-end
                   </h2>
-                  <p className={cn(styles.front, 'text-2xl md:mx-0 lg:mx-0')}>
-                    Welcome to my portfolio, where each project{' '}
+                  <p
+                    className={cn(
+                      styles.front,
+                      'text-2xl text-center md:text-start md:mx-0 lg:mx-0',
+                    )}
+                  >
+                    Bienvenue dans mon portfolio, un aperçu de mon parcours en
+                    tant que développeur front-end.{' '}
                     <br className="hidden md:flex" />
-                    tells a unique story.
                   </p>
                 </div>
 
@@ -153,7 +175,7 @@ export default function Home() {
               <div
                 className={cn(
                   styles.buttons__container,
-                  ' w-full md:max-w-full flex-col-reverse  gap-10 md:gap-5 justify-between',
+                  ' w-full md:max-w-full flex-col-reverse  gap-7 md:gap-5 justify-between',
                 )}
               >
                 <div
@@ -403,7 +425,10 @@ export default function Home() {
           </div>
           <Section>
             <div className={cn(styles.Projets__container, '')}>
-              <h2 id="projects" className="mb-10 text-3xl scroll-mt-16">
+              <h2
+                id="projects"
+                className="mb-10 text-3xl font-semibold scroll-mt-16"
+              >
                 Projets
               </h2>
               <div className="mb-20 text-center">
@@ -436,15 +461,16 @@ export default function Home() {
                       <ReactIcon key="react" size={25} />,
                       <ReduxIcon key="redux" size={25} />,
                       <SassIcon key="sass" size={25} />,
-                      <NodeJsIcon key="sass" size={25} />,
-                      <MongoDbIcon key="sass" size={25} />,
+                      <NodeJsIcon key="node" size={25} />,
+                      <MongoDbIcon key="mongo" size={25} />,
+                      <SwaggerIcon key="swagger" size={25} />,
                     ]}
                     title="Argent Bank"
                     description="Argent Bank est une application web qui permet aux utilisateurs de gérer facilement leurs informations personnelles une fois connectée."
                     modalDescription="La conception du projet est basée sur React en intégrant des composants réutilisables, ainsi que l'intégration du système de connexion qui permet aux utilisateurs de se connecter, de voir leurs informations relatives à leur propre profil et de changer leur pseudo s'ils le souhaitent. L'utilisation de Redux était nécessaire pour pouvoir gérer l'état global de l'application."
-                    modalImgSrc="/images/Argent-bank/ab-modal.webp"
+                    modalImgSrc="/images/Argent-bank/ab-6.webp"
                     modalImgAlt="MacBook Argent Bank"
-                    modalImgSecondSrc="/images/Argent-bank/ab-modal-2.webp"
+                    modalImgSecondSrc="/images/Argent-bank/ab-7.webp"
                     modalImgSecondAlt="MacBook Argent Bank"
                     technologies={[
                       'React',
@@ -476,19 +502,15 @@ export default function Home() {
                     ]}
                     title="Kasa"
                     description="Kasa est une application web de location d’appartements entre particuliers, développée avec React."
-                    modalDescription="Kasa est une application web de location d’appartements entre particuliers, conçue avec React. Elle offre une navigation fluide entre les pages grâce à React Router. Parmi ses fonctionnalités, on retrouve un carrousel d’images interactif ainsi que des animations soignées, visant à améliorer l'expérience utilisateur. L'application est entièrement responsive, s’adaptant parfaitement à différents formats d'écrans pour offrir une expérience optimale sur mobile, tablette et ordinateur."
+                    modalDescription="Kasa est une application web de location d’appartements entre particuliers, conçue avec React. L'architecture du projet repose sur des composants réutilisables optimisés pour réduire la duplication de code et faciliter la maintenance. L'organisation des styles est gérée avec Sass, permettant une structuration claire et modulaire des feuilles de styles, ce qui améliore la maintenabilité du projet.
+
+L'application offre une navigation fluide entre les pages grâce à React Router et intègre un carrousel d’images interactif ainsi que des animations soignées pour enrichir l'expérience utilisateur. Elle est entièrement responsive, s'adaptant parfaitement à différents formats d'écrans pour offrir une expérience optimale sur mobile, tablette et ordinateur. L'optimisation des performances et de la gestion des ressources assure une utilisation fluide sur tout type d’appareil."
                     modalImgSrc="/images/kasa/ka-ph.webp"
                     modalImgAlt="Iphone Kasa"
                     modalImgSecondSrc="/images/kasa/ka-mac.png"
                     modalImgSecondAlt="MacBook Kasa"
-                    technologies={[
-                      'React',
-                      'Redux',
-                      'Sass',
-                      'Node.js',
-                      'MongoDB',
-                    ]}
-                    repoLink="https://github.com/Hardy1210/ArgentBank-website/tree/Redux"
+                    technologies={['Vite', 'React', 'React router', 'Sass']}
+                    repoLink="https://github.com/Hardy1210/kasa"
                     repoIcon={<GithubIcon size={20} />}
                     repoLinkWeb="https://hardy1210.github.io/kasa/"
                     repoWebIcon={<WebIcon size={20} />}
@@ -497,101 +519,87 @@ export default function Home() {
                 <li>
                   <ProjectCard
                     layerImageSrc="/images/ohmyfood/ohmyfood-w.webp"
-                    layerImageAlt="logo Argent Bank"
-                    secondaryImageSrc="/images/Argent-bank/ab-2-removebg.webp"
-                    secondaryImageAlt="MacBook Argent Bank"
+                    layerImageAlt="logo Ohmyfood"
+                    secondaryImageSrc="/images/ohmyfood/oh-2.webp"
+                    secondaryImageAlt="MacBook Ohmyfood"
                     headerImageSrc="/images/ohmyfood/oh-logo.webp"
                     headerImageAlt=""
                     icons={[
-                      <ReactIcon key="react" size={25} />,
-                      <ReduxIcon key="redux" size={25} />,
+                      <HtmlIcon key="html" size={25} />,
+                      <CssIcon key="css" size={25} />,
                       <SassIcon key="sass" size={25} />,
-                      <NodeJsIcon key="sass" size={25} />,
-                      <MongoDbIcon key="sass" size={25} />,
                     ]}
-                    title="Argent Bank"
-                    description="Argent Bank est une application web qui permet aux utilisateurs de gérer facilement leurs informations personnelles une fois connectée."
-                    modalDescription="La conception du projet est basée sur React en intégrant des composants réutilisables, ainsi que l'intégration du système de connexion qui permet aux utilisateurs de se connecter, de voir leurs informations relatives à leur propre profil et de changer leur pseudo s'ils le souhaitent. L'utilisation de Redux était nécessaire pour pouvoir gérer l'état global de l'application."
-                    modalImgSrc="/images/Argent-bank/ab-modal.webp"
+                    title="Ohmyfood"
+                    description="OhMyFood est une site web de menus de restaurants conçue en mobile-first avec un design responsive. J'ai utilisé Sass pour structurer et optimiser les styles."
+                    modalDescription="OhMyFood est un projet réalisé dans le cadre de ma formation, visant à développer une application web pour répertorier les menus de restaurants gastronomiques. Le site a été conçu avec une approche mobile first pour assurer une expérience utilisateur optimale sur smartphones, tablettes et ordinateurs.
+
+Le développement a mis l'accent sur la responsivité du site, garantissant une adaptation fluide à tous les formats d'écrans. J'ai utilisé Sass pour structurer efficacement les styles CSS, en tirant parti de sa modularité pour créer un code maintenable et organisé. Ce projet m'a permis de travailler sur des animations CSS soignées et de suivre rigoureusement les maquettes fournies via Figma, en respectant les comportements et transitions spécifiés."
+                    modalImgSrc="/images/ohmyfood/oh-4.webp"
                     modalImgAlt=""
-                    modalImgSecondSrc="/images/Argent-bank/ab-modal-2.webp"
+                    modalImgSecondSrc="/images/ohmyfood/oh-3.webp"
                     modalImgSecondAlt=""
-                    technologies={[
-                      'React',
-                      'Redux',
-                      'Sass',
-                      'Node.js',
-                      'MongoDB',
-                    ]}
-                    repoLink="https://github.com/Hardy1210/ArgentBank-website/tree/Redux"
+                    technologies={['Html', 'Css', 'Sass']}
+                    repoLink="https://github.com/Hardy1210/-OhMyFood"
                     repoIcon={<GithubIcon size={20} />}
-                    repoLinkWeb="https://hardy1210.github.io/ArgentBank-website/"
+                    repoLinkWeb="https://hardy1210.github.io/-OhMyFood/"
                     repoWebIcon={<WebIcon size={20} />}
                   />
                 </li>
                 <li>
                   <ProjectCard
                     layerImageSrc="/images/724/724-w.webp"
-                    layerImageAlt="logo Argent Bank"
+                    layerImageAlt="logo 724 Events"
                     secondaryImageSrc="/images/Argent-bank/ab-2-removebg.webp"
-                    secondaryImageAlt="MacBook Argent Bank"
-                    headerImageSrc="/images/724/724-1.webp"
-                    headerImageAlt=""
+                    secondaryImageAlt="MacBook 724 Events"
+                    headerImageSrc="/images/724/724-logo.webp"
+                    headerImageAlt="Logo 724 Events"
                     icons={[
+                      <JavascriptIcon key="javascript" size={25} />,
                       <ReactIcon key="react" size={25} />,
-                      <ReduxIcon key="redux" size={25} />,
-                      <SassIcon key="sass" size={25} />,
-                      <NodeJsIcon key="sass" size={25} />,
-                      <MongoDbIcon key="sass" size={25} />,
+                      <NodeJsIcon key="node" size={25} />,
                     ]}
-                    title="Argent Bank"
-                    description="Argent Bank est une application web qui permet aux utilisateurs de gérer facilement leurs informations personnelles une fois connectée."
-                    modalDescription="La conception du projet est basée sur React en intégrant des composants réutilisables, ainsi que l'intégration du système de connexion qui permet aux utilisateurs de se connecter, de voir leurs informations relatives à leur propre profil et de changer leur pseudo s'ils le souhaitent. L'utilisation de Redux était nécessaire pour pouvoir gérer l'état global de l'application."
+                    title="724 Events"
+                    description="Projet de débogage et d'optimisation du site web 724-events développé avec React, incluant l'implémentation et la finalisation des tests unitaires et d'intégration"
+                    modalDescription="Projet de débogage pour un site événementiel développé avec React, appuyé par Node.js pour exécuter et déboguer le code JavaScript côté serveur, facilitant ainsi les tests en environnement local. J'ai pu finaliser les tests unitaires et d'intégration manquants dans le projet pour garantir la fiabilité et la performance des fonctionnalités clés du site. Un cahier des recettes a été établi pour valider rigoureusement chaque fonctionnalité attendue, assurant une expérience utilisateur fluide et stable. Grâce à une approche méthodique, toutes les anomalies ont été levées, contribuant pleinement à la finalisation de ce projet événementiel"
                     modalImgSrc="/images/Argent-bank/ab-modal.webp"
-                    modalImgAlt=""
+                    modalImgAlt="MacBook 724 Events"
                     modalImgSecondSrc="/images/Argent-bank/ab-modal-2.webp"
-                    modalImgSecondAlt=""
-                    technologies={[
-                      'React',
-                      'Redux',
-                      'Sass',
-                      'Node.js',
-                      'MongoDB',
-                    ]}
-                    repoLink="https://github.com/Hardy1210/ArgentBank-website/tree/Redux"
+                    modalImgSecondAlt="MacBook 724 Events"
+                    technologies={['React', 'JavaScript', 'Node.js']}
+                    repoLink="https://github.com/Hardy1210/742-eventss"
                     repoIcon={<GithubIcon size={20} />}
-                    repoLinkWeb="https://hardy1210.github.io/ArgentBank-website/"
+                    repoLinkWeb="https://hardy1210.github.io/742-eventss/"
                     repoWebIcon={<WebIcon size={20} />}
                   />
                 </li>
                 <li>
                   <ProjectCard
                     layerImageSrc="/images/nina/nina-w.webp"
-                    layerImageAlt="logo Argent Bank"
+                    layerImageAlt="logo Nina Carducci"
                     secondaryImageSrc="/images/Argent-bank/ab-2-removebg.webp"
-                    secondaryImageAlt="MacBook Argent Bank"
+                    secondaryImageAlt="MacBook avec le site Nina Carducci"
                     headerImageSrc="/images/nina/n-logo.webp"
-                    headerImageAlt=""
+                    headerImageAlt="logo Nina Carducci"
                     icons={[
-                      <ReactIcon key="react" size={25} />,
-                      <ReduxIcon key="redux" size={25} />,
-                      <SassIcon key="sass" size={25} />,
-                      <NodeJsIcon key="sass" size={25} />,
-                      <MongoDbIcon key="sass" size={25} />,
+                      <HtmlIcon key="html" size={25} />,
+                      <CssIcon key="css" size={25} />,
+                      <PhotoshopIcon key="photoshop" size={25} />,
+                      <LightHouseIcon key="lighthouse" size={25} />,
+                      <WaveIcon key="wave" size={25} />,
                     ]}
-                    title="Argent Bank"
-                    description="Argent Bank est une application web qui permet aux utilisateurs de gérer facilement leurs informations personnelles une fois connectée."
-                    modalDescription="La conception du projet est basée sur React en intégrant des composants réutilisables, ainsi que l'intégration du système de connexion qui permet aux utilisateurs de se connecter, de voir leurs informations relatives à leur propre profil et de changer leur pseudo s'ils le souhaitent. L'utilisation de Redux était nécessaire pour pouvoir gérer l'état global de l'application."
+                    title="Nina Carducci"
+                    description="Optimisation SEO d’un site de photographie, avec ajustement des dimensions des images et restructuration sémantique du code pour un meilleur référencement."
+                    modalDescription="Optimisation SEO pour un site web de photographie. J'ai amélioré les performances du site en optimisant les images, en réduisant leur poids, en ajustant le format et les dimensions pour correspondre au viewport, garantissant ainsi un chargement plus rapide et une meilleure expérience utilisateur. La structure du code a été révisée pour une approche sémantique, facilitant le bon référencement par les moteurs de recherche. J'ai également réalisé un rapport d'optimisation pour comparer les performances avant et après les améliorations, en m'appuyant sur différents audits, tels que Lighthouse pour les performances et WAVE pour l’accessibilité."
                     modalImgSrc="/images/Argent-bank/ab-modal.webp"
-                    modalImgAlt=""
+                    modalImgAlt="MacBook avec le site Nina Carducci"
                     modalImgSecondSrc="/images/Argent-bank/ab-modal-2.webp"
-                    modalImgSecondAlt=""
+                    modalImgSecondAlt="MacBook avec le site Nina Carducci"
                     technologies={[
-                      'React',
-                      'Redux',
-                      'Sass',
-                      'Node.js',
-                      'MongoDB',
+                      'Html',
+                      'Css',
+                      'Photoshop',
+                      'Lighthouse',
+                      'Wave',
                     ]}
                     repoLink="https://github.com/Hardy1210/ArgentBank-website/tree/Redux"
                     repoIcon={<GithubIcon size={20} />}
@@ -602,32 +610,25 @@ export default function Home() {
                 <li>
                   <ProjectCard
                     layerImageSrc="/images/sophie/so.webp"
-                    layerImageAlt="logo Argent Bank"
-                    secondaryImageSrc="/images/Argent-bank/ab-2-removebg.webp"
-                    secondaryImageAlt="MacBook Argent Bank"
-                    headerImageSrc="/images/logo_images/ab.webp"
-                    headerImageAlt=""
+                    layerImageAlt="logo Sophie Bluel"
+                    secondaryImageSrc="/images/sophie/soph-1.webp"
+                    secondaryImageAlt="MacBook Sophie Bluel"
+                    headerImageSrc="/images/sophie/soph.webp"
+                    headerImageAlt="logo Sophie Bluel"
                     icons={[
-                      <ReactIcon key="react" size={25} />,
-                      <ReduxIcon key="redux" size={25} />,
-                      <SassIcon key="sass" size={25} />,
-                      <NodeJsIcon key="sass" size={25} />,
-                      <MongoDbIcon key="sass" size={25} />,
+                      <HtmlIcon key="html" size={25} />,
+                      <CssIcon key="css" size={25} />,
+                      <JavascriptIcon key="javascript" size={25} />,
+                      <SwaggerIcon key="swagger" size={25} />,
                     ]}
-                    title="Argent Bank"
-                    description="Argent Bank est une application web qui permet aux utilisateurs de gérer facilement leurs informations personnelles une fois connectée."
-                    modalDescription="La conception du projet est basée sur React en intégrant des composants réutilisables, ainsi que l'intégration du système de connexion qui permet aux utilisateurs de se connecter, de voir leurs informations relatives à leur propre profil et de changer leur pseudo s'ils le souhaitent. L'utilisation de Redux était nécessaire pour pouvoir gérer l'état global de l'application."
-                    modalImgSrc="/images/Argent-bank/ab-modal.webp"
-                    modalImgAlt=""
-                    modalImgSecondSrc="/images/Argent-bank/ab-modal-2.webp"
-                    modalImgSecondAlt=""
-                    technologies={[
-                      'React',
-                      'Redux',
-                      'Sass',
-                      'Node.js',
-                      'MongoDB',
-                    ]}
+                    title="Sophie Bluel"
+                    description="Sophie Bluel est un site d'architecture intégrant un filtrage dynamique des photos et une interface d'administration pour gérer les projets."
+                    modalDescription="Sophie Bluel est un site web d’architecture pour lequel j’ai intégré un système dynamique de filtrage des photos des projets réalisés par l'architecte. J’ai également développé une page de connexion avec un formulaire interactif, incluant des alertes qui s’affichent en cas d’erreur dans le mot de passe ou l’e-mail. Une page d’administration a été mise en place pour permettre l’ajout et la suppression de photos des travaux de l'architecte via un modal. Pour la communication avec le backend, j'ai utilisé Swagger afin de consulter et tester les endpoints disponibles, assurant ainsi une intégration fluide et fiable."
+                    modalImgSrc="/images/sophie/soph-5.webp"
+                    modalImgAlt="MacBook avec le site Sophie Bluel"
+                    modalImgSecondSrc="/images/sophie/soph-4.webp"
+                    modalImgSecondAlt="Mackbook Sohpie Bluel"
+                    technologies={['Html', 'Css', 'Javascript', 'Swagger']}
                     repoLink="https://github.com/Hardy1210/ArgentBank-website/tree/Redux"
                     repoIcon={<GithubIcon size={20} />}
                     repoLinkWeb="https://hardy1210.github.io/ArgentBank-website/"
@@ -637,32 +638,23 @@ export default function Home() {
                 <li>
                   <ProjectCard
                     layerImageSrc="/images/booki/booki-w.webp"
-                    layerImageAlt="logo Argent Bank"
-                    secondaryImageSrc="/images/Argent-bank/ab-2-removebg.webp"
-                    secondaryImageAlt="MacBook Argent Bank"
+                    layerImageAlt="logo Booki"
+                    secondaryImageSrc="/images/booki/bo-1.webp"
+                    secondaryImageAlt="MacBook avec le site Booki"
                     headerImageSrc="/images/logo_images/ab.webp"
-                    headerImageAlt=""
+                    headerImageAlt="Logo Booki"
                     icons={[
-                      <ReactIcon key="react" size={25} />,
-                      <ReduxIcon key="redux" size={25} />,
-                      <SassIcon key="sass" size={25} />,
-                      <NodeJsIcon key="sass" size={25} />,
-                      <MongoDbIcon key="sass" size={25} />,
+                      <HtmlIcon key="html" size={25} />,
+                      <CssIcon key="css" size={25} />,
                     ]}
-                    title="Argent Bank"
+                    title="Booki"
                     description="Argent Bank est une application web qui permet aux utilisateurs de gérer facilement leurs informations personnelles une fois connectée."
                     modalDescription="La conception du projet est basée sur React en intégrant des composants réutilisables, ainsi que l'intégration du système de connexion qui permet aux utilisateurs de se connecter, de voir leurs informations relatives à leur propre profil et de changer leur pseudo s'ils le souhaitent. L'utilisation de Redux était nécessaire pour pouvoir gérer l'état global de l'application."
-                    modalImgSrc="/images/Argent-bank/ab-modal.webp"
-                    modalImgAlt=""
-                    modalImgSecondSrc="/images/Argent-bank/ab-modal-2.webp"
-                    modalImgSecondAlt=""
-                    technologies={[
-                      'React',
-                      'Redux',
-                      'Sass',
-                      'Node.js',
-                      'MongoDB',
-                    ]}
+                    modalImgSrc="/images/booki/bo-4.webp"
+                    modalImgAlt="Mackbook avec le site Booki"
+                    modalImgSecondSrc="/images/booki/bo-3.webp"
+                    modalImgSecondAlt="Mackbook avec le site Booki"
+                    technologies={['Html', 'Css']}
                     repoLink="https://github.com/Hardy1210/ArgentBank-website/tree/Redux"
                     repoIcon={<GithubIcon size={20} />}
                     repoLinkWeb="https://hardy1210.github.io/ArgentBank-website/"
@@ -672,7 +664,23 @@ export default function Home() {
               </ul>
             </div>
           </Section>
+          <Section className=" grid md:grid-cols-2 gap-5">
+            <div className="p-5 flex flex-col gap-3">
+              <h2 className="text-3xl font-semibold">Mes compétences</h2>
+              <p className="text-2xl">J'adore travailler avec...</p>
+            </div>
+            {skillData.map((skill, index) => (
+              <SkillCard
+                key={index}
+                skillImgSrc={skill.skillImgSrc}
+                skillImgAlt={skill.skillImgAlt}
+                title={skill.title}
+                description={skill.description}
+              />
+            ))}
+          </Section>
         </main>
+        <Footer />
       </div>
     </>
   )

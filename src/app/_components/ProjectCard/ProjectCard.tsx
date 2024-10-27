@@ -204,9 +204,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
                     <li key={index}>{icon}</li>
                   ))}
                 </ul>
-                <p className="text-neutral-500 text-xs sm:text-sm">
-                  {modalDescription}
-                </p>{' '}
+                <p className="text-neutral-500 text-sm ">{modalDescription}</p>{' '}
               </div>
               <ul
                 className={cn(

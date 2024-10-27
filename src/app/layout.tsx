@@ -1,3 +1,4 @@
+import LanguageWrapper from '@/app/_components/LanguageWrapper' // El nuevo componente cliente
 import { cn } from '@/lib/utils'
 import type { Metadata } from 'next'
 import { interSans } from '../styles/fonts'
@@ -14,8 +15,11 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className="h-full">
-      <body className={cn(interSans.className, 'antialiased')}>{children}</body>
+    <html lang="fr" className="h-full">
+      <body className={cn(interSans.className, 'antialiased')}>
+        <LanguageWrapper>{children}</LanguageWrapper>
+        {/* El componente cliente se encargará del idioma */}
+      </body>
     </html>
   )
 }
