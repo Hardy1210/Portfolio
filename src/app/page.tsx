@@ -51,7 +51,7 @@ export default function Home() {
         <main
           className={cn(
             styles.main__container,
-            'space-y-20 md:space-y-24 pt-36 md:pt-48  px-4 overflow-hidden',
+            'space-y-20 md:space-y-32 pt-36 md:pt-48  px-4 overflow-hidden',
           )}
         >
           <Section>
@@ -230,6 +230,7 @@ export default function Home() {
               </div>
             </div>
           </Section>
+          {/*marquee*/}
           <div>
             <div className={cn(styles.marquee__container, 'overflow-hidden')}>
               <div
@@ -423,11 +424,60 @@ export default function Home() {
               </div>
             </div>
           </div>
+          {/*About*/}
+          <div
+            id="about"
+            className={cn(styles.about__container, 'scroll-mt-16 md:py-32')}
+          >
+            <div></div>
+            <div></div>
+            <Section className="">
+              <h2 className="mb-10 text-3xl font-semibold text-center md:text-start">
+                À propos
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-[70%,30%] gap-7 md:gap-0 items-center justify-between">
+                <div className="">
+                  <div className="flex flex-col gap-6 text-center md:text-start text-lg md:text-xl px-5 md:pl-0  md:pr-10">
+                    <p className="">
+                      Responsable de magasin et ancien professeur de guitare
+                      classique passionné par l'enseignement, je me suis
+                      reconverti dans le{' '}
+                      <strong>développement front-end</strong>, un domaine qui
+                      m'a toujours fasciné.
+                    </p>
+                    <p>
+                      Mon parcours diversifié en <strong>gestion</strong>,{' '}
+                      <strong>musique</strong> et <strong>enseignement</strong>
+                      m'a apporté rigueur, créativité et une capacité à résoudre
+                      divers problèmes. Cette expérience{' '}
+                      <strong>artistique</strong> enrichit ma vision technique
+                      et facilite la <strong>collaboration</strong> sur des
+                      projets variés. Curieux et en quête de nouveaux défis, je
+                      suis prêt à mettre ma passion et mon expertise au service
+                      de vos idées.
+                    </p>
+                  </div>
+                </div>
+                <div className="flex justify-center ">
+                  <Image
+                    src="/images/Photos/h-2.webp"
+                    alt="Robot hand light"
+                    width={250}
+                    height={250}
+                    layout="fixed"
+                    className="rounded-full"
+                  />
+                </div>
+              </div>
+            </Section>
+          </div>
+
+          {/*Projets*/}
           <Section>
             <div className={cn(styles.Projets__container, '')}>
               <h2
                 id="projects"
-                className="mb-10 text-3xl font-semibold scroll-mt-16"
+                className="mb-10 text-3xl font-semibold scroll-mt-16 text-center md:text-start"
               >
                 Projets
               </h2>
@@ -664,8 +714,9 @@ Le développement a mis l'accent sur la responsivité du site, garantissant une 
               </ul>
             </div>
           </Section>
-          <Section className=" grid md:grid-cols-2 gap-5">
-            <div className="p-5 flex flex-col gap-3">
+          {/*Skill*/}
+          <Section className={cn(styles.skill, 'grid md:grid-cols-2 gap-5')}>
+            <div className="p-5 flex flex-col gap-3 text-center md:text-start">
               <h2 className="text-3xl font-semibold">Mes compétences</h2>
               <p className="text-2xl">J'adore travailler avec...</p>
             </div>
