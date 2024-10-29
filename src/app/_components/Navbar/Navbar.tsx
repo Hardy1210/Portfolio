@@ -34,7 +34,7 @@ export function NavbarComponent() {
         >
           <div className={cn(styles.logo__container, 'flex items-center')}>
             <Link
-              href="#home"
+              href="/#home"
               className={cn(
                 styles.navbar__logo,
                 'font-semibold py-3 text-2xl drop-shadow-lg md:px0',
@@ -52,7 +52,7 @@ export function NavbarComponent() {
               )}
             >
               <Link
-                href="#home"
+                href="/#home"
                 className={cn(
                   styles.link,
                   'text-neutral-500 p-2 rounded-lg font-medium hover:bg-neutral-200/50 hover:text-neutral-900 dark:text-neutral-400 hover:dark:bg-neutral-950 dark:hover:text-neutral-100',
@@ -70,7 +70,7 @@ export function NavbarComponent() {
                 Projets
               </Link>
               <Link
-                href="#about"
+                href="/#about"
                 className={cn(
                   styles.link,
                   'text-neutral-500 p-2 rounded-lg font-medium hover:bg-neutral-200/50 hover:text-neutral-900 dark:text-neutral-400 hover:dark:bg-neutral-950 dark:hover:text-neutral-100',
@@ -79,7 +79,7 @@ export function NavbarComponent() {
                 À propos
               </Link>
               <Link
-                href="#contact"
+                href="/#contact"
                 className={cn(
                   styles.link,
                   'text-neutral-500 p-2 rounded-lg font-medium hover:bg-neutral-200/50 hover:text-neutral-900 dark:text-neutral-400 hover:dark:bg-neutral-950 dark:hover:text-neutral-100',

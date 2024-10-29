@@ -1,3 +1,4 @@
+'use client'
 import { LinkedinIcon } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -13,13 +14,11 @@ import { GithubIcon } from './_components/icons/GithubIcon'
 import { GitLabIcon } from './_components/icons/GitLabIcon'
 import { HtmlIcon } from './_components/icons/HtmlIcon'
 import { JavascriptIcon } from './_components/icons/JavascriptIcon'
-import { LightHouseIcon } from './_components/icons/LightHouseIcon'
 import { MongoDbIcon } from './_components/icons/MongoDbIcon'
 import { NextIcon } from './_components/icons/NextIcon'
 import { NodeJsIcon } from './_components/icons/NodeJsIcon'
 import { NotionIcon } from './_components/icons/NotionIcon'
 import { NpmIcon } from './_components/icons/NpmIcon'
-import { PhotoshopIcon } from './_components/icons/PhotoshopIcon'
 import { PostmanIcon } from './_components/icons/PostmanIcon'
 import { ReactIcon } from './_components/icons/ReactIcon'
 import { ReactRouterIcon } from './_components/icons/ReactRouterIcon'
@@ -31,7 +30,6 @@ import { TypescriptIcon } from './_components/icons/TypescriptIcon'
 import { VercelIcon } from './_components/icons/VercelIcon'
 import { ViteIcon } from './_components/icons/ViteIcon'
 import { VsCodeIcon } from './_components/icons/VsCodeIcon'
-import { WaveIcon } from './_components/icons/WaveIcon'
 import { WebIcon } from './_components/icons/WebIcon'
 import ProjectCard from './_components/ProjectCard/ProjectCard'
 import { Section } from './_components/Section/Section'
@@ -43,7 +41,27 @@ import { skillData } from './skillData/skillData'
 const Span = ({ className, ...props }: ComponentPropsWithoutRef<'span'>) => {
   return <span className={cn(className, '')} {...props} />
 }
+
 export default function Home() {
+  {
+    /*este CODIGO SIRVE SOLO SI NO HAY MODALES QUE SE HABRAN POR CADA COMPONENTE
+     //useState para la lista de proyectos que deseen verse
+  const [showAll, setShowAll] = useState(false)
+  const newItemsRef = useRef<HTMLLIElement>(null)
+
+  // Función para manejar el clic en "Ver más" y desplazar la pantalla
+  const handleShowMore = () => {
+    setShowAll(true)
+    setTimeout(() => {
+      newItemsRef.current?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      })
+    }, 100) // Usamos un pequeño retraso para asegurar que el DOM esté actualizado
+  }
+    */
+  }
+
   return (
     <>
       <div className="relative">
@@ -424,53 +442,6 @@ export default function Home() {
               </div>
             </div>
           </div>
-          {/*About*/}
-          <div
-            id="about"
-            className={cn(styles.about__container, 'scroll-mt-16 md:py-32')}
-          >
-            <div></div>
-            <div></div>
-            <Section className="">
-              <h2 className="mb-10 text-3xl font-semibold text-center md:text-start">
-                À propos
-              </h2>
-              <div className="grid grid-cols-1 md:grid-cols-[70%,30%] gap-7 md:gap-0 items-center justify-between">
-                <div className="">
-                  <div className="flex flex-col gap-6 text-center md:text-start text-lg md:text-xl px-5 md:pl-0  md:pr-10">
-                    <p className="">
-                      Responsable de magasin et ancien professeur de guitare
-                      classique passionné par l'enseignement, je me suis
-                      reconverti dans le{' '}
-                      <strong>développement front-end</strong>, un domaine qui
-                      m'a toujours fasciné.
-                    </p>
-                    <p>
-                      Mon parcours diversifié en <strong>gestion</strong>,{' '}
-                      <strong>musique</strong> et <strong>enseignement</strong>
-                      m'a apporté rigueur, créativité et une capacité à résoudre
-                      divers problèmes. Cette expérience{' '}
-                      <strong>artistique</strong> enrichit ma vision technique
-                      et facilite la <strong>collaboration</strong> sur des
-                      projets variés. Curieux et en quête de nouveaux défis, je
-                      suis prêt à mettre ma passion et mon expertise au service
-                      de vos idées.
-                    </p>
-                  </div>
-                </div>
-                <div className="flex justify-center ">
-                  <Image
-                    src="/images/Photos/h-2.webp"
-                    alt="Robot hand light"
-                    width={250}
-                    height={250}
-                    layout="fixed"
-                    className="rounded-full"
-                  />
-                </div>
-              </div>
-            </Section>
-          </div>
 
           {/*Projets*/}
           <Section>
@@ -481,7 +452,7 @@ export default function Home() {
               >
                 Projets
               </h2>
-              <div className="mb-20 text-center">
+              <div className="mb-20 text-center text-lg md:text-xl">
                 <p>
                   À travers mes différents projets, j’ai exploré diverses
                   technologies telles que [React, Redux, Sass, etc.]. Chaque
@@ -622,114 +593,123 @@ Le développement a mis l'accent sur la responsivité du site, garantissant une 
                     repoWebIcon={<WebIcon size={20} />}
                   />
                 </li>
-                <li>
-                  <ProjectCard
-                    layerImageSrc="/images/nina/nina-w.webp"
-                    layerImageAlt="logo Nina Carducci"
-                    secondaryImageSrc="/images/Argent-bank/ab-2-removebg.webp"
-                    secondaryImageAlt="MacBook avec le site Nina Carducci"
-                    headerImageSrc="/images/nina/n-logo.webp"
-                    headerImageAlt="logo Nina Carducci"
-                    icons={[
-                      <HtmlIcon key="html" size={25} />,
-                      <CssIcon key="css" size={25} />,
-                      <PhotoshopIcon key="photoshop" size={25} />,
-                      <LightHouseIcon key="lighthouse" size={25} />,
-                      <WaveIcon key="wave" size={25} />,
-                    ]}
-                    title="Nina Carducci"
-                    description="Optimisation SEO d’un site de photographie, avec ajustement des dimensions des images et restructuration sémantique du code pour un meilleur référencement."
-                    modalDescription="Optimisation SEO pour un site web de photographie. J'ai amélioré les performances du site en optimisant les images, en réduisant leur poids, en ajustant le format et les dimensions pour correspondre au viewport, garantissant ainsi un chargement plus rapide et une meilleure expérience utilisateur. La structure du code a été révisée pour une approche sémantique, facilitant le bon référencement par les moteurs de recherche. J'ai également réalisé un rapport d'optimisation pour comparer les performances avant et après les améliorations, en m'appuyant sur différents audits, tels que Lighthouse pour les performances et WAVE pour l’accessibilité."
-                    modalImgSrc="/images/Argent-bank/ab-modal.webp"
-                    modalImgAlt="MacBook avec le site Nina Carducci"
-                    modalImgSecondSrc="/images/Argent-bank/ab-modal-2.webp"
-                    modalImgSecondAlt="MacBook avec le site Nina Carducci"
-                    technologies={[
-                      'Html',
-                      'Css',
-                      'Photoshop',
-                      'Lighthouse',
-                      'Wave',
-                    ]}
-                    repoLink="https://github.com/Hardy1210/ArgentBank-website/tree/Redux"
-                    repoIcon={<GithubIcon size={20} />}
-                    repoLinkWeb="https://hardy1210.github.io/ArgentBank-website/"
-                    repoWebIcon={<WebIcon size={20} />}
-                  />
-                </li>
-                <li>
-                  <ProjectCard
-                    layerImageSrc="/images/sophie/so.webp"
-                    layerImageAlt="logo Sophie Bluel"
-                    secondaryImageSrc="/images/sophie/soph-1.webp"
-                    secondaryImageAlt="MacBook Sophie Bluel"
-                    headerImageSrc="/images/sophie/soph.webp"
-                    headerImageAlt="logo Sophie Bluel"
-                    icons={[
-                      <HtmlIcon key="html" size={25} />,
-                      <CssIcon key="css" size={25} />,
-                      <JavascriptIcon key="javascript" size={25} />,
-                      <SwaggerIcon key="swagger" size={25} />,
-                    ]}
-                    title="Sophie Bluel"
-                    description="Sophie Bluel est un site d'architecture intégrant un filtrage dynamique des photos et une interface d'administration pour gérer les projets."
-                    modalDescription="Sophie Bluel est un site web d’architecture pour lequel j’ai intégré un système dynamique de filtrage des photos des projets réalisés par l'architecte. J’ai également développé une page de connexion avec un formulaire interactif, incluant des alertes qui s’affichent en cas d’erreur dans le mot de passe ou l’e-mail. Une page d’administration a été mise en place pour permettre l’ajout et la suppression de photos des travaux de l'architecte via un modal. Pour la communication avec le backend, j'ai utilisé Swagger afin de consulter et tester les endpoints disponibles, assurant ainsi une intégration fluide et fiable."
-                    modalImgSrc="/images/sophie/soph-5.webp"
-                    modalImgAlt="MacBook avec le site Sophie Bluel"
-                    modalImgSecondSrc="/images/sophie/soph-4.webp"
-                    modalImgSecondAlt="Mackbook Sohpie Bluel"
-                    technologies={['Html', 'Css', 'Javascript', 'Swagger']}
-                    repoLink="https://github.com/Hardy1210/ArgentBank-website/tree/Redux"
-                    repoIcon={<GithubIcon size={20} />}
-                    repoLinkWeb="https://hardy1210.github.io/ArgentBank-website/"
-                    repoWebIcon={<WebIcon size={20} />}
-                  />
-                </li>
-                <li>
-                  <ProjectCard
-                    layerImageSrc="/images/booki/booki-w.webp"
-                    layerImageAlt="logo Booki"
-                    secondaryImageSrc="/images/booki/bo-1.webp"
-                    secondaryImageAlt="MacBook avec le site Booki"
-                    headerImageSrc="/images/logo_images/ab.webp"
-                    headerImageAlt="Logo Booki"
-                    icons={[
-                      <HtmlIcon key="html" size={25} />,
-                      <CssIcon key="css" size={25} />,
-                    ]}
-                    title="Booki"
-                    description="Argent Bank est une application web qui permet aux utilisateurs de gérer facilement leurs informations personnelles une fois connectée."
-                    modalDescription="La conception du projet est basée sur React en intégrant des composants réutilisables, ainsi que l'intégration du système de connexion qui permet aux utilisateurs de se connecter, de voir leurs informations relatives à leur propre profil et de changer leur pseudo s'ils le souhaitent. L'utilisation de Redux était nécessaire pour pouvoir gérer l'état global de l'application."
-                    modalImgSrc="/images/booki/bo-4.webp"
-                    modalImgAlt="Mackbook avec le site Booki"
-                    modalImgSecondSrc="/images/booki/bo-3.webp"
-                    modalImgSecondAlt="Mackbook avec le site Booki"
-                    technologies={['Html', 'Css']}
-                    repoLink="https://github.com/Hardy1210/ArgentBank-website/tree/Redux"
-                    repoIcon={<GithubIcon size={20} />}
-                    repoLinkWeb="https://hardy1210.github.io/ArgentBank-website/"
-                    repoWebIcon={<WebIcon size={20} />}
-                  />
-                </li>
               </ul>
+              {/*button LINK  */}
+              <Link href="/projects">
+                <div className={cn(styles.buttonProjects__container, '')}>
+                  <button className={cn(styles.button__projects, '')}>
+                    Voir plus
+                  </button>
+                </div>
+              </Link>
             </div>
           </Section>
+
           {/*Skill*/}
-          <Section className={cn(styles.skill, 'grid md:grid-cols-2 gap-5')}>
-            <div className="p-5 flex flex-col gap-3 text-center md:text-start">
-              <h2 className="text-3xl font-semibold">Mes compétences</h2>
-              <p className="text-2xl">J'adore travailler avec...</p>
+          <Section>
+            <div className={cn(styles.skill, 'grid md:grid-cols-2 gap-5')}>
+              <div className="p-5 flex flex-col gap-3 text-center md:text-start">
+                <h2 className="text-3xl font-semibold">Mes compétences</h2>
+                <p className="text-2xl">J'adore travailler avec...</p>
+              </div>
+              {skillData.map((skill, index) => (
+                <SkillCard
+                  key={index}
+                  skillImgSrc={skill.skillImgSrc}
+                  skillImgAlt={skill.skillImgAlt}
+                  title={skill.title}
+                  description={skill.description}
+                />
+              ))}
             </div>
-            {skillData.map((skill, index) => (
-              <SkillCard
-                key={index}
-                skillImgSrc={skill.skillImgSrc}
-                skillImgAlt={skill.skillImgAlt}
-                title={skill.title}
-                description={skill.description}
-              />
-            ))}
           </Section>
+          <Section>
+            <div className={cn(styles.techno__content, '')}>
+              <div className={cn(styles.technologies__utilises, '')}>
+                <p className="text-2xl ">
+                  J'ai pu travailler avec ces utils et technologies
+                </p>
+                <ul
+                  className={cn(
+                    styles.icon__skills,
+                    'mt-20 flex flex-row justify-evenly flex-wrap gap-7',
+                  )}
+                >
+                  <li>
+                    <GithubIcon size={70} />
+                  </li>
+                  <li>
+                    <GitLabIcon size={70} />
+                  </li>
+                  <li className="">
+                    <TypescriptIcon className="" size={70} />
+                  </li>
+                  <li className="">
+                    <SwaggerIcon size={70} />
+                  </li>
+                  <li className="">
+                    <NodeJsIcon size={70} />
+                  </li>
+                  <li className="">
+                    <MongoDbIcon size={70} />
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </Section>
+          {/*About*/}
+          <div className={cn(styles.background__top, '')}></div>
+          <div
+            id="about"
+            className={cn(styles.about__container, 'scroll-mt-16 ')}
+          >
+            <div className={cn(styles.bacground__middle, '')}>
+              <Section className={cn(styles.section, '')}>
+                <h2 className="mb-10 text-3xl font-semibold text-center md:text-start ">
+                  À propos
+                </h2>
+                <div className="grid grid-cols-1 md:grid-cols-[70%,30%] gap-7 md:gap-0 items-center justify-between">
+                  <div className="">
+                    <div className="flex flex-col gap-6 text-center md:text-start text-lg md:text-xl px-5 md:pl-0  md:pr-10">
+                      <p className="">
+                        Responsable de magasin et ancien professeur de guitare
+                        classique passionné par l'enseignement, je me suis
+                        reconverti dans le{' '}
+                        <strong>développement front-end</strong>, un domaine qui
+                        m'a toujours fasciné.
+                      </p>
+                      <p>
+                        Mon parcours diversifié en <strong>gestion</strong>,{' '}
+                        <strong>musique</strong> et{' '}
+                        <strong>enseignement </strong>
+                        m'a apporté rigueur, créativité et une capacité à
+                        résoudre divers problèmes. Cette expérience{' '}
+                        <strong>artistique</strong> enrichit ma vision technique
+                        et facilite la <strong>collaboration</strong> sur des
+                        projets variés. Curieux et en quête de nouveaux défis,
+                        je suis prêt à mettre ma passion au service de vos
+                        idées.
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex justify-center ">
+                    <div className="rounded-full">
+                      <Image
+                        src="/images/Photos/h-2.webp"
+                        alt="Robot hand light"
+                        width={250}
+                        height={250}
+                        layout="fixed"
+                        className="rounded-full border-[4px] border-solid border-[#171717]"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </Section>
+            </div>
+
+            <div className={cn(styles.background__bottom, '')}></div>
+          </div>
         </main>
         <Footer />
       </div>

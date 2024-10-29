@@ -1,0 +1,12 @@
+.container {
+  .projectsMain__container {
+    // backdrop-filter: blur(10px);
+    z-index: -1;
+    overflow: hidden;
+    //position: relative;
+    //z-index: 1; /* Asegura que esté sobre el fondo */
+    //padding: 20px;
+    //backdrop-filter: blur(10px); /* Aplica el desenfoque */
+    //background: rgba(83, 22, 22, 0.065); /* Ajusta la transparencia */
+  }
+}

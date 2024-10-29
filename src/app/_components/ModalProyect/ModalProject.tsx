@@ -14,7 +14,7 @@ const Modal = ({ onClose, isClosing, children }: ModalProps) => {
     <div
       className={cn(
         styles.blur__overlay,
-        'fixed p-3  sm:p-10 inset-0 bg-black bg-opacity-50 backdrop-blur-lg flex justify-center items-center z-50',
+        'fixed p-3  sm:p-10 inset-0 bg-black bg-opacity-50 backdrop-blur-lg flex justify-center items-center z-40',
         isClosing ? 'animate-fadeOut' : 'animate-fadeIn', // Controla la animación de entrada/salida
       )}
       onClick={onClose}

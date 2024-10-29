@@ -18,7 +18,7 @@ export const Footer: React.FC<FooterProps> = ({
   //email = 'harv2222@gmail.com',
 }) => {
   return (
-    <footer className=" bg-[#1f1f1f] text-[#fafafa] p-6">
+    <footer className=" bg-[#171717] text-[#fafafa] p-6">
       <div className="">
         <h3 className="text-lg text-[#fafafa] font-bold mb-4">Contactez-moi</h3>
         <div>//form</div>
