@@ -4,6 +4,7 @@
 //import styles from './Footer.module.scss'
 import { LinkedinIcon, MailIcon } from 'lucide-react'
 import Link from 'next/link'
+import FooterForm from '../Form/FooterForm'
 import { GithubIcon } from '../icons/GithubIcon'
 
 //import FooterForm from './FooterForm';
@@ -18,37 +19,45 @@ export const Footer: React.FC<FooterProps> = ({
   //email = 'harv2222@gmail.com',
 }) => {
   return (
-    <footer className=" bg-[#171717] text-[#fafafa] p-6">
-      <div className="">
-        <h3 className="text-lg text-[#fafafa] font-bold mb-4">Contactez-moi</h3>
-        <div>//form</div>
-        <div className="flex flex-row justify-center gap-5 m-0">
-          <Link
-            href="mailto:tu_correo@ejemplo.com"
-            aria-label="Envoyer un e-mail"
-          >
-            <MailIcon className="transform transition duration-200 hover:scale-125" />
-          </Link>
-          <Link
-            href="https://www.linkedin.com/in/hardy-lino-30a616b1/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="transform transition duration-200 hover:scale-125"
-          >
-            <LinkedinIcon />
-          </Link>
-          <Link
-            href="https://github.com/Hardy1210"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="transform transition duration-200 hover:scale-125"
-          >
-            <GithubIcon size={25} />
-          </Link>
+    <footer id="contact" className=" bg-[#171717] text-[#FAFAFA] p-6 pt-20">
+      <div className="flex justify-center">
+        <div className="flex flex-col gap-10 w-full md:w-1/2">
+          <h3 className="text-lg text-[#FAFAFA] font-bold mb-4">
+            Contactez-moi
+          </h3>
+          <div className="">
+            <FooterForm />
+          </div>
+          <div className="flex flex-row justify-center gap-5 m-0">
+            <Link
+              href="mailto:tu_correo@ejemplo.com"
+              aria-label="Envoyer un e-mail"
+            >
+              <MailIcon className="transform transition duration-200 hover:scale-125" />
+            </Link>
+            <Link
+              href="https://www.linkedin.com/in/hardy-lino-30a616b1/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transform transition duration-200 hover:scale-125"
+            >
+              <LinkedinIcon />
+            </Link>
+            <Link
+              href="https://github.com/Hardy1210"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transform transition duration-200 hover:scale-125"
+            >
+              <GithubIcon size={25} />
+            </Link>
+          </div>
         </div>
-        <div className=" flex flex-row justify-between items-center">
+      </div>
+      <div>
+        <div className="pt-5 flex flex-col gap-3  md:flex-row justify-between items-center">
           <p className="">
-            &copy; {year} - Hardy Lino.Tous droits réservés.{' '}
+            &copy; {year} - Hardy Lino. Tous droits réservés.{' '}
             {/* Contact: {email}*/}
           </p>
           <p>Développé avec Next.js et hébergé sur ....</p>

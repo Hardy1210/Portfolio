@@ -77,7 +77,6 @@ const ProjectCard: FC<ProjectCardProps> = ({
           <Image
             src={layerImageSrc}
             alt={layerImageAlt}
-            layout="responsive"
             width={700}
             height={412}
             className={cn(styles.image, '')}
@@ -167,9 +166,8 @@ const ProjectCard: FC<ProjectCardProps> = ({
                 <Image
                   src={modalImgSrc}
                   alt={modalImgAlt}
-                  layout="responsive"
-                  width={700}
-                  height={412}
+                  width={760}
+                  height={570}
                   className="w-full h-auto"
                 />
               </div>
@@ -177,9 +175,8 @@ const ProjectCard: FC<ProjectCardProps> = ({
                 <Image
                   src={modalImgSecondSrc}
                   alt={modalImgSecondAlt}
-                  layout="responsive"
-                  width={700}
-                  height={412}
+                  width={760}
+                  height={570}
                   className="w-full h-auto"
                 />
               </div>

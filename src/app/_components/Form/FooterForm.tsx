@@ -1,6 +1,8 @@
 // components/FooterForm.tsx
 //import emailjs from 'emailjs-com'
+import { cn } from '@/lib/utils'
 import React, { useState } from 'react'
+import styles from './footerForm.module.scss'
 
 const FooterForm: React.FC = () => {
   const [userEmail, setUserEmail] = useState('')
@@ -35,40 +37,47 @@ const FooterForm: React.FC = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
-      <label>
-        Email:
-        <input
-          type="email"
-          value={userEmail}
-          onChange={(e) => setUserEmail(e.target.value)}
-          required
-          className="border rounded px-2 py-1 w-full"
-        />
-      </label>
-      <label>
-        Message:
-        <textarea
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-          required
-          className="border rounded px-2 py-1 w-full"
-        />
-      </label>
-      <button
-        type="submit"
-        className="bg-blue-500 text-white px-4 py-2 rounded"
-      >
-        Envoyer
-      </button>
-      {success && (
-        <p className="text-green-500">Votre message a été envoyé !</p>
-      )}
-      {error && (
-        <p className="text-red-500">
-          Une erreur est survenue. Veuillez réessayer.
-        </p>
-      )}
+    <form onSubmit={handleSubmit} className={cn(styles.form, 'text-black')}>
+      <div className="">
+        <label className="inline-block mb-2 text-[#FAFAFA]">Email:</label>
+        <div>
+          <input
+            type="email"
+            value={userEmail}
+            onChange={(e) => setUserEmail(e.target.value)}
+            required
+            className="border rounded px-2 py-2 w-full "
+            placeholder="vitoria@email.com"
+          />
+        </div>
+      </div>
+
+      <div className="mt-5">
+        <label className="inline-block mb-2 text-[#FAFAFA] ">Message:</label>
+        <div>
+          <textarea
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            required
+            className="border rounded px-2 py-2 w-full"
+            placeholder="Dites-moi tout… Je serai ravi de vous lire !"
+          />
+        </div>
+      </div>
+
+      <div className="flex justify-center mt-5">
+        <button type="submit" className={cn(styles.button, 'w-40')}>
+          Envoyer
+        </button>
+        {success && (
+          <p className="text-green-500">Votre message a été envoyé !</p>
+        )}
+        {error && (
+          <p className="text-red-500">
+            Une erreur est survenue. Veuillez réessayer.
+          </p>
+        )}
+      </div>
     </form>
   )
 }

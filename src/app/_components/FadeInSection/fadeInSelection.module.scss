@@ -1,0 +1,22 @@
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  0% {
+    transform: translateY(20px); /* Ajusta el desplazamiento inicial */
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+.fade__in.visible {
+  animation:
+    fadeIn 0.9s ease-in-out forwards,
+    slideUp 1.2s ease-out forwards 0.5s;
+}

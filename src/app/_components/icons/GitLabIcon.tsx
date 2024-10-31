@@ -17,7 +17,7 @@ export const GitLabIcon = (
         id="页面-1"
         stroke="none"
         strokeWidth="1"
-        fill="#FAFAFA"
+        fill="none"
         fillRule="evenodd"
       >
         <g id="Logo" transform="translate(-528.000000, -144.000000)">

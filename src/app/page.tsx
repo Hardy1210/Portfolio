@@ -35,14 +35,38 @@ import ProjectCard from './_components/ProjectCard/ProjectCard'
 import { Section } from './_components/Section/Section'
 import styles from './page.module.scss'
 //skillcards y data
+import { useEffect } from 'react'
+import FadeInSection from './_components/FadeInSection/FadeInSection'
 import { SkillCard } from './_components/SkillCard/SkillCard'
 import { skillData } from './skillData/skillData'
+
+//para pre-cargar las imagenes de las modales
+const preloadImages = (imageUrls: string[]): void => {
+  imageUrls.forEach((url) => {
+    const img = document.createElement('img')
+    img.src = url
+  })
+}
 
 const Span = ({ className, ...props }: ComponentPropsWithoutRef<'span'>) => {
   return <span className={cn(className, '')} {...props} />
 }
 
 export default function Home() {
+  const imageUrls = [
+    '/images/Argent-bank/ab-6.webp',
+    '/images/Argent-bank/ab-7.webp',
+    '/images/kasa/ka-mac.png',
+    '/images/kasa/ka-ph.webp',
+    '/images/ohmyfood/oh-4.webp',
+    '/images/ohmyfood/oh-3.webp',
+    '/images/Argent-bank/ab-modal-2.webp',
+  ]
+
+  useEffect(() => {
+    preloadImages(imageUrls)
+  }, [])
+  ///////////////////////
   {
     /*este CODIGO SIRVE SOLO SI NO HAY MODALES QUE SE HABRAN POR CADA COMPONENTE
      //useState para la lista de proyectos que deseen verse
@@ -118,66 +142,65 @@ export default function Home() {
                   'flex flex-row h-fit w-full md:justify-between items-center md:items-start',
                 )}
               >
-                <div
-                  className={cn(
-                    styles.text,
-                    'flex gap-3 flex-col m-auto md:m-0 items-center md:items-start',
-                  )}
-                >
-                  <span
-                    aria-hidden="true"
-                    className="inline-flex flex-col items-center md:items-end md:flex-row gap-3"
+                <FadeInSection>
+                  <div
+                    className={cn(
+                      styles.text,
+                      'flex gap-3 flex-col m-auto md:m-0 items-center md:items-start',
+                    )}
                   >
-                    <span className="text-6xl font-extrabold drop-shadow-xl">
-                      Hey !
+                    <span
+                      aria-hidden="true"
+                      className="inline-flex flex-col items-center md:items-end md:flex-row gap-3"
+                    >
+                      <span className="text-7xl font-extrabold drop-shadow-xl">
+                        Hey&nbsp;!
+                      </span>
+                      <span className="text-5xl font-extrabold drop-shadow-xl">
+                        Je&nbsp;m&#39;appelle
+                      </span>
                     </span>
-                    <span className="text-5xl font-extrabold drop-shadow-xl">
-                      Je m&#39;appelle
-                    </span>
-                  </span>
-                  <h1
-                    aria-label="Hardy Lino"
-                    className={cn(
-                      styles.hardy,
-                      'w-min text-7xl font-extrabold drop-shadow-xl dark:text-neutral-50 md:w-max',
-                    )}
-                  >
-                    Hardy,
-                  </h1>
-                  <h2
-                    className={cn(
-                      styles.dev,
-                      'mt-7 md:mt-10 text-3xl text-center font-semibold',
-                    )}
-                  >
-                    Developpeur Front-end
-                  </h2>
-                  <p
-                    className={cn(
-                      styles.front,
-                      'text-2xl text-center md:text-start md:mx-0 lg:mx-0',
-                    )}
-                  >
-                    Bienvenue dans mon portfolio, un aperçu de mon parcours en
-                    tant que développeur front-end.{' '}
-                    <br className="hidden md:flex" />
-                  </p>
-                </div>
-
+                    <h1
+                      aria-label="Hardy Lino"
+                      className={cn(
+                        styles.hardy,
+                        'w-min text-7xl font-extrabold drop-shadow-xl dark:text-neutral-50 md:w-max',
+                      )}
+                    >
+                      {/* <span className="h-14 w-14 bg-slate-950 inline-block"></span>*/}
+                      Hardy,
+                    </h1>
+                    <h2
+                      className={cn(
+                        styles.dev,
+                        'mt-7 md:mt-10 text-3xl text-center font-semibold',
+                      )}
+                    >
+                      Developpeur Front-end
+                    </h2>
+                    <p
+                      className={cn(
+                        styles.front,
+                        'text-2xl text-center md:text-start md:mr-20 ',
+                      )}
+                    >
+                      Bienvenue dans mon portfolio, un aperçu de mon parcours en
+                      tant que développeur front-end.{' '}
+                      <br className="hidden md:flex" />
+                    </p>
+                  </div>
+                </FadeInSection>
                 <div
-                  className={cn(
-                    styles.img__container,
-                    'max-w-xs flex-1 hidden md:flex',
-                  )}
+                  className={cn(styles.img__container, 'w-1/2 hidden md:flex')}
                 >
                   <Image
                     src="/images/m.webp"
                     alt="Robot hand light"
-                    width={250}
-                    height={325}
+                    width={409}
+                    height={425}
                     className={cn(
                       styles.img,
-                      'max-w-xs flex-1 md:flex dark:hidden',
+                      'min-w-64 h-auto object-contain md:flex dark:hidden',
                     )}
                   />
                   {/**<Image
@@ -442,27 +465,87 @@ export default function Home() {
               </div>
             </div>
           </div>
+          {/*About*/}
+          <div className={cn(styles.background__top, '')}></div>
+          <FadeInSection>
+            <div
+              id="about"
+              className={cn(
+                styles.about__container,
+                'scroll-mt-24 md:scroll-mt-32 ',
+              )}
+            >
+              <div className={cn(styles.bacground__middle, '')}>
+                <Section className={cn(styles.section, '')}>
+                  <h2 className="mb-10 text-3xl font-semibold text-center md:text-start ">
+                    À propos
+                  </h2>
+                  <div className="grid grid-cols-1 md:grid-cols-[70%,30%] gap-7 md:gap-0 items-center justify-between">
+                    <div className="">
+                      <div className="flex flex-col gap-6 text-center md:text-start text-lg md:text-xl px-5 md:pl-0  md:pr-10">
+                        <p className="">
+                          Responsable de magasin et ancien professeur de guitare
+                          classique passionné par l'enseignement, je me suis
+                          reconverti dans le{' '}
+                          <strong>développement front-end</strong>, un domaine
+                          qui m'a toujours fasciné.
+                        </p>
+                        <p>
+                          Mon parcours diversifié en <strong>gestion</strong>,{' '}
+                          <strong>musique</strong> et{' '}
+                          <strong>enseignement </strong>
+                          m'a apporté rigueur, créativité et une capacité à
+                          résoudre divers problèmes. Cette expérience{' '}
+                          <strong>artistique</strong> enrichit ma vision
+                          technique et facilite la{' '}
+                          <strong>collaboration</strong> sur des projets variés.
+                          Curieux et en quête de nouveaux défis, je suis prêt à
+                          mettre ma passion au service de vos idées.
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex justify-center md:justify-end ">
+                      <div className="rounded-full">
+                        <Image
+                          src="/images/Photos/h-2.webp"
+                          alt="Robot hand light"
+                          width={250}
+                          height={250}
+                          className="rounded-full border-[4px] border-solid border-[#171717]"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </Section>
+              </div>
 
+              <div className={cn(styles.background__bottom, '')}></div>
+            </div>
+          </FadeInSection>
           {/*Projets*/}
           <Section>
-            <div className={cn(styles.Projets__container, '')}>
-              <h2
-                id="projects"
-                className="mb-10 text-3xl font-semibold scroll-mt-16 text-center md:text-start"
-              >
-                Projets
-              </h2>
-              <div className="mb-20 text-center text-lg md:text-xl">
-                <p>
-                  À travers mes différents projets, j’ai exploré diverses
-                  technologies telles que [React, Redux, Sass, etc.]. Chaque
-                  réalisation m’a permis de développer mes compétences en
-                  développement web, conception d’applications et résolution de
-                  problèmes concrets. Mon portfolio reflète mon parcours
-                  d’apprentissage et ma passion pour créer des solutions
-                  efficaces.
-                </p>
-              </div>
+            <div className={cn(styles.Projets__container, 'pt-10')}>
+              <FadeInSection>
+                <div>
+                  <h2
+                    id="projects"
+                    className="mb-10 text-3xl font-semibold  text-center md:text-start scroll-mt-24 md:scroll-mt-32"
+                  >
+                    Projets
+                  </h2>
+                  <div className="mb-20 text-center text-lg md:text-xl">
+                    <p>
+                      À travers mes différents projets, j’ai exploré diverses
+                      technologies telles que [React, Redux, Sass, etc.]. Chaque
+                      réalisation m’a permis de développer mes compétences en
+                      développement web, conception d’applications et résolution
+                      de problèmes concrets. Mon portfolio reflète mon parcours
+                      d’apprentissage et ma passion pour créer des solutions
+                      efficaces.
+                    </p>
+                  </div>
+                </div>
+              </FadeInSection>
               <ul
                 className={cn(
                   styles.projects,
@@ -470,72 +553,76 @@ export default function Home() {
                 )}
               >
                 <li>
-                  <ProjectCard
-                    layerImageSrc="/images/arb.webp"
-                    layerImageAlt="logo Argent Bank"
-                    secondaryImageSrc="/images/Argent-bank/ab-2-removebg.webp"
-                    secondaryImageAlt="MacBook Argent Bank"
-                    headerImageSrc="/images/logo_images/ab.webp"
-                    headerImageAlt="Argent Bank leaf"
-                    icons={[
-                      <ViteIcon key="vite" size={25} />,
-                      <ReactIcon key="react" size={25} />,
-                      <ReduxIcon key="redux" size={25} />,
-                      <SassIcon key="sass" size={25} />,
-                      <NodeJsIcon key="node" size={25} />,
-                      <MongoDbIcon key="mongo" size={25} />,
-                      <SwaggerIcon key="swagger" size={25} />,
-                    ]}
-                    title="Argent Bank"
-                    description="Argent Bank est une application web qui permet aux utilisateurs de gérer facilement leurs informations personnelles une fois connectée."
-                    modalDescription="La conception du projet est basée sur React en intégrant des composants réutilisables, ainsi que l'intégration du système de connexion qui permet aux utilisateurs de se connecter, de voir leurs informations relatives à leur propre profil et de changer leur pseudo s'ils le souhaitent. L'utilisation de Redux était nécessaire pour pouvoir gérer l'état global de l'application."
-                    modalImgSrc="/images/Argent-bank/ab-6.webp"
-                    modalImgAlt="MacBook Argent Bank"
-                    modalImgSecondSrc="/images/Argent-bank/ab-7.webp"
-                    modalImgSecondAlt="MacBook Argent Bank"
-                    technologies={[
-                      'React',
-                      'Redux',
-                      'Sass',
-                      'Node.js',
-                      'MongoDB',
-                    ]}
-                    repoLink="https://github.com/Hardy1210/ArgentBank-website/tree/Redux"
-                    repoIcon={<GithubIcon size={20} />}
-                    repoLinkWeb="https://hardy1210.github.io/ArgentBank-website/"
-                    repoWebIcon={<WebIcon size={20} />}
-                  />
+                  <FadeInSection>
+                    <ProjectCard
+                      layerImageSrc="/images/arb.webp"
+                      layerImageAlt="logo Argent Bank"
+                      secondaryImageSrc="/images/Argent-bank/ab-2-removebg.webp"
+                      secondaryImageAlt="MacBook Argent Bank"
+                      headerImageSrc="/images/logo_images/ab.webp"
+                      headerImageAlt="Argent Bank leaf"
+                      icons={[
+                        <ViteIcon key="vite" size={25} />,
+                        <ReactIcon key="react" size={25} />,
+                        <ReduxIcon key="redux" size={25} />,
+                        <SassIcon key="sass" size={25} />,
+                        <NodeJsIcon key="node" size={25} />,
+                        <MongoDbIcon key="mongo" size={25} />,
+                        <SwaggerIcon key="swagger" size={25} />,
+                      ]}
+                      title="Argent Bank"
+                      description="Argent Bank est une application web qui permet aux utilisateurs de gérer facilement leurs informations personnelles une fois connectée."
+                      modalDescription="La conception du projet est basée sur React en intégrant des composants réutilisables, ainsi que l'intégration du système de connexion qui permet aux utilisateurs de se connecter, de voir leurs informations relatives à leur propre profil et de changer leur pseudo s'ils le souhaitent. L'utilisation de Redux était nécessaire pour pouvoir gérer l'état global de l'application."
+                      modalImgSrc="/images/Argent-bank/ab-6.webp"
+                      modalImgAlt="MacBook Argent Bank"
+                      modalImgSecondSrc="/images/Argent-bank/ab-7.webp"
+                      modalImgSecondAlt="MacBook Argent Bank"
+                      technologies={[
+                        'React',
+                        'Redux',
+                        'Sass',
+                        'Node.js',
+                        'MongoDB',
+                      ]}
+                      repoLink="https://github.com/Hardy1210/ArgentBank-website/tree/Redux"
+                      repoIcon={<GithubIcon size={20} />}
+                      repoLinkWeb="https://hardy1210.github.io/ArgentBank-website/"
+                      repoWebIcon={<WebIcon size={20} />}
+                    />
+                  </FadeInSection>
                 </li>
                 <li>
-                  <ProjectCard
-                    layerImageSrc="/images/Kasa/kasa.webp"
-                    layerImageAlt="logo Kasa"
-                    secondaryImageSrc="/images/kasa/k-bg.webp"
-                    secondaryImageAlt="MacBook Kasa"
-                    headerImageSrc="/images/kasa/ka-logo.webp"
-                    headerImageAlt="Logo Kasa"
-                    icons={[
-                      <ViteIcon key="vite" size={25} />,
-                      <ReactIcon key="react" size={25} />,
+                  <FadeInSection>
+                    <ProjectCard
+                      layerImageSrc="/images/Kasa/kasa.webp"
+                      layerImageAlt="logo Kasa"
+                      secondaryImageSrc="/images/kasa/k-bg.webp"
+                      secondaryImageAlt="MacBook Kasa"
+                      headerImageSrc="/images/kasa/ka-logo.webp"
+                      headerImageAlt="Logo Kasa"
+                      icons={[
+                        <ViteIcon key="vite" size={25} />,
+                        <ReactIcon key="react" size={25} />,
 
-                      <SassIcon key="sass" size={25} />,
-                      <ReactRouterIcon key="router" size={25} />,
-                    ]}
-                    title="Kasa"
-                    description="Kasa est une application web de location d’appartements entre particuliers, développée avec React."
-                    modalDescription="Kasa est une application web de location d’appartements entre particuliers, conçue avec React. L'architecture du projet repose sur des composants réutilisables optimisés pour réduire la duplication de code et faciliter la maintenance. L'organisation des styles est gérée avec Sass, permettant une structuration claire et modulaire des feuilles de styles, ce qui améliore la maintenabilité du projet.
+                        <SassIcon key="sass" size={25} />,
+                        <ReactRouterIcon key="router" size={25} />,
+                      ]}
+                      title="Kasa"
+                      description="Kasa est une application web de location d’appartements entre particuliers, développée avec React."
+                      modalDescription="Kasa est une application web de location d’appartements entre particuliers, conçue avec React. L'architecture du projet repose sur des composants réutilisables optimisés pour réduire la duplication de code et faciliter la maintenance. L'organisation des styles est gérée avec Sass, permettant une structuration claire et modulaire des feuilles de styles, ce qui améliore la maintenabilité du projet.
 
 L'application offre une navigation fluide entre les pages grâce à React Router et intègre un carrousel d’images interactif ainsi que des animations soignées pour enrichir l'expérience utilisateur. Elle est entièrement responsive, s'adaptant parfaitement à différents formats d'écrans pour offrir une expérience optimale sur mobile, tablette et ordinateur. L'optimisation des performances et de la gestion des ressources assure une utilisation fluide sur tout type d’appareil."
-                    modalImgSrc="/images/kasa/ka-ph.webp"
-                    modalImgAlt="Iphone Kasa"
-                    modalImgSecondSrc="/images/kasa/ka-mac.png"
-                    modalImgSecondAlt="MacBook Kasa"
-                    technologies={['Vite', 'React', 'React router', 'Sass']}
-                    repoLink="https://github.com/Hardy1210/kasa"
-                    repoIcon={<GithubIcon size={20} />}
-                    repoLinkWeb="https://hardy1210.github.io/kasa/"
-                    repoWebIcon={<WebIcon size={20} />}
-                  />
+                      modalImgSrc="/images/kasa/ka-ph.webp"
+                      modalImgAlt="Iphone Kasa"
+                      modalImgSecondSrc="/images/kasa/ka-mac.png"
+                      modalImgSecondAlt="MacBook Kasa"
+                      technologies={['Vite', 'React', 'React router', 'Sass']}
+                      repoLink="https://github.com/Hardy1210/kasa"
+                      repoIcon={<GithubIcon size={20} />}
+                      repoLinkWeb="https://hardy1210.github.io/kasa/"
+                      repoWebIcon={<WebIcon size={20} />}
+                    />
+                  </FadeInSection>
                 </li>
                 <li>
                   <ProjectCard
@@ -627,7 +714,7 @@ Le développement a mis l'accent sur la responsivité du site, garantissant une 
             <div className={cn(styles.techno__content, '')}>
               <div className={cn(styles.technologies__utilises, '')}>
                 <p className="text-2xl ">
-                  J'ai pu travailler avec ces utils et technologies
+                  J'ai pu travailler avec ces outils et technologies
                 </p>
                 <ul
                   className={cn(
@@ -653,63 +740,39 @@ Le développement a mis l'accent sur la responsivité du site, garantissant une 
                   <li className="">
                     <MongoDbIcon size={70} />
                   </li>
+                  <li>
+                    <PostmanIcon size={70} />
+                  </li>
+                  <li>
+                    <FigmaIcon size={70} />
+                  </li>
+                  <li className="">
+                    <NotionIcon className="" size={70} />
+                  </li>
                 </ul>
               </div>
             </div>
           </Section>
-          {/*About*/}
-          <div className={cn(styles.background__top, '')}></div>
-          <div
-            id="about"
-            className={cn(styles.about__container, 'scroll-mt-16 ')}
-          >
-            <div className={cn(styles.bacground__middle, '')}>
-              <Section className={cn(styles.section, '')}>
-                <h2 className="mb-10 text-3xl font-semibold text-center md:text-start ">
-                  À propos
-                </h2>
-                <div className="grid grid-cols-1 md:grid-cols-[70%,30%] gap-7 md:gap-0 items-center justify-between">
-                  <div className="">
-                    <div className="flex flex-col gap-6 text-center md:text-start text-lg md:text-xl px-5 md:pl-0  md:pr-10">
-                      <p className="">
-                        Responsable de magasin et ancien professeur de guitare
-                        classique passionné par l'enseignement, je me suis
-                        reconverti dans le{' '}
-                        <strong>développement front-end</strong>, un domaine qui
-                        m'a toujours fasciné.
-                      </p>
-                      <p>
-                        Mon parcours diversifié en <strong>gestion</strong>,{' '}
-                        <strong>musique</strong> et{' '}
-                        <strong>enseignement </strong>
-                        m'a apporté rigueur, créativité et une capacité à
-                        résoudre divers problèmes. Cette expérience{' '}
-                        <strong>artistique</strong> enrichit ma vision technique
-                        et facilite la <strong>collaboration</strong> sur des
-                        projets variés. Curieux et en quête de nouveaux défis,
-                        je suis prêt à mettre ma passion au service de vos
-                        idées.
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex justify-center ">
-                    <div className="rounded-full">
-                      <Image
-                        src="/images/Photos/h-2.webp"
-                        alt="Robot hand light"
-                        width={250}
-                        height={250}
-                        layout="fixed"
-                        className="rounded-full border-[4px] border-solid border-[#171717]"
-                      />
-                    </div>
-                  </div>
-                </div>
-              </Section>
-            </div>
+          <Section>
+            <div
+              className={cn(
+                styles.work,
+                'flex flex-col justify-center items-center gap-5',
+              )}
+            >
+              <p className="text-3xl">Un projet en tête ?</p>
+              <FadeInSection>
+                <p className={cn(styles.word, 'text-6xl')}>
+                  Travaillons ensemble
+                </p>
+              </FadeInSection>
 
-            <div className={cn(styles.background__bottom, '')}></div>
-          </div>
+              <p className="text-3xl text-center">
+                Je serais ravi de collaborer avec vous. <br />
+                Parlons-en.
+              </p>
+            </div>
+          </Section>
         </main>
         <Footer />
       </div>

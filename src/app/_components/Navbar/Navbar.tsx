@@ -138,7 +138,7 @@ export function NavbarComponent() {
               className="flex items-center justify-center text-2xl w-full py-4 border-b-2 border-b-blue-950 text-neutral-900 dark:text-neutral-100"
             >
               <HouseIcon className="mr-2" />
-              Acceuil
+              Accueil
             </Link>
             <Link
               onClick={toggleMenu}

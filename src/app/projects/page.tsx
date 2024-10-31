@@ -32,7 +32,7 @@ export default function Projects() {
         <main
           className={cn(
             styles.projectsMain__container,
-            'space-y-20 md:space-y-32 pt-36 md:pt-48  px-4 overflow-hidden ',
+            'relative space-y-20 md:space-y-32 pt-36 md:pt-48  px-4 overflow-hidden ',
           )}
         >
           <Section>
