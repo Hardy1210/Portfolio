@@ -3,12 +3,17 @@ import { ReactNode, useEffect, useRef } from 'react'
 import styles from './fadeInSelection.module.scss'
 interface FadeInSectionProps {
   children: ReactNode
+  disableAnimation?: boolean // Nueva prop para desactivar la animación
 }
 
-const FadeInSection: React.FC<FadeInSectionProps> = ({ children }) => {
+const FadeInSection: React.FC<FadeInSectionProps> = ({
+  children,
+  disableAnimation = false,
+}) => {
   const sectionRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
+    if (disableAnimation) return // No aplicar el observer si la animación está desactivada
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -26,10 +31,15 @@ const FadeInSection: React.FC<FadeInSectionProps> = ({ children }) => {
     }
 
     return () => observer.disconnect()
-  }, [])
+  }, [disableAnimation])
 
   return (
-    <div ref={sectionRef} className={cn(styles.fade__in, '')}>
+    <div
+      ref={sectionRef}
+      className={cn(styles.fade__in, {
+        [styles.noAnimation]: disableAnimation,
+      })}
+    >
       {children}
     </div>
   )

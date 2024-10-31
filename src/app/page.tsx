@@ -37,8 +37,11 @@ import styles from './page.module.scss'
 //skillcards y data
 import { useEffect } from 'react'
 import FadeInSection from './_components/FadeInSection/FadeInSection'
+
 import { SkillCard } from './_components/SkillCard/SkillCard'
 import { skillData } from './skillData/skillData'
+
+//estilos de las animationes del hook fade
 
 //para pre-cargar las imagenes de las modales
 const preloadImages = (imageUrls: string[]): void => {
@@ -53,6 +56,7 @@ const Span = ({ className, ...props }: ComponentPropsWithoutRef<'span'>) => {
 }
 
 export default function Home() {
+  //array para la precrga de imagenes
   const imageUrls = [
     '/images/Argent-bank/ab-6.webp',
     '/images/Argent-bank/ab-7.webp',
@@ -100,7 +104,7 @@ export default function Home() {
             <div
               className={cn(
                 styles.container,
-                'relative flex flex-col h-fit w-full items-center gap-14 md:gap-14',
+                'relative flex flex-col h-fit w-full  gap-14 md:gap-14',
               )}
             >
               <div
@@ -176,7 +180,7 @@ export default function Home() {
                         'mt-7 md:mt-10 text-3xl text-center font-semibold',
                       )}
                     >
-                      Developpeur Front-end
+                      Développeur Front-end
                     </h2>
                     <p
                       className={cn(
@@ -212,63 +216,64 @@ export default function Home() {
                 /> */}
                 </div>
               </div>
-
-              <div
-                className={cn(
-                  styles.buttons__container,
-                  ' w-full md:max-w-full flex-col-reverse  gap-7 md:gap-5 justify-between',
-                )}
-              >
+              <FadeInSection>
                 <div
                   className={cn(
-                    styles.button__read,
-                    'flex gap-4 max-w-full md:max-w-96',
+                    styles.buttons__container,
+                    ' w-full md:max-w-full flex-col-reverse  gap-7 md:gap-5 justify-between',
                   )}
                 >
-                  <Button />
-                  <a
+                  <div
                     className={cn(
-                      styles.read,
-                      'flex flex-row rounded-xl gap-0.5 items-center p-3 opacity-70 hover:opacity-100',
+                      styles.button__read,
+                      'flex gap-4 max-w-full md:max-w-96',
                     )}
-                    href="https://www.linkedin.com/in/hardy-lino-30a616b1/"
                   >
-                    <span
+                    <Button />
+                    <a
                       className={cn(
-                        styles.read__cv,
-                        'text-1xl leading-none underline',
+                        styles.read,
+                        'flex flex-row rounded-xl gap-0.5 items-center p-3 opacity-70 hover:opacity-100',
                       )}
+                      href="https://www.linkedin.com/in/hardy-lino-30a616b1/"
                     >
-                      lire.cv
-                    </span>
-                    <ArrowUp size={13} />
-                  </a>
-                </div>
+                      <span
+                        className={cn(
+                          styles.read__cv,
+                          'text-1xl leading-none underline',
+                        )}
+                      >
+                        lire.cv
+                      </span>
+                      <ArrowUp size={13} />
+                    </a>
+                  </div>
 
-                <ul
-                  className={cn(
-                    styles.icons,
-                    'justify-center md:justify-start ',
-                  )}
-                >
-                  <Link
-                    href="https://github.com/Hardy1210"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="transform transition duration-300 hover:scale-125"
+                  <ul
+                    className={cn(
+                      styles.icons,
+                      'justify-center md:justify-start ',
+                    )}
                   >
-                    <GithubIcon size={30} />
-                  </Link>
-                  <Link
-                    href="https://www.linkedin.com/in/hardy-lino-30a616b1/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="transform transition duration-300 hover:scale-125"
-                  >
-                    <LinkedinIcon size={30} />
-                  </Link>
-                </ul>
-              </div>
+                    <Link
+                      href="https://github.com/Hardy1210"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="transform transition duration-300 hover:scale-125"
+                    >
+                      <GithubIcon size={30} />
+                    </Link>
+                    <Link
+                      href="https://www.linkedin.com/in/hardy-lino-30a616b1/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="transform transition duration-300 hover:scale-125"
+                    >
+                      <LinkedinIcon size={30} />
+                    </Link>
+                  </ul>
+                </div>
+              </FadeInSection>
             </div>
           </Section>
           {/*marquee*/}
@@ -467,19 +472,25 @@ export default function Home() {
           </div>
           {/*About*/}
           <div className={cn(styles.background__top, '')}></div>
-          <FadeInSection>
-            <div
-              id="about"
-              className={cn(
-                styles.about__container,
-                'scroll-mt-24 md:scroll-mt-32 ',
-              )}
-            >
-              <div className={cn(styles.bacground__middle, '')}>
-                <Section className={cn(styles.section, '')}>
-                  <h2 className="mb-10 text-3xl font-semibold text-center md:text-start ">
-                    À propos
-                  </h2>
+
+          <div
+            id="about"
+            className={cn(
+              styles.about__container,
+              'scroll-mt-24 md:scroll-mt-32 ',
+            )}
+          >
+            <div className={cn(styles.bacground__middle, '')}>
+              <Section className={cn(styles.section, '')}>
+                <h2
+                  className={cn(
+                    styles.a__propos,
+                    'mb-10 text-3xl font-semibold text-center md:text-start',
+                  )}
+                >
+                  À propos
+                </h2>
+                <FadeInSection>
                   <div className="grid grid-cols-1 md:grid-cols-[70%,30%] gap-7 md:gap-0 items-center justify-between">
                     <div className="">
                       <div className="flex flex-col gap-6 text-center md:text-start text-lg md:text-xl px-5 md:pl-0  md:pr-10">
@@ -516,23 +527,24 @@ export default function Home() {
                       </div>
                     </div>
                   </div>
-                </Section>
-              </div>
-
-              <div className={cn(styles.background__bottom, '')}></div>
+                </FadeInSection>
+              </Section>
             </div>
-          </FadeInSection>
+
+            <div className={cn(styles.background__bottom, '')}></div>
+          </div>
+
           {/*Projets*/}
           <Section>
             <div className={cn(styles.Projets__container, 'pt-10')}>
-              <FadeInSection>
-                <div>
-                  <h2
-                    id="projects"
-                    className="mb-10 text-3xl font-semibold  text-center md:text-start scroll-mt-24 md:scroll-mt-32"
-                  >
-                    Projets
-                  </h2>
+              <div>
+                <h2
+                  id="projects"
+                  className="mb-10 text-3xl font-semibold  text-center md:text-start scroll-mt-24 md:scroll-mt-32"
+                >
+                  Projets
+                </h2>
+                <FadeInSection>
                   <div className="mb-20 text-center text-lg md:text-xl">
                     <p>
                       À travers mes différents projets, j’ai exploré diverses
@@ -544,15 +556,16 @@ export default function Home() {
                       efficaces.
                     </p>
                   </div>
-                </div>
-              </FadeInSection>
+                </FadeInSection>
+              </div>
+
               <ul
                 className={cn(
                   styles.projects,
                   'grid grid-cols-1 gap-5 md:grid-cols-2',
                 )}
               >
-                <li>
+                <li className={cn(styles.fade)}>
                   <FadeInSection>
                     <ProjectCard
                       layerImageSrc="/images/arb.webp"
@@ -591,7 +604,8 @@ export default function Home() {
                     />
                   </FadeInSection>
                 </li>
-                <li>
+
+                <li className={cn(styles.fade)}>
                   <FadeInSection>
                     <ProjectCard
                       layerImageSrc="/images/Kasa/kasa.webp"
@@ -624,61 +638,66 @@ L'application offre une navigation fluide entre les pages grâce à React Router
                     />
                   </FadeInSection>
                 </li>
-                <li>
-                  <ProjectCard
-                    layerImageSrc="/images/ohmyfood/ohmyfood-w.webp"
-                    layerImageAlt="logo Ohmyfood"
-                    secondaryImageSrc="/images/ohmyfood/oh-2.webp"
-                    secondaryImageAlt="MacBook Ohmyfood"
-                    headerImageSrc="/images/ohmyfood/oh-logo.webp"
-                    headerImageAlt=""
-                    icons={[
-                      <HtmlIcon key="html" size={25} />,
-                      <CssIcon key="css" size={25} />,
-                      <SassIcon key="sass" size={25} />,
-                    ]}
-                    title="Ohmyfood"
-                    description="OhMyFood est une site web de menus de restaurants conçue en mobile-first avec un design responsive. J'ai utilisé Sass pour structurer et optimiser les styles."
-                    modalDescription="OhMyFood est un projet réalisé dans le cadre de ma formation, visant à développer une application web pour répertorier les menus de restaurants gastronomiques. Le site a été conçu avec une approche mobile first pour assurer une expérience utilisateur optimale sur smartphones, tablettes et ordinateurs.
+
+                <li className={cn(styles.fade)}>
+                  <FadeInSection>
+                    <ProjectCard
+                      layerImageSrc="/images/ohmyfood/ohmyfood-w.webp"
+                      layerImageAlt="logo Ohmyfood"
+                      secondaryImageSrc="/images/ohmyfood/oh-2.webp"
+                      secondaryImageAlt="MacBook Ohmyfood"
+                      headerImageSrc="/images/ohmyfood/oh-logo.webp"
+                      headerImageAlt=""
+                      icons={[
+                        <HtmlIcon key="html" size={25} />,
+                        <CssIcon key="css" size={25} />,
+                        <SassIcon key="sass" size={25} />,
+                      ]}
+                      title="Ohmyfood"
+                      description="OhMyFood est une site web de menus de restaurants conçue en mobile-first avec un design responsive. J'ai utilisé Sass pour structurer et optimiser les styles."
+                      modalDescription="OhMyFood est un projet réalisé dans le cadre de ma formation, visant à développer une application web pour répertorier les menus de restaurants gastronomiques. Le site a été conçu avec une approche mobile first pour assurer une expérience utilisateur optimale sur smartphones, tablettes et ordinateurs.
 
 Le développement a mis l'accent sur la responsivité du site, garantissant une adaptation fluide à tous les formats d'écrans. J'ai utilisé Sass pour structurer efficacement les styles CSS, en tirant parti de sa modularité pour créer un code maintenable et organisé. Ce projet m'a permis de travailler sur des animations CSS soignées et de suivre rigoureusement les maquettes fournies via Figma, en respectant les comportements et transitions spécifiés."
-                    modalImgSrc="/images/ohmyfood/oh-4.webp"
-                    modalImgAlt=""
-                    modalImgSecondSrc="/images/ohmyfood/oh-3.webp"
-                    modalImgSecondAlt=""
-                    technologies={['Html', 'Css', 'Sass']}
-                    repoLink="https://github.com/Hardy1210/-OhMyFood"
-                    repoIcon={<GithubIcon size={20} />}
-                    repoLinkWeb="https://hardy1210.github.io/-OhMyFood/"
-                    repoWebIcon={<WebIcon size={20} />}
-                  />
+                      modalImgSrc="/images/ohmyfood/oh-4.webp"
+                      modalImgAlt=""
+                      modalImgSecondSrc="/images/ohmyfood/oh-3.webp"
+                      modalImgSecondAlt=""
+                      technologies={['Html', 'Css', 'Sass']}
+                      repoLink="https://github.com/Hardy1210/-OhMyFood"
+                      repoIcon={<GithubIcon size={20} />}
+                      repoLinkWeb="https://hardy1210.github.io/-OhMyFood/"
+                      repoWebIcon={<WebIcon size={20} />}
+                    />
+                  </FadeInSection>
                 </li>
-                <li>
-                  <ProjectCard
-                    layerImageSrc="/images/724/724-w.webp"
-                    layerImageAlt="logo 724 Events"
-                    secondaryImageSrc="/images/Argent-bank/ab-2-removebg.webp"
-                    secondaryImageAlt="MacBook 724 Events"
-                    headerImageSrc="/images/724/724-logo.webp"
-                    headerImageAlt="Logo 724 Events"
-                    icons={[
-                      <JavascriptIcon key="javascript" size={25} />,
-                      <ReactIcon key="react" size={25} />,
-                      <NodeJsIcon key="node" size={25} />,
-                    ]}
-                    title="724 Events"
-                    description="Projet de débogage et d'optimisation du site web 724-events développé avec React, incluant l'implémentation et la finalisation des tests unitaires et d'intégration"
-                    modalDescription="Projet de débogage pour un site événementiel développé avec React, appuyé par Node.js pour exécuter et déboguer le code JavaScript côté serveur, facilitant ainsi les tests en environnement local. J'ai pu finaliser les tests unitaires et d'intégration manquants dans le projet pour garantir la fiabilité et la performance des fonctionnalités clés du site. Un cahier des recettes a été établi pour valider rigoureusement chaque fonctionnalité attendue, assurant une expérience utilisateur fluide et stable. Grâce à une approche méthodique, toutes les anomalies ont été levées, contribuant pleinement à la finalisation de ce projet événementiel"
-                    modalImgSrc="/images/Argent-bank/ab-modal.webp"
-                    modalImgAlt="MacBook 724 Events"
-                    modalImgSecondSrc="/images/Argent-bank/ab-modal-2.webp"
-                    modalImgSecondAlt="MacBook 724 Events"
-                    technologies={['React', 'JavaScript', 'Node.js']}
-                    repoLink="https://github.com/Hardy1210/742-eventss"
-                    repoIcon={<GithubIcon size={20} />}
-                    repoLinkWeb="https://hardy1210.github.io/742-eventss/"
-                    repoWebIcon={<WebIcon size={20} />}
-                  />
+                <li className={cn(styles.fade)}>
+                  <FadeInSection>
+                    <ProjectCard
+                      layerImageSrc="/images/724/724-w.webp"
+                      layerImageAlt="logo 724 Events"
+                      secondaryImageSrc="/images/Argent-bank/ab-2-removebg.webp"
+                      secondaryImageAlt="MacBook 724 Events"
+                      headerImageSrc="/images/724/724-logo.webp"
+                      headerImageAlt="Logo 724 Events"
+                      icons={[
+                        <JavascriptIcon key="javascript" size={25} />,
+                        <ReactIcon key="react" size={25} />,
+                        <NodeJsIcon key="node" size={25} />,
+                      ]}
+                      title="724 Events"
+                      description="Projet de débogage et d'optimisation du site web 724-events développé avec React, incluant l'implémentation et la finalisation des tests unitaires et d'intégration"
+                      modalDescription="Projet de débogage pour un site événementiel développé avec React, appuyé par Node.js pour exécuter et déboguer le code JavaScript côté serveur, facilitant ainsi les tests en environnement local. J'ai pu finaliser les tests unitaires et d'intégration manquants dans le projet pour garantir la fiabilité et la performance des fonctionnalités clés du site. Un cahier des recettes a été établi pour valider rigoureusement chaque fonctionnalité attendue, assurant une expérience utilisateur fluide et stable. Grâce à une approche méthodique, toutes les anomalies ont été levées, contribuant pleinement à la finalisation de ce projet événementiel"
+                      modalImgSrc="/images/Argent-bank/ab-modal.webp"
+                      modalImgAlt="MacBook 724 Events"
+                      modalImgSecondSrc="/images/Argent-bank/ab-modal-2.webp"
+                      modalImgSecondAlt="MacBook 724 Events"
+                      technologies={['React', 'JavaScript', 'Node.js']}
+                      repoLink="https://github.com/Hardy1210/742-eventss"
+                      repoIcon={<GithubIcon size={20} />}
+                      repoLinkWeb="https://hardy1210.github.io/742-eventss/"
+                      repoWebIcon={<WebIcon size={20} />}
+                    />
+                  </FadeInSection>
                 </li>
               </ul>
               {/*button LINK  */}
@@ -696,8 +715,10 @@ Le développement a mis l'accent sur la responsivité du site, garantissant une 
           <Section>
             <div className={cn(styles.skill, 'grid md:grid-cols-2 gap-5')}>
               <div className="p-5 flex flex-col gap-3 text-center md:text-start">
-                <h2 className="text-3xl font-semibold">Mes compétences</h2>
-                <p className="text-2xl">J'adore travailler avec...</p>
+                <FadeInSection>
+                  <h2 className="text-3xl font-semibold">Mes compétences</h2>
+                  <p className="text-2xl">J'adore travailler avec...</p>
+                </FadeInSection>
               </div>
               {skillData.map((skill, index) => (
                 <SkillCard
@@ -757,12 +778,17 @@ Le développement a mis l'accent sur la responsivité du site, garantissant une 
             <div
               className={cn(
                 styles.work,
-                'flex flex-col justify-center items-center gap-5',
+                'flex flex-col justify-center items-center gap-6',
               )}
             >
               <p className="text-3xl">Un projet en tête ?</p>
               <FadeInSection>
-                <p className={cn(styles.word, 'text-6xl')}>
+                <p
+                  className={cn(
+                    styles.word,
+                    'text-6xl text-center md:text-start',
+                  )}
+                >
                   Travaillons ensemble
                 </p>
               </FadeInSection>

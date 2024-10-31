@@ -65,6 +65,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
       setIsModalOpen(true)
     }
   }
+
   return (
     <article
       className={cn(

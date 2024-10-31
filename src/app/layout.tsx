@@ -19,6 +19,10 @@ export default function RootLayout({
       <body className={cn(interSans.className, 'antialiased')}>
         <LanguageWrapper>{children}</LanguageWrapper>
         {/* El componente cliente se encargará del idioma */}
+
+        {/*react portal para que las modales se expandab 
+        correctamente si ponemos animaciones en los elementos li de ModalProject  */}
+        <div id="modal-root"></div>
       </body>
     </html>
   )

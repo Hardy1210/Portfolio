@@ -1,7 +1,12 @@
+'use client'
 import { cn } from '@/lib/utils'
 import { X } from 'lucide-react'
 import { ReactNode } from 'react'
+import ReactDOM from 'react-dom'
 import styles from './ModalProject.module.scss' // Estilos para el modal
+{
+  /*utilizandoi react portal para el buen funcionamiento de las modales */
+}
 
 interface ModalProps {
   onClose: () => void
@@ -10,7 +15,10 @@ interface ModalProps {
   children: ReactNode
 }
 const Modal = ({ onClose, isClosing, children }: ModalProps) => {
-  return (
+  // Obtener el elemento modal-root
+  const modalRoot = document.getElementById('modal-root')
+  if (!modalRoot) return null
+  return ReactDOM.createPortal(
     <div
       className={cn(
         styles.blur__overlay,
@@ -45,7 +53,8 @@ const Modal = ({ onClose, isClosing, children }: ModalProps) => {
           {children}
         </div>
       </div>
-    </div>
+    </div>,
+    modalRoot,
   )
 }
 

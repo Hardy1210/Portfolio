@@ -87,3 +87,13 @@ span {
     @apply bg-background text-foreground;
   }
 }
+/*para animationes fade in up
+@layer components {
+  .fade-in-element {
+    @apply opacity-0 transform translate-y-5 transition-all duration-700 ease-out;
+  }
+  .fade-in-element.visible {
+    @apply opacity-100 transform translate-y-0;
+  }
+}
+*/

@@ -88,6 +88,8 @@ const config: Config = {
         //animation de la modal en 3D
         modalOpen3D: 'modalOpen3D 0.2s ease-out forwards',
         modalClose3D: 'modalClose3D 0.2s ease-out forwards',
+        //animacion de bloques fade in up
+        fadeInUp: 'fadeInUp 0.7s ease-out forwards',
       },
       keyframes: {
         marquee: {
@@ -152,6 +154,17 @@ const config: Config = {
             opacity: '0',
             transform: 'translateY(20px) perspective(600px) rotateX(10deg)', // Vuelve al desplazamiento y rotación
           },
+        },
+        //animation de fade in up en los bloques
+        fadeInUp: {
+          '0%': { opacity: '0', transform: 'translateY(20px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+      },
+      //accecibilidad
+      variants: {
+        extend: {
+          animation: ['motion-safe'],
         },
       },
     },
