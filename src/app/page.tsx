@@ -65,6 +65,7 @@ export default function Home() {
     '/images/ohmyfood/oh-4.webp',
     '/images/ohmyfood/oh-3.webp',
     '/images/Argent-bank/ab-modal-2.webp',
+    '/images/Argent-bank/ab-modal.webp',
   ]
 
   useEffect(() => {
