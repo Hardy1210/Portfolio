@@ -1,5 +1,5 @@
 // IconMap.ts
-
+'use client'
 import { iconMap } from '@/app/skillData/skillData'
 import { cn } from '@/lib/utils'
 import styles from './skillCard.module.scss'

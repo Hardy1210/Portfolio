@@ -160,8 +160,8 @@ export default function Projects() {
                         <CssIcon key="css" size={25} />,
                       ]}
                       title="Booki"
-                      description="Argent Bank est une application web qui permet aux utilisateurs de gérer facilement leurs informations personnelles une fois connectée."
-                      modalDescription="La conception du projet est basée sur React en intégrant des composants réutilisables, ainsi que l'intégration du système de connexion qui permet aux utilisateurs de se connecter, de voir leurs informations relatives à leur propre profil et de changer leur pseudo s'ils le souhaitent. L'utilisation de Redux était nécessaire pour pouvoir gérer l'état global de l'application."
+                      description="Booki est l'un de mes premiers projets où j'ai intégré la page d'accueil d'un site de voyages."
+                      modalDescription="Booki est l'une de mes premières intégrations. Ma mission dans ce projet de ma formation était d'intégrer la page d'accueil de ce site web pour une agence de voyages. C'est ainsi que j'ai appris de manière plus approfondie le HTML et le CSS. La page d'accueil est responsive et s'adapte aux téléphones mobiles."
                       modalImgSrc="/images/booki/bo-4.webp"
                       modalImgAlt="Mackbook avec le site Booki"
                       modalImgSecondSrc="/images/booki/bo-3.webp"
@@ -312,7 +312,7 @@ Le développement a mis l'accent sur la responsivité du site, garantissant une 
               <Link href="#projects">
                 <div className={cn(styles.buttonProjects__container, '')}>
                   <button className={cn(styles.button__projects, '')}>
-                    Revenir a l'acceuil
+                    Revenir a l&apos;acceuil
                   </button>
                 </div>
               </Link>

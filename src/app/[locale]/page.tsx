@@ -2,46 +2,47 @@
 import { LinkedinIcon } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { ComponentPropsWithoutRef } from 'react'
-import { cn } from '../lib/utils'
-import { Button } from './_components/Button/Button'
-import Footer from './_components/Footer/Footer'
-import { Header } from './_components/Header/Header'
-import { ArrowUp } from './_components/icons/ArrowUp'
-import { CssIcon } from './_components/icons/CssIcon'
-import { FigmaIcon } from './_components/icons/FigmaIcon'
-import { GithubIcon } from './_components/icons/GithubIcon'
-import { GitLabIcon } from './_components/icons/GitLabIcon'
-import { HtmlIcon } from './_components/icons/HtmlIcon'
-import { JavascriptIcon } from './_components/icons/JavascriptIcon'
-import { MongoDbIcon } from './_components/icons/MongoDbIcon'
-import { NextIcon } from './_components/icons/NextIcon'
-import { NodeJsIcon } from './_components/icons/NodeJsIcon'
-import { NotionIcon } from './_components/icons/NotionIcon'
-import { NpmIcon } from './_components/icons/NpmIcon'
-import { PostmanIcon } from './_components/icons/PostmanIcon'
-import { ReactIcon } from './_components/icons/ReactIcon'
-import { ReactRouterIcon } from './_components/icons/ReactRouterIcon'
-import { ReduxIcon } from './_components/icons/ReduxIcon'
-import { SassIcon } from './_components/icons/SassIcon'
-import { SwaggerIcon } from './_components/icons/SwaggerIcon'
-import { TailwindIcon } from './_components/icons/TailwindIcon'
-import { TypescriptIcon } from './_components/icons/TypescriptIcon'
-import { VercelIcon } from './_components/icons/VercelIcon'
-import { ViteIcon } from './_components/icons/ViteIcon'
-import { VsCodeIcon } from './_components/icons/VsCodeIcon'
-import { WebIcon } from './_components/icons/WebIcon'
-import ProjectCard from './_components/ProjectCard/ProjectCard'
-import { Section } from './_components/Section/Section'
+import { cn } from '../../lib/utils'
+import { Button } from '../_components/Button/Button'
+import Footer from '../_components/Footer/Footer'
+import { Header } from '../_components/Header/Header'
+import { ArrowUp } from '../_components/icons/ArrowUp'
+import { CssIcon } from '../_components/icons/CssIcon'
+import { FigmaIcon } from '../_components/icons/FigmaIcon'
+import { GithubIcon } from '../_components/icons/GithubIcon'
+import { GitLabIcon } from '../_components/icons/GitLabIcon'
+import { HtmlIcon } from '../_components/icons/HtmlIcon'
+import { JavascriptIcon } from '../_components/icons/JavascriptIcon'
+import { MongoDbIcon } from '../_components/icons/MongoDbIcon'
+import { NextIcon } from '../_components/icons/NextIcon'
+import { NodeJsIcon } from '../_components/icons/NodeJsIcon'
+import { NotionIcon } from '../_components/icons/NotionIcon'
+import { NpmIcon } from '../_components/icons/NpmIcon'
+import { PostmanIcon } from '../_components/icons/PostmanIcon'
+import { ReactIcon } from '../_components/icons/ReactIcon'
+import { ReactRouterIcon } from '../_components/icons/ReactRouterIcon'
+import { ReduxIcon } from '../_components/icons/ReduxIcon'
+import { SassIcon } from '../_components/icons/SassIcon'
+import { SwaggerIcon } from '../_components/icons/SwaggerIcon'
+import { TailwindIcon } from '../_components/icons/TailwindIcon'
+import { TypescriptIcon } from '../_components/icons/TypescriptIcon'
+import { VercelIcon } from '../_components/icons/VercelIcon'
+import { ViteIcon } from '../_components/icons/ViteIcon'
+import { VsCodeIcon } from '../_components/icons/VsCodeIcon'
+import { WebIcon } from '../_components/icons/WebIcon'
+import ProjectCard from '../_components/ProjectCard/ProjectCard'
+import { Section } from '../_components/Section/Section'
 import styles from './page.module.scss'
 //skillcards y data
 import { useEffect } from 'react'
-import FadeInSection from './_components/FadeInSection/FadeInSection'
+import FadeInSection from '../_components/FadeInSection/FadeInSection'
 
-import { SkillCard } from './_components/SkillCard/SkillCard'
-import { skillData } from './skillData/skillData'
-
-//estilos de las animationes del hook fade
+import { SkillCard } from '../_components/SkillCard/SkillCard'
+import { skillData } from '../skillData/skillData'
+//traduccion
+// para utilizar la traduccion nesecitamos verificar
+//si estamos utilizando un component server o component client
+import { useI18n, useScopedI18n } from '@/locales/client'
 
 //para pre-cargar las imagenes de las modales
 const preloadImages = (imageUrls: string[]): void => {
@@ -50,13 +51,22 @@ const preloadImages = (imageUrls: string[]): void => {
     img.src = url
   })
 }
-
-const Span = ({ className, ...props }: ComponentPropsWithoutRef<'span'>) => {
+{
+  /*const Span = ({ className, ...props }: ComponentPropsWithoutRef<'span'>) => {
   return <span className={cn(className, '')} {...props} />
+}* */
 }
-
 export default function Home() {
+  // para utilizar la traduccion nesecitamos verificar
+  //si estamos utilizando un component server o component client
+  const t = useI18n()
+  const landingT = useScopedI18n('landing.introduction')
+  //const introductionT = useScopedI18n('landing.content')
+  const contentT = useScopedI18n('landing.content')
+  const projectCardArgentT = useScopedI18n('landing.projectCardsArgent')
+
   //array para la precrga de imagenes
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const imageUrls = [
     '/images/Argent-bank/ab-6.webp',
     '/images/Argent-bank/ab-7.webp',
@@ -70,7 +80,7 @@ export default function Home() {
 
   useEffect(() => {
     preloadImages(imageUrls)
-  }, [])
+  }, [imageUrls])
   ///////////////////////
   {
     /*este CODIGO SIRVE SOLO SI NO HAY MODALES QUE SE HABRAN POR CADA COMPONENTE
@@ -159,10 +169,10 @@ export default function Home() {
                       className="inline-flex flex-col items-center md:items-end md:flex-row gap-3"
                     >
                       <span className="text-7xl font-extrabold drop-shadow-xl">
-                        Hey&nbsp;!
+                        {landingT('hi')}
                       </span>
                       <span className="text-5xl font-extrabold drop-shadow-xl">
-                        Je&nbsp;m&#39;appelle
+                        {landingT('myNameIs')}
                       </span>
                     </span>
                     <h1
@@ -173,7 +183,7 @@ export default function Home() {
                       )}
                     >
                       {/* <span className="h-14 w-14 bg-slate-950 inline-block"></span>*/}
-                      Hardy,
+                      Hardy
                     </h1>
                     <h2
                       className={cn(
@@ -181,7 +191,7 @@ export default function Home() {
                         'mt-7 md:mt-10 text-3xl text-center font-semibold',
                       )}
                     >
-                      Développeur Front-end
+                      {landingT('dev')}
                     </h2>
                     <p
                       className={cn(
@@ -189,9 +199,7 @@ export default function Home() {
                         'text-2xl text-center md:text-start md:mr-20 ',
                       )}
                     >
-                      Bienvenue dans mon portfolio, un aperçu de mon parcours en
-                      tant que développeur front-end.{' '}
-                      <br className="hidden md:flex" />
+                      {landingT('welcome')} <br className="hidden md:flex" />
                     </p>
                   </div>
                 </FadeInSection>
@@ -244,7 +252,7 @@ export default function Home() {
                           'text-1xl leading-none underline',
                         )}
                       >
-                        lire.cv
+                        {landingT('read')}cv
                       </span>
                       <ArrowUp size={13} />
                     </a>
@@ -489,7 +497,7 @@ export default function Home() {
                     'mb-10 text-3xl font-semibold text-center md:text-start',
                   )}
                 >
-                  À propos
+                  {t('landing.content.about')}
                 </h2>
                 <FadeInSection>
                   <div className="grid grid-cols-1 md:grid-cols-[70%,30%] gap-7 md:gap-0 items-center justify-between">
@@ -497,22 +505,22 @@ export default function Home() {
                       <div className="flex flex-col gap-6 text-center md:text-start text-lg md:text-xl px-5 md:pl-0  md:pr-10">
                         <p className="">
                           Responsable de magasin et ancien professeur de guitare
-                          classique passionné par l'enseignement, je me suis
-                          reconverti dans le{' '}
+                          classique passionné par l&apos;enseignement, je me
+                          suis reconverti dans le
                           <strong>développement front-end</strong>, un domaine
-                          qui m'a toujours fasciné.
+                          qui m&apos;a toujours fasciné.
                         </p>
                         <p>
-                          Mon parcours diversifié en <strong>gestion</strong>,{' '}
-                          <strong>musique</strong> et{' '}
+                          Mon parcours diversifié en <strong>gestion</strong>,
+                          <strong>musique</strong> et
                           <strong>enseignement </strong>
-                          m'a apporté rigueur, créativité et une capacité à
-                          résoudre divers problèmes. Cette expérience{' '}
-                          <strong>artistique</strong> enrichit ma vision
-                          technique et facilite la{' '}
-                          <strong>collaboration</strong> sur des projets variés.
-                          Curieux et en quête de nouveaux défis, je suis prêt à
-                          mettre ma passion au service de vos idées.
+                          m&apos;a apporté rigueur, créativité et une capacité à
+                          résoudre divers problèmes. Cette expérience
+                          <strong> artistique</strong> enrichit ma vision
+                          technique et facilite la
+                          <strong> collaboration</strong> sur des projets
+                          variés. Curieux et en quête de nouveaux défis, je suis
+                          prêt à mettre ma passion au service de vos idées.
                         </p>
                       </div>
                     </div>
@@ -543,19 +551,11 @@ export default function Home() {
                   id="projects"
                   className="mb-10 text-3xl font-semibold  text-center md:text-start scroll-mt-24 md:scroll-mt-32"
                 >
-                  Projets
+                  {contentT('projects')}
                 </h2>
                 <FadeInSection>
                   <div className="mb-20 text-center text-lg md:text-xl">
-                    <p>
-                      À travers mes différents projets, j’ai exploré diverses
-                      technologies telles que [React, Redux, Sass, etc.]. Chaque
-                      réalisation m’a permis de développer mes compétences en
-                      développement web, conception d’applications et résolution
-                      de problèmes concrets. Mon portfolio reflète mon parcours
-                      d’apprentissage et ma passion pour créer des solutions
-                      efficaces.
-                    </p>
+                    <p>{contentT('projectsText')}</p>
                   </div>
                 </FadeInSection>
               </div>
@@ -585,8 +585,8 @@ export default function Home() {
                         <SwaggerIcon key="swagger" size={25} />,
                       ]}
                       title="Argent Bank"
-                      description="Argent Bank est une application web qui permet aux utilisateurs de gérer facilement leurs informations personnelles une fois connectée."
-                      modalDescription="La conception du projet est basée sur React en intégrant des composants réutilisables, ainsi que l'intégration du système de connexion qui permet aux utilisateurs de se connecter, de voir leurs informations relatives à leur propre profil et de changer leur pseudo s'ils le souhaitent. L'utilisation de Redux était nécessaire pour pouvoir gérer l'état global de l'application."
+                      description={projectCardArgentT('description')}
+                      modalDescription={projectCardArgentT('modalDescription')}
                       modalImgSrc="/images/Argent-bank/ab-6.webp"
                       modalImgAlt="MacBook Argent Bank"
                       modalImgSecondSrc="/images/Argent-bank/ab-7.webp"
@@ -686,8 +686,8 @@ Le développement a mis l'accent sur la responsivité du site, garantissant une 
                         <NodeJsIcon key="node" size={25} />,
                       ]}
                       title="724 Events"
-                      description="Projet de débogage et d'optimisation du site web 724-events développé avec React, incluant l'implémentation et la finalisation des tests unitaires et d'intégration"
-                      modalDescription="Projet de débogage pour un site événementiel développé avec React, appuyé par Node.js pour exécuter et déboguer le code JavaScript côté serveur, facilitant ainsi les tests en environnement local. J'ai pu finaliser les tests unitaires et d'intégration manquants dans le projet pour garantir la fiabilité et la performance des fonctionnalités clés du site. Un cahier des recettes a été établi pour valider rigoureusement chaque fonctionnalité attendue, assurant une expérience utilisateur fluide et stable. Grâce à une approche méthodique, toutes les anomalies ont été levées, contribuant pleinement à la finalisation de ce projet événementiel"
+                      description="Projet de débogage et d'optimisation du site web 724-events développé avec React, incluant l'implémentation et la finalisation des tests unitaires et d'intégration."
+                      modalDescription="Projet de débogage pour un site événementiel développé avec React, appuyé par Node.js pour exécuter et déboguer le code JavaScript côté serveur, facilitant ainsi les tests en environnement local. J'ai pu finaliser les tests unitaires et d'intégration manquants dans le projet pour garantir la fiabilité et la performance des fonctionnalités clés du site. Un cahier des recettes a été établi pour valider rigoureusement chaque fonctionnalité attendue, assurant une expérience utilisateur fluide et stable. Grâce à une approche méthodique, toutes les anomalies ont été levées, contribuant pleinement à la finalisation de ce projet événementiel."
                       modalImgSrc="/images/Argent-bank/ab-modal.webp"
                       modalImgAlt="MacBook 724 Events"
                       modalImgSecondSrc="/images/Argent-bank/ab-modal-2.webp"
@@ -718,7 +718,7 @@ Le développement a mis l'accent sur la responsivité du site, garantissant une 
               <div className="p-5 flex flex-col gap-3 text-center md:text-start">
                 <FadeInSection>
                   <h2 className="text-3xl font-semibold">Mes compétences</h2>
-                  <p className="text-2xl">J'adore travailler avec...</p>
+                  <p className="text-2xl">J&apos;adore travailler avec...</p>
                 </FadeInSection>
               </div>
               {skillData.map((skill, index) => (
@@ -736,7 +736,7 @@ Le développement a mis l'accent sur la responsivité du site, garantissant une 
             <div className={cn(styles.techno__content, '')}>
               <div className={cn(styles.technologies__utilises, '')}>
                 <p className="text-2xl ">
-                  J'ai pu travailler avec ces outils et technologies
+                  J&apos;ai pu travailler avec ces outils et technologies.
                 </p>
                 <ul
                   className={cn(

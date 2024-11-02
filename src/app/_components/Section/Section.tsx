@@ -1,3 +1,4 @@
+'use client'
 import { cn } from '@/lib/utils'
 import { PropsWithChildren } from 'react'
 //es importante definir un className en PropsWithChildren para que acepte las clases personalisadas en

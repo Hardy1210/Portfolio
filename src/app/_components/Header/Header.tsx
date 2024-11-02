@@ -1,3 +1,4 @@
+'use client'
 import { NavbarComponent } from '../Navbar/Navbar'
 export const Header = () => {
   return (

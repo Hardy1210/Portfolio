@@ -1,5 +1,6 @@
 // components/FooterForm.tsx
 //import emailjs from 'emailjs-com'
+'use client'
 import { cn } from '@/lib/utils'
 import React, { useState } from 'react'
 import styles from './footerForm.module.scss'

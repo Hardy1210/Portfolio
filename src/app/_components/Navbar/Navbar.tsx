@@ -1,6 +1,10 @@
 'use client'
 import { HouseIcon, MailIcon, X } from 'lucide-react'
+//para la traduction
 import Link from 'next/link'
+//import { getI18n } from 'react-i18next'
+//para traduction
+
 import { useState } from 'react'
 import { cn } from '../../../lib/utils'
 import { satisfySans } from '../../../styles/fonts'
@@ -16,6 +20,8 @@ export function NavbarComponent() {
   const toggleMenu = () => {
     setIsOpen(!isOpen)
   }
+
+  //const t = getI18n()
 
   return (
     <>
@@ -60,15 +66,7 @@ export function NavbarComponent() {
               >
                 Accueil
               </Link>
-              <Link
-                href="#projects"
-                className={cn(
-                  styles.link,
-                  'text-neutral-500 p-2 rounded-lg font-medium hover:bg-neutral-200/50 hover:text-neutral-900 dark:text-neutral-400 hover:dark:bg-neutral-950 dark:hover:text-neutral-100',
-                )}
-              >
-                Projets
-              </Link>
+
               <Link
                 href="/#about"
                 className={cn(
@@ -77,6 +75,15 @@ export function NavbarComponent() {
                 )}
               >
                 À propos
+              </Link>
+              <Link
+                href="#projects"
+                className={cn(
+                  styles.link,
+                  'text-neutral-500 p-2 rounded-lg font-medium hover:bg-neutral-200/50 hover:text-neutral-900 dark:text-neutral-400 hover:dark:bg-neutral-950 dark:hover:text-neutral-100',
+                )}
+              >
+                Projets
               </Link>
               <Link
                 href="/#contact"
@@ -112,6 +119,27 @@ export function NavbarComponent() {
             </button>
           </div>
         </div>
+        {/* Language selector */}
+        <div className="flex space-x-2">
+          <button
+            //onClick={() => changeLanguage('fr')}
+            className="text-sm text-neutral-600 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100"
+          >
+            FR
+          </button>
+          <button
+            // onClick={() => changeLanguage('en')}
+            className="text-sm text-neutral-600 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100"
+          >
+            EN
+          </button>
+          <button
+            //onClick={() => changeLanguage('es')}
+            className="text-sm text-neutral-600 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100"
+          >
+            ES
+          </button>
+        </div>
       </nav>
 
       {/* Full-Screen Modal */}
@@ -142,19 +170,20 @@ export function NavbarComponent() {
             </Link>
             <Link
               onClick={toggleMenu}
+              href="#about"
+              className="flex items-center justify-center text-2xl w-full py-5 border-b-2 border-b-blue-950 text-neutral-900 dark:text-neutral-100"
+            >
+              <AboutIcon size={25} className="mr-2" />À propos
+            </Link>
+            <Link
+              onClick={toggleMenu}
               href="#projects"
               className="flex items-center justify-center text-2xl w-full py-5 border-b-2 border-b-blue-950 text-neutral-900 dark:text-neutral-100"
             >
               <ProjectsIcon size={30} className="mr-2" />
               Projets
             </Link>
-            <Link
-              onClick={toggleMenu}
-              href="#about"
-              className="flex items-center justify-center text-2xl w-full py-5 border-b-2 border-b-blue-950 text-neutral-900 dark:text-neutral-100"
-            >
-              <AboutIcon size={25} className="mr-2" />À propos
-            </Link>
+
             <Link
               onClick={toggleMenu}
               href="#contact"
