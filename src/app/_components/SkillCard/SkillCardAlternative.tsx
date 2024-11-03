@@ -1,25 +1,25 @@
 // IconMap.ts
 'use client'
-///CUIDSAOD NO LO ESTAS UTILIZANDO
-import { iconMap } from '@/app/skillData/skillData'
+
 import { cn } from '@/lib/utils'
-import styles from './skillCard.module.scss'
+import { ReactNode } from 'react'
+import styles from './skillCardAlternative.module.scss'
 
 export type SkillCardProps = {
-  skillImgSrc: string
-  skillImgAlt: string
+  icon: ReactNode
+  secondaryIcon: ReactNode
+
   title: string
   description: string
 }
 
-export const SkillCard: React.FC<SkillCardProps> = ({
-  skillImgSrc,
-  skillImgAlt,
+export const SkillCardAlternative: React.FC<SkillCardProps> = ({
+  icon,
+  secondaryIcon,
+
   title,
   description,
 }) => {
-  // Seleccionar el ícono correspondiente basado en skillImgSrc
-  const IconComponent = iconMap[skillImgSrc]
   return (
     <div
       className={cn(
@@ -35,16 +35,12 @@ export const SkillCard: React.FC<SkillCardProps> = ({
       >
         <div className={cn(styles.icon, '')}>
           {/* para una animacion en icon transition-transform duration-500 group-hover:rotate-180 */}
-          {IconComponent && (
-            <IconComponent size={80} aria-label={skillImgAlt} />
-          )}
+          <span>{icon}</span>
         </div>
       </div>
       <div className={cn(styles.content__card, 'flex flex-col gap-2')}>
         <div>
-          {IconComponent && (
-            <IconComponent size={40} aria-label={skillImgAlt} />
-          )}
+          <span>{secondaryIcon}</span>
         </div>
         <div>
           <h4 className="text-xl font-bold">{title}</h4>

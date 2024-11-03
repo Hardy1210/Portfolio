@@ -12,6 +12,8 @@ import { FigmaIcon } from '../_components/icons/FigmaIcon'
 import { GithubIcon } from '../_components/icons/GithubIcon'
 import { GitLabIcon } from '../_components/icons/GitLabIcon'
 import { HtmlIcon } from '../_components/icons/HtmlIcon'
+import { SassIconColor } from '../_components/icons/iconsColor/SassIconColor'
+import { TailwindIconColor } from '../_components/icons/iconsColor/TailwindIconColor'
 import { JavascriptIcon } from '../_components/icons/JavascriptIcon'
 import { MongoDbIcon } from '../_components/icons/MongoDbIcon'
 import { NextIcon } from '../_components/icons/NextIcon'
@@ -33,16 +35,26 @@ import { WebIcon } from '../_components/icons/WebIcon'
 import ProjectCard from '../_components/ProjectCard/ProjectCard'
 import { Section } from '../_components/Section/Section'
 import styles from './page.module.scss'
-//skillcards y data
+
 import { useEffect } from 'react'
 import FadeInSection from '../_components/FadeInSection/FadeInSection'
+//skillcards y data
+//import { skillData } from '../skillData/skillData'
+//import { SkillCard } from '../_components/SkillCard/SkillCard'
+import { SkillCardAlternative } from '../_components/SkillCard/SkillCardAlternative'
 
-import { SkillCard } from '../_components/SkillCard/SkillCard'
-import { skillData } from '../skillData/skillData'
 //traduccion
 // para utilizar la traduccion nesecitamos verificar
 //si estamos utilizando un component server o component client
 import { useI18n, useScopedI18n } from '@/locales/client'
+import { FigmaIconColor } from '../_components/icons/iconsColor/FigmaIconColor'
+import { JavascriptIconColor } from '../_components/icons/iconsColor/JavascriptIconColor'
+import { MongoDbIconColor } from '../_components/icons/iconsColor/MongoDbIconColor'
+import { NodeJsIconColor } from '../_components/icons/iconsColor/NodeJsIconColor'
+import { PostmanIconColor } from '../_components/icons/iconsColor/PostmanIconColor'
+import { ReactIconColor } from '../_components/icons/iconsColor/ReactIconColor'
+import { SwaggerIconColor } from '../_components/icons/iconsColor/SwaggerIconColor'
+import { TypeScriptIconColor } from '../_components/icons/iconsColor/TypeScriptIconColor'
 
 //para pre-cargar las imagenes de las modales
 const preloadImages = (imageUrls: string[]): void => {
@@ -721,6 +733,7 @@ export default function Home() {
           </Section>
 
           {/*Skill*/}
+
           <Section>
             <div className={cn(styles.skill, 'grid md:grid-cols-2 gap-5')}>
               <div className="p-5 flex flex-col gap-3 text-center md:text-start">
@@ -731,55 +744,111 @@ export default function Home() {
                   <p className="text-2xl">{mySkills('like')}</p>
                 </FadeInSection>
               </div>
-              {skillData.map((skill, index) => (
-                <SkillCard
-                  key={index}
-                  skillImgSrc={skill.skillImgSrc}
-                  skillImgAlt={skill.skillImgAlt}
-                  title={skill.title}
-                  description={skill.description}
-                />
-              ))}
+              <SkillCardAlternative
+                icon={<ReactIcon size={80} />}
+                secondaryIcon={<ReactIconColor size={40} />}
+                title="React"
+                description={mySkills('descriptionReact')}
+              />
+              <SkillCardAlternative
+                icon={<NextIcon size={80} />}
+                secondaryIcon={<NextIcon size={40} />}
+                title="Next.js"
+                description={mySkills('descriptionNext')}
+              />
+
+              <SkillCardAlternative
+                icon={<JavascriptIcon size={80} />}
+                secondaryIcon={<JavascriptIconColor size={40} />}
+                title="JavaScript"
+                description={mySkills('descriptionJavascript')}
+              />
+              <SkillCardAlternative
+                icon={<SassIcon size={80} />}
+                secondaryIcon={<SassIconColor size={40} />}
+                title="Sass"
+                description={mySkills('descriptionSass')}
+              />
+              <SkillCardAlternative
+                icon={<TailwindIcon size={80} />}
+                secondaryIcon={<TailwindIconColor size={40} />}
+                title="Tailwind"
+                description={mySkills('descriptionTailwind')}
+              />
             </div>
           </Section>
+
           <Section>
             <div className={cn(styles.techno__content, '')}>
               <div className={cn(styles.technologies__utilises, '')}>
-                <p className="text-2xl ">{mySkills('worked')}</p>
-                <ul
-                  className={cn(
-                    styles.icon__skills,
-                    'mt-20 flex flex-row justify-evenly flex-wrap gap-7',
-                  )}
-                >
-                  <li>
-                    <GithubIcon size={70} />
-                  </li>
-                  <li>
-                    <GitLabIcon size={70} />
-                  </li>
-                  <li className="">
-                    <TypescriptIcon className="" size={70} />
-                  </li>
-                  <li className="">
-                    <SwaggerIcon size={70} />
-                  </li>
-                  <li className="">
-                    <NodeJsIcon size={70} />
-                  </li>
-                  <li className="">
-                    <MongoDbIcon size={70} />
-                  </li>
-                  <li>
-                    <PostmanIcon size={70} />
-                  </li>
-                  <li>
-                    <FigmaIcon size={70} />
-                  </li>
-                  <li className="">
-                    <NotionIcon className="" size={70} />
-                  </li>
-                </ul>
+                <p className="text-2xl">{mySkills('worked')}</p>
+                <div className="mt-20">
+                  <div className="flex w-full items-center whitespace-nowrap relative [mask-image:linear-gradient(to_right,rgba(0,0,0,0)_0%,rgb(0,0,0)_12.5%,rgb(0,0,0)_87.5%,rgba(0,0,0,0)_100%)] group">
+                    <ul
+                      className={cn(
+                        styles.icon__skills,
+                        'inline-flex items-center animate-marquee group-hover:[animation-play-state:paused]',
+                      )}
+                    >
+                      <li className="mx-5">
+                        <GithubIcon size={70} />
+                      </li>
+                      <li className="mx-5">
+                        <TypeScriptIconColor size={70} />
+                      </li>
+                      <li className="mx-5">
+                        <SwaggerIconColor size={70} />
+                      </li>
+                      <li className="mx-5">
+                        <NodeJsIconColor size={70} />
+                      </li>
+                      <li className="mx-5">
+                        <GitLabIcon size={70} />
+                      </li>
+                      <li className="mx-5">
+                        <MongoDbIconColor size={70} />
+                      </li>
+                      <li className="mx-5">
+                        <PostmanIconColor size={70} />
+                      </li>
+                      <li className="mx-5">
+                        <FigmaIconColor size={70} />
+                      </li>
+                      <li className="mx-5">
+                        <NotionIcon size={70} />
+                      </li>
+                    </ul>
+                    <ul className="inline-flex absolute items-center animate-marquee2 group-hover:[animation-play-state:paused]">
+                      <li className="mx-5">
+                        <GithubIcon size={70} />
+                      </li>
+                      <li className="mx-5">
+                        <TypeScriptIconColor size={70} />
+                      </li>
+                      <li className="mx-5">
+                        <SwaggerIconColor size={70} />
+                      </li>
+                      <li className="mx-5">
+                        <NodeJsIconColor size={70} />
+                      </li>
+                      <li className="mx-5">
+                        <GitLabIcon size={70} />
+                      </li>
+                      <li className="mx-5">
+                        <MongoDbIconColor size={70} />
+                      </li>
+                      <li className="mx-5">
+                        <PostmanIconColor size={70} />
+                      </li>
+                      <li className="mx-5">
+                        <FigmaIconColor size={70} />
+                      </li>
+                      <li className="mx-5">
+                        <NotionIcon size={70} />
+                      </li>
+                    </ul>
+                  </div>
+                </div>
               </div>
             </div>
           </Section>

@@ -89,6 +89,16 @@ export default {
       like: 'Me encanta trabajar con...',
       worked:
         'He tenido la oportunidad de trabajar con estas herramientas y tecnologías.',
+      descriptionReact:
+        'React me ha abierto las puertas a un universo rico en posibilidades.',
+      descriptionNext:
+        'Siendo Next mi primer framework, concebí este portafolio como mi proyecto inaugural.',
+      descriptionJavascript:
+        'JavaScript es mi imprescindible. Como primer lenguaje de programación que aprendí, me introdujo al mundo del desarrollo.',
+      descriptionSass:
+        'Gracias a Sass, organizo los estilos de mis proyectos de manera estructurada y mantenible.',
+      descriptionTailwind:
+        'Gracias a Tailwind, puedo estilizar mis proyectos de manera rápida y coherente, mientras mantengo una gran flexibilidad.',
     },
     work: {
       idea: '¿Tienes un proyecto en mente?',

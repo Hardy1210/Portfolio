@@ -87,11 +87,21 @@ export default {
       skill: 'My skills',
       like: "J'adore travailler avec...",
       worked: "J'ai pu travailler avec ces outils et technologies",
+      descriptionReact:
+        "React m'a ouvert les portes d'un univers riche en possibilités.",
+      descriptionNext:
+        "Next étant mon premier framework, j'ai conçu ce portfolio comme mon projet inaugural.",
+      descriptionJavascript:
+        "JavaScript est mon incontournable. En tant que premier langage de programmation que j'ai appris, il m'a initié au monde du développement.",
+      descriptionSass:
+        "Grâce à Sass, j'organise les styles de mes projets de manière structurée et maintenable.",
+      descriptionTailwind:
+        'Grâce à Tailwind, je peux styliser mes projets de manière rapide et cohérente, tout en conservant une grande flexibilité.',
     },
     work: {
       idea: 'Un projet en tête ?',
       workTogether: 'Travaillons ensemble',
-      collaboration: 'Je serais ravi de collaborer avec vous. Parlons-en.',
+      collaboration: 'Je serais ravi de collaborer avec vous.',
       speak: 'Parlons-en !.',
     },
     footer: {

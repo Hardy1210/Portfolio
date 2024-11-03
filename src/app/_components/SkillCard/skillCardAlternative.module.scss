@@ -1,0 +1,17 @@
+.skill__container {
+  border: 3px solid #171717;
+  .skill__layer {
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      background-image: url('/images/g.webp');
+      opacity: 0.1; // Controla la intensidad del granulado
+      filter: grayscale(3);
+    }
+  }
+}
