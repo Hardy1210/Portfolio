@@ -1,41 +1,54 @@
 'use client'
-import { cn } from '@/lib/utils'
+import { FollowCursor } from '@/app/_components/FollowCursor/FollowCursor'
+import { LightHouseIcon } from '@/app/_components/icons/LightHouseIcon'
+import { PhotoshopIcon } from '@/app/_components/icons/PhotoshopIcon'
+import { WaveIcon } from '@/app/_components/icons/WaveIcon'
 import Link from 'next/link'
-import { useEffect } from 'react'
-import { FollowCursor } from '../_components/FollowCursor/FollowCursor'
-import { Header } from '../_components/Header/Header'
-import { CssIcon } from '../_components/icons/CssIcon'
-import { GithubIcon } from '../_components/icons/GithubIcon'
-import { HtmlIcon } from '../_components/icons/HtmlIcon'
-import { JavascriptIcon } from '../_components/icons/JavascriptIcon'
-import { LightHouseIcon } from '../_components/icons/LightHouseIcon'
-import { MongoDbIcon } from '../_components/icons/MongoDbIcon'
-import { NodeJsIcon } from '../_components/icons/NodeJsIcon'
-import { PhotoshopIcon } from '../_components/icons/PhotoshopIcon'
-import { ReactIcon } from '../_components/icons/ReactIcon'
-import { ReactRouterIcon } from '../_components/icons/ReactRouterIcon'
-import { ReduxIcon } from '../_components/icons/ReduxIcon'
-import { SassIcon } from '../_components/icons/SassIcon'
-import { SwaggerIcon } from '../_components/icons/SwaggerIcon'
-import { ViteIcon } from '../_components/icons/ViteIcon'
-import { WaveIcon } from '../_components/icons/WaveIcon'
-import { WebIcon } from '../_components/icons/WebIcon'
-import ProjectCard from '../_components/ProjectCard/ProjectCard'
-import { Section } from '../_components/Section/Section'
-import styles from './page.module.scss'
-//animationes de fade
-import FadeInSection from '../_components/FadeInSection/FadeInSection'
+import { cn } from '../../../lib/utils'
+import { Header } from '../../_components/Header/Header'
+import { CssIcon } from '../../_components/icons/CssIcon'
+import { GithubIcon } from '../../_components/icons/GithubIcon'
+import { HtmlIcon } from '../../_components/icons/HtmlIcon'
+import { JavascriptIcon } from '../../_components/icons/JavascriptIcon'
+import { MongoDbIcon } from '../../_components/icons/MongoDbIcon'
+import { NodeJsIcon } from '../../_components/icons/NodeJsIcon'
+import { ReactIcon } from '../../_components/icons/ReactIcon'
+import { ReactRouterIcon } from '../../_components/icons/ReactRouterIcon'
+import { ReduxIcon } from '../../_components/icons/ReduxIcon'
+import { SassIcon } from '../../_components/icons/SassIcon'
+import { SwaggerIcon } from '../../_components/icons/SwaggerIcon'
+import { ViteIcon } from '../../_components/icons/ViteIcon'
+import { WebIcon } from '../../_components/icons/WebIcon'
+import ProjectCard from '../../_components/ProjectCard/ProjectCard'
+import { Section } from '../../_components/Section/Section'
 
-//para pre-cargar las imagenes de las modales
+import styles from './page.module.scss'
+//skillcards y data
+import FadeInSection from '../../_components/FadeInSection/FadeInSection'
+
+//traduccion
+// para utilizar la traduccion nesecitamos verificar
+//si estamos utilizando un component server o component client
+import { useScopedI18n } from '@/locales/client'
+
+export default function Projects() {
+  //const introductionT = useScopedI18n('landing.content')
+  const contentT = useScopedI18n('landing.content')
+  const projectCardArgentT = useScopedI18n('landing.projectCardsArgent')
+
+  //array para la precrga de imagenes
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  {
+    /** 
+    //para pre-cargar las imagenes de las modales
 const preloadImages = (imageUrls: string[]): void => {
   imageUrls.forEach((url) => {
     const img = document.createElement('img')
     img.src = url
   })
 }
-export default function Projects() {
-  //array para la precrga de imagenes
-  const imageUrls = [
+    
+    const imageUrls = [
     '/images/Argent-bank/ab-6.webp',
     '/images/Argent-bank/ab-7.webp',
     '/images/kasa/ka-mac.png',
@@ -51,8 +64,10 @@ export default function Projects() {
   ]
   useEffect(() => {
     preloadImages(imageUrls)
-  }, [])
-  ///////////////////////
+  }, [imageUrls])
+  ///////////////////////*/
+  }
+
   return (
     <>
       <div className={cn(styles.container, 'relative ')}>
@@ -70,7 +85,7 @@ export default function Projects() {
                 id="projects"
                 className="mb-20 text-4xl font-semibold scroll-mt-16 text-center md:text-start"
               >
-                Projets
+                {contentT('projects')}
               </h2>
 
               <ul
@@ -174,7 +189,7 @@ export default function Projects() {
                     />
                   </FadeInSection>
                 </li>
-                <li>
+                <li className={cn(styles.fade)}>
                   <FadeInSection>
                     <ProjectCard
                       layerImageSrc="/images/arb.webp"
@@ -193,8 +208,8 @@ export default function Projects() {
                         <SwaggerIcon key="swagger" size={25} />,
                       ]}
                       title="Argent Bank"
-                      description="Argent Bank est une application web qui permet aux utilisateurs de gérer facilement leurs informations personnelles une fois connectée."
-                      modalDescription="La conception du projet est basée sur React en intégrant des composants réutilisables, ainsi que l'intégration du système de connexion qui permet aux utilisateurs de se connecter, de voir leurs informations relatives à leur propre profil et de changer leur pseudo s'ils le souhaitent. L'utilisation de Redux était nécessaire pour pouvoir gérer l'état global de l'application."
+                      description={projectCardArgentT('description')}
+                      modalDescription={projectCardArgentT('modalDescription')}
                       modalImgSrc="/images/Argent-bank/ab-6.webp"
                       modalImgAlt="MacBook Argent Bank"
                       modalImgSecondSrc="/images/Argent-bank/ab-7.webp"
@@ -213,7 +228,8 @@ export default function Projects() {
                     />
                   </FadeInSection>
                 </li>
-                <li>
+
+                <li className={cn(styles.fade)}>
                   <FadeInSection>
                     <ProjectCard
                       layerImageSrc="/images/Kasa/kasa.webp"
@@ -246,7 +262,8 @@ L'application offre une navigation fluide entre les pages grâce à React Router
                     />
                   </FadeInSection>
                 </li>
-                <li>
+
+                <li className={cn(styles.fade)}>
                   <FadeInSection>
                     <ProjectCard
                       layerImageSrc="/images/ohmyfood/ohmyfood-w.webp"
@@ -277,8 +294,7 @@ Le développement a mis l'accent sur la responsivité du site, garantissant une 
                     />
                   </FadeInSection>
                 </li>
-
-                <li>
+                <li className={cn(styles.fade)}>
                   <FadeInSection>
                     <ProjectCard
                       layerImageSrc="/images/724/724-w.webp"
@@ -293,8 +309,8 @@ Le développement a mis l'accent sur la responsivité du site, garantissant une 
                         <NodeJsIcon key="node" size={25} />,
                       ]}
                       title="724 Events"
-                      description="Projet de débogage et d'optimisation du site web 724-events développé avec React, incluant l'implémentation et la finalisation des tests unitaires et d'intégration"
-                      modalDescription="Projet de débogage pour un site événementiel développé avec React, appuyé par Node.js pour exécuter et déboguer le code JavaScript côté serveur, facilitant ainsi les tests en environnement local. J'ai pu finaliser les tests unitaires et d'intégration manquants dans le projet pour garantir la fiabilité et la performance des fonctionnalités clés du site. Un cahier des recettes a été établi pour valider rigoureusement chaque fonctionnalité attendue, assurant une expérience utilisateur fluide et stable. Grâce à une approche méthodique, toutes les anomalies ont été levées, contribuant pleinement à la finalisation de ce projet événementiel"
+                      description="Projet de débogage et d'optimisation du site web 724-events développé avec React, incluant l'implémentation et la finalisation des tests unitaires et d'intégration."
+                      modalDescription="Projet de débogage pour un site événementiel développé avec React, appuyé par Node.js pour exécuter et déboguer le code JavaScript côté serveur, facilitant ainsi les tests en environnement local. J'ai pu finaliser les tests unitaires et d'intégration manquants dans le projet pour garantir la fiabilité et la performance des fonctionnalités clés du site. Un cahier des recettes a été établi pour valider rigoureusement chaque fonctionnalité attendue, assurant une expérience utilisateur fluide et stable. Grâce à une approche méthodique, toutes les anomalies ont été levées, contribuant pleinement à la finalisation de ce projet événementiel."
                       modalImgSrc="/images/Argent-bank/ab-modal.webp"
                       modalImgAlt="MacBook 724 Events"
                       modalImgSecondSrc="/images/Argent-bank/ab-modal-2.webp"
@@ -311,9 +327,11 @@ Le développement a mis l'accent sur la responsivité du site, garantissant une 
               {/*button LINK  */}
               <Link href="#projects">
                 <div className={cn(styles.buttonProjects__container, '')}>
-                  <button className={cn(styles.button__projects, '')}>
-                    Revenir a l&apos;acceuil
-                  </button>
+                  <Link href="/about">
+                    <button className={cn(styles.button__projects, '')}>
+                      Revenir a l&apos;acceuil
+                    </button>
+                  </Link>
                 </div>
               </Link>
             </div>

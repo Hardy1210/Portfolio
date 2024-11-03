@@ -1,0 +1,30 @@
+.select__container {
+  //width: 150px; /* Ajusta el tamaño según tus necesidades */
+}
+
+.selectedOption {
+  transition: background-color 0.3s ease;
+}
+
+.dropdownMenu {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.option {
+  transition: background-color 0.2s ease;
+}
+
+.option:hover {
+  //background-color: #e0e0e0; /* Color al pasar el mouse */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

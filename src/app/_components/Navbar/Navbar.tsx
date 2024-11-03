@@ -12,6 +12,11 @@ import { Dark } from '../icons/DarkIcon'
 import { AboutIcon } from '../icons/modals/AboutIcon'
 import { MenuIcon } from '../icons/modals/MenuIcon'
 import { ProjectsIcon } from '../icons/modals/ProjectsIcon'
+import { LocaleSelect } from '../LocaleSelect/LocaleSelect'
+
+//para la traduction
+import { useI18n } from '@/locales/client'
+import { LocaleSelectMovil } from '../LocaleSelectMovil/LocaleSelectMovil'
 import styles from './Navbar.module.scss'
 
 export function NavbarComponent() {
@@ -21,7 +26,7 @@ export function NavbarComponent() {
     setIsOpen(!isOpen)
   }
 
-  //const t = getI18n()
+  const t = useI18n()
 
   return (
     <>
@@ -50,7 +55,12 @@ export function NavbarComponent() {
               Hardy L.
             </Link>
           </div>
-          <div className={cn(styles.navbar__nav, 'hidden md:flex')}>
+          <div
+            className={cn(
+              styles.navbar__nav,
+              'hidden md:flex gap-3 items-center',
+            )}
+          >
             <div
               className={cn(
                 styles.navbar__link,
@@ -58,23 +68,23 @@ export function NavbarComponent() {
               )}
             >
               <Link
-                href="/#home"
+                href="#home"
                 className={cn(
                   styles.link,
                   'text-neutral-500 p-2 rounded-lg font-medium hover:bg-neutral-200/50 hover:text-neutral-900 dark:text-neutral-400 hover:dark:bg-neutral-950 dark:hover:text-neutral-100',
                 )}
               >
-                Accueil
+                {t('landing.nav.home')}
               </Link>
 
               <Link
-                href="/#about"
+                href="#about"
                 className={cn(
                   styles.link,
                   'text-neutral-500 p-2 rounded-lg font-medium hover:bg-neutral-200/50 hover:text-neutral-900 dark:text-neutral-400 hover:dark:bg-neutral-950 dark:hover:text-neutral-100',
                 )}
               >
-                À propos
+                {t('landing.nav.about')}
               </Link>
               <Link
                 href="#projects"
@@ -83,17 +93,21 @@ export function NavbarComponent() {
                   'text-neutral-500 p-2 rounded-lg font-medium hover:bg-neutral-200/50 hover:text-neutral-900 dark:text-neutral-400 hover:dark:bg-neutral-950 dark:hover:text-neutral-100',
                 )}
               >
-                Projets
+                {t('landing.content.projects')}
               </Link>
               <Link
-                href="/#contact"
+                href="#contact"
                 className={cn(
                   styles.link,
                   'text-neutral-500 p-2 rounded-lg font-medium hover:bg-neutral-200/50 hover:text-neutral-900 dark:text-neutral-400 hover:dark:bg-neutral-950 dark:hover:text-neutral-100',
                 )}
               >
-                Contact
+                {t('landing.nav.contact')}
               </Link>
+            </div>
+            <div>
+              {/* Language selector */}
+              <LocaleSelect />
             </div>
             <div className={cn(styles.dark__container, 'flex')}>
               <button className={styles.button}>
@@ -119,33 +133,12 @@ export function NavbarComponent() {
             </button>
           </div>
         </div>
-        {/* Language selector */}
-        <div className="flex space-x-2">
-          <button
-            //onClick={() => changeLanguage('fr')}
-            className="text-sm text-neutral-600 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100"
-          >
-            FR
-          </button>
-          <button
-            // onClick={() => changeLanguage('en')}
-            className="text-sm text-neutral-600 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100"
-          >
-            EN
-          </button>
-          <button
-            //onClick={() => changeLanguage('es')}
-            className="text-sm text-neutral-600 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100"
-          >
-            ES
-          </button>
-        </div>
       </nav>
 
       {/* Full-Screen Modal */}
       {isOpen && (
         <div
-          className={`fixed inset-0 z-50 dark:bg-neutral-900/90 backdrop-blur-xl md:hidden transition-opacity duration-100 ${
+          className={`fixed inset-0 z-50 dark:bg-neutral-900/90 backdrop-blur-2xl md:hidden transition-opacity duration-100 ${
             isOpen ? 'animate-fadeIn' : 'animate-fadeOut pointer-events-none'
           }`}
         >
@@ -166,14 +159,15 @@ export function NavbarComponent() {
               className="flex items-center justify-center text-2xl w-full py-4 border-b-2 border-b-blue-950 text-neutral-900 dark:text-neutral-100"
             >
               <HouseIcon className="mr-2" />
-              Accueil
+              {t('landing.nav.home')}
             </Link>
             <Link
               onClick={toggleMenu}
               href="#about"
               className="flex items-center justify-center text-2xl w-full py-5 border-b-2 border-b-blue-950 text-neutral-900 dark:text-neutral-100"
             >
-              <AboutIcon size={25} className="mr-2" />À propos
+              <AboutIcon size={25} className="mr-2" />
+              {t('landing.nav.about')}
             </Link>
             <Link
               onClick={toggleMenu}
@@ -181,7 +175,7 @@ export function NavbarComponent() {
               className="flex items-center justify-center text-2xl w-full py-5 border-b-2 border-b-blue-950 text-neutral-900 dark:text-neutral-100"
             >
               <ProjectsIcon size={30} className="mr-2" />
-              Projets
+              {t('landing.content.projects')}
             </Link>
 
             <Link
@@ -190,8 +184,9 @@ export function NavbarComponent() {
               className="flex items-center justify-center text-2xl w-full py-5 border-b-2 border-b-blue-950 text-neutral-900 dark:text-neutral-100"
             >
               <MailIcon className="mr-2" />
-              Contact
+              {t('landing.nav.contact')}
             </Link>
+            <LocaleSelectMovil />
           </div>
         </div>
       )}

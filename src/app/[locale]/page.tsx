@@ -58,12 +58,24 @@ const preloadImages = (imageUrls: string[]): void => {
 }
 export default function Home() {
   // para utilizar la traduccion nesecitamos verificar
-  //si estamos utilizando un component server o component client
+  // importar useScopedI18n(si vamos a utilizar las ramas del json) o
+  //useI18n(por defecto pero hara la linea mas grande si hay ramas)
+  //para lado servidor es getI18n o getScopedI18n
+
   const t = useI18n()
   const landingT = useScopedI18n('landing.introduction')
   //const introductionT = useScopedI18n('landing.content')
   const contentT = useScopedI18n('landing.content')
   const projectCardArgentT = useScopedI18n('landing.projectCardsArgent')
+  const projectCardKasa = useScopedI18n('landing.projectCardsKasa')
+  const projectCardsOhMyFood = useScopedI18n('landing.projectCardsOhMyFood')
+  const projectCard742 = useScopedI18n('landing.projectCards724')
+  //const projectCardNina = useScopedI18n('landing.projectCardsNina')
+  //const projectCardSophie = useScopedI18n('landing.projectCardsSophi')
+  //const projectCardBooki = useScopedI18n('landing.projectCardsBooki')
+
+  const mySkills = useScopedI18n('landing.skills')
+  const work = useScopedI18n('landing.work')
 
   //array para la precrga de imagenes
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -504,23 +516,21 @@ export default function Home() {
                     <div className="">
                       <div className="flex flex-col gap-6 text-center md:text-start text-lg md:text-xl px-5 md:pl-0  md:pr-10">
                         <p className="">
-                          Responsable de magasin et ancien professeur de guitare
-                          classique passionné par l&apos;enseignement, je me
-                          suis reconverti dans le
-                          <strong>développement front-end</strong>, un domaine
-                          qui m&apos;a toujours fasciné.
+                          {contentT('aboutText')}
+                          <strong>{contentT('aboutText2')}</strong>
+                          {contentT('aboutText3')}
                         </p>
                         <p>
-                          Mon parcours diversifié en <strong>gestion</strong>,
-                          <strong>musique</strong> et
-                          <strong>enseignement </strong>
-                          m&apos;a apporté rigueur, créativité et une capacité à
-                          résoudre divers problèmes. Cette expérience
-                          <strong> artistique</strong> enrichit ma vision
-                          technique et facilite la
-                          <strong> collaboration</strong> sur des projets
-                          variés. Curieux et en quête de nouveaux défis, je suis
-                          prêt à mettre ma passion au service de vos idées.
+                          {contentT('aboutText4')}
+                          <strong>{contentT('aboutText5')}</strong>,
+                          <strong>{contentT('aboutText6')}</strong>
+                          {contentT('aboutText7')}
+                          <strong>{contentT('aboutText8')}</strong>
+                          {contentT('aboutText9')}
+                          <strong>{contentT('aboutText10')}</strong>
+                          {contentT('aboutText11')}
+                          <strong>{contentT('aboutText12')}</strong>
+                          {contentT('aboutText13')}
                         </p>
                       </div>
                     </div>
@@ -623,10 +633,8 @@ export default function Home() {
                         <ReactRouterIcon key="router" size={25} />,
                       ]}
                       title="Kasa"
-                      description="Kasa est une application web de location d’appartements entre particuliers, développée avec React."
-                      modalDescription="Kasa est une application web de location d’appartements entre particuliers, conçue avec React. L'architecture du projet repose sur des composants réutilisables optimisés pour réduire la duplication de code et faciliter la maintenance. L'organisation des styles est gérée avec Sass, permettant une structuration claire et modulaire des feuilles de styles, ce qui améliore la maintenabilité du projet.
-
-L'application offre une navigation fluide entre les pages grâce à React Router et intègre un carrousel d’images interactif ainsi que des animations soignées pour enrichir l'expérience utilisateur. Elle est entièrement responsive, s'adaptant parfaitement à différents formats d'écrans pour offrir une expérience optimale sur mobile, tablette et ordinateur. L'optimisation des performances et de la gestion des ressources assure une utilisation fluide sur tout type d’appareil."
+                      description={projectCardKasa('description')}
+                      modalDescription={projectCardKasa('modalDescription')}
                       modalImgSrc="/images/kasa/ka-ph.webp"
                       modalImgAlt="Iphone Kasa"
                       modalImgSecondSrc="/images/kasa/ka-mac.png"
@@ -655,10 +663,10 @@ L'application offre une navigation fluide entre les pages grâce à React Router
                         <SassIcon key="sass" size={25} />,
                       ]}
                       title="Ohmyfood"
-                      description="OhMyFood est une site web de menus de restaurants conçue en mobile-first avec un design responsive. J'ai utilisé Sass pour structurer et optimiser les styles."
-                      modalDescription="OhMyFood est un projet réalisé dans le cadre de ma formation, visant à développer une application web pour répertorier les menus de restaurants gastronomiques. Le site a été conçu avec une approche mobile first pour assurer une expérience utilisateur optimale sur smartphones, tablettes et ordinateurs.
-
-Le développement a mis l'accent sur la responsivité du site, garantissant une adaptation fluide à tous les formats d'écrans. J'ai utilisé Sass pour structurer efficacement les styles CSS, en tirant parti de sa modularité pour créer un code maintenable et organisé. Ce projet m'a permis de travailler sur des animations CSS soignées et de suivre rigoureusement les maquettes fournies via Figma, en respectant les comportements et transitions spécifiés."
+                      description={projectCardsOhMyFood('description')}
+                      modalDescription={projectCardsOhMyFood(
+                        'modalDescription',
+                      )}
                       modalImgSrc="/images/ohmyfood/oh-4.webp"
                       modalImgAlt=""
                       modalImgSecondSrc="/images/ohmyfood/oh-3.webp"
@@ -686,8 +694,8 @@ Le développement a mis l'accent sur la responsivité du site, garantissant une 
                         <NodeJsIcon key="node" size={25} />,
                       ]}
                       title="724 Events"
-                      description="Projet de débogage et d'optimisation du site web 724-events développé avec React, incluant l'implémentation et la finalisation des tests unitaires et d'intégration."
-                      modalDescription="Projet de débogage pour un site événementiel développé avec React, appuyé par Node.js pour exécuter et déboguer le code JavaScript côté serveur, facilitant ainsi les tests en environnement local. J'ai pu finaliser les tests unitaires et d'intégration manquants dans le projet pour garantir la fiabilité et la performance des fonctionnalités clés du site. Un cahier des recettes a été établi pour valider rigoureusement chaque fonctionnalité attendue, assurant une expérience utilisateur fluide et stable. Grâce à une approche méthodique, toutes les anomalies ont été levées, contribuant pleinement à la finalisation de ce projet événementiel."
+                      description={projectCard742('description')}
+                      modalDescription={projectCard742('modalDescription')}
                       modalImgSrc="/images/Argent-bank/ab-modal.webp"
                       modalImgAlt="MacBook 724 Events"
                       modalImgSecondSrc="/images/Argent-bank/ab-modal-2.webp"
@@ -702,7 +710,7 @@ Le développement a mis l'accent sur la responsivité du site, garantissant une 
                 </li>
               </ul>
               {/*button LINK  */}
-              <Link href="/projects">
+              <Link href="/projects" locale="fr">
                 <div className={cn(styles.buttonProjects__container, '')}>
                   <button className={cn(styles.button__projects, '')}>
                     Voir plus
@@ -717,8 +725,10 @@ Le développement a mis l'accent sur la responsivité du site, garantissant une 
             <div className={cn(styles.skill, 'grid md:grid-cols-2 gap-5')}>
               <div className="p-5 flex flex-col gap-3 text-center md:text-start">
                 <FadeInSection>
-                  <h2 className="text-3xl font-semibold">Mes compétences</h2>
-                  <p className="text-2xl">J&apos;adore travailler avec...</p>
+                  <h2 className="text-3xl font-semibold">
+                    {mySkills('skill')}
+                  </h2>
+                  <p className="text-2xl">{mySkills('like')}</p>
                 </FadeInSection>
               </div>
               {skillData.map((skill, index) => (
@@ -735,9 +745,7 @@ Le développement a mis l'accent sur la responsivité du site, garantissant une 
           <Section>
             <div className={cn(styles.techno__content, '')}>
               <div className={cn(styles.technologies__utilises, '')}>
-                <p className="text-2xl ">
-                  J&apos;ai pu travailler avec ces outils et technologies.
-                </p>
+                <p className="text-2xl ">{mySkills('worked')}</p>
                 <ul
                   className={cn(
                     styles.icon__skills,
@@ -782,7 +790,7 @@ Le développement a mis l'accent sur la responsivité du site, garantissant une 
                 'flex flex-col justify-center items-center gap-6',
               )}
             >
-              <p className="text-3xl">Un projet en tête ?</p>
+              <p className="text-3xl">{work('idea')}</p>
               <FadeInSection>
                 <p
                   className={cn(
@@ -790,13 +798,13 @@ Le développement a mis l'accent sur la responsivité du site, garantissant une 
                     'text-6xl text-center md:text-start',
                   )}
                 >
-                  Travaillons ensemble
+                  {work('workTogether')}
                 </p>
               </FadeInSection>
 
               <p className="text-3xl text-center">
-                Je serais ravi de collaborer avec vous. <br />
-                Parlons-en.
+                {work('collaboration')} <br />
+                {work('speak')}
               </p>
             </div>
           </Section>

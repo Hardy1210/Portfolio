@@ -19,9 +19,22 @@ export default {
     content: {
       about: 'About',
       aboutText:
-        'Responsable de magasin et ancien professeur de guitare classique passionné par l&apos;enseignement, je me suis reconverti dans le <strong>développement front-end</strong>, un domaine qui m&apos;a toujours fasciné.',
-      aboutText2:
-        'Mon parcours diversifié en <strong>gestion</strong>, <strong>musique</strong> et <strong>enseignement </strong> m&apos;a apporté rigueur, créativité et une capacité à résoudre divers problèmes. Cette expérience<strong> artistique</strong> enrichit ma vision technique et facilite la <strong>collaboration</strong> sur des projets variés. Curieux et en quête de nouveaux défis, je suis prêt à mettre ma passion au service de vos idées.',
+        "Responsable de magasin et ancien professeur de guitare classique passionné par l'enseignement, je me suis reconverti dans le",
+      aboutText2: ' développement front-end',
+      aboutText3: ", un domaine qui m'a toujours fasciné.",
+      aboutText4: 'Mon parcours diversifié en',
+      aboutText5: ' gestion',
+      aboutText6: ' musique',
+      aboutText7: ' et',
+      aboutText8: ' enseignement',
+      aboutText9:
+        " m'a apporté rigueur, créativité et une capacité à résoudre divers problèmes. Cette expérience",
+      aboutText10: ' artistique',
+      aboutText11: ' enrichit ma vision technique et facilite la',
+      aboutText12: ' collaboration',
+      aboutText13:
+        ' sur des projets variés. Curieux et en quête de nouveaux défis, je suis prêt à mettre ma passion au service de vos idées.',
+      //
       projects: 'Projets',
       projectsText:
         'À travers mes différents projets, j’ai exploré diverses technologies telles que. Chaque réalisation m’a permis de développer mes compétences en développement web, conception d’applications et résolution de problèmes concrets. Mon portfolio reflète mon parcours d’apprentissage et ma passion pour créer des solutions efficaces.',
@@ -32,9 +45,9 @@ export default {
       description:
         'Argent Bank est une application web qui permet aux utilisateurs de gérer facilement leurs informations personnelles une fois connectée.',
       modalDescription:
-        "La conception du projet est basée sur React en intégrant des composants réutilisables, ainsi que l'intégration du système de connexion qui permet aux utilisateurs de se connecter, de voir leurs informations relatives à leur propre profil et de changer leur pseudo s'ils le souhaitent. L'utilisation de Redux était nécessaire pour pouvoir gérer l'état global de l'application.",
+        "La conception du projet est basée sur React en intégrant des composants réutilisables, ainsi que l'intégration du système de connexion qui permet aux utilisateurs de se connecter, de voir leurs informations relatives à leur propre profil et de changer leur pseudo s'ils le souhaitent. L'utilisation de Redux était nécessaire pour pouvoir gérer l'état global de l'application. Dans ce projet, j'ai eu l'opportunité de proposer, créer et documenter des endpoints avec Swagger pour gérer les appels aux APIs liés aux détails d'un compte bancaire.",
     },
-    projectcardsKasa: {
+    projectCardsKasa: {
       description:
         'Kasa est une application web de location d’appartements entre particuliers, développée avec React.',
       modalDescription:
@@ -46,13 +59,13 @@ export default {
       modalDescription:
         "OhMyFood est un projet réalisé dans le cadre de ma formation, visant à développer une application web pour répertorier les menus de restaurants gastronomiques. Le site a été conçu avec une approche mobile first pour assurer une expérience utilisateur optimale sur smartphones, tablettes et ordinateurs. Le développement a mis l'accent sur la responsivité du site, garantissant une adaptation fluide à tous les formats d'écrans. J'ai utilisé Sass pour structurer efficacement les styles CSS, en tirant parti de sa modularité pour créer un code maintenable et organisé. Ce projet m'a permis de travailler sur des animations CSS soignées et de suivre rigoureusement les maquettes fournies via Figma, en respectant les comportements et transitions spécifiés.",
     },
-    projectcards724: {
+    projectCards724: {
       description:
         "Projet de débogage et d'optimisation du site web 724-events développé avec React, incluant l'implémentation et la finalisation des tests unitaires et d'intégration.",
       modalDescription:
         "Projet de débogage pour un site événementiel développé avec React, appuyé par Node.js pour exécuter et déboguer le code JavaScript côté serveur, facilitant ainsi les tests en environnement local. J'ai pu finaliser les tests unitaires et d'intégration manquants dans le projet pour garantir la fiabilité et la performance des fonctionnalités clés du site. Un cahier des recettes a été établi pour valider rigoureusement chaque fonctionnalité attendue, assurant une expérience utilisateur fluide et stable. Grâce à une approche méthodique, toutes les anomalies ont été levées, contribuant pleinement à la finalisation de ce projet événementiel.",
     },
-    projectcardsNina: {
+    projectCardsNina: {
       description:
         'Optimisation SEO d’un site de photographie, avec ajustement des dimensions des images et restructuration sémantique du code pour un meilleur référencement.',
       modalDescription:
@@ -64,7 +77,7 @@ export default {
       modalDescription:
         "Sophie Bluel est un site web d’architecture pour lequel j’ai intégré un système dynamique de filtrage des photos des projets réalisés par l'architecte. J’ai également développé une page de connexion avec un formulaire interactif, incluant des alertes qui s’affichent en cas d’erreur dans le mot de passe ou l’e-mail. Une page d’administration a été mise en place pour permettre l’ajout et la suppression de photos des travaux de l'architecte via un modal. Pour la communication avec le backend, j'ai utilisé Swagger afin de consulter et tester les endpoints disponibles, assurant ainsi une intégration fluide et fiable.",
     },
-    projectcardsBooki: {
+    projectCardsBooki: {
       description:
         "Booki est l'un de mes premiers projets où j'ai intégré la page d'accueil d'un site de voyages.",
       modalDescription:
