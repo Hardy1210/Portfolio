@@ -8,6 +8,7 @@ import ModalProject from '../ModalProyect/ModalProject'
 import styles from './ProjectCard.module.scss'
 
 interface ProjectCardProps {
+  logoImgSrc: string
   layerImageSrc: string
   layerImageAlt: string
   secondaryImageSrc: string
@@ -30,6 +31,7 @@ interface ProjectCardProps {
 }
 
 const ProjectCard: FC<ProjectCardProps> = ({
+  logoImgSrc,
   layerImageSrc,
   layerImageAlt,
   secondaryImageSrc,
@@ -151,11 +153,22 @@ const ProjectCard: FC<ProjectCardProps> = ({
           <div
             className={cn(
               styles.modal__container,
-              'flex flex-col gap-5 px-0 sm:px-4 py-0 sm:py-4',
+              'flex flex-col gap-6 px-0 sm:px-4 py-0 sm:py-4',
             )}
           >
-            <div className={cn(styles.title__container, 'pb-5 text-center')}>
-              <h2 className="text-xl">{title}</h2>
+            <div
+              className={cn(
+                styles.title__container,
+                'pb-2 flex justify-center border-b-2 border-b-neutral-100',
+              )}
+            >
+              <Image
+                src={logoImgSrc}
+                alt={layerImageAlt}
+                width={200}
+                height={90}
+                className={cn(styles.logo)}
+              />
             </div>
             <div
               className={cn(
@@ -189,7 +202,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
               )}
             >
               <div className="flex flex-col gap-5">
-                <h3 className="pb-5 text-center text-base md:text-xl font-semibold text-neutral-500">
+                <h3 className="pb-5 text-center text-base md:text-xl font-semibold text-neutral-500 border-b-2 border-b-neutral-100">
                   Description du projet
                 </h3>
                 <ul

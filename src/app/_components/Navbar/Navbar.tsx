@@ -5,7 +5,7 @@ import Link from 'next/link'
 //import { getI18n } from 'react-i18next'
 //para traduction
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { cn } from '../../../lib/utils'
 import { satisfySans } from '../../../styles/fonts'
 import { Dark } from '../icons/DarkIcon'
@@ -21,11 +21,37 @@ import styles from './Navbar.module.scss'
 
 export function NavbarComponent() {
   const [isOpen, setIsOpen] = useState(false)
+  //para controlar las animationes de apertura y fermetura
+  const [isVisible, setIsVisible] = useState(false)
 
   const toggleMenu = () => {
-    setIsOpen(!isOpen)
+    if (isOpen) {
+      //inicia la animacion de cierre navbarmovil
+      setTimeout(() => {
+        setIsVisible(false)
+      }, 300) //duarcion de la animùation de cierre
+      setIsOpen(false)
+    } else {
+      setIsOpen(true)
+    }
   }
 
+  //use effect para descaativar el scroll del body
+  useEffect(() => {
+    if (isOpen) {
+      //activar la apertura del navBar y que trabaje con el setIsVisible
+      setIsVisible(true)
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'auto'
+    }
+    //limpiar efecto al desmontar el componente
+    return () => {
+      document.body.style.overflow = 'auto'
+    }
+  }, [isOpen])
+
+  //traduccion
   const t = useI18n()
 
   return (
@@ -136,27 +162,27 @@ export function NavbarComponent() {
       </nav>
 
       {/* Full-Screen Modal */}
-      {isOpen && (
+      {isVisible && (
         <div
-          className={`fixed inset-0 z-50 dark:bg-neutral-900/90 backdrop-blur-2xl md:hidden transition-opacity duration-100 ${
-            isOpen ? 'animate-fadeIn' : 'animate-fadeOut pointer-events-none'
+          className={`fixed inset-0 z-50 bg-neutral-50 bg-opacity-45 backdrop-blur-2xl  dark:bg-neutral-900/90 md:hidden transition-opacity duration-100 ${
+            isOpen ? 'animate-fadeIn' : 'animate-fadeOut'
           }`}
         >
           {/* <div className="absolute inset-0 bg-black/50 backdrop-blur-md"></div>*/}
 
-          <div className="absolute top-4 right-4 p-4">
+          <div className="absolute top-4 right-4">
             <button
               onClick={toggleMenu}
               className="text-gray-400 hover:text-gray-500"
             >
-              <X className="block h-6 w-6 stroke-[3]" aria-hidden="true" />
+              <X className="block stroke-[3] m-4" aria-hidden="true" />
             </button>
           </div>
           <div className="flex px-20 flex-col font-bold items-center justify-center  h-full">
             <Link
               onClick={toggleMenu}
               href="#home"
-              className="flex items-center justify-center text-2xl w-full py-4 border-b-2 border-b-blue-950 text-neutral-900 dark:text-neutral-100"
+              className="flex items-center justify-center text-2xl w-full py-5 border-b-2 border-b-neutral-900 text-neutral-900 dark:text-neutral-100 hover:text-neutral-500"
             >
               <HouseIcon className="mr-2" />
               {t('landing.nav.home')}
@@ -164,7 +190,7 @@ export function NavbarComponent() {
             <Link
               onClick={toggleMenu}
               href="#about"
-              className="flex items-center justify-center text-2xl w-full py-5 border-b-2 border-b-blue-950 text-neutral-900 dark:text-neutral-100"
+              className="flex items-center justify-center text-2xl w-full py-5 border-b-2 border-b-neutral-900 text-neutral-900 dark:text-neutral-100 hover:text-neutral-500"
             >
               <AboutIcon size={25} className="mr-2" />
               {t('landing.nav.about')}
@@ -172,7 +198,7 @@ export function NavbarComponent() {
             <Link
               onClick={toggleMenu}
               href="#projects"
-              className="flex items-center justify-center text-2xl w-full py-5 border-b-2 border-b-blue-950 text-neutral-900 dark:text-neutral-100"
+              className="flex items-center justify-center text-2xl w-full py-5 border-b-2 border-b-neutral-900 text-neutral-900 dark:text-neutral-100 hover:text-neutral-500"
             >
               <ProjectsIcon size={30} className="mr-2" />
               {t('landing.content.projects')}
@@ -181,7 +207,7 @@ export function NavbarComponent() {
             <Link
               onClick={toggleMenu}
               href="#contact"
-              className="flex items-center justify-center text-2xl w-full py-5 border-b-2 border-b-blue-950 text-neutral-900 dark:text-neutral-100"
+              className="flex items-center justify-center text-2xl w-full py-5 border-b-2 border-b-neutral-900 text-neutral-900 dark:text-neutral-100 hover:text-neutral-500"
             >
               <MailIcon className="mr-2" />
               {t('landing.nav.contact')}

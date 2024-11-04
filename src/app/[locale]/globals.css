@@ -33,7 +33,7 @@ span {
 
 @layer base {
   :root {
-    --background: 0 0% 98%;
+    --backgorund: 0 0% 98%;
     --foreground: 0 68% 5%;
     --muted: 0 16% 93%;
     --muted-foreground: 0 0% 26%;

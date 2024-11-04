@@ -40,7 +40,7 @@
         height: auto;
         /* Ajusta la altura de la imagen también */
         object-fit: contain; /* Asegura que la imagen mantenga sus proporciones */
-        transform: scale(0.35); // ajusta el tamano de la imagen
+        transform: scale(0.4); // ajusta el tamano de la imagen
       }
     }
     .secondary__layer {
@@ -153,6 +153,13 @@
           gap: 15px;
         }
       }
+    }
+  }
+}
+.modal__container {
+  .title__container {
+    .logo {
+      filter: drop-shadow(0px 6px 6px rgba(14, 14, 14, 0.244));
     }
   }
 }
