@@ -1,6 +1,8 @@
 .skill__container {
   border: 3px solid #171717;
   .skill__layer {
+    //para darle un color girs a la imagen de granulos de bakcground
+    filter: grayscale(100%);
     &::before {
       content: '';
       position: absolute;
@@ -10,7 +12,8 @@
       height: 100%;
       pointer-events: none;
       background-image: url('/images/g.webp');
-      opacity: 0.1; // Controla la intensidad del granulado
+
+      opacity: 0.09; // Controla la intensidad del granulado
       filter: grayscale(3);
     }
   }

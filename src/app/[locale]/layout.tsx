@@ -2,6 +2,8 @@ import { cn } from '@/lib/utils'
 import type { Metadata } from 'next'
 import { interSans } from '../../styles/fonts'
 import './globals.css'
+//themeProvider para el dark mode
+import { ThemeProvider } from '../_components/theme-provider'
 //providers parametrado en otro fichero para el idioma
 import { Providers } from './providers'
 
@@ -22,8 +24,15 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full">
       <body className={cn(interSans.className, 'antialiased')}>
-        {/*Providers wrap childrens para el idioma */}
-        <Providers locale={params.locale}>{children}</Providers>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {/*Providers wrap childrens para el idioma */}
+          <Providers locale={params.locale}>{children}</Providers>
+        </ThemeProvider>
 
         {/*react portal para que las modales se expandab 
         correctamente si ponemos animaciones en los elementos li de ModalProject  */}

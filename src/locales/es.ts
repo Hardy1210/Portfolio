@@ -104,12 +104,19 @@ export default {
       idea: '¿Tienes un proyecto en mente?',
       workTogether: 'Colaboremos',
       collaboration: 'La colaboración comienza aquí.',
-      speak: ' Hablemos !.',
+      speak: ' ¡Hablemos!',
     },
     footer: {
       contact: 'Contáctame',
       copyright: 'Todos los derechos reservados.',
       WorkedWith: 'Desarrollado con Next.js y alojado en Vercel',
+    },
+    footerForm: {
+      placehoderText: 'Cuentame...',
+      buttonSend: 'Enviado',
+      sendMessage:
+        'Tu mensaje ha sido enviado, me pondré en contacto contigo lo antes posible.',
+      errorMessage: 'Ocurrió un error. Lo repararé lo antes posible.',
     },
   },
 } as const

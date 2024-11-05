@@ -8,15 +8,17 @@ import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { cn } from '../../../lib/utils'
 import { satisfySans } from '../../../styles/fonts'
-import { Dark } from '../icons/DarkIcon'
 import { AboutIcon } from '../icons/modals/AboutIcon'
 import { MenuIcon } from '../icons/modals/MenuIcon'
 import { ProjectsIcon } from '../icons/modals/ProjectsIcon'
 import { LocaleSelect } from '../LocaleSelect/LocaleSelect'
-
+//darMode
+//import useDarkMode from '../hook/useDarkMode'
 //para la traduction
 import { useI18n } from '@/locales/client'
+//import { ButtonDarkMode } from '../ButtonDark/ButtonDarkMode'
 import { LocaleSelectMovil } from '../LocaleSelectMovil/LocaleSelectMovil'
+import { ModeToggle } from '../ModeToggle'
 import styles from './Navbar.module.scss'
 
 export function NavbarComponent() {
@@ -59,7 +61,7 @@ export function NavbarComponent() {
       <nav
         className={cn(
           styles.navbar,
-          'rounded-xl max-w-5xl m-auto transition-all backdrop-blur-3xl border border-neutral-200/50 dark:border-neutral-900 dark:bg-neutral-1000/80',
+          'rounded-xl max-w-5xl m-auto transition-all backdrop-blur-3xl bg-neutral-50/80 border border-neutral-200/50 dark:border-neutral-900 dark:bg-neutral-950/85',
           'relative z-10', // Ensure nav is below the modal
         )}
       >
@@ -84,7 +86,7 @@ export function NavbarComponent() {
           <div
             className={cn(
               styles.navbar__nav,
-              'hidden md:flex gap-3 items-center',
+              'hidden md:flex gap-6 items-center',
             )}
           >
             <div
@@ -136,9 +138,7 @@ export function NavbarComponent() {
               <LocaleSelect />
             </div>
             <div className={cn(styles.dark__container, 'flex')}>
-              <button className={styles.button}>
-                <Dark size={30} className="text-neutral-500" />
-              </button>
+              <ModeToggle />
             </div>
           </div>
           <div className="md:hidden flex items-center">

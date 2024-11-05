@@ -104,12 +104,19 @@ export default {
       idea: 'Got a project in mind ?',
       workTogether: "Let's collaborate",
       collaboration: 'Collaboration starts here.',
-      speak: "Let's talk !.",
+      speak: "Let's talk !",
     },
     footer: {
       contact: 'Contact me',
       copyright: 'All rights reserved.',
       WorkedWith: 'Developed with Next.js and hosted on Vercel',
+    },
+    footerForm: {
+      placehoderText: 'Tell me everything...',
+      buttonSend: 'Sent',
+      sendMessage:
+        'Your message has been sent i will get back to you as soon as possible.',
+      errorMessage: 'An error occurred. I will fix it as soon as possible.',
     },
   },
 } as const

@@ -13,11 +13,11 @@ export default {
       name: '{name}',
       dev: 'Développeur Front-end',
       welcome:
-        'Bienvenue dans mon portfolio, un aperçu de mon parcours en tant que développeur front-end.',
+        'Bienvenue dans mon portfolio, voici un aperçu de mon parcours en tant que développeur front-end.',
       read: 'Lire.',
     },
     content: {
-      about: 'About',
+      about: 'À propos',
       aboutText:
         "Responsable de magasin et ancien professeur de guitare classique passionné par l'enseignement, je me suis reconverti dans le",
       aboutText2: ' développement front-end',
@@ -25,7 +25,7 @@ export default {
       aboutText4: 'Mon parcours diversifié en',
       aboutText5: ' gestion',
       aboutText6: ' musique',
-      aboutText7: ' et',
+      aboutText7: ' et en',
       aboutText8: ' enseignement',
       aboutText9:
         " m'a apporté rigueur, créativité et une capacité à résoudre divers problèmes. Cette expérience",
@@ -37,13 +37,13 @@ export default {
       //
       projects: 'Projets',
       projectsText:
-        'À travers mes différents projets, j’ai exploré diverses technologies telles que. Chaque réalisation m’a permis de développer mes compétences en développement web, conception d’applications et résolution de problèmes concrets. Mon portfolio reflète mon parcours d’apprentissage et ma passion pour créer des solutions efficaces.',
+        'À travers mes différents projets, j’ai exploré diverses technologies. Chaque réalisation m’a permis de développer mes compétences en développement web, en conception d’applications et en résolution de problèmes concrets. Mon portfolio reflète mon parcours d’apprentissage et ma passion pour créer des solutions efficaces.',
       contact: 'Contact',
       seeMore: 'Voir plus',
     },
     projectCardsArgent: {
       description:
-        'Argent Bank est une application web qui permet aux utilisateurs de gérer facilement leurs informations personnelles une fois connectée.',
+        'Argent Bank est une application web qui permet aux utilisateurs de gérer facilement leurs informations personnelles une fois connectés.',
       modalDescription:
         "La conception du projet est basée sur React en intégrant des composants réutilisables, ainsi que l'intégration du système de connexion qui permet aux utilisateurs de se connecter, de voir leurs informations relatives à leur propre profil et de changer leur pseudo s'ils le souhaitent. L'utilisation de Redux était nécessaire pour pouvoir gérer l'état global de l'application. Dans ce projet, j'ai eu l'opportunité de proposer, créer et documenter des endpoints avec Swagger pour gérer les appels aux APIs liés aux détails d'un compte bancaire.",
     },
@@ -61,7 +61,7 @@ export default {
     },
     projectCards724: {
       description:
-        "Projet de débogage et d'optimisation du site web 724-events développé avec React, incluant l'implémentation et la finalisation des tests unitaires et d'intégration.",
+        "Projet de débogage et d'optimisation du site web 724 events développé avec React, incluant l'implémentation et la finalisation des tests unitaires et d'intégration.",
       modalDescription:
         "Projet de débogage pour un site événementiel développé avec React, appuyé par Node.js pour exécuter et déboguer le code JavaScript côté serveur, facilitant ainsi les tests en environnement local. J'ai pu finaliser les tests unitaires et d'intégration manquants dans le projet pour garantir la fiabilité et la performance des fonctionnalités clés du site. Un cahier des recettes a été établi pour valider rigoureusement chaque fonctionnalité attendue, assurant une expérience utilisateur fluide et stable. Grâce à une approche méthodique, toutes les anomalies ont été levées, contribuant pleinement à la finalisation de ce projet événementiel.",
     },
@@ -81,10 +81,10 @@ export default {
       description:
         "Booki est l'un de mes premiers projets où j'ai intégré la page d'accueil d'un site de voyages.",
       modalDescription:
-        "Booki est l'une de mes premières intégrations. Ma mission dans ce projet de ma formation était d'intégrer la page d'accueil de ce site web pour une agence de voyages. C'est ainsi que j'ai appris de manière plus approfondie le HTML et le CSS. La page d'accueil est responsive et s'adapte aux téléphones mobiles.",
+        "Booki est l'une de mes premières intégrations. Ma mission dans ce projet était d'intégrer la page d'accueil de ce site web pour une agence de voyages. C'est ainsi que j'ai appris de manière plus approfondie le HTML et le CSS. La page d'accueil est responsive et s'adapte aux téléphones mobiles.",
     },
     skills: {
-      skill: 'My skills',
+      skill: 'Mes compétences',
       like: "J'adore travailler avec...",
       worked: "J'ai pu travailler avec ces outils et technologies",
       descriptionReact:
@@ -102,12 +102,19 @@ export default {
       idea: 'Un projet en tête ?',
       workTogether: 'Travaillons ensemble',
       collaboration: 'Je serais ravi de collaborer avec vous.',
-      speak: 'Parlons-en !.',
+      speak: 'Parlons-en !',
     },
     footer: {
       contact: 'Contactez-moi',
       copyright: 'Tous droits réservés.',
       WorkedWith: 'Développé avec Next.js et hébergé sur Vercel.',
+    },
+    footerForm: {
+      placehoderText: 'Dites-moi tout...',
+      buttonSend: 'Envoyé',
+      sendMessage:
+        'Votre message a été envoyé, je reviendrai vers vous au plus vite.',
+      errorMessage: 'Une erreur est survenue. Je le réparerai au plus vite.',
     },
   },
 } as const

@@ -7,89 +7,20 @@ export const Dark = (
     <svg
       width={props.size}
       height={props.size}
-      viewBox="0 0 744.094 1052.362"
+      viewBox="0 0 17 17"
       version="1.1"
+      xmlns="http://www.w3.org/2000/svg"
       {...props}
     >
-      <path
-        style={{
-          opacity: 1,
-          fill: '#171717',
-          fillOpacity: 1,
-          fillRule: 'nonzero',
-          stroke: 'none',
-          strokeWidth: 0,
-          strokeLinejoin: 'bevel',
-          strokeMiterlimit: 4,
-          strokeDasharray: 'none',
-          strokeOpacity: 1,
-        }}
-        d="M372.047 166.182a360 360 0 0 0-360 360 360 360 0 0 0 360 360 360 360 0 0 0 360-360 360 360 0 0 0-360-360m0 50a310 310 0 0 1 310 310 310 310 0 0 1-310 310 310 310 0 0 1-310-310 310 310 0 0 1 310-310"
-      ></path>
-      <path
-        style={{
-          opacity: 1,
-          fill: '#171717',
-          fillOpacity: 1,
-          fillRule: 'nonzero',
-          stroke: 'none',
-          strokeWidth: 0,
-          strokeLinejoin: 'bevel',
-          strokeMiterlimit: 4,
-          strokeDasharray: 'none',
-          strokeOpacity: 1,
-        }}
-        d="M381.138 216.766a155 155.01 0 0 0-155 155.01 155 155.01 0 0 0 155 155.01 155 155.01 0 0 0 .48-.018 155 155.01 0 0 1 154.52 154.987 155 155.01 0 0 1-141.793 154.351 310 310 0 0 0 296.793-309.34 310 310 0 0 0-310-310m.133 619.994a155 155.01 0 0 1-.133.004v.002z"
-      ></path>
-      <circle
-        style={{
-          opacity: 1,
-          fill: '##171717',
-          fillOpacity: 1,
-          fillRule: 'nonzero',
-          stroke: 'none',
-          strokeWidth: 0,
-          strokeLinejoin: 'bevel',
-          strokeMiterlimit: 4,
-          strokeDasharray: 'none',
-          strokeOpacity: 1,
-        }}
-        cx="-947.953"
-        cy="754.752"
-        r="310"
-      ></circle>
-      <path
-        style={{
-          opacity: 1,
-          fill: '#fff',
-          fillOpacity: 1,
-          fillRule: 'nonzero',
-          stroke: 'none',
-          strokeWidth: 0,
-          strokeLinejoin: 'bevel',
-          strokeMiterlimit: 4,
-          strokeDasharray: 'none',
-          strokeOpacity: 1,
-        }}
-        d="M417.047 374.048a45 45 0 0 1-45 45 45 45 0 0 1-45-45 45 45 0 0 1 45-45 45 45 0 0 1 45 45"
-      ></path>
-      <circle
-        r="45"
-        cy="684.028"
-        cx="372.047"
-        style={{
-          opacity: 1,
-          fill: '#171717',
-          fillOpacity: 1,
-          fillRule: 'nonzero',
-          stroke: 'none',
-          strokeWidth: 0,
-          strokeLinejoin: 'bevel',
-          strokeMiterlimit: 4,
-          strokeDasharray: 'none',
-          strokeOpacity: 1,
-        }}
-      ></circle>
+      <title>Ying Yang</title>
+
+      <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g transform="translate(1.000000, 0.000000)" fill="currentColor">
+          <path d="M7.984,0.053 C3.599,0.053 0.045,3.614 0.045,8.006 C0.045,12.398 3.6,15.959 7.984,15.959 C12.368,15.959 15.923,12.398 15.923,8.006 C15.923,3.614 12.369,0.053 7.984,0.053 L7.984,0.053 Z M7.49,2.045 C8.328,2.045 9.009,2.699 9.009,3.505 C9.009,4.311 8.328,4.965 7.49,4.965 C6.65,4.965 5.971,4.311 5.971,3.505 C5.971,2.699 6.65,2.045 7.49,2.045 L7.49,2.045 Z M8.035,14.908 C4.984,14.908 2.342,10.918 8.101,7.984 C13.357,5.308 10.904,0.744 8.035,1.008 C12.41,1.008 14.974,4.119 14.974,7.958 C14.975,11.797 11.867,14.908 8.035,14.908 L8.035,14.908 Z"></path>
+
+          <ellipse cx="8.493" cy="11.445" rx="1.493" ry="1.445"></ellipse>
+        </g>
+      </g>
     </svg>
   )
 }

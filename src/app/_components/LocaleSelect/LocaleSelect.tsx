@@ -56,7 +56,7 @@ export const LocaleSelect = () => {
     <div ref={ref} className={cn(styles.select__container, 'relative')}>
       <div
         className={cn(
-          'border border-[rgb(212,212,212)] border-opacity-100 rounded-lg bg-[rgb(245,245,245)] bg-opacity-100 px-1 text-sm text-neutral-500 cursor-pointer flex items-center',
+          'border border-neutral-300/80 dark:border-neutral-600/60 rounded-lg bg-neutral-100/50 bg-opacity-100 px-1 text-sm text-neutral-500 cursor-pointer flex items-center backdrop-blur-3xl dark:bg-neutral-950',
           styles.selectedOption,
         )}
         onClick={toggleDropdown}
@@ -77,7 +77,7 @@ export const LocaleSelect = () => {
       {isOpen && (
         <ul
           className={cn(
-            'absolute left-0 mt-1 border border-neutral-200 rounded-md bg-white shadow-lg z-10 w-14',
+            'p-1 absolute left-0 mt-1 bg-[#FFFFFF]  border border-neutral-200 dark:border-neutral-500 rounded-md  dark:bg-neutral-950 shadow-lg z-10 w-16',
             styles.dropdownMenu,
           )}
         >
@@ -85,7 +85,7 @@ export const LocaleSelect = () => {
             <li
               key={option.code}
               className={cn(
-                ' flex-row justify-between px-2 py-1 hover:bg-neutral-200/50 cursor-pointer text-sm flex items-center',
+                ' flex-row gap-2 justify-evenly px-1 py-1 rounded-sm hover:bg-neutral-100 hover:text-neutral-800 cursor-pointer text-sm flex items-center focus:bg-accent focus:text-accent-foreground',
                 styles.option,
               )}
               onClick={() => handleOptionClick(option.code)}

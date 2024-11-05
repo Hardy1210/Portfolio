@@ -33,17 +33,22 @@ export const SkillCardAlternative: React.FC<SkillCardProps> = ({
           'absolute inset-0 flex justify-center items-center backdrop-blur-sm bg-black/5 transition-opacity duration-200 ease-in-out opacity-100 group-hover:opacity-0  group-hover:pointer-events-none',
         )}
       >
-        <div className={cn(styles.icon, '')}>
+        <div
+          className={cn(
+            styles.icon,
+            'transition-transform duration-500 dark:group-hover:rotate-180',
+          )}
+        >
           {/* para una animacion en icon transition-transform duration-500 group-hover:rotate-180 */}
-          <span>{icon}</span>
+          <span className="text-foreground">{icon}</span>
         </div>
       </div>
       <div className={cn(styles.content__card, 'flex flex-col gap-2')}>
         <div>
-          <span>{secondaryIcon}</span>
+          <span className="text-foreground">{secondaryIcon}</span>
         </div>
         <div>
-          <h4 className="text-xl font-bold">{title}</h4>
+          <h4 className="text-xl font-bold text-foreground">{title}</h4>
           <p>{description}</p>
         </div>
       </div>

@@ -1,7 +1,7 @@
 import type { Config } from 'tailwindcss'
 
 const config: Config = {
-  darkMode: ['class'],
+  darkMode: 'class',
   content: [
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
     './src/_components/**/*.{js,ts,jsx,tsx,mdx}',
@@ -24,6 +24,14 @@ const config: Config = {
       screens: {
         'custom-xs': { max: '344px' }, //mobiles galaxy fold
       },
+      backgroundImage: {
+        'custom-gradient':
+          'linear-gradient(to bottom right, rgba(238, 238, 238, 1) 0%, rgba(226, 226, 226, 1) 51%, rgba(186, 184, 184, 1) 100%)',
+        'dark-custom':
+          //fondo de layer para dark mode
+          'linear-gradient(90deg, rgba(218,104,56,1) 0%, rgba(240,212,85,1) 100%)',
+      },
+
       colors: {
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',

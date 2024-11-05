@@ -195,10 +195,10 @@ export default function Home() {
                       aria-hidden="true"
                       className="inline-flex flex-col items-center md:items-end md:flex-row gap-3"
                     >
-                      <span className="text-7xl font-extrabold drop-shadow-xl">
+                      <span className="text-7xl font-extrabold drop-shadow-xl text-foreground">
                         {landingT('hi')}
                       </span>
-                      <span className="text-5xl font-extrabold drop-shadow-xl">
+                      <span className="text-5xl font-extrabold drop-shadow-xl text-foreground">
                         {landingT('myNameIs')}
                       </span>
                     </span>
@@ -215,7 +215,7 @@ export default function Home() {
                     <h2
                       className={cn(
                         styles.dev,
-                        'mt-7 md:mt-10 text-3xl text-center font-semibold',
+                        'mt-7 md:mt-10 text-3xl text-center font-semibold text-foreground',
                       )}
                     >
                       {landingT('dev')}
@@ -223,7 +223,7 @@ export default function Home() {
                     <p
                       className={cn(
                         styles.front,
-                        'text-2xl text-center md:text-start md:mr-20 ',
+                        'text-2xl text-center md:text-start md:mr-10 ',
                       )}
                     >
                       {landingT('welcome')} <br className="hidden md:flex" />
@@ -233,23 +233,26 @@ export default function Home() {
                 <div
                   className={cn(styles.img__container, 'w-1/2 hidden md:flex')}
                 >
-                  <Image
+                  {/**<Image
                     src="/images/m.webp"
                     alt="Robot hand light"
                     width={409}
                     height={425}
                     className={cn(
                       styles.img,
-                      'min-w-64 h-auto object-contain md:flex dark:hidden',
+                      'min-w-64 h-auto object-contain md:flex ',
+                    )}
+                  /> */}
+                  <Image
+                    src="/images/m.webp"
+                    alt="Robot hand dark"
+                    width={409}
+                    height={425}
+                    className={cn(
+                      styles.img,
+                      ' max-w-xs md:flex hidden dark:block',
                     )}
                   />
-                  {/**<Image
-                  src="/images/m.webp"
-                  alt="Robot hand dark"
-                  width={250}
-                  height={325}
-                  className={cn(styles.img, ' max-w-xs md:flex dark:block')}
-                /> */}
                 </div>
               </div>
               <FadeInSection>
@@ -267,21 +270,26 @@ export default function Home() {
                   >
                     <Button />
                     <a
+                      onClick={() =>
+                        window.open('/cv-Hardy-LINO.pdf', '_blank')
+                      }
                       className={cn(
                         styles.read,
-                        'flex flex-row rounded-xl gap-0.5 items-center p-3 opacity-70 hover:opacity-100',
+                        'flex flex-row rounded-xl gap-1 items-center p-3 opacity-70 hover:opacity-100',
                       )}
-                      href="https://www.linkedin.com/in/hardy-lino-30a616b1/"
                     >
                       <span
                         className={cn(
                           styles.read__cv,
-                          'text-1xl leading-none underline',
+                          'flex flex-row items-center gap-1 text-1xl leading-none underline dark:text-neutral-300 cursor-pointer',
                         )}
                       >
                         {landingT('read')}cv
+                        <ArrowUp
+                          size={13}
+                          className="mt-1 dark:text-neutral-300"
+                        />
                       </span>
-                      <ArrowUp size={13} />
                     </a>
                   </div>
 
@@ -300,7 +308,7 @@ export default function Home() {
                       <GithubIcon size={30} />
                     </Link>
                     <Link
-                      href="https://www.linkedin.com/in/hardy-lino-30a616b1/"
+                      href="https://www.linkedin.com/in/hardy-lino-4b5247297/"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="transform transition duration-300 hover:scale-125"
@@ -513,7 +521,7 @@ export default function Home() {
             id="about"
             className={cn(
               styles.about__container,
-              'scroll-mt-24 md:scroll-mt-32 ',
+              'scroll-mt-24 md:scroll-mt-32',
             )}
           >
             <div className={cn(styles.bacground__middle, '')}>
@@ -521,7 +529,7 @@ export default function Home() {
                 <h2
                   className={cn(
                     styles.a__propos,
-                    'mb-10 text-3xl font-semibold text-center md:text-start',
+                    'mb-10 text-3xl font-semibold text-center md:text-start text-foreground',
                   )}
                 >
                   {t('landing.content.about')}
@@ -556,7 +564,7 @@ export default function Home() {
                           alt="Robot hand light"
                           width={250}
                           height={250}
-                          className="rounded-full border-[4px] border-solid border-[#171717]"
+                          className="rounded-full border-[4px] border-solid border-foreground"
                         />
                       </div>
                     </div>
@@ -574,7 +582,7 @@ export default function Home() {
               <div>
                 <h2
                   id="projects"
-                  className="mb-10 text-3xl font-semibold  text-center md:text-start scroll-mt-24 md:scroll-mt-32"
+                  className="mb-10 text-3xl font-semibold  text-center md:text-start scroll-mt-24 md:scroll-mt-32 text-foreground"
                 >
                   {contentT('projects')}
                 </h2>
@@ -712,7 +720,7 @@ export default function Home() {
                         <ReactIcon key="react" size={25} />,
                         <NodeJsIcon key="node" size={25} />,
                       ]}
-                      title="724 Events"
+                      title="724 events"
                       description={projectCard742('description')}
                       modalDescription={projectCard742('modalDescription')}
                       modalImgSrc="/images/724/724-squo-3.webp"
@@ -843,7 +851,7 @@ export default function Home() {
             <div className={cn(styles.skill, 'grid md:grid-cols-2 gap-5')}>
               <div className="p-5 flex flex-col gap-3 text-center md:text-start">
                 <FadeInSection>
-                  <h2 className="text-3xl font-semibold">
+                  <h2 className="text-3xl font-semibold text-foreground">
                     {mySkills('skill')}
                   </h2>
                   <p className="text-2xl">{mySkills('like')}</p>
@@ -983,7 +991,7 @@ export default function Home() {
             </div>
           </Section>
         </main>
-        <Footer />
+        <Footer className="scroll-mt-24 md:scroll-mt-32" />
       </div>
     </>
   )

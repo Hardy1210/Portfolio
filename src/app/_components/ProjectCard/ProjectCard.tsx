@@ -72,11 +72,11 @@ const ProjectCard: FC<ProjectCardProps> = ({
     <article
       className={cn(
         styles.projectCard,
-        'dark:border-neutral-900 dark:bg-neutral-1000',
+        'dark:border-neutral-900 dark:bg-neutral-950',
       )}
     >
       <div className={cn(styles.layers__container, '')}>
-        <div className={cn(styles.layer, '')}>
+        <div className={cn(styles.layer, 'bg-neutral-900')}>
           <Image
             src={layerImageSrc}
             alt={layerImageAlt}
@@ -86,7 +86,10 @@ const ProjectCard: FC<ProjectCardProps> = ({
           />
         </div>
         {/* Capa secundaria con el evento de clic */}
-        <div className={cn(styles.secondary__layer, '')} onClick={toggleModal}>
+        <div
+          className={cn(styles.secondary__layer, 'bg-custom-gradient')}
+          onClick={toggleModal}
+        >
           <Image
             src={secondaryImageSrc}
             alt={secondaryImageAlt}
@@ -99,7 +102,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
 
       <div className={cn(styles.content, '')}>
         <div className={cn(styles.header__content, '')}>
-          <div>
+          <div className="dark:border-neutral-500">
             <span className="sr-only">Green leaf</span>
             <Image
               src={headerImageSrc}
@@ -112,10 +115,12 @@ const ProjectCard: FC<ProjectCardProps> = ({
           <div className={cn(styles.icons__container)}>
             <ul className={cn(styles.icons, '')}>
               {icons.map((icon, index) => (
-                <li key={index}>{icon}</li>
+                <li className={cn(styles.iconCards, '')} key={index}>
+                  {icon}
+                </li>
               ))}
             </ul>
-            <h3>{title}</h3>
+            <h3 className="text-foreground">{title}</h3>
           </div>
         </div>
         <div className={cn(styles.text__content, '')}>
@@ -132,7 +137,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
               text="Source"
               href={repoLink}
               icon={repoIcon} // Ícono dinámico pasado por prop
-              className={cn(styles.source__git, '')}
+              className={cn(styles.source__git, ' dark:text-neutral-400')}
             />
             <ButtonLink
               text="Website"
