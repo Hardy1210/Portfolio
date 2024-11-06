@@ -30,6 +30,7 @@ const config: Config = {
         'dark-custom':
           //fondo de layer para dark mode
           'linear-gradient(90deg, rgba(218,104,56,1) 0%, rgba(240,212,85,1) 100%)',
+        'modal-variant': 'linear-gradient(to top left,#000000,#434343)',
       },
       //drop shadow de logo enverse
       dropShadow: {

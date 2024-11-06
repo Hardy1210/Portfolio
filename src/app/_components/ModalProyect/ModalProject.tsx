@@ -37,7 +37,7 @@ const Modal = ({ onClose, isClosing, children }: ModalProps) => {
         <div
           className={cn(
             styles.modal__content,
-            'relative rounded-xl bg-white dark:bg-popover max-w-5xl max-h-screen p-5 overflow-y-auto',
+            'relative rounded-xl bg-white dark:bg-modal-variant border border-neutral-700 max-w-5xl max-h-screen p-5 overflow-y-auto',
           )}
           onClick={(e) => e.stopPropagation()} // Para evitar que al hacer clic en el modal mismo lo cierre
         >

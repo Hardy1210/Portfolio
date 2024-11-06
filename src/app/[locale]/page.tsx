@@ -643,10 +643,10 @@ export default function Home() {
                 <li className={cn(styles.fade)}>
                   <FadeInSection>
                     <ProjectCard
-                      logoImgSrc="/images/kasa/k-squo-2.webp"
+                      logoImgSrc="/images/kasa/k-squo-3.webp"
                       layerImageSrc="/images/Kasa/kasa.webp"
                       layerImageAlt="logo Kasa"
-                      secondaryImageSrc="/images/kasa/k-bg.webp"
+                      secondaryImageSrc="/images/kasa/k-bg-2.webp"
                       secondaryImageAlt="MacBook Kasa"
                       headerImageSrc="/images/kasa/ka-logo.webp"
                       headerImageAlt="Logo Kasa"
@@ -757,7 +757,7 @@ export default function Home() {
                       modalDescription="Optimisation SEO pour un site web de photographie. J'ai amélioré les performances du site en optimisant les images, en réduisant leur poids, en ajustant le format et les dimensions pour correspondre au viewport, garantissant ainsi un chargement plus rapide et une meilleure expérience utilisateur. La structure du code a été révisée pour une approche sémantique, facilitant le bon référencement par les moteurs de recherche. J'ai également réalisé un rapport d'optimisation pour comparer les performances avant et après les améliorations, en m'appuyant sur différents audits, tels que Lighthouse pour les performances et WAVE pour l’accessibilité."
                       modalImgSrc="/images/nina/nina-squo-2.webp"
                       modalImgAlt="MacBook avec le site Nina Carducci"
-                      modalImgSecondSrc="/images/nina/nina-squo-1.webp"
+                      modalImgSecondSrc="/images/nina/nina-squo-3.webp"
                       modalImgSecondAlt="MacBook avec le site Nina Carducci"
                       technologies={[
                         'Html',
