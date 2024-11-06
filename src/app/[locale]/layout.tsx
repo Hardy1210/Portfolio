@@ -53,7 +53,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Hardy Lino . Frontend Developer',
     description: 'Frontend developer, React, Next.js, TypeScript',
-    images: ['/ruta/a/tu_imagen.jpg'],
+    images: ['/image/Photos/h-1.webp'],
   },
   alternates: {
     canonical: 'https://hardylino.com/',
