@@ -26,9 +26,8 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full">
       <Head>
-        {/* Meta general */}
         <title>{metadata.title}</title>
-        {/*logo de pestagna */}
+
         <link
           rel="icon"
           href="/favicon-16x16.svg"
@@ -37,7 +36,7 @@ export default function RootLayout({
         />
         <link rel="icon" href="/favicon-16x16.png" sizes="16x16" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        {/*description */}
+
         <meta name="description" content={metadata.description} />
         <meta
           name="keywords"
@@ -47,14 +46,14 @@ export default function RootLayout({
         <meta property="og:site_name" content="Hardy Lino" />
         <link rel="canonical" href="https://hardylino.com/" />
         <meta property="og:title" content="Hardy Lino Frontend Developer" />
-        {/* Open Graph */}
+
         <meta property="og:title" content={metadata.title} />
         <meta property="og:description" content={metadata.description} />
         <meta property="og:image" content="/image/Photos/h-1.webp" />
         <meta property="og:url" content="https://hardylino.com/" />
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="fr_FR" />
-        {/* Twitter Card */}
+
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={metadata.title} />
         <meta name="twitter:description" content={metadata.description} />
@@ -62,12 +61,27 @@ export default function RootLayout({
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:type" content="image/webp" />
-        {/* Hreflangs para idiomas */}
+
         <link rel="alternate" href="https://hardylino.com/es" hrefLang="es" />
         <link rel="alternate" href="https://hardylino.com/en" hrefLang="en" />
         <link rel="alternate" href="https://hardylino.com/fr" hrefLang="fr" />
-        //consulttar datos structurados rich snippets
+
         <StructuredData />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                const theme = localStorage.getItem('theme') || 'system';
+                const darkMode = theme === 'dark' || (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+                if (darkMode) {
+                  document.documentElement.classList.add('dark');
+                } else {
+                  document.documentElement.classList.remove('dark');
+                }
+              })();
+            `,
+          }}
+        />
       </Head>
       <body className={cn(interSans.className, 'antialiased')}>
         <ThemeProvider
@@ -76,12 +90,9 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {/*Providers wrap childrens para el idioma */}
           <Providers locale={params.locale}>{children}</Providers>
         </ThemeProvider>
 
-        {/*react portal para que las modales se expandab 
-        correctamente si ponemos animaciones en los elementos li de ModalProject  */}
         <div id="modal-root"></div>
       </body>
     </html>

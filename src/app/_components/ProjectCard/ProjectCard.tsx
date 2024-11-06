@@ -164,7 +164,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
             <div
               className={cn(
                 styles.title__container,
-                'pb-2 flex justify-center w-auto h-auto border-b-2 border-b-neutral-100 dark:border-b-border',
+                'pb-2 flex justify-center border-b-2 border-b-neutral-100 dark:border-b-border',
               )}
             >
               <Image
@@ -172,7 +172,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
                 alt={layerImageAlt}
                 width={200}
                 height={54}
-                className={cn(styles.logo, 'drop-shadow-custom-shadow ')}
+                className={cn(styles.logo, 'drop-shadow-custom-shadow w-48')}
               />
             </div>
             <div
@@ -181,22 +181,24 @@ const ProjectCard: FC<ProjectCardProps> = ({
                 'flex flex-col sm:flex-row justify-center items-center gap-2 max-w-full ',
               )}
             >
-              <div className="w-auto h-auto sm:w-auto">
+              <div className="">
                 <Image
                   src={modalImgSrc}
                   alt={modalImgAlt}
                   width={760}
                   height={570}
-                  className="w-full h-auto"
+                  priority
+                  className=""
                 />
               </div>
-              <div className="w-auto h-autol sm:w-auto">
+              <div className="">
                 <Image
                   src={modalImgSecondSrc}
                   alt={modalImgSecondAlt}
                   width={760}
                   height={570}
-                  className="w-full h-auto"
+                  priority
+                  className=""
                 />
               </div>
             </div>

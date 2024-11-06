@@ -9,13 +9,13 @@ import styles from './footerForm.module.scss'
 const FooterForm: React.FC = () => {
   const [userEmail, setUserEmail] = useState('')
   const [message, setMessage] = useState('')
-  const [success, setSuccess] = useState(false)
-  const [error, setError] = useState(false)
+  //const [success, setSuccess] = useState(false)
+  //const [error, setError] = useState(false)
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-
-    emailjs
+    {
+      /* emailjs
       .send(
         'YOUR_SERVICE_ID',
         'YOUR_TEMPLATE_ID',
@@ -35,7 +35,8 @@ const FooterForm: React.FC = () => {
           console.error('Failed to send email:', error)
           setError(true)
         },
-      )
+      ) */
+    }
   }
   //internationalisation
   const t = useI18n()
@@ -73,14 +74,15 @@ const FooterForm: React.FC = () => {
         <button type="submit" className={cn(styles.button, 'w-40')}>
           {t('landing.footerForm.buttonSend')}
         </button>
-        {success && (
+
+        {/**{success && (
           <p className="text-green-500">
             {t('landing.footerForm.sendMessage')}
           </p>
         )}
         {error && (
           <p className="text-red-500">{t('landing.footerForm.errorMessage')}</p>
-        )}
+        )} */}
       </div>
     </form>
   )

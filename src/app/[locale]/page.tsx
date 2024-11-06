@@ -158,7 +158,7 @@ export default function Home() {
                 )}
               >
                 <Image
-                  src="/images/m.webp"
+                  src="/images/m-1.webp"
                   alt="Robot hand light"
                   width={250}
                   height={325}
@@ -168,7 +168,7 @@ export default function Home() {
                   )}
                 />
                 <Image
-                  src="/images/m.webp"
+                  src="/images/m-1.webp"
                   alt="Robot hand dark"
                   width={250}
                   height={325}
@@ -234,7 +234,7 @@ export default function Home() {
                   className={cn(styles.img__container, 'w-1/2 hidden md:flex')}
                 >
                   {/**<Image
-                    src="/images/m.webp"
+                    src="/images/m-1.webp"
                     alt="Robot hand light"
                     width={409}
                     height={425}
@@ -244,7 +244,7 @@ export default function Home() {
                     )}
                   /> */}
                   <Image
-                    src="/images/m.webp"
+                    src="/images/m-1.webp"
                     alt="Robot hand dark"
                     width={409}
                     height={425}
@@ -660,9 +660,9 @@ export default function Home() {
                       title="Kasa"
                       description={projectCardKasa('description')}
                       modalDescription={projectCardKasa('modalDescription')}
-                      modalImgSrc="/images/kasa/ka-ph.webp"
+                      modalImgSrc="/images/kasa/ka-ph-2.webp"
                       modalImgAlt="Iphone Kasa"
-                      modalImgSecondSrc="/images/kasa/ka-mac.png"
+                      modalImgSecondSrc="/images/kasa/ka-mac-1.webp"
                       modalImgSecondAlt="MacBook Kasa"
                       technologies={['Vite', 'React', 'React router', 'Sass']}
                       repoLink="https://github.com/Hardy1210/kasa"
@@ -711,7 +711,7 @@ export default function Home() {
                       logoImgSrc="/images/724/724-squo-2.webp"
                       layerImageSrc="/images/724/724-w.webp"
                       layerImageAlt="logo 724 Events"
-                      secondaryImageSrc="/images/724/724-squo-5.webp"
+                      secondaryImageSrc="/images/724/724-squo-6.webp"
                       secondaryImageAlt="MacBook 724 Events"
                       headerImageSrc="/images/724/724-logo.webp"
                       headerImageAlt="Logo 724 Events"
