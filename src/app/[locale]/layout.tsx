@@ -13,9 +13,10 @@ import { Providers } from './providers'
 export const metadata: Metadata = {
   title: 'Hardy Lino . Frontend Developer',
   description: 'Frontend developer, React, Next.js, TypeScript',
+  metadataBase: new URL('https://hardylino.com'), // Agrega la URL base aquí
   icons: {
-    icon: '/favicon.ico', // Usa solo favicon.ico aquí
-    apple: '/apple-touch-icon.png', // Puedes agregar apple icon aquí si lo deseas
+    icon: '/favicon.ico',
+    apple: '/apple-touch-icon.png',
   },
   keywords: [
     'Frontend developer',
@@ -63,6 +64,7 @@ export const metadata: Metadata = {
     },
   },
 }
+
 export default function RootLayout({
   children,
   params,
