@@ -31,7 +31,11 @@ const config: Config = {
           //fondo de layer para dark mode
           'linear-gradient(90deg, rgba(218,104,56,1) 0%, rgba(240,212,85,1) 100%)',
       },
-
+      //drop shadow de logo enverse
+      dropShadow: {
+        inverse: '0 6px 6px rgba(255, 255, 255, 0.3)', // Clase personalizada
+        'custom-shadow': '0 6px 6px rgba(14, 14, 14, 0.244)',
+      },
       colors: {
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',

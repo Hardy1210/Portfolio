@@ -164,7 +164,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
             <div
               className={cn(
                 styles.title__container,
-                'pb-2 flex justify-center border-b-2 border-b-neutral-100',
+                'pb-2 flex justify-center border-b-2 border-b-neutral-100 dark:border-b-border',
               )}
             >
               <Image
@@ -172,7 +172,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
                 alt={layerImageAlt}
                 width={200}
                 height={90}
-                className={cn(styles.logo)}
+                className={cn(styles.logo, 'drop-shadow-custom-shadow ')}
               />
             </div>
             <div
@@ -207,7 +207,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
               )}
             >
               <div className="flex flex-col gap-5">
-                <h3 className="pb-5 text-center text-base md:text-xl font-semibold text-neutral-500 border-b-2 border-b-neutral-100">
+                <h3 className="pb-5 text-center text-base md:text-xl font-semibold text-neutral-500 border-b-2 border-b-neutral-100 dark:border-b-border dark:text-foreground">
                   Description du projet
                 </h3>
                 <ul
@@ -220,7 +220,9 @@ const ProjectCard: FC<ProjectCardProps> = ({
                     <li key={index}>{icon}</li>
                   ))}
                 </ul>
-                <p className="text-neutral-500 text-sm ">{modalDescription}</p>{' '}
+                <p className="text-neutral-500 dark:text-foreground text-sm ">
+                  {modalDescription}
+                </p>{' '}
               </div>
               <ul
                 className={cn(
@@ -231,7 +233,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
                 {technologies.map((tech, index) => (
                   <li
                     key={index}
-                    className="bg-neutral-700/10 rounded-xl px-3 py-1 text-xs"
+                    className="bg-neutral-700/10 dark:bg-neutral-600 rounded-xl px-3 py-1 text-xs text-foreground"
                   >
                     {tech}
                   </li>

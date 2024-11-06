@@ -5,23 +5,12 @@
   border: 1px solid hsl(var(--border));
   background-color: rgba(55, 65, 81, 0.1);
   padding: 10px 25px;
-  color: #374151; // text-neutral-700
+  //color: #374151; // text-neutral-700
   transition:
     background-color 0.2s ease,
     color 0.2s ease; // transition
   &:hover {
     background-color: #404040; // hover:bg-neutral-700
     color: #ffffff; // hover:text-white
-  }
-
-  // Modo oscuro
-  @media (prefers-color-scheme: dark) {
-    background-color: rgba(156, 163, 175, 0.1); // dark:bg-neutral-400/10
-    color: #9ca3af; // dark:text-neutral-400
-
-    &:hover {
-      background-color: #9ca3af; // dark:hover:bg-neutral-400
-      color: #000000; // dark:hover:text-black
-    }
   }
 }

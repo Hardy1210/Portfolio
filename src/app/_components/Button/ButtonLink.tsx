@@ -19,7 +19,11 @@ export const ButtonLink: FC<ButtonLinkProps> = ({
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className={cn(styles.button__link, className, '')}
+      className={cn(
+        styles.button__link,
+        className,
+        'text-neutral-700 dark:text-neutral-200 dark:border-neutral-400 ',
+      )}
     >
       {text}
       {icon}

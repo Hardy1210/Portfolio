@@ -61,11 +61,12 @@ span {
     --foreground: 0 17% 97%;
     --muted: 0 16% 7%;
     --muted-foreground: 0 0% 74%;
-    --popover: 0 54% 3%;
+    --popover: 0, 0%, 15%;
     --popover-foreground: 0 17% 97%;
     --card: 0 54% 3%;
     --card-foreground: 0 17% 97%;
-    --border: 0 4% 13%;
+    --border: 0 0% 20%;
+
     --input: 0 4% 13%;
     --primary: 0 0% 98%;
     --primary-foreground: 0 0% 18%;
