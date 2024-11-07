@@ -162,6 +162,7 @@ export default function Home() {
                   alt="Robot hand light"
                   width={250}
                   height={325}
+                  priority
                   className={cn(
                     styles.img,
                     'w-96 object-cover  dark:hidden text-transparent',
@@ -172,6 +173,7 @@ export default function Home() {
                   alt="Robot hand dark"
                   width={250}
                   height={325}
+                  priority
                   className={cn(
                     styles.img,
                     'hidden w-96 dark:block text-transparent',
@@ -248,6 +250,7 @@ export default function Home() {
                     alt="Robot hand dark"
                     width={409}
                     height={425}
+                    priority
                     className={cn(
                       styles.img,
                       ' max-w-xs md:flex hidden dark:block',
