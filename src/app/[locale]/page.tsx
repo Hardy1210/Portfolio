@@ -808,7 +808,7 @@ export default function Home() {
                   <FadeInSection>
                     <ProjectCard
                       logoImgSrc="/images/booki/booki-squo.webp"
-                      layerImageSrc="/images/booki/booki-w.webp"
+                      layerImageSrc="/images/booki/Booki-w.webp"
                       layerImageAlt="logo Booki"
                       secondaryImageSrc="/images/booki/bo-1.webp"
                       secondaryImageAlt="MacBook avec le site Booki"
