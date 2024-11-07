@@ -769,9 +769,9 @@ export default function Home() {
                         'Lighthouse',
                         'Wave',
                       ]}
-                      repoLink="https://github.com/Hardy1210/ArgentBank-website/tree/Redux"
+                      repoLink="https://github.com/Hardy1210/Nina-Carducci"
                       repoIcon={<GithubIcon size={20} />}
-                      repoLinkWeb="https://hardy1210.github.io/ArgentBank-website/"
+                      repoLinkWeb="https://hardy1210.github.io/Nina-Carducci/"
                       repoWebIcon={<WebIcon size={20} />}
                     />
                   </FadeInSection>
@@ -800,9 +800,9 @@ export default function Home() {
                       modalImgSecondSrc="/images/sophie/soph-4.webp"
                       modalImgSecondAlt="Mackbook Sohpie Bluel"
                       technologies={['Html', 'Css', 'Javascript', 'Swagger']}
-                      repoLink="https://github.com/Hardy1210/ArgentBank-website/tree/Redux"
+                      repoLink="https://github.com/Hardy1210/Portfolio-architecte"
                       repoIcon={<GithubIcon size={20} />}
-                      repoLinkWeb="https://hardy1210.github.io/ArgentBank-website/"
+                      repoLinkWeb=""
                       repoWebIcon={<WebIcon size={20} />}
                     />
                   </FadeInSection>
@@ -829,9 +829,9 @@ export default function Home() {
                       modalImgSecondSrc="/images/booki/bo-3.webp"
                       modalImgSecondAlt="Mackbook avec le site Booki"
                       technologies={['Html', 'Css']}
-                      repoLink="https://github.com/Hardy1210/ArgentBank-website/tree/Redux"
+                      repoLink="https://github.com/Hardy1210/Booki"
                       repoIcon={<GithubIcon size={20} />}
-                      repoLinkWeb="https://hardy1210.github.io/ArgentBank-website/"
+                      repoLinkWeb="https://hardy1210.github.io/Booki/"
                       repoWebIcon={<WebIcon size={20} />}
                     />
                   </FadeInSection>
