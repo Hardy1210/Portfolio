@@ -646,7 +646,7 @@ export default function Home() {
                       logoImgSrc="/images/Kasa/k-squo-3.webp"
                       layerImageSrc="/images/Kasa/kasa.webp"
                       layerImageAlt="logo Kasa"
-                      secondaryImageSrc="/images/kasa/k-bg-2.webp"
+                      secondaryImageSrc="/images/Kasa/k-bg-2.webp"
                       secondaryImageAlt="MacBook Kasa"
                       headerImageSrc="/images/kasa/ka-logo.webp"
                       headerImageAlt="Logo Kasa"
