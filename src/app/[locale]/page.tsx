@@ -651,7 +651,7 @@ export default function Home() {
                       layerImageAlt="logo Kasa"
                       secondaryImageSrc="/images/Kasa/k-bg-2.webp"
                       secondaryImageAlt="MacBook Kasa"
-                      headerImageSrc="/images/kasa/ka-logo.webp"
+                      headerImageSrc="/images/Kasa/ka-logo.webp"
                       headerImageAlt="Logo Kasa"
                       icons={[
                         <ViteIcon key="vite" size={25} />,
