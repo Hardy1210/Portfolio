@@ -1,16 +1,20 @@
 // middleware.ts
 import { createI18nMiddleware } from 'next-international/middleware'
-import { NextRequest } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server'
 
 const I18nMiddleware = createI18nMiddleware({
   locales: ['en', 'fr', 'es'],
   defaultLocale: 'fr',
-  resolveLocaleFromRequest: (request) => {
-    return 'fr'
-  },
+  resolveLocaleFromRequest: () => 'fr',
 })
 
 export function middleware(request: NextRequest) {
+  // Redirige a /fr si la ruta base (sin idioma) es solicitada
+  if (!request.nextUrl.pathname.startsWith('/fr')) {
+    const url = request.nextUrl.clone()
+    url.pathname = `/fr${url.pathname}`
+    return NextResponse.redirect(url)
+  }
   return I18nMiddleware(request)
 }
 
