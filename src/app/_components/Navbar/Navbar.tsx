@@ -1,5 +1,5 @@
 'use client'
-import { HouseIcon, MailIcon, X } from 'lucide-react'
+import { HouseIcon, MailIcon, MoonIcon, SunIcon, X } from 'lucide-react'
 //para la traduction
 import Link from 'next/link'
 //import { getI18n } from 'react-i18next'
@@ -13,7 +13,8 @@ import { MenuIcon } from '../icons/modals/MenuIcon'
 import { ProjectsIcon } from '../icons/modals/ProjectsIcon'
 import { LocaleSelect } from '../LocaleSelect/LocaleSelect'
 //darMode
-//import useDarkMode from '../hook/useDarkMode'
+//import useDarkMode
+import { useTheme } from 'next-themes'
 //para la traduction
 import { useI18n } from '@/locales/client'
 //import { ButtonDarkMode } from '../ButtonDark/ButtonDarkMode'
@@ -55,6 +56,7 @@ export function NavbarComponent() {
 
   //traduccion
   const t = useI18n()
+  const { setTheme } = useTheme()
 
   return (
     <>
@@ -144,7 +146,7 @@ export function NavbarComponent() {
           <div className="md:hidden flex items-center">
             <button
               onClick={toggleMenu}
-              className="inline-flex items-center justify-center rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500"
+              className="inline-flex items-center justify-center rounded-md  dark:hover:bg-neutral-700 hover:bg-neutral-200/50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500"
               aria-expanded={isOpen ? 'true' : 'false'}
             >
               <span className="sr-only">Open main menu</span>
@@ -164,7 +166,7 @@ export function NavbarComponent() {
       {/* Full-Screen Modal */}
       {isVisible && (
         <div
-          className={`fixed inset-0 z-50 bg-neutral-50 bg-opacity-45 backdrop-blur-2xl  dark:bg-neutral-900/90 md:hidden transition-opacity duration-100 ${
+          className={`fixed inset-0 z-50 bg-neutral-50 bg-opacity-45 backdrop-blur-2xl  dark:bg-neutral-900/50  md:hidden transition-opacity duration-100 ${
             isOpen ? 'animate-fadeIn' : 'animate-fadeOut'
           }`}
         >
@@ -173,7 +175,7 @@ export function NavbarComponent() {
           <div className="absolute top-4 right-4">
             <button
               onClick={toggleMenu}
-              className="text-gray-400 hover:text-gray-500"
+              className="text-gray-400 hover:text-gray-500 "
             >
               <X className="block stroke-[3] m-4" aria-hidden="true" />
             </button>
@@ -182,7 +184,7 @@ export function NavbarComponent() {
             <Link
               onClick={toggleMenu}
               href="#home"
-              className="flex items-center justify-center text-2xl w-full py-5 border-b-2 border-b-neutral-900 text-neutral-900 dark:text-neutral-100 hover:text-neutral-500"
+              className="flex items-center justify-center text-2xl w-full py-5 border-b-2 border-b-neutral-900 dark:border-b-foreground text-neutral-900 dark:text-neutral-100 hover:text-neutral-500 dark:hover:text-neutral-300"
             >
               <HouseIcon className="mr-2" />
               {t('landing.nav.home')}
@@ -190,7 +192,7 @@ export function NavbarComponent() {
             <Link
               onClick={toggleMenu}
               href="#about"
-              className="flex items-center justify-center text-2xl w-full py-5 border-b-2 border-b-neutral-900 text-neutral-900 dark:text-neutral-100 hover:text-neutral-500"
+              className="flex items-center justify-center text-2xl w-full py-5 border-b-2 border-b-neutral-900 dark:border-b-foreground text-neutral-900 dark:text-neutral-100 hover:text-neutral-500 dark:hover:text-neutral-300"
             >
               <AboutIcon size={25} className="mr-2" />
               {t('landing.nav.about')}
@@ -198,7 +200,7 @@ export function NavbarComponent() {
             <Link
               onClick={toggleMenu}
               href="#projects"
-              className="flex items-center justify-center text-2xl w-full py-5 border-b-2 border-b-neutral-900 text-neutral-900 dark:text-neutral-100 hover:text-neutral-500"
+              className="flex items-center justify-center text-2xl w-full py-5 border-b-2 border-b-neutral-900 dark:border-b-foreground text-neutral-900 dark:text-neutral-100 hover:text-neutral-500 dark:hover:text-neutral-300"
             >
               <ProjectsIcon size={30} className="mr-2" />
               {t('landing.content.projects')}
@@ -207,12 +209,32 @@ export function NavbarComponent() {
             <Link
               onClick={toggleMenu}
               href="#contact"
-              className="flex items-center justify-center text-2xl w-full py-5 border-b-2 border-b-neutral-900 text-neutral-900 dark:text-neutral-100 hover:text-neutral-500"
+              className="flex items-center justify-center text-2xl w-full py-5 border-b-2 border-b-neutral-900 dark:border-b-foreground text-neutral-900 dark:text-neutral-100 hover:text-neutral-500 dark:hover:text-neutral-300"
             >
               <MailIcon className="mr-2" />
               {t('landing.nav.contact')}
             </Link>
-            <LocaleSelectMovil />
+            <div className={cn(styles.languageMovil__container, '')}>
+              <LocaleSelectMovil />
+            </div>
+
+            <div
+              className={cn(
+                styles.darkModeMovil__container,
+                'flex flex-row gap-7 mt-20',
+              )}
+            >
+              <SunIcon
+                size={40}
+                className="cursor-pointer hover:text-neutral-600 dark:hover:text-neutral-300"
+                onClick={() => setTheme('light')}
+              />
+              <MoonIcon
+                size={40}
+                className="cursor-pointer hover:text-neutral-600 dark:hover:text-neutral-300"
+                onClick={() => setTheme('dark')}
+              />
+            </div>
           </div>
         </div>
       )}

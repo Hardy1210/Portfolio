@@ -25,8 +25,10 @@ export const LocaleSelectMovil = () => {
           <button
             key={option.code}
             className={cn(
-              'flex items-center gap-1 px-2 py-1 border-2 rounded-md bg-neutral-100 hover:bg-neutral-200 text-sm',
-              option.code === locale ? 'border-neutral-600' : 'border-gray-300',
+              'flex items-center gap-1 px-2 py-1 border-2 rounded-md dark:text-neutral-700 bg-neutral-100 hover:bg-neutral-200 text-sm',
+              option.code === locale
+                ? 'border-neutral-600 dark:border-yellow-500'
+                : 'border-gray-300 dark:border-neutral-800',
             )}
             onClick={() => handleOptionClick(option.code)}
           >
