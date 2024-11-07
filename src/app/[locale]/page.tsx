@@ -643,7 +643,7 @@ export default function Home() {
                 <li className={cn(styles.fade)}>
                   <FadeInSection>
                     <ProjectCard
-                      logoImgSrc="/images/kasa/k-squo-3.webp"
+                      logoImgSrc="/images/Kasa/k-squo-3.webp"
                       layerImageSrc="/images/Kasa/kasa.webp"
                       layerImageAlt="logo Kasa"
                       secondaryImageSrc="/images/kasa/k-bg-2.webp"
@@ -660,9 +660,9 @@ export default function Home() {
                       title="Kasa"
                       description={projectCardKasa('description')}
                       modalDescription={projectCardKasa('modalDescription')}
-                      modalImgSrc="/images/kasa/ka-ph-2.webp"
+                      modalImgSrc="/images/Kasa/ka-ph-2.webp"
                       modalImgAlt="Iphone Kasa"
-                      modalImgSecondSrc="/images/kasa/ka-mac-1.webp"
+                      modalImgSecondSrc="/images/Kasa/kasa-1.webp"
                       modalImgSecondAlt="MacBook Kasa"
                       technologies={['Vite', 'React', 'React router', 'Sass']}
                       repoLink="https://github.com/Hardy1210/kasa"

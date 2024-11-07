@@ -75,7 +75,7 @@ export default function RootLayout({
   }
 }>) {
   return (
-    <html lang={params.locale} className="h-full">
+    <html lang={params.locale} className="h-full" suppressHydrationWarning>
       <Head>
         <StructuredData />
         <script
@@ -109,6 +109,11 @@ export default function RootLayout({
     </html>
   )
 }
+{
+  /** en el htmml para quitar error de el darkmode
+  suppressHydrationWarning */
+}
+
 {
   /**<title>{metadata.title}</title>
 
