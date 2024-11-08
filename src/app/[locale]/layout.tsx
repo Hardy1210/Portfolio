@@ -78,21 +78,6 @@ export default function RootLayout({
     <html lang={params.locale} className="h-full" suppressHydrationWarning>
       <Head>
         <StructuredData />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                const theme = localStorage.getItem('theme') || 'system';
-                const darkMode = theme === 'dark' || (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
-                if (darkMode) {
-                  document.documentElement.classList.add('dark');
-                } else {
-                  document.documentElement.classList.remove('dark');
-                }
-              })();
-            `,
-          }}
-        />
       </Head>
       <body className={cn(interSans.className, 'antialiased')}>
         <ThemeProvider
@@ -113,7 +98,24 @@ export default function RootLayout({
   /** en el htmml para quitar error de el darkmode
   suppressHydrationWarning */
 }
-
+{
+  /*
+  para el dark mode en el head si hay problema <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                const theme = localStorage.getItem('theme') || 'system';
+                const darkMode = theme === 'dark' || (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+                if (darkMode) {
+                  document.documentElement.classList.add('dark');
+                } else {
+                  document.documentElement.classList.remove('dark');
+                }
+              })();
+            `,
+          }}
+        /> */
+}
 {
   /**<title>{metadata.title}</title>
 

@@ -1,20 +1,22 @@
 // middleware.ts
+//attention problemme avec le middleware que ne marceh pas, oblige d'utiliser
+//next.confog.mjs pour valide et redirige la lange par default de l'internationalisation
+//e que l'utilizateur arrive a la bon page url
 import { createI18nMiddleware } from 'next-international/middleware'
-import { NextRequest, NextResponse } from 'next/server'
+import { NextRequest } from 'next/server'
 
 const I18nMiddleware = createI18nMiddleware({
   locales: ['en', 'fr', 'es'],
   defaultLocale: 'fr',
-  resolveLocaleFromRequest: () => 'fr',
+
+  urlMappingStrategy: 'rewrite',
+  resolveLocaleFromRequest: (request) => {
+    // Do your logic here to resolve the locale
+    return 'fr'
+  },
 })
 
 export function middleware(request: NextRequest) {
-  // Redirige a /fr si la ruta base (sin idioma) es solicitada
-  if (!request.nextUrl.pathname.startsWith('/fr')) {
-    const url = request.nextUrl.clone()
-    url.pathname = `/fr${url.pathname}`
-    return NextResponse.redirect(url)
-  }
   return I18nMiddleware(request)
 }
 
