@@ -5,7 +5,9 @@ import './globals.css'
 import { ThemeProvider } from '../_components/theme-provider'
 //providers parametrado en otro fichero para el idioma
 //import SEO from '../_components/SEO/SEO'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 import { Metadata } from 'next'
+
 import Head from 'next/head'
 import StructuredData from '../_components/RichSnippets/StructuredData'
 import { Providers } from './providers'
@@ -90,6 +92,7 @@ export default function RootLayout({
         </ThemeProvider>
 
         <div id="modal-root"></div>
+        <SpeedInsights />
       </body>
     </html>
   )
