@@ -2,6 +2,7 @@ import type { Config } from 'tailwindcss'
 
 const config: Config = {
   darkMode: 'class',
+  //esto indica donde estas utilizando los estilos
   content: [
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
     './src/_components/**/*.{js,ts,jsx,tsx,mdx}',

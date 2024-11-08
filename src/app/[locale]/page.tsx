@@ -38,6 +38,7 @@ import { WebIcon } from '../_components/icons/WebIcon'
 import ProjectCard from '../_components/ProjectCard/ProjectCard'
 import { Section } from '../_components/Section/Section'
 import styles from './page.module.scss'
+//import Script from 'next/script'
 
 import { useEffect, useRef, useState } from 'react'
 import FadeInSection from '../_components/FadeInSection/FadeInSection'
@@ -267,9 +268,9 @@ export default function Home() {
                   >
                     <Button />
                     <a
-                      onClick={() =>
-                        window.open('/cv-Hardy-LINO.pdf', '_blank')
-                      }
+                      href="/cv-Hardy-LINO.pdf"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className={cn(
                         styles.read,
                         'flex flex-row rounded-xl gap-1 items-center p-3 opacity-70 hover:opacity-100',

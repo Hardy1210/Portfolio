@@ -8,12 +8,6 @@ import { NextRequest } from 'next/server'
 const I18nMiddleware = createI18nMiddleware({
   locales: ['en', 'fr', 'es'],
   defaultLocale: 'fr',
-
-  urlMappingStrategy: 'rewrite',
-  resolveLocaleFromRequest: (request) => {
-    // Do your logic here to resolve the locale
-    return 'fr'
-  },
 })
 
 export function middleware(request: NextRequest) {

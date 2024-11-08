@@ -7,8 +7,9 @@ import { ThemeProvider } from '../_components/theme-provider'
 //import SEO from '../_components/SEO/SEO'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { Metadata } from 'next'
-
-import Head from 'next/head'
+//cuidado con estos dos imports no los importas por que next se actuamlizo
+//import Head from 'next/head'
+//import StructuredData from '../_components/RichSnippets/StructuredData'
 import StructuredData from '../_components/RichSnippets/StructuredData'
 import { Providers } from './providers'
 
@@ -76,12 +77,12 @@ export default function RootLayout({
     locale: string
   }
 }>) {
+  // Datos estructurados JSON-LD
+
   return (
     <html lang={params.locale} className="h-full" suppressHydrationWarning>
-      <Head>
-        <StructuredData />
-      </Head>
       <body className={cn(interSans.className, 'antialiased')}>
+        <StructuredData />
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
