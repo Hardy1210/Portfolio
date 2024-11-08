@@ -98,12 +98,18 @@ export default function Home() {
   const imageUrls = [
     '/images/Argent-bank/ab-6.webp',
     '/images/Argent-bank/ab-7.webp',
-    '/images/kasa/ka-mac.png',
-    '/images/kasa/ka-ph.webp',
+    '/images/Kasa/ka-ph-2.webp',
+    '/images/Kasa/kasa-1.webp',
     '/images/ohmyfood/oh-4.webp',
     '/images/ohmyfood/oh-3.webp',
     '/images/Argent-bank/ab-modal-2.webp',
     '/images/Argent-bank/ab-modal.webp',
+    '/images/booki/bo-4.webp',
+    '/images/booki/bo-3.webp',
+    '/images/sophie/soph-5.webp',
+    '/images/sophie/soph-4.webp',
+    '/images/nina/nina-squo-2.webp',
+    '/images/nina/nina-squo-3.webp',
   ]
 
   useEffect(() => {
@@ -735,7 +741,13 @@ export default function Home() {
                 </li>
                 {showAll && (
                   <>
-                    <li ref={newItemsRef} className={cn(styles.fadeIn__up, '')}>
+                    <li
+                      ref={newItemsRef}
+                      className={cn(
+                        styles.fadeIn__up,
+                        'scroll-mt-24 md:scroll-mt-24',
+                      )}
+                    >
                       <FadeInSection>
                         <ProjectCard
                           logoImgSrc="/images/nina/nina-squo.webp"
