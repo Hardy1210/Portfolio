@@ -172,7 +172,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
                 alt={layerImageAlt}
                 width={200}
                 height={54}
-                className={cn(styles.logo, 'drop-shadow-custom-shadow w-48')}
+                className={cn(styles.logo, 'drop-shadow-custom-shadow w-40 ')}
               />
             </div>
             <div

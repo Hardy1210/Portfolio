@@ -824,7 +824,7 @@ export default function Home() {
                     <li className={cn(styles.fadeIn__up, '')}>
                       <FadeInSection>
                         <ProjectCard
-                          logoImgSrc="/images/booki/booki-squo.webp"
+                          logoImgSrc="/images/booki/booki-10.webp"
                           layerImageSrc="/images/booki/Booki-w.webp"
                           layerImageAlt="logo Booki"
                           secondaryImageSrc="/images/booki/bo-1.webp"
