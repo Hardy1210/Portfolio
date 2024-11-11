@@ -1,18 +1,18 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Configuración de redirección (puedes usar `rewrite` en lugar de `redirect` para evitar cambios en la URL)
+  // Configuración de redirección
   async rewrites() {
     return [
       {
         source: '/',
-        destination: '/fr', // Mantén la URL como `/` mientras muestra el contenido de `/fr`
+        destination: '/fr',
       },
     ]
   },
 
   // Configuración de ISR para regeneración incremental
   experimental: {
-    isrFlushToDisk: false, // Opción para mejorar el rendimiento en Vercel
+    isrFlushToDisk: false,
   },
 
   // Configura la compresión para optimizar el tamaño de los archivos en producción
@@ -21,24 +21,25 @@ const nextConfig = {
   // Genera mapas de código fuente solo en producción para facilitar la depuración
   productionBrowserSourceMaps: true,
 
-  // Configuración de encabezados para todas las rutas
+  // Configuración de encabezados para caché
   async headers() {
     return [
       {
-        source: '/api/(.*)', // Aplica `no-cache` solo a las rutas de la API o dinámicas
+        source: '/api/(.*)',
         headers: [
           {
             key: 'Cache-Control',
-            value: 'no-cache', // Evita almacenar en caché el contenido dinámico
+            value: 'no-store', // Evita cualquier caché en rutas de API
           },
         ],
       },
       {
-        source: '/(.*)', // Aplica a todas las demás rutas (archivos estáticos)
+        source: '/(.*)',
         headers: [
           {
             key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable', // 1 año de caché para archivos estáticos
+            value:
+              'public, max-age=0, s-maxage=86400, stale-while-revalidate=59', // Configuración para activos estáticos
           },
         ],
       },
