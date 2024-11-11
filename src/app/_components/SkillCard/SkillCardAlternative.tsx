@@ -48,7 +48,7 @@ export const SkillCardAlternative: React.FC<SkillCardProps> = ({
           <span className="text-foreground">{secondaryIcon}</span>
         </div>
         <div>
-          <h4 className="text-xl font-bold text-foreground">{title}</h4>
+          <h3 className="text-xl font-bold text-foreground">{title}</h3>
           <p>{description}</p>
         </div>
       </div>

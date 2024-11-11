@@ -1,5 +1,4 @@
 'use client'
-import { LinkedinIcon } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { cn } from '../../lib/utils'
@@ -24,6 +23,7 @@ import { TailwindIconColor } from '../_components/icons/iconsColor/TailwindIconC
 import { TypeScriptIconColor } from '../_components/icons/iconsColor/TypeScriptIconColor'
 import { JavascriptIcon } from '../_components/icons/JavascriptIcon'
 import { LightHouseIcon } from '../_components/icons/LightHouseIcon'
+import { LinkedInIcon } from '../_components/icons/LinkedInIcon'
 import { MongoDbIcon } from '../_components/icons/MongoDbIcon'
 import { NextIcon } from '../_components/icons/NextIcon'
 import { NodeJsIcon } from '../_components/icons/NodeJsIcon'
@@ -310,22 +310,28 @@ export default function Home() {
                       'justify-center md:justify-start ',
                     )}
                   >
-                    <Link
-                      href="https://github.com/Hardy1210"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="transform transition duration-300 hover:scale-125"
-                    >
-                      <GithubIcon size={30} />
-                    </Link>
-                    <Link
-                      href="https://www.linkedin.com/in/hardy-lino-4b5247297/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="transform transition duration-300 hover:scale-125"
-                    >
-                      <LinkedinIcon size={30} />
-                    </Link>
+                    <li className="transform transition duration-300 hover:scale-125">
+                      <Link
+                        aria-label="GitHub Profile"
+                        href="https://github.com/Hardy1210"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <GithubIcon size={30} aria-hidden="true" />
+                        <span className="sr-only">GitHub Profile</span>
+                      </Link>
+                    </li>
+                    <li className="transform transition duration-300 hover:scale-125">
+                      <Link
+                        aria-label="LinkedIn Profile"
+                        href="https://www.linkedin.com/in/hardy-lino-4b5247297/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <LinkedInIcon size={30} aria-hidden="true" />
+                        <span className="sr-only">LinkedIn Profile</span>
+                      </Link>
+                    </li>
                   </ul>
                 </div>
               </FadeInSection>

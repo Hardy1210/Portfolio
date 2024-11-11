@@ -4,10 +4,11 @@
 //import { Section } from '../Section/Section'
 //import styles from './Footer.module.scss'
 import { useI18n } from '@/locales/client'
-import { LinkedinIcon, MailIcon } from 'lucide-react'
+import { MailIcon } from 'lucide-react'
 import Link from 'next/link'
 import FooterForm from '../Form/FooterForm'
 import { GithubIcon } from '../icons/GithubIcon'
+import { LinkedInIcon } from '../icons/LinkedInIcon'
 
 //import FooterForm from './FooterForm';
 
@@ -37,20 +38,24 @@ export const Footer: React.FC<FooterProps> = ({
           <div className="">
             <FooterForm />
           </div>
-          <div className="flex flex-row justify-center gap-5 m-0">
+          <div className="flex flex-row justify-center items-center gap-5 m-0">
             <Link
               href="mailto:tu_correo@ejemplo.com"
               aria-label="Envoyer un e-mail"
             >
-              <MailIcon className="transform transition duration-200 hover:scale-125" />
+              <MailIcon
+                size={25}
+                className="transform transition duration-200 hover:scale-125"
+              />
             </Link>
             <Link
-              href="https://www.linkedin.com/in/hardy-lino-30a616b1/"
+              aria-label="LinkedIn Profile"
+              href="https://www.linkedin.com/in/hardy-lino-4b5247297/"
               target="_blank"
               rel="noopener noreferrer"
               className="transform transition duration-200 hover:scale-125"
             >
-              <LinkedinIcon />
+              <LinkedInIcon size={25} />
             </Link>
             <Link
               href="https://github.com/Hardy1210"
