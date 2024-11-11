@@ -48,7 +48,7 @@ import { Section } from '../_components/Section/Section'
 
 //componente que abarza los componentes que tendran animaciones
 import { useEffect, useRef, useState } from 'react'
-//import FadeInSection from '../_components/FadeInSection/FadeInSection'
+import FadeInSection from '../_components/FadeInSection/FadeInSection'
 //skillcards y data
 //import { skillData } from '../skillData/skillData'
 //import { SkillCard } from '../_components/SkillCard/SkillCard'
@@ -64,11 +64,12 @@ import styles from './page.module.scss'
 import LazyLoadWrapper from '../_components/LazyLoadWrapper'
 
 //importacion dinamica de un compenente si se nesecita como projectCard cuando este a la vista del usuario
-import dynamic from 'next/dynamic'
+{
+  /*import dynamic from 'next/dynamic'
 const FadeInSection = dynamic(
   () => import('../_components/FadeInSection/FadeInSection'),
-)
-
+) */
+}
 //para pre-cargar las imagenes de las modales
 const preloadImages = (imageUrls: string[]): void => {
   imageUrls.forEach((url) => {
