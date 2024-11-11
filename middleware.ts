@@ -15,7 +15,7 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/((?!api|static|.*\\..*|_next|favicon.ico|robots.txt).*)'],
+  matcher: ['/((?!api|static|.*\\..*|_next|favicon.ico|robots\\.txt).*)'],
 }
 {
   /* codigo para forzar el idioma que se vera para el usuuario

@@ -4,8 +4,14 @@ import { cn } from '@/lib/utils'
 import Image from 'next/image'
 import { FC, ReactNode, useState } from 'react'
 import { ButtonLink } from '../Button/ButtonLink'
-import ModalProject from '../ModalProyect/ModalProject'
+//import ModalProject from '../ModalProyect/ModalProject'
+import dynamic from 'next/dynamic'
 import styles from './ProjectCard.module.scss'
+
+//carga el componente ModalProyect solo cuando la modal es solicitada lo cual sucede al hacer click
+const ModalProject = dynamic(() => import('../ModalProyect/ModalProject'), {
+  ssr: false,
+})
 
 interface ProjectCardProps {
   logoImgSrc: string

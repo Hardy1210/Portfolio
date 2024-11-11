@@ -44,7 +44,7 @@ const FooterForm: React.FC = () => {
   return (
     <form onSubmit={handleSubmit} className={cn(styles.form, 'text-black')}>
       <div className="">
-        <label className="inline-block mb-2 text-foreground">Email</label>
+        <label className="inline-block mb-2 text-[#FAFAFA]">Email</label>
         <div>
           <input
             type="email"
@@ -58,7 +58,7 @@ const FooterForm: React.FC = () => {
       </div>
 
       <div className="mt-5">
-        <label className="inline-block mb-2 text-foreground ">Message</label>
+        <label className="inline-block mb-2 text-[#FAFAFA] ">Message</label>
         <div>
           <textarea
             value={message}
