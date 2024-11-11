@@ -48,7 +48,7 @@ import { Section } from '../_components/Section/Section'
 
 //componente que abarza los componentes que tendran animaciones
 import { useEffect, useRef, useState } from 'react'
-import FadeInSection from '../_components/FadeInSection/FadeInSection'
+//import FadeInSection from '../_components/FadeInSection/FadeInSection'
 //skillcards y data
 //import { skillData } from '../skillData/skillData'
 //import { SkillCard } from '../_components/SkillCard/SkillCard'
@@ -64,11 +64,10 @@ import styles from './page.module.scss'
 import LazyLoadWrapper from '../_components/LazyLoadWrapper'
 
 //importacion dinamica de un compenente si se nesecita como projectCard cuando este a la vista del usuario
-//import dynamic from 'next/dynamic'
-
-//const ProjectCard = dynamic(
-//  () => import('../_components/ProjectCard/ProjectCard'),
-//)
+import dynamic from 'next/dynamic'
+const FadeInSection = dynamic(
+  () => import('../_components/FadeInSection/FadeInSection'),
+)
 
 //para pre-cargar las imagenes de las modales
 const preloadImages = (imageUrls: string[]): void => {
@@ -893,6 +892,7 @@ export default function Home() {
                   <p className="text-2xl">{mySkills('like')}</p>
                 </FadeInSection>
               </div>
+
               <SkillCardAlternative
                 icon={<ReactIcon size={80} />}
                 secondaryIcon={<ReactIconColor size={40} />}
@@ -931,6 +931,7 @@ export default function Home() {
             <div className={cn(styles.techno__content, '')}>
               <div className={cn(styles.technologies__utilises, '')}>
                 <p className="text-2xl">{mySkills('worked')}</p>
+
                 <div className="mt-20">
                   <div className="flex w-full items-center whitespace-nowrap relative [mask-image:linear-gradient(to_right,rgba(0,0,0,0)_0%,rgb(0,0,0)_12.5%,rgb(0,0,0)_87.5%,rgba(0,0,0,0)_100%)] group">
                     <ul
@@ -1001,6 +1002,7 @@ export default function Home() {
               </div>
             </div>
           </Section>
+
           <Section>
             <div
               className={cn(
