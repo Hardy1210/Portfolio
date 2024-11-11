@@ -1,19 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // Configuración de caché para recursos estáticos
-  async headers() {
-    return [
-      {
-        source: '/(.*)', // Aplica a todas las rutas
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'no-cache, max-age=0, must-revalidate', // Cachea recursos estáticos de manera óptima
-          },
-        ],
-      },
-    ]
-  },
 
   // Configuración de redirección (puedes usar `rewrite` en lugar de `redirect` para evitar cambios en la URL)
   async rewrites() {
