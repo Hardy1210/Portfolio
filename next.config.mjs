@@ -20,6 +20,30 @@ const nextConfig = {
 
   // Genera mapas de código fuente solo en producción para facilitar la depuración
   productionBrowserSourceMaps: true,
+
+  // Configuración de encabezados para todas las rutas
+  async headers() {
+    return [
+      {
+        source: '/api/(.*)', // Aplica `no-cache` solo a las rutas de la API o dinámicas
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'no-cache', // Evita almacenar en caché el contenido dinámico
+          },
+        ],
+      },
+      {
+        source: '/(.*)', // Aplica a todas las demás rutas (archivos estáticos)
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable', // 1 año de caché para archivos estáticos
+          },
+        ],
+      },
+    ]
+  },
 }
 
 export default nextConfig
