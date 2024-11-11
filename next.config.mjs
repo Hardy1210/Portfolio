@@ -25,21 +25,12 @@ const nextConfig = {
   async headers() {
     return [
       {
-        source: '/api/(.*)',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'no-store', // Evita cualquier caché en rutas de API
-          },
-        ],
-      },
-      {
         source: '/(.*)',
         headers: [
           {
             key: 'Cache-Control',
             value:
-              'public, max-age=0, s-maxage=86400, stale-while-revalidate=59', // Configuración para activos estáticos
+              'public, max-age=0, s-maxage=86400, stale-while-revalidate=59',
           },
         ],
       },
