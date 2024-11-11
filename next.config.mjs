@@ -8,7 +8,7 @@ const nextConfig = {
         headers: [
           {
             key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable', // Cachea recursos estáticos de manera óptima
+            value: 'no-cache, max-age=0, must-revalidate', // Cachea recursos estáticos de manera óptima
           },
         ],
       },
