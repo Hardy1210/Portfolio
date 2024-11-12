@@ -11,8 +11,9 @@ import { Metadata } from 'next'
 //import Head from 'next/head'
 //import StructuredData from '../_components/RichSnippets/StructuredData'
 import StructuredData from '../_components/RichSnippets/StructuredData'
-import { Providers } from './providers'
+import Providers from './providers'
 
+import { ReactElement } from 'react'
 export const metadata: Metadata = {
   title: 'Hardy Lino . Frontend Developer',
   description: 'Frontend developer, React, Next.js, TypeScript',
@@ -72,7 +73,7 @@ export default function RootLayout({
   children,
   params,
 }: Readonly<{
-  children: React.ReactNode
+  children: ReactElement
   params: {
     locale: string
   }
@@ -89,7 +90,9 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Providers locale={params.locale}>{children}</Providers>
+          <Providers params={Promise.resolve({ locale: params.locale })}>
+            {children}
+          </Providers>
         </ThemeProvider>
 
         <div id="modal-root"></div>

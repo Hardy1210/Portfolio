@@ -2,16 +2,23 @@
 //attention problemme avec le middleware que ne marceh pas, oblige d'utiliser
 //next.confog.mjs pour valide et redirige la lange par default de l'internationalisation
 //e que l'utilizateur arrive a la bon page url
-// middleware.js
-// middleware.ts
-import { NextRequest, NextResponse } from 'next/server'
+import { createI18nMiddleware } from 'next-international/middleware'
+import { NextRequest } from 'next/server'
 
-export function middleware(_request: NextRequest) {
-  const response = NextResponse.next()
-  response.headers.set('Cache-Control', 'no-cache, must-revalidate')
-  return response
+const I18nMiddleware = createI18nMiddleware({
+  locales: ['en', 'fr', 'es'],
+  defaultLocale: 'fr',
+})
+
+export function middleware(request: NextRequest) {
+  return I18nMiddleware(request)
 }
 
+export const config = {
+  matcher: [
+    '/((?!_next|api|robots\\.txt|favicon\\.ico|sitemap\\.xml|static|.*\\..*).*)',
+  ],
+}
 {
   /* codigo para forzar el idioma que se vera para el usuuario
   // middleware.ts
@@ -51,4 +58,15 @@ const I18nMiddleware = createI18nMiddleware({
   defaultLocale: 'fr',
 })
 */
+}
+{
+  /*// middleware.js
+import { NextResponse } from 'next/server';
+
+export function middleware(request) {
+  const response = NextResponse.next();
+  response.headers.set('Cache-Control', 'no-cache, must-revalidate');
+  return response;
+}
+ */
 }

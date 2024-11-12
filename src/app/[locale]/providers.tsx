@@ -1,12 +1,22 @@
-'use client'
-
+// app/[locale]/client/layout.tsx
 import { I18nProviderClient } from '@/locales/client'
-import { PropsWithChildren } from 'react'
+import { ReactElement } from 'react'
 
-export const Providers = (props: PropsWithChildren<{ locale: string }>) => {
+// Este componente de layout se usa para proporcionar el contexto de idioma a los componentes hijos
+export default async function Providers({
+  params,
+  children,
+}: {
+  // `params` es una promesa que contiene el idioma `locale`
+  params: Promise<{ locale: string }>
+  // `children` representa los componentes hijos que se renderizarán dentro del layout
+  children: ReactElement
+}) {
+  // Esperamos a que se resuelva `params` para obtener `locale`
+  const { locale } = await params
+
   return (
-    <I18nProviderClient locale={props.locale}>
-      {props.children}
-    </I18nProviderClient>
+    // Usamos `I18nProviderClient` para pasar `locale` a todos los componentes hijos
+    <I18nProviderClient locale={locale}>{children}</I18nProviderClient>
   )
 }
