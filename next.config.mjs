@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  reactStrictMode: true,
   // Configuración de redirección
   async rewrites() {
     return [
@@ -25,7 +26,8 @@ const nextConfig = {
   async headers() {
     return [
       {
-        source: '/(.*)',
+        source: '/',
+
         headers: [
           {
             key: 'Cache-Control',
