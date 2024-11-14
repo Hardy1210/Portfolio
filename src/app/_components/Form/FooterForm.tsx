@@ -3,7 +3,7 @@ import { cn } from '@/lib/utils'
 import { useI18n } from '@/locales/client'
 import React, { useState } from 'react'
 import styles from './footerForm.module.scss'
-
+//mensageria funciona con Resend
 const FooterForm: React.FC = () => {
   const [userEmail, setUserEmail] = useState('')
   const [message, setMessage] = useState('')
