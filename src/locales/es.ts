@@ -113,7 +113,7 @@ export default {
     },
     footerForm: {
       placehoderText: 'Cuentame...',
-      buttonSend: 'Enviado',
+      buttonSend: 'Enviar',
       sendMessage:
         'Tu mensaje ha sido enviado, me pondré en contacto contigo lo antes posible.',
       errorMessage: 'Ocurrió un error. Lo repararé lo antes posible.',

@@ -111,7 +111,7 @@ export default {
     },
     footerForm: {
       placehoderText: 'Dites-moi tout...',
-      buttonSend: 'Envoyé',
+      buttonSend: 'Envoyer',
       sendMessage:
         'Votre message a été envoyé, je reviendrai vers vous au plus vite.',
       errorMessage: 'Une erreur est survenue. Je le réparerai au plus vite.',

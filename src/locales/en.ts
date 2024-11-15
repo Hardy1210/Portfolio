@@ -113,7 +113,7 @@ export default {
     },
     footerForm: {
       placehoderText: 'Tell me everything...',
-      buttonSend: 'Sent',
+      buttonSend: 'Send',
       sendMessage:
         'Your message has been sent i will get back to you as soon as possible.',
       errorMessage: 'An error occurred. I will fix it as soon as possible.',

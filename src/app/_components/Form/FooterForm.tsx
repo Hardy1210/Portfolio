@@ -44,7 +44,10 @@ const FooterForm: React.FC = () => {
   const t = useI18n()
 
   return (
-    <form onSubmit={handleSubmit} className={cn(styles.form, 'text-black')}>
+    <form
+      onSubmit={handleSubmit}
+      className={cn(styles.form, 'flex flex-col text-black')}
+    >
       <div>
         <label className="inline-block mb-2 text-[#FAFAFA]">Email</label>
         <div>
@@ -79,10 +82,14 @@ const FooterForm: React.FC = () => {
       </div>
 
       {success && (
-        <p className="text-green-500">{t('landing.footerForm.sendMessage')}</p>
+        <p className="text-green-500 mt-5">
+          {t('landing.footerForm.sendMessage')}
+        </p>
       )}
       {error && (
-        <p className="text-red-500">{t('landing.footerForm.errorMessage')}</p>
+        <p className="text-red-500 mt-5">
+          {t('landing.footerForm.errorMessage')}
+        </p>
       )}
     </form>
   )
