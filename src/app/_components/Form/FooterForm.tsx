@@ -14,6 +14,7 @@ const FooterForm: React.FC = () => {
     e.preventDefault()
 
     try {
+      //extraemos el api que creamos en route.ts
       const response = await fetch('/api/send', {
         method: 'POST',
         headers: {

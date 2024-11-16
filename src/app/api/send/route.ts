@@ -3,7 +3,8 @@
 import { EmailTemplate } from '@/app/_components/email-template'
 import { NextResponse } from 'next/server'
 import { Resend } from 'resend'
-
+//cuidado con el tipo de formuilario que creas , por que tienes que modificar el codigo aqui
+//emailTemplate sirve para dar una base html al mensaje que llegara a tu ban,deja de entrada de gmail
 const resend = new Resend(process.env.RESEND_API_KEY)
 export async function POST(req: Request) {
   const { userEmail, message } = await req.json()
@@ -12,9 +13,9 @@ export async function POST(req: Request) {
     const data = await resend.emails.send({
       from: 'Hardy Lino <contact@mail.hardylino.com>',
       to: ['harv2222@gmail.com'],
-      replyTo: userEmail,
+      replyTo: userEmail, //mail de usuario
       subject: 'Nuevo mensaje de contacto',
-      react: EmailTemplate({ message }),
+      react: EmailTemplate({ message }), // base html para que el mensaje llegue
     })
 
     return NextResponse.json(data, { status: 200 })
