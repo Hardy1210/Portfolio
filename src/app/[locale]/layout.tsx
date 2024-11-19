@@ -45,11 +45,11 @@ export const metadata: Metadata = {
     locale: 'fr_FR',
     images: [
       {
-        url: 'https://www.hardylino.com/image/Port.webp',
+        url: 'https://www.hardylino.com/images/port-1.jpg',
         width: 1200,
         height: 630,
         alt: 'Hardy Lino',
-        type: 'image/webp',
+        type: 'image/jpg',
       },
     ],
   },
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Hardy Lino . Frontend Developer',
     description: 'Frontend developer, React, Next.js, TypeScript',
-    images: ['https://www.hardylino.com/image/Port.webp'],
+    images: ['https://www.hardylino.com/images/port-1.jpg'],
   },
   alternates: {
     canonical: 'https://hardylino.com/',
