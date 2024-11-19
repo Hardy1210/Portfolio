@@ -93,7 +93,10 @@ const ProjectCard: FC<ProjectCardProps> = ({
         </div>
         {/* Capa secundaria con el evento de clic */}
         <div
-          className={cn(styles.secondary__layer, 'bg-custom-gradient')}
+          className={cn(
+            styles.secondary__layer,
+            'bg-custom-gradient dark:bg-dark-custom-modal-image-3',
+          )}
           onClick={toggleModal}
         >
           <Image
@@ -173,13 +176,23 @@ const ProjectCard: FC<ProjectCardProps> = ({
                 'pb-2 flex justify-center border-b-2 border-b-neutral-100 dark:border-b-border',
               )}
             >
-              <Image
-                src={logoImgSrc}
-                alt={layerImageAlt}
-                width={200}
-                height={54}
-                className={cn(styles.logo, 'drop-shadow-custom-shadow w-40 ')}
-              />
+              <div
+                className={cn(
+                  styles.modalCont__logo,
+                  //'dark:border-2 dark:bg-neutral-100 dark:rounded-xl',
+                )}
+              >
+                <Image
+                  src={logoImgSrc}
+                  alt={layerImageAlt}
+                  width={200}
+                  height={54}
+                  className={cn(
+                    styles.logo,
+                    'dark:filter dark:invert dark:brightness-0',
+                  )}
+                />
+              </div>
             </div>
             <div
               className={cn(

@@ -1,5 +1,6 @@
 import { ReactNode, useEffect, useRef, useState } from 'react'
-
+//este componente es excluisivo para evitar la carga anticipada de los compnentes que estaran
+//abarazados por este
 interface LazyLoadWrapperProps {
   children: ReactNode
 }

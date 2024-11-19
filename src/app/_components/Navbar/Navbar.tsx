@@ -166,7 +166,7 @@ export function NavbarComponent() {
       {/* Full-Screen Modal */}
       {isVisible && (
         <div
-          className={`fixed inset-0 z-50 bg-neutral-50 bg-opacity-45 backdrop-blur-2xl  dark:bg-neutral-900/50  md:hidden transition-opacity duration-100 ${
+          className={`fixed inset-0 z-50 bg-neutral-50 bg-opacity-45 backdrop-blur-2xl  dark:bg-neutral-900/50  md:hidden transition-opacity duration-200 ${
             isOpen ? 'animate-fadeIn' : 'animate-fadeOut'
           }`}
         >

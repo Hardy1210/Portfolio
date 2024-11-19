@@ -26,11 +26,17 @@ const config: Config = {
         'custom-xs': { max: '344px' }, //mobiles galaxy fold
       },
       backgroundImage: {
+        //fondo de layer para light mode
         'custom-gradient':
           'linear-gradient(to bottom right, rgba(238, 238, 238, 1) 0%, rgba(226, 226, 226, 1) 51%, rgba(186, 184, 184, 1) 100%)',
-        'dark-custom':
-          //fondo de layer para dark mode
+        //fondo de layer para dark mode
+        'dark-custom-modal-image':
           'linear-gradient(90deg, rgba(218,104,56,1) 0%, rgba(240,212,85,1) 100%)',
+        'dark-custom-modal-image-2':
+          'linear-gradient(125deg, rgba(255,158,64,1) 0%, rgba(249,199,92,1) 27%, rgba(127,192,146,1) 91%, rgba(63,198,159,1) 100%)',
+        'dark-custom-modal-image-3':
+          'linear-gradient(125deg, rgba(206,104,255,1) 6%, rgba(232,166,255,1) 28%, rgba(255,149,224,1) 75%, rgba(255,117,154,1) 99%)',
+
         'modal-variant': 'linear-gradient(to top left,#000000,#434343)',
       },
       //drop shadow de logo enverse
@@ -38,9 +44,16 @@ const config: Config = {
         inverse: '0 6px 6px rgba(255, 255, 255, 0.3)', // Clase personalizada
         'custom-shadow': '0 6px 6px rgba(14, 14, 14, 0.244)',
       },
+      filter: {
+        'all-white': 'invert(100%) grayscale(100%) brightness(200%)',
+        'transform-to-white':
+          'grayscale(100%) invert(100%) brightness(250%) contrast(120%)',
+      },
       colors: {
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
+        //background modal dark
+        'modal-bg-dark': '#202020',
         card: {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))',
@@ -102,7 +115,7 @@ const config: Config = {
         //animation de la modal en 3D
         modalOpen3D: 'modalOpen3D 0.2s ease-out forwards',
         modalClose3D: 'modalClose3D 0.2s ease-out forwards',
-        //animacion de bloques fade in up
+        //animacion de bloques de layout fade in up
         fadeInUp: 'fadeInUp 0.7s ease-out forwards',
       },
       keyframes: {

@@ -694,7 +694,7 @@ export default function Home() {
                 <li className={cn(styles.fade)}>
                   <FadeInSection>
                     <ProjectCard
-                      logoImgSrc="/images/ohmyfood/ohmyfood-1.webp"
+                      logoImgSrc="/images/ohmyfood/oh-squo.webp"
                       layerImageSrc="/images/ohmyfood/ohmyfood-w.webp"
                       layerImageAlt="logo Ohmyfood"
                       secondaryImageSrc="/images/ohmyfood/oh-2.webp"
@@ -878,7 +878,7 @@ export default function Home() {
                 <div className={cn(styles.buttonProjects__container, '')}>
                   <button
                     onClick={handleShowMore}
-                    className={cn(styles.button__projects, '')}
+                    className={cn(styles.button__projects, 'text-foreground')}
                   >
                     Voir plus
                   </button>
@@ -944,64 +944,87 @@ export default function Home() {
                     <ul
                       className={cn(
                         styles.icon__skills,
-                        'inline-flex items-center animate-marquee group-hover:[animation-play-state:paused]',
+                        'my-7 inline-flex items-center animate-marquee group-hover:[animation-play-state:paused]',
                       )}
                     >
                       <li className="mx-5">
                         <GithubIcon size={70} />
+                        <p className={cn(styles.icon__title)}>GitHub</p>
                       </li>
                       <li className="mx-5">
                         <TypeScriptIconColor size={70} />
+                        <p className={cn(styles.icon__title)}>TypeScript</p>
                       </li>
                       <li className="mx-5">
                         <SwaggerIconColor size={70} />
+                        <p className={cn(styles.icon__title)}>Swagger</p>
                       </li>
                       <li className="mx-5">
                         <NodeJsIconColor size={70} />
+                        <p className={cn(styles.icon__title)}>Node.js</p>
                       </li>
                       <li className="mx-5">
                         <GitLabIcon size={70} />
+                        <p className={cn(styles.icon__title)}>Git Lab</p>
                       </li>
                       <li className="mx-5">
                         <MongoDbIconColor size={70} />
+                        <p className={cn(styles.icon__title)}>MongoDB</p>
                       </li>
                       <li className="mx-5">
                         <PostmanIconColor size={70} />
+                        <p className={cn(styles.icon__title)}>Postman</p>
                       </li>
                       <li className="mx-5">
                         <FigmaIconColor size={70} />
+                        <p className={cn(styles.icon__title)}>Figma</p>
                       </li>
                       <li className="mx-5">
                         <NotionIcon size={70} />
+                        <p className={cn(styles.icon__title)}>Notion</p>
                       </li>
                     </ul>
-                    <ul className="inline-flex absolute items-center animate-marquee2 group-hover:[animation-play-state:paused]">
+                    <ul
+                      className={cn(
+                        styles.icon__skillss,
+                        'inline-flex absolute items-center animate-marquee2 group-hover:[animation-play-state:paused]',
+                      )}
+                    >
                       <li className="mx-5">
                         <GithubIcon size={70} />
+                        <p className={cn(styles.icon__title)}>GitHub</p>
                       </li>
                       <li className="mx-5">
                         <TypeScriptIconColor size={70} />
+                        <p className={cn(styles.icon__title)}>TypeScript</p>
                       </li>
                       <li className="mx-5">
                         <SwaggerIconColor size={70} />
+                        <p className={cn(styles.icon__title)}>Swagger</p>
                       </li>
                       <li className="mx-5">
                         <NodeJsIconColor size={70} />
+                        <p className={cn(styles.icon__title)}>Node.js</p>
                       </li>
                       <li className="mx-5">
                         <GitLabIcon size={70} />
+                        <p className={cn(styles.icon__title)}>Git Lab</p>
                       </li>
                       <li className="mx-5">
                         <MongoDbIconColor size={70} />
+                        <p className={cn(styles.icon__title)}>MongoDB</p>
                       </li>
                       <li className="mx-5">
                         <PostmanIconColor size={70} />
+                        <p className={cn(styles.icon__title)}>Postman</p>
                       </li>
                       <li className="mx-5">
                         <FigmaIconColor size={70} />
+                        <p className={cn(styles.icon__title)}>Figma</p>
                       </li>
                       <li className="mx-5">
                         <NotionIcon size={70} />
+                        <p className={cn(styles.icon__title)}>Notion</p>
                       </li>
                     </ul>
                   </div>
