@@ -282,7 +282,7 @@ export default function Home() {
                   >
                     <Button />
                     <a
-                      href="/Hardy-LINO-CV.pdf"
+                      href="/CV-Hardy-LINO-2.pdf"
                       target="_blank"
                       rel="noopener noreferrer"
                       className={cn(
