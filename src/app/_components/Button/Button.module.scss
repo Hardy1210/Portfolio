@@ -1,12 +1,12 @@
 .button {
-  border: 1px solid hsl(var(--border));
-  border-radius: var(--radius-xl);
+  //border: 1px solid black;
+  border-radius: var(--radius);
   //max-width: 15rem;
   justify-content: center;
-  background-color: rgba(55, 65, 81, 0.1); // bg-neutral-700/10
-  padding: 0.75rem; // p-3
+  //background-color: rgba(55, 65, 81, 0.1); // bg-neutral-700/10
+  padding: 0.9rem; // p-3
   line-height: 1; // leading-none
-  color: #374151; // text-neutral-700
+  //color: #374151; // text-neutral-700
   transition:
     background-color 0.2s ease,
     color 0.2s ease; // transition
@@ -17,7 +17,7 @@
   }
 
   // Modo oscuro
-  @media (prefers-color-scheme: dark) {
+  /*@media (prefers-color-scheme: dark) {
     background-color: rgba(156, 163, 175, 0.1); // dark:bg-neutral-400/10
     color: #9ca3af; // dark:text-neutral-400
 
@@ -25,5 +25,5 @@
       background-color: #9ca3af; // dark:hover:bg-neutral-400
       color: #000000; // dark:hover:text-black
     }
-  }
+  }*/
 }

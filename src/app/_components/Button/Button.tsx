@@ -16,7 +16,7 @@ export const Button = () => {
       onClick={handleDownLoad}
       className={cn(
         styles.button,
-        'flex flex-1 items-center justify-center gap-2.5 p-2 dark:text-neutral-400 dark:hover:bg-neutral-400 dark:hover:text-black',
+        'flex flex-1 items-center justify-center border border-foreground gap-2.5  text-foreground dark:hover:bg-neutral-400 dark:hover:text-black',
       )}
     >
       Download CV

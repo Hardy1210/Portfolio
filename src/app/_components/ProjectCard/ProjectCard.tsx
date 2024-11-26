@@ -1,7 +1,7 @@
 'use client'
 
 import { cn } from '@/lib/utils'
-import Image from 'next/image'
+import Image, { StaticImageData } from 'next/image'
 import { FC, ReactNode, useState } from 'react'
 import { ButtonLink } from '../Button/ButtonLink'
 //import ModalProject from '../ModalProyect/ModalProject'
@@ -14,7 +14,7 @@ const ModalProject = dynamic(() => import('../ModalProyect/ModalProject'), {
 })
 
 interface ProjectCardProps {
-  logoImgSrc: string
+  logoImgSrc: StaticImageData
   layerImageSrc: string
   layerImageAlt: string
   secondaryImageSrc: string
@@ -189,7 +189,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
                   height={54}
                   className={cn(
                     styles.logo,
-                    'dark:filter dark:invert dark:brightness-0',
+                    'dark:filter dark:invert dark:brightness-0 w-52',
                   )}
                 />
               </div>

@@ -1,6 +1,13 @@
 'use client'
 import Image from 'next/image'
 import Link from 'next/link'
+import EventsModalLogo from '../../../public/images/724/724-squo-2.webp'
+import AbModalLogo from '../../../public/images/Argent-bank/ab-logo-squo.webp'
+import BookiModalLogo from '../../../public/images/booki/booki-10.webp'
+import KaModalLogo from '../../../public/images/Kasa/k-squo-3.webp'
+import NinaModalLOgo from '../../../public/images/nina/nina-squo.webp'
+import OhModalLogo from '../../../public/images/ohmyfood/oh-squo.webp'
+import SophModalLogo from '../../../public/images/sophie/soph-squo.webp'
 import { cn } from '../../lib/utils'
 import { Button } from '../_components/Button/Button'
 import Footer from '../_components/Footer/Footer'
@@ -271,13 +278,13 @@ export default function Home() {
                 <div
                   className={cn(
                     styles.buttons__container,
-                    ' w-full md:max-w-full flex-col-reverse  gap-7 md:gap-5 justify-between',
+                    ' w-full md:max-w-full flex-col-reverse  gap-7 md:gap-7 justify-between',
                   )}
                 >
                   <div
                     className={cn(
                       styles.button__read,
-                      'flex gap-4 max-w-full md:max-w-96',
+                      'flex  gap-5 max-w-full md:max-w-96',
                     )}
                   >
                     <Button />
@@ -287,7 +294,7 @@ export default function Home() {
                       rel="noopener noreferrer"
                       className={cn(
                         styles.read,
-                        'flex flex-row rounded-xl gap-1 items-center p-3 opacity-70 hover:opacity-100',
+                        'flex flex-row rounded-xl gap-1 items-center justify-center p-3 opacity-70 hover:opacity-100',
                       )}
                     >
                       <span
@@ -620,8 +627,8 @@ export default function Home() {
                 <li className={cn(styles.fade)}>
                   <FadeInSection>
                     <ProjectCard
-                      logoImgSrc="/images/Argent-bank/ab-logo-squo.webp"
-                      layerImageSrc="/images/arb.webp"
+                      logoImgSrc={AbModalLogo}
+                      layerImageSrc="/images/Argent-bank/arb-2.webp"
                       layerImageAlt="logo Argent Bank"
                       secondaryImageSrc="/images/Argent-bank/ab-squo-1.webp"
                       secondaryImageAlt="MacBook Argent Bank"
@@ -661,7 +668,7 @@ export default function Home() {
                 <li className={cn(styles.fade)}>
                   <FadeInSection>
                     <ProjectCard
-                      logoImgSrc="/images/Kasa/k-squo-3.webp"
+                      logoImgSrc={KaModalLogo}
                       layerImageSrc="/images/Kasa/kasa.webp"
                       layerImageAlt="logo Kasa"
                       secondaryImageSrc="/images/Kasa/k-bg-2.webp"
@@ -694,7 +701,7 @@ export default function Home() {
                 <li className={cn(styles.fade)}>
                   <FadeInSection>
                     <ProjectCard
-                      logoImgSrc="/images/ohmyfood/oh-squo.webp"
+                      logoImgSrc={OhModalLogo}
                       layerImageSrc="/images/ohmyfood/ohmyfood-w.webp"
                       layerImageAlt="logo Ohmyfood"
                       secondaryImageSrc="/images/ohmyfood/oh-2.webp"
@@ -726,7 +733,7 @@ export default function Home() {
                 <li className={cn(styles.fade)}>
                   <FadeInSection>
                     <ProjectCard
-                      logoImgSrc="/images/724/724-squo-2.webp"
+                      logoImgSrc={EventsModalLogo}
                       layerImageSrc="/images/724/724-w.webp"
                       layerImageAlt="logo 724 Events"
                       secondaryImageSrc="/images/724/724-squo-6.webp"
@@ -765,7 +772,7 @@ export default function Home() {
                       <LazyLoadWrapper>
                         <FadeInSection>
                           <ProjectCard
-                            logoImgSrc="/images/nina/nina-squo.webp"
+                            logoImgSrc={NinaModalLOgo}
                             layerImageSrc="/images/nina/nina-w.webp"
                             layerImageAlt="logo Nina Carducci"
                             secondaryImageSrc="/images/nina/nina-squo-1.webp"
@@ -805,7 +812,7 @@ export default function Home() {
                       <LazyLoadWrapper>
                         <FadeInSection>
                           <ProjectCard
-                            logoImgSrc="/images/sophie/soph-squo.webp"
+                            logoImgSrc={SophModalLogo}
                             layerImageSrc="/images/sophie/so.webp"
                             layerImageAlt="logo Sophie Bluel"
                             secondaryImageSrc="/images/sophie/soph-1.webp"
@@ -843,7 +850,7 @@ export default function Home() {
                       <LazyLoadWrapper>
                         <FadeInSection>
                           <ProjectCard
-                            logoImgSrc="/images/booki/booki-10.webp"
+                            logoImgSrc={BookiModalLogo}
                             layerImageSrc="/images/booki/Booki-w.webp"
                             layerImageAlt="logo Booki"
                             secondaryImageSrc="/images/booki/bo-1.webp"
