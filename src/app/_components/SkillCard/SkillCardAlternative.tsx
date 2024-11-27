@@ -30,7 +30,7 @@ export const SkillCardAlternative: React.FC<SkillCardProps> = ({
       <div
         className={cn(
           styles.skill__layer,
-          'absolute inset-0 flex justify-center items-center backdrop-blur-sm bg-black/5 transition-opacity duration-200 ease-in-out opacity-100 group-hover:opacity-0  group-hover:pointer-events-none',
+          'z-50 absolute inset-0 flex justify-center items-center backdrop-blur-sm bg-black/5 transition-opacity duration-200 ease-in-out opacity-100 group-hover:opacity-0  group-hover:pointer-events-none',
         )}
       >
         <div

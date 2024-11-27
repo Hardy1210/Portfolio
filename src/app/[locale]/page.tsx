@@ -68,6 +68,7 @@ import { useI18n, useScopedI18n } from '@/locales/client'
 
 import styles from './page.module.scss'
 //componente que abraza los componentes que se cargaran solo cuando sean obserbados al scroll
+import { FollowCursorInvert } from '../_components/FollowCursorInvert/FollowCursorInvert'
 import LazyLoadWrapper from '../_components/LazyLoadWrapper'
 
 //importacion dinamica de un compenente si se nesecita como projectCard cuando este a la vista del usuario
@@ -153,6 +154,7 @@ export default function Home() {
   return (
     <>
       <div className="relative">
+        <FollowCursorInvert className={cn(styles.cursor, 'hidden md:block')} />
         <Header />
         <main
           className={cn(
@@ -210,7 +212,7 @@ export default function Home() {
                   <div
                     className={cn(
                       styles.text,
-                      'flex gap-3 flex-col m-auto md:m-0 items-center md:items-start',
+                      'flex gap-3 flex-col m-auto md:m-0 items-center md:items-start ',
                     )}
                   >
                     <span
@@ -231,7 +233,12 @@ export default function Home() {
                         'w-min text-7xl font-extrabold drop-shadow-xl dark:text-neutral-50 md:w-max',
                       )}
                     >
-                      {/* <span className="h-14 w-14 bg-slate-950 inline-block"></span>*/}
+                      {/*<span
+                        aria-hidden="true"
+                        className={cn(styles.simbol, 'dark:text-red-600')}
+                      >
+                        &lt;/&gt;
+                      </span> */}
                       Hardy
                     </h1>
                     <h2
@@ -245,7 +252,7 @@ export default function Home() {
                     <p
                       className={cn(
                         styles.front,
-                        'text-2xl text-center md:text-start md:mr-10 ',
+                        'text-[20px] font-semibold text-center md:text-start md:mr-10 ',
                       )}
                     >
                       {landingT('welcome')} <br className="hidden md:flex" />
@@ -551,14 +558,20 @@ export default function Home() {
           >
             <div className={cn(styles.bacground__middle, '')}>
               <Section className={cn(styles.section, '')}>
-                <h2
-                  className={cn(
-                    styles.a__propos,
-                    'mb-10 text-3xl font-semibold text-center md:text-start text-foreground',
-                  )}
-                >
-                  {t('landing.content.about')}
-                </h2>
+                <div className="mb-12 flex flex-col items-center md:items-start">
+                  <div className="relative  ">
+                    <h2
+                      className={cn(
+                        styles.a__propos,
+                        ' text-3xl font-semibold text-center md:text-start text-foreground dark:text-neutral-900',
+                      )}
+                    >
+                      {t('landing.content.about')}
+                    </h2>
+                    <div className="-z-10 mt-2 absolute w-6 h-2 bg-foreground  transform origin-left skew-x-[-35deg]"></div>
+                  </div>
+                </div>
+
                 <FadeInSection>
                   <div className="grid grid-cols-1 md:grid-cols-[70%,30%] gap-7 md:gap-0 items-center justify-between">
                     <div className="">
@@ -605,12 +618,18 @@ export default function Home() {
           <Section>
             <div className={cn(styles.Projets__container, 'pt-10')}>
               <div>
-                <h2
-                  id="projects"
-                  className="mb-10 text-3xl font-semibold  text-center md:text-start scroll-mt-24 md:scroll-mt-32 text-foreground"
-                >
-                  {contentT('projects')}
-                </h2>
+                <div className="mb-12 flex flex-col items-center md:items-start">
+                  <div>
+                    <h2
+                      id="projects"
+                      className=" text-3xl font-semibold  text-center md:text-start scroll-mt-24 md:scroll-mt-32 text-foreground"
+                    >
+                      {contentT('projects')}
+                    </h2>
+                    <div className="-z-10 mt-2 absolute w-6 h-2 bg-foreground  transform origin-left skew-x-[-35deg]"></div>
+                  </div>
+                </div>
+
                 <FadeInSection>
                   <div className="mb-20 text-center text-lg md:text-xl">
                     <p>{contentT('projectsText')}</p>
@@ -900,9 +919,15 @@ export default function Home() {
             <div className={cn(styles.skill, 'grid md:grid-cols-2 gap-5')}>
               <div className="p-5 flex flex-col gap-3 text-center md:text-start">
                 <FadeInSection>
-                  <h2 className="text-3xl font-semibold text-foreground">
-                    {mySkills('skill')}
-                  </h2>
+                  <div className="mb-10 flex flex-col items-center md:items-start">
+                    <div className=" relative">
+                      <h2 className="text-3xl font-semibold text-foreground">
+                        {mySkills('skill')}
+                      </h2>
+                      <div className="-z-10 mt-2 absolute w-6 h-2 bg-foreground  transform origin-left skew-x-[-35deg]"></div>
+                    </div>
+                  </div>
+
                   <p className="text-2xl">{mySkills('like')}</p>
                 </FadeInSection>
               </div>

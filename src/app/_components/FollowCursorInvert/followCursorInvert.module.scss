@@ -1,0 +1,69 @@
+/*.cursor {
+  --size: 8rem; // Define el tamaño del cursor como una variable CSS
+  position: absolute;
+  z-index: 99999; // Asegura que el cursor esté encima de otros elementos
+  top: calc(-1 * var(--size) / 2); // Centra el cursor respecto al ratón
+  left: calc(-1 * var(--size) / 2);
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%; // Forma circular
+  pointer-events: none; // No interfiere con clics
+  -webkit-backdrop-filter: invert(1) grayscale(1); // Inversión de colores + escala de grises
+  backdrop-filter: invert(1) grayscale(1); // Filtros compatibles con navegadores modernos
+  display: block; // Asegúrate de que el cursor esté visible
+}*/
+@keyframes reduceBounce {
+  0% {
+    transform: translate(-50%, -50%) scale(1); // Tamaño original
+  }
+  30% {
+    transform: translate(-50%, -50%) scale(0.5); // Reducido un poco
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(0.6); // Rebote (un poco más grande)
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(0.5); // Tamaño final reducido
+  }
+}
+@keyframes expandBounce {
+  0% {
+    transform: translate(-50%, -50%) scale(0.5); // Tamaño reducido inicial
+  }
+  30% {
+    transform: translate(-50%, -50%) scale(1); // Rebote (un poco más grande)
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(0.9); // Más expandido
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1); // Tamaño original
+  }
+}
+.cursor {
+  --size: 5rem; // Tamaño del cursor como variable CSS
+  position: fixed;
+  z-index: 49; // Asegura que el cursor esté encima de todo el contenido
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%; // Forma circular del cursor
+  pointer-events: none; // No permite interacción con clics o eventos
+  transform: translate(-50%, -50%);
+  -webkit-backdrop-filter: invert(1) grayscale(1); // Inversión de colores + escala de grises
+  backdrop-filter: invert(1) grayscale(1); // Filtros compatibles con navegadores modernos
+  //display: block; // Asegura que el cursor sea visible
+  transform: translate(-50%, -50%);
+  animation-play-state: paused; // Inicialmente en pausa
+  animation-fill-mode: forwards; // Mantiene el estado final
+}
+.hovered {
+  //--size: 4rem; // Reduce el tamaño del cursor
+  animation: reduceBounce 0.6s cubic-bezier(0.25, 1, 0.5, 1) forwards; // Controla el rebote y lo mantiene reducido
+  animation-play-state: running; // Activa la animación
+  animation-fill-mode: forwards; // Mantiene el estado final
+}
+.expanded {
+  animation: expandBounce 0.6s cubic-bezier(0.25, 1, 0.5, 1) forwards; // Efecto inverso al tamaño original
+  animation-play-state: running; // Activa la animación inversa
+  animation-fill-mode: forwards; // Mantiene el estado final
+}
