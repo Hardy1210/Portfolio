@@ -1,8 +1,8 @@
 'use client'
 import { DownloadIcon } from 'lucide-react'
 import { cn } from '../../../lib/utils'
-import styles from './Button.module.scss'
-export const Button = () => {
+import styles from './buttonRgb.module.scss'
+export const ButtonRgb = () => {
   const handleDownLoad = () => {
     const link = document.createElement('a')
     link.href = '/CV-Hardy-LINO-2.pdf'
@@ -16,11 +16,18 @@ export const Button = () => {
       onClick={handleDownLoad}
       className={cn(
         styles.button,
-        'flex flex-1 items-center justify-center border-2 border-foreground  hover:border-neutral-700 dark:hover:border-neutral-400 gap-3 text-foreground dark:hover:bg-neutral-400 dark:hover:text-black',
+        'flex flex-row flex-1 justify-center border-2 border-foreground dark:hover:border-transparent z-50  transition-colors duration-500 ease-in-out',
       )}
     >
-      Download CV
-      <DownloadIcon size={15} className="" />
+      <span
+        className={cn(
+          styles.text,
+          'flex flex-row justify-center items-center gap-3 text-foreground dark:bg-black',
+        )}
+      >
+        Download CV
+        <DownloadIcon size={15} />
+      </span>
     </button>
   )
 }

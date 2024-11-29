@@ -32,9 +32,15 @@ export const Footer: React.FC<FooterProps> = ({
     >
       <div className="flex justify-center">
         <div className="flex flex-col gap-10 lg:w-1/3 md:w-3/6 w-full ">
-          <h3 className="text-lg text-[#FAFAFA] font-bold mb-4">
-            {t('landing.footer.contact')}
-          </h3>
+          <div>
+            <div>
+              <h3 className="text-3xl text-[#FAFAFA] font-bold ">
+                {t('landing.footer.contact')}
+              </h3>
+              <div className="z-10 mt-2 absolute w-6 h-2 bg-[#FAFAFA] transform origin-left skew-x-[-35deg]"></div>
+            </div>
+          </div>
+
           <div className="">
             <FooterForm />
           </div>

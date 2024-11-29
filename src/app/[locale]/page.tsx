@@ -68,6 +68,7 @@ import { useI18n, useScopedI18n } from '@/locales/client'
 
 import styles from './page.module.scss'
 //componente que abraza los componentes que se cargaran solo cuando sean obserbados al scroll
+import { ButtonRgb } from '../_components/Button/ButtonRgb'
 import { FollowCursorInvert } from '../_components/FollowCursorInvert/FollowCursorInvert'
 import LazyLoadWrapper from '../_components/LazyLoadWrapper'
 
@@ -151,9 +152,31 @@ export default function Home() {
     }, 100) // Usamos un pequeño retraso para asegurar que el DOM esté actualizado
   }
 
+  //configuracio para alternar dos botones para el laight mode y darkMode
+  //detectando si class para el darkMode se encuentra en el html
+  const [isDarkMode, setIsDarkMode] = useState(false)
+  useEffect(() => {
+    // Detectar si la clase "dark" está en el <html>
+    const htmlElement = document.documentElement
+    const darkModeActive = htmlElement.classList.contains('dark')
+    setIsDarkMode(darkModeActive)
+
+    // Listener para detectar cambios dinámicos
+    const observer = new MutationObserver(() => {
+      setIsDarkMode(htmlElement.classList.contains('dark'))
+    })
+
+    observer.observe(htmlElement, {
+      attributes: true,
+      attributeFilter: ['class'],
+    })
+
+    return () => observer.disconnect()
+  }, [])
+
   return (
     <>
-      <div className="relative">
+      <div className={cn(styles.mainPrimary, '')}>
         <FollowCursorInvert className={cn(styles.cursor, 'hidden md:block')} />
         <Header />
         <main
@@ -162,7 +185,7 @@ export default function Home() {
             'space-y-20 md:space-y-32 pt-36 md:pt-48  px-4 overflow-hidden',
           )}
         >
-          <Section>
+          <Section className={cn(styles.intro, 'relative')}>
             <div
               className={cn(
                 styles.container,
@@ -294,7 +317,8 @@ export default function Home() {
                       'flex  gap-5 max-w-full md:max-w-96',
                     )}
                   >
-                    <Button />
+                    {isDarkMode ? <ButtonRgb /> : <Button />}
+
                     <a
                       href="/CV-Hardy-LINO-2.pdf"
                       target="_blank"
@@ -563,7 +587,7 @@ export default function Home() {
                     <h2
                       className={cn(
                         styles.a__propos,
-                        ' text-3xl font-semibold text-center md:text-start text-foreground dark:text-neutral-900',
+                        ' text-3xl font-semibold text-center md:text-start text-foreground',
                       )}
                     >
                       {t('landing.content.about')}
@@ -904,7 +928,10 @@ export default function Home() {
                 <div className={cn(styles.buttonProjects__container, '')}>
                   <button
                     onClick={handleShowMore}
-                    className={cn(styles.button__projects, 'text-foreground')}
+                    className={cn(
+                      styles.button__projects,
+                      'text-foreground border-2 border-foreground',
+                    )}
                   >
                     Voir plus
                   </button>
