@@ -37,7 +37,7 @@ export const Footer: React.FC<FooterProps> = ({
               <h3 className="text-3xl text-[#FAFAFA] font-bold ">
                 {t('landing.footer.contact')}
               </h3>
-              <div className="z-10 mt-2 absolute w-6 h-2 bg-[#FAFAFA] transform origin-left skew-x-[-35deg]"></div>
+              <div className="z-10 mt-2 absolute w-6 h-2 bg-[#FAFAFA] transform origin-left skew-x-[-35deg] dark:bg-yellow-500"></div>
             </div>
           </div>
 

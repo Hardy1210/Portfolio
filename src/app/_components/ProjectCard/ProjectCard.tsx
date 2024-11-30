@@ -82,7 +82,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
       )}
     >
       <div className={cn(styles.layers__container, '')}>
-        <div className={cn(styles.layer, 'bg-neutral-900')}>
+        <div className={cn(styles.layer, 'bg-neutral-900 dark:bg-neutral-950')}>
           <Image
             src={layerImageSrc}
             alt={layerImageAlt}
@@ -95,7 +95,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
         <div
           className={cn(
             styles.secondary__layer,
-            'bg-custom-gradient dark:bg-dark-custom-modal-image-3',
+            'bg-custom-gradient dark:bg-dark-custom-modal-image-4',
           )}
           onClick={toggleModal}
         >

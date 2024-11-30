@@ -24,7 +24,7 @@ export const SkillCardAlternative: React.FC<SkillCardProps> = ({
     <div
       className={cn(
         styles.skill__container,
-        'p-5 relative flex flex-row rounded-xl overflow-hidden group',
+        'z-30 p-5 relative flex flex-row border-[3px] border-neutral-800 rounded-xl overflow-hidden group',
       )}
     >
       <div

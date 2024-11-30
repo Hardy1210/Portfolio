@@ -36,6 +36,8 @@ const config: Config = {
           'linear-gradient(125deg, rgba(255,158,64,1) 0%, rgba(249,199,92,1) 27%, rgba(127,192,146,1) 91%, rgba(63,198,159,1) 100%)',
         'dark-custom-modal-image-3':
           'linear-gradient(125deg, rgba(206,104,255,1) 6%, rgba(232,166,255,1) 28%, rgba(255,149,224,1) 75%, rgba(255,117,154,1) 99%)',
+        'dark-custom-modal-image-4':
+          'linear-gradient(125deg, rgba(234,179,8,1) 8%, rgba(255,203,78,1) 22%, rgba(255,164,90,1) 73%, rgba(244,102,0,1) 95%)',
 
         'modal-variant': 'linear-gradient(to top left,#000000,#434343)',
       },

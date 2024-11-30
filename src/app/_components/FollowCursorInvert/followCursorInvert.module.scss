@@ -43,7 +43,7 @@
 .cursor {
   --size: 5rem; // Tamaño del cursor como variable CSS
   position: fixed;
-  z-index: 49; // Asegura que el cursor esté encima de todo el contenido
+  //z-index: 41; // Asegura que el cursor esté encima de todo el contenido
   width: var(--size);
   height: var(--size);
   border-radius: 50%; // Forma circular del cursor

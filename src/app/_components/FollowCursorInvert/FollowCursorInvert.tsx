@@ -74,7 +74,7 @@ export function FollowCursorInvert({ className }: FollowCursorInvertProps) {
   }, [])
 
   return (
-    <div className={cn(styles.cursorContainer, '', className)}>
+    <div className={cn(styles.cursorContainer, 'fixed z-[41]', className)}>
       <div ref={followerRef} className={styles.cursor} />
     </div>
   )

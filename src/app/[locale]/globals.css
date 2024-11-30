@@ -55,9 +55,9 @@ span {
     --radius: 0.5rem;
     --radius-xl: 0.75rem;
   }
-
+  /*--background: 0 54% 3%;*/
   .dark {
-    --background: 0 54% 3%;
+    --background: 0 0% 9%;
     --foreground: 0 17% 97%;
     --muted: 0 16% 7%;
     --muted-foreground: 0 0% 74%;

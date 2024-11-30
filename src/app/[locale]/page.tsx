@@ -152,7 +152,7 @@ export default function Home() {
     }, 100) // Usamos un pequeño retraso para asegurar que el DOM esté actualizado
   }
 
-  //configuracio para alternar dos botones para el laight mode y darkMode
+  //configuracion para alternar dos botones para el laight mode y darkMode
   //detectando si class para el darkMode se encuentra en el html
   const [isDarkMode, setIsDarkMode] = useState(false)
   useEffect(() => {
@@ -176,7 +176,7 @@ export default function Home() {
 
   return (
     <>
-      <div className={cn(styles.mainPrimary, '')}>
+      <div className={cn(styles.mainPrimary, 'relative')}>
         <FollowCursorInvert className={cn(styles.cursor, 'hidden md:block')} />
         <Header />
         <main
@@ -250,7 +250,6 @@ export default function Home() {
                       </span>
                     </span>
                     <h1
-                      aria-label="Hardy Lino"
                       className={cn(
                         styles.hardy,
                         'w-min text-7xl font-extrabold drop-shadow-xl dark:text-neutral-50 md:w-max',
@@ -262,7 +261,20 @@ export default function Home() {
                       >
                         &lt;/&gt;
                       </span> */}
-                      Hardy
+                      <span className="sr-only">Hardy Lino</span>
+                      <span
+                        aria-hidden="true"
+                        className="text-foreground dark:text-yellow-500 hidden dark:inline"
+                      >
+                        &lt;
+                      </span>
+                      Hardy&nbsp;
+                      <span
+                        aria-hidden="true"
+                        className="text-foreground dark:text-yellow-500 hidden dark:inline"
+                      >
+                        /&gt;
+                      </span>
                     </h1>
                     <h2
                       className={cn(
@@ -572,7 +584,6 @@ export default function Home() {
           </div>
           {/*About*/}
           <div className={cn(styles.background__top, '')}></div>
-
           <div
             id="about"
             className={cn(
@@ -592,7 +603,7 @@ export default function Home() {
                     >
                       {t('landing.content.about')}
                     </h2>
-                    <div className="-z-10 mt-2 absolute w-6 h-2 bg-foreground  transform origin-left skew-x-[-35deg]"></div>
+                    <div className="-z-10 mt-2 absolute w-6 h-2 bg-foreground transform origin-left skew-x-[-35deg] dark:bg-yellow-500"></div>
                   </div>
                 </div>
 
@@ -650,7 +661,7 @@ export default function Home() {
                     >
                       {contentT('projects')}
                     </h2>
-                    <div className="-z-10 mt-2 absolute w-6 h-2 bg-foreground  transform origin-left skew-x-[-35deg]"></div>
+                    <div className="-z-10 mt-2 absolute w-6 h-2 bg-foreground  transform origin-left skew-x-[-35deg] dark:bg-yellow-500"></div>
                   </div>
                 </div>
 
@@ -951,7 +962,7 @@ export default function Home() {
                       <h2 className="text-3xl font-semibold text-foreground">
                         {mySkills('skill')}
                       </h2>
-                      <div className="-z-10 mt-2 absolute w-6 h-2 bg-foreground  transform origin-left skew-x-[-35deg]"></div>
+                      <div className="-z-10 mt-2 absolute w-6 h-2 bg-foreground  transform origin-left skew-x-[-35deg] dark:bg-yellow-500"></div>
                     </div>
                   </div>
 

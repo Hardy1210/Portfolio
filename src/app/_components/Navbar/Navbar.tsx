@@ -64,7 +64,7 @@ export function NavbarComponent() {
         className={cn(
           styles.navbar,
           'rounded-xl max-w-5xl m-auto transition-all backdrop-blur-3xl bg-neutral-50/80 border border-neutral-200/50 dark:border-neutral-900 dark:bg-neutral-950/85',
-          'relative z-10', // Ensure nav is below the modal
+          'relative z-40', // Ensure nav is below the modal
         )}
       >
         <div
