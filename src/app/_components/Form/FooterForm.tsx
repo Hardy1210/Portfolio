@@ -50,27 +50,27 @@ const FooterForm: React.FC = () => {
       className={cn(styles.form, 'flex flex-col text-black')}
     >
       <div>
-        <label className="inline-block mb-2 text-[#FAFAFA]">Email</label>
+        <label className="inline-block mb-2 text-foreground">Email</label>
         <div>
           <input
             type="email"
             value={userEmail}
             onChange={(e) => setUserEmail(e.target.value)}
             required
-            className="border rounded px-2 py-2 w-full text-foreground"
+            className="border rounded px-2 py-2 w-full bg-foreground"
             placeholder="vitoria@email.com"
           />
         </div>
       </div>
 
       <div className="mt-5">
-        <label className="inline-block mb-2 text-[#FAFAFA]">Message</label>
+        <label className="inline-block mb-2 text-foreground">Message</label>
         <div>
           <textarea
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             required
-            className="border rounded px-2 py-2 w-full text-foreground"
+            className="border rounded px-2 py-2 w-full  bg-foreground"
             placeholder={t('landing.footerForm.placehoderText')}
           />
         </div>

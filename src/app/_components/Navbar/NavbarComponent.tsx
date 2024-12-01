@@ -126,7 +126,8 @@ export function NavbarComponent() {
                 <X className="block h-6 w-6" aria-hidden="true" />
               ) : (
                 <MenuIcon
-                  className="block h-6 w-6 stroke-[3]"
+                  width={30}
+                  className="block  stroke-[3]"
                   aria-hidden="true"
                 />
               )}
@@ -198,16 +199,16 @@ export function NavbarComponent() {
             >
               <SunIcon
                 size={40}
-                className="cursor-pointer hover:text-neutral-600 dark:hover:text-neutral-300"
+                className="cursor-pointer hover:text-neutral-600 dark:hover:text-neutral-300 transform hover:scale-125 transition duration-300"
                 onClick={() => setTheme('light')}
               />
               <MoonIcon
                 size={40}
-                className="cursor-pointer hover:text-neutral-600 dark:hover:text-neutral-300"
+                className="cursor-pointer hover:text-neutral-600 dark:hover:text-neutral-300 transform hover:scale-125 transition duration-300"
                 onClick={() => setTheme('dark')}
               />
-              <FloatingNavButton />
             </div>
+            <FloatingNavButton className="mt-10 relative w-16 h-16" />
           </div>
         </div>
       )}

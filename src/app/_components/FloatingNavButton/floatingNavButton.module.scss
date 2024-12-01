@@ -1,31 +1,42 @@
-@keyframes pulse-wave {
+@keyframes float {
   0% {
-    transform: scale(1);
-    opacity: 0; /* Comienza invisible */
+    transform: translateY(0); /* Posición inicial */
   }
   50% {
-    opacity: 1; /* La ola se vuelve completamente visible */
+    transform: translateY(-10px); /* Sube ligeramente */
   }
   100% {
-    transform: scale(1.5); /* Tamaño máximo de la ola */
-    opacity: 0; /* Desaparece gradualmente */
+    transform: translateY(0); /* Vuelve a la posición inicial */
   }
 }
 
 .floating__nav {
-  z-index: 10;
+  z-index: 39;
   overflow: visible;
+  //position: relative;
+  transition: all 0.2s ease-in-out;
+  //-webkit-backdrop-filter: invert(1) grayscale(1); // Inversión de colores + escala de grises
+  //backdrop-filter: invert(1) grayscale(1); // Filtros compatibles con navegadores modernos
+  animation: float 2s ease-in-out infinite;
+  overflow: hidden;
 
   &::before {
     content: '';
     position: absolute;
 
+    top: 50%;
+    left: 50%;
+
     width: 100%;
     height: 100%;
-    background: #f7f4f4; /* Color de la ola */
+
+    //background: #dddddd; /* Color de la ola */
     border-radius: 50%; /* Forma circular */
     transform: translate(-50%, -50%) scale(1); /* Centrado y tamaño inicial */
-    animation: pulse-wave 2s ease-in-out infinite; /* Animación suave con repetición infinita */
+    //animation: pulse-wave 2s ease-in-out infinite; /* Animación suave con repetición infinita */
     z-index: -1; /* Coloca la ola detrás del botón */
+  }
+  &:hover {
+    //transform: scale(1.1);
   }
 }

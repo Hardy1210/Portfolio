@@ -182,7 +182,7 @@ export default function Home() {
         <FollowCursorInvert className={cn(styles.cursor, 'hidden md:block')} />
         <MenuProvider>
           <Header />
-          <FloatingNavButton className="fixed bottom-0 right-0" />
+          <FloatingNavButton className="fixed h-[70px] w-[70px] bottom-12 right-8" />
         </MenuProvider>
 
         <main

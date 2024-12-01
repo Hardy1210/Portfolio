@@ -28,7 +28,7 @@ export const Footer: React.FC<FooterProps> = ({
   return (
     <footer
       id="contact"
-      className={`bg-[#171717] text-[#FAFAFA] p-6 pt-20 ${className || ''}`}
+      className={`bg-[#171717] dark:bg-neutral-950 text-[#FAFAFA] p-6 pt-20 ${className || ''}`}
     >
       <div className="flex justify-center">
         <div className="flex flex-col gap-10 lg:w-1/3 md:w-3/6 w-full ">
