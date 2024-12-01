@@ -69,6 +69,8 @@ import { useI18n, useScopedI18n } from '@/locales/client'
 import styles from './page.module.scss'
 //componente que abraza los componentes que se cargaran solo cuando sean obserbados al scroll
 import { ButtonRgb } from '../_components/Button/ButtonRgb'
+import { MenuProvider } from '../_components/ContextNavbarFloatingNavButton/MenuContext'
+import { FloatingNavButton } from '../_components/FloatingNavButton/FloatingNavButton'
 import { FollowCursorInvert } from '../_components/FollowCursorInvert/FollowCursorInvert'
 import LazyLoadWrapper from '../_components/LazyLoadWrapper'
 
@@ -178,7 +180,11 @@ export default function Home() {
     <>
       <div className={cn(styles.mainPrimary, 'relative')}>
         <FollowCursorInvert className={cn(styles.cursor, 'hidden md:block')} />
-        <Header />
+        <MenuProvider>
+          <Header />
+          <FloatingNavButton className="fixed bottom-0 right-0" />
+        </MenuProvider>
+
         <main
           className={cn(
             styles.main__container,
@@ -1129,6 +1135,7 @@ export default function Home() {
             </div>
           </Section>
         </main>
+
         <Footer className="scroll-mt-24 md:scroll-mt-32" />
       </div>
     </>

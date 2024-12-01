@@ -5,7 +5,6 @@ import Link from 'next/link'
 //import { getI18n } from 'react-i18next'
 //para traduction
 
-import { useEffect, useState } from 'react'
 import { cn } from '../../../lib/utils'
 import { satisfySans } from '../../../styles/fonts'
 import { AboutIcon } from '../icons/modals/AboutIcon'
@@ -20,41 +19,14 @@ import { useI18n } from '@/locales/client'
 //import { ButtonDarkMode } from '../ButtonDark/ButtonDarkMode'
 import { LocaleSelectMovil } from '../LocaleSelectMovil/LocaleSelectMovil'
 import { ModeToggle } from '../ModeToggle'
+//logica del hook personalizado para el navBarComponent y el flotingNabButton
+import { useMenuContext } from '../ContextNavbarFloatingNavButton/MenuContext'
+import { FloatingNavButton } from '../FloatingNavButton/FloatingNavButton'
 import styles from './Navbar.module.scss'
 
 export function NavbarComponent() {
-  const [isOpen, setIsOpen] = useState(false)
-  //para controlar las animationes de apertura y fermetura
-  const [isVisible, setIsVisible] = useState(false)
-
-  const toggleMenu = () => {
-    if (isOpen) {
-      //inicia la animacion de cierre navbarmovil
-      setTimeout(() => {
-        setIsVisible(false)
-      }, 300) //duarcion de la animùation de cierre
-      setIsOpen(false)
-    } else {
-      setIsOpen(true)
-    }
-  }
-
-  //use effect para descaativar el scroll del body
-  useEffect(() => {
-    if (isOpen) {
-      //activar la apertura del navBar y que trabaje con el setIsVisible
-      setIsVisible(true)
-      document.body.style.overflow = 'hidden'
-    } else {
-      document.body.style.overflow = 'auto'
-    }
-    //limpiar efecto al desmontar el componente
-    return () => {
-      document.body.style.overflow = 'auto'
-    }
-  }, [isOpen])
-
-  //traduccion
+  const { isOpen, isVisible, toggleMenu } = useMenuContext()
+  //traduccion para la internationalisation
   const t = useI18n()
   const { setTheme } = useTheme()
 
@@ -234,6 +206,7 @@ export function NavbarComponent() {
                 className="cursor-pointer hover:text-neutral-600 dark:hover:text-neutral-300"
                 onClick={() => setTheme('dark')}
               />
+              <FloatingNavButton />
             </div>
           </div>
         </div>
