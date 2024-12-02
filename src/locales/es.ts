@@ -109,7 +109,8 @@ export default {
     footer: {
       contact: 'Contáctame',
       copyright: 'Todos los derechos reservados.',
-      WorkedWith: 'Desarrollado con Next.js y alojado en Vercel',
+      WorkedWith: 'Desarrollado con Next.js.',
+      WorkedWith2: 'Alojado en Vercel.',
     },
     footerForm: {
       placehoderText: 'Cuentame...',

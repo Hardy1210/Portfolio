@@ -81,6 +81,7 @@ const FadeInSection = dynamic(
   () => import('../_components/FadeInSection/FadeInSection'),
 ) */
 }
+
 //para pre-cargar las imagenes de las modales
 const preloadImages = (imageUrls: string[]): void => {
   imageUrls.forEach((url) => {
@@ -686,138 +687,148 @@ export default function Home() {
               >
                 <li className={cn(styles.fade)}>
                   <FadeInSection>
-                    <ProjectCard
-                      logoImgSrc={AbModalLogo}
-                      layerImageSrc="/images/Argent-bank/arb-2.webp"
-                      layerImageAlt="logo Argent Bank"
-                      secondaryImageSrc="/images/Argent-bank/ab-squo-1.webp"
-                      secondaryImageAlt="MacBook Argent Bank"
-                      headerImageSrc="/images/logo_images/ab.webp"
-                      headerImageAlt="Argent Bank leaf"
-                      icons={[
-                        <ViteIcon key="vite" size={25} />,
-                        <ReactIcon key="react" size={25} />,
-                        <ReduxIcon key="redux" size={25} />,
-                        <SassIcon key="sass" size={25} />,
-                        <NodeJsIcon key="node" size={25} />,
-                        <MongoDbIcon key="mongo" size={25} />,
-                        <SwaggerIcon key="swagger" size={25} />,
-                      ]}
-                      title="Argent Bank"
-                      description={projectCardArgentT('description')}
-                      modalDescription={projectCardArgentT('modalDescription')}
-                      modalImgSrc="/images/Argent-bank/ab-6.webp"
-                      modalImgAlt="MacBook Argent Bank"
-                      modalImgSecondSrc="/images/Argent-bank/ab-7.webp"
-                      modalImgSecondAlt="MacBook Argent Bank"
-                      technologies={[
-                        'React',
-                        'Redux',
-                        'Sass',
-                        'Node.js',
-                        'MongoDB',
-                      ]}
-                      repoLink="https://github.com/Hardy1210/ArgentBank-website/tree/Redux"
-                      repoIcon={<GithubIcon size={20} />}
-                      repoLinkWeb="https://hardy1210.github.io/ArgentBank-website/"
-                      repoWebIcon={<WebIcon size={20} />}
-                    />
+                    <LazyLoadWrapper>
+                      <ProjectCard
+                        logoImgSrc={AbModalLogo}
+                        layerImageSrc="/images/Argent-bank/arb-2.webp"
+                        layerImageAlt="logo Argent Bank"
+                        secondaryImageSrc="/images/Argent-bank/ab-squo-1.webp"
+                        secondaryImageAlt="MacBook Argent Bank"
+                        headerImageSrc="/images/logo_images/ab.webp"
+                        headerImageAlt="Argent Bank leaf"
+                        icons={[
+                          <ViteIcon key="vite" size={25} />,
+                          <ReactIcon key="react" size={25} />,
+                          <ReduxIcon key="redux" size={25} />,
+                          <SassIcon key="sass" size={25} />,
+                          <NodeJsIcon key="node" size={25} />,
+                          <MongoDbIcon key="mongo" size={25} />,
+                          <SwaggerIcon key="swagger" size={25} />,
+                        ]}
+                        title="Argent Bank"
+                        description={projectCardArgentT('description')}
+                        modalDescription={projectCardArgentT(
+                          'modalDescription',
+                        )}
+                        modalImgSrc="/images/Argent-bank/ab-6.webp"
+                        modalImgAlt="MacBook Argent Bank"
+                        modalImgSecondSrc="/images/Argent-bank/ab-7.webp"
+                        modalImgSecondAlt="MacBook Argent Bank"
+                        technologies={[
+                          'React',
+                          'Redux',
+                          'Sass',
+                          'Node.js',
+                          'MongoDB',
+                        ]}
+                        repoLink="https://github.com/Hardy1210/ArgentBank-website/tree/Redux"
+                        repoIcon={<GithubIcon size={20} />}
+                        repoLinkWeb="https://hardy1210.github.io/ArgentBank-website/"
+                        repoWebIcon={<WebIcon size={20} />}
+                      />
+                    </LazyLoadWrapper>
                   </FadeInSection>
                 </li>
 
                 <li className={cn(styles.fade)}>
                   <FadeInSection>
-                    <ProjectCard
-                      logoImgSrc={KaModalLogo}
-                      layerImageSrc="/images/Kasa/kasa.webp"
-                      layerImageAlt="logo Kasa"
-                      secondaryImageSrc="/images/Kasa/k-bg-2.webp"
-                      secondaryImageAlt="MacBook Kasa"
-                      headerImageSrc="/images/Kasa/ka-logo.webp"
-                      headerImageAlt="Logo Kasa"
-                      icons={[
-                        <ViteIcon key="vite" size={25} />,
-                        <ReactIcon key="react" size={25} />,
+                    <LazyLoadWrapper>
+                      <ProjectCard
+                        logoImgSrc={KaModalLogo}
+                        layerImageSrc="/images/Kasa/kasa.webp"
+                        layerImageAlt="logo Kasa"
+                        secondaryImageSrc="/images/Kasa/k-bg-2.webp"
+                        secondaryImageAlt="MacBook Kasa"
+                        headerImageSrc="/images/Kasa/ka-logo.webp"
+                        headerImageAlt="Logo Kasa"
+                        icons={[
+                          <ViteIcon key="vite" size={25} />,
+                          <ReactIcon key="react" size={25} />,
 
-                        <SassIcon key="sass" size={25} />,
-                        <ReactRouterIcon key="router" size={25} />,
-                      ]}
-                      title="Kasa"
-                      description={projectCardKasa('description')}
-                      modalDescription={projectCardKasa('modalDescription')}
-                      modalImgSrc="/images/Kasa/ka-ph-2.webp"
-                      modalImgAlt="Iphone Kasa"
-                      modalImgSecondSrc="/images/Kasa/kasa-1.webp"
-                      modalImgSecondAlt="MacBook Kasa"
-                      technologies={['Vite', 'React', 'React router', 'Sass']}
-                      repoLink="https://github.com/Hardy1210/kasa"
-                      repoIcon={<GithubIcon size={20} />}
-                      repoLinkWeb="https://hardy1210.github.io/kasa/"
-                      repoWebIcon={<WebIcon size={20} />}
-                    />
+                          <SassIcon key="sass" size={25} />,
+                          <ReactRouterIcon key="router" size={25} />,
+                        ]}
+                        title="Kasa"
+                        description={projectCardKasa('description')}
+                        modalDescription={projectCardKasa('modalDescription')}
+                        modalImgSrc="/images/Kasa/ka-ph-2.webp"
+                        modalImgAlt="Iphone Kasa"
+                        modalImgSecondSrc="/images/Kasa/kasa-1.webp"
+                        modalImgSecondAlt="MacBook Kasa"
+                        technologies={['Vite', 'React', 'React router', 'Sass']}
+                        repoLink="https://github.com/Hardy1210/kasa"
+                        repoIcon={<GithubIcon size={20} />}
+                        repoLinkWeb="https://hardy1210.github.io/kasa/"
+                        repoWebIcon={<WebIcon size={20} />}
+                      />
+                    </LazyLoadWrapper>
                   </FadeInSection>
                 </li>
 
                 <li className={cn(styles.fade)}>
                   <FadeInSection>
-                    <ProjectCard
-                      logoImgSrc={OhModalLogo}
-                      layerImageSrc="/images/ohmyfood/ohmyfood-w.webp"
-                      layerImageAlt="logo Ohmyfood"
-                      secondaryImageSrc="/images/ohmyfood/oh-2.webp"
-                      secondaryImageAlt="MacBook Ohmyfood"
-                      headerImageSrc="/images/ohmyfood/oh-logo.webp"
-                      headerImageAlt=""
-                      icons={[
-                        <HtmlIcon key="html" size={25} />,
-                        <CssIcon key="css" size={25} />,
-                        <SassIcon key="sass" size={25} />,
-                      ]}
-                      title="Ohmyfood"
-                      description={projectCardsOhMyFood('description')}
-                      modalDescription={projectCardsOhMyFood(
-                        'modalDescription',
-                      )}
-                      modalImgSrc="/images/ohmyfood/oh-4.webp"
-                      modalImgAlt=""
-                      modalImgSecondSrc="/images/ohmyfood/oh-3.webp"
-                      modalImgSecondAlt=""
-                      technologies={['Html', 'Css', 'Sass']}
-                      repoLink="https://github.com/Hardy1210/-OhMyFood"
-                      repoIcon={<GithubIcon size={20} />}
-                      repoLinkWeb="https://hardy1210.github.io/-OhMyFood/"
-                      repoWebIcon={<WebIcon size={20} />}
-                    />
+                    <LazyLoadWrapper>
+                      <ProjectCard
+                        logoImgSrc={OhModalLogo}
+                        layerImageSrc="/images/ohmyfood/ohmyfood-w.webp"
+                        layerImageAlt="logo Ohmyfood"
+                        secondaryImageSrc="/images/ohmyfood/oh-2.webp"
+                        secondaryImageAlt="MacBook Ohmyfood"
+                        headerImageSrc="/images/ohmyfood/oh-logo.webp"
+                        headerImageAlt=""
+                        icons={[
+                          <HtmlIcon key="html" size={25} />,
+                          <CssIcon key="css" size={25} />,
+                          <SassIcon key="sass" size={25} />,
+                        ]}
+                        title="Ohmyfood"
+                        description={projectCardsOhMyFood('description')}
+                        modalDescription={projectCardsOhMyFood(
+                          'modalDescription',
+                        )}
+                        modalImgSrc="/images/ohmyfood/oh-4.webp"
+                        modalImgAlt=""
+                        modalImgSecondSrc="/images/ohmyfood/oh-3.webp"
+                        modalImgSecondAlt=""
+                        technologies={['Html', 'Css', 'Sass']}
+                        repoLink="https://github.com/Hardy1210/-OhMyFood"
+                        repoIcon={<GithubIcon size={20} />}
+                        repoLinkWeb="https://hardy1210.github.io/-OhMyFood/"
+                        repoWebIcon={<WebIcon size={20} />}
+                      />
+                    </LazyLoadWrapper>
                   </FadeInSection>
                 </li>
                 <li className={cn(styles.fade)}>
                   <FadeInSection>
-                    <ProjectCard
-                      logoImgSrc={EventsModalLogo}
-                      layerImageSrc="/images/724/724-w.webp"
-                      layerImageAlt="logo 724 Events"
-                      secondaryImageSrc="/images/724/724-squo-6.webp"
-                      secondaryImageAlt="MacBook 724 Events"
-                      headerImageSrc="/images/724/724-logo.webp"
-                      headerImageAlt="Logo 724 Events"
-                      icons={[
-                        <JavascriptIcon key="javascript" size={25} />,
-                        <ReactIcon key="react" size={25} />,
-                        <NodeJsIcon key="node" size={25} />,
-                      ]}
-                      title="724 events"
-                      description={projectCard742('description')}
-                      modalDescription={projectCard742('modalDescription')}
-                      modalImgSrc="/images/724/724-squo-3.webp"
-                      modalImgAlt="MacBook 724 Events"
-                      modalImgSecondSrc="/images/724/724-squo-4.webp"
-                      modalImgSecondAlt="MacBook 724 Events"
-                      technologies={['React', 'JavaScript', 'Node.js']}
-                      repoLink="https://github.com/Hardy1210/742-eventss"
-                      repoIcon={<GithubIcon size={20} />}
-                      repoLinkWeb="https://hardy1210.github.io/742-eventss/"
-                      repoWebIcon={<WebIcon size={20} />}
-                    />
+                    <LazyLoadWrapper>
+                      <ProjectCard
+                        logoImgSrc={EventsModalLogo}
+                        layerImageSrc="/images/724/724-w.webp"
+                        layerImageAlt="logo 724 Events"
+                        secondaryImageSrc="/images/724/724-squo-6.webp"
+                        secondaryImageAlt="MacBook 724 Events"
+                        headerImageSrc="/images/724/724-logo.webp"
+                        headerImageAlt="Logo 724 Events"
+                        icons={[
+                          <JavascriptIcon key="javascript" size={25} />,
+                          <ReactIcon key="react" size={25} />,
+                          <NodeJsIcon key="node" size={25} />,
+                        ]}
+                        title="724 events"
+                        description={projectCard742('description')}
+                        modalDescription={projectCard742('modalDescription')}
+                        modalImgSrc="/images/724/724-squo-3.webp"
+                        modalImgAlt="MacBook 724 Events"
+                        modalImgSecondSrc="/images/724/724-squo-4.webp"
+                        modalImgSecondAlt="MacBook 724 Events"
+                        technologies={['React', 'JavaScript', 'Node.js']}
+                        repoLink="https://github.com/Hardy1210/742-eventss"
+                        repoIcon={<GithubIcon size={20} />}
+                        repoLinkWeb="https://hardy1210.github.io/742-eventss/"
+                        repoWebIcon={<WebIcon size={20} />}
+                      />
+                    </LazyLoadWrapper>
                   </FadeInSection>
                 </li>
                 {showAll && (

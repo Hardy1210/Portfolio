@@ -1,6 +1,9 @@
+import bundleAnalyzer from '@next/bundle-analyzer'
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+
   // Configuración de redirección
   async rewrites() {
     return [
@@ -40,7 +43,13 @@ const nextConfig = {
   },
 }
 
-export default nextConfig
+// Inicializa `withBundleAnalyzer`
+const withBundleAnalyzer = bundleAnalyzer({
+  enabled: process.env.ANALYZE === 'true',
+})
+
+// Exporta la configuración
+export default withBundleAnalyzer(nextConfig)
 
 {
   /*rewrite a la place de redirects pour cache /fr o la lange defini en locale */

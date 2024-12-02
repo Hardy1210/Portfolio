@@ -107,7 +107,8 @@ export default {
     footer: {
       contact: 'Contactez-moi',
       copyright: 'Tous droits réservés.',
-      WorkedWith: 'Développé avec Next.js et hébergé sur Vercel.',
+      WorkedWith: 'Développé avec Next.js. ',
+      WorkedWith2: 'Hébergé sur Vercel.',
     },
     footerForm: {
       placehoderText: 'Dites-moi tout...',

@@ -9,6 +9,8 @@ import Link from 'next/link'
 import FooterForm from '../Form/FooterForm'
 import { GithubIcon } from '../icons/GithubIcon'
 import { LinkedInIcon } from '../icons/LinkedInIcon'
+import { NextIcon } from '../icons/NextIcon'
+import { VercelIcon } from '../icons/VercelIcon'
 
 //import FooterForm from './FooterForm';
 
@@ -80,7 +82,16 @@ export const Footer: React.FC<FooterProps> = ({
             &copy; {year} - {t('landing.footer.copyright')}{' '}
             {/* Contact: {email}*/}
           </p>
-          <p>{t('landing.footer.WorkedWith')}</p>
+          <div className="flex flex-col-reverse sm:flex-row gap-2 sm:gap-4 items-center">
+            <p className="flex items-end gap-2">
+              {t('landing.footer.WorkedWith')}
+              <NextIcon width={30} />
+            </p>
+            <p className="flex items-end gap-2">
+              {t('landing.footer.WorkedWith2')}
+              <VercelIcon width={30} />
+            </p>
+          </div>
         </div>
       </div>
     </footer>

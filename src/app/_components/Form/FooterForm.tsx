@@ -57,7 +57,7 @@ const FooterForm: React.FC = () => {
             value={userEmail}
             onChange={(e) => setUserEmail(e.target.value)}
             required
-            className="border rounded px-2 py-2 w-full bg-foreground"
+            className="border rounded px-2 py-2 w-full bg-[#FFFF]"
             placeholder="vitoria@email.com"
           />
         </div>
@@ -70,7 +70,7 @@ const FooterForm: React.FC = () => {
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             required
-            className="border rounded px-2 py-2 w-full  bg-foreground"
+            className="border rounded px-2 py-2 w-full  bg-[#FFFF]"
             placeholder={t('landing.footerForm.placehoderText')}
           />
         </div>

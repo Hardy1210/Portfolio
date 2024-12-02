@@ -10,6 +10,7 @@ const config: Config = {
     './src/lib/**/*.{js,ts,jsx,tsx,mdx}', // Incluye utilidades si aplican clases Tailwind
     './src/styles/**/*.{js,ts,jsx,tsx,mdx,css,scss}', // Para cualquier archivo CSS/SCSS en styles
   ],
+
   theme: {
     //agregar las fduentes necesarias
     //las variables estan designadas en el fichero Font.tsx

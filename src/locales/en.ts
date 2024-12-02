@@ -109,7 +109,8 @@ export default {
     footer: {
       contact: 'Contact me',
       copyright: 'All rights reserved.',
-      WorkedWith: 'Developed with Next.js and hosted on Vercel',
+      WorkedWith: 'Developed with Next.js.',
+      WorkedWith2: 'Hosted on Vercel.',
     },
     footerForm: {
       placehoderText: 'Tell me everything...',
