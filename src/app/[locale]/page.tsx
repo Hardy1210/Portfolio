@@ -216,6 +216,7 @@ export default function Home() {
                   alt="Robot hand light"
                   width={250}
                   height={325}
+                  priority
                   className={cn(
                     styles.img,
                     'w-96 object-cover  dark:hidden text-transparent',
