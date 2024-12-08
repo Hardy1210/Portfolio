@@ -30,7 +30,7 @@ export default function SpotifyNowPlaying() {
     fetchCurrentlyPlaying()
 
     // Configura el intervalo para actualizar cada 10 segundos
-    const interval = setInterval(fetchCurrentlyPlaying, 5000)
+    const interval = setInterval(fetchCurrentlyPlaying, 20000)
     return () => clearInterval(interval) // Limpia el intervalo al desmontar el componente
   }, [])
 
@@ -40,19 +40,19 @@ export default function SpotifyNowPlaying() {
 
   return (
     <div className="relative overflow-hidden  w-60 h-28 space-x-4 bg-[#171717] rounded-lg">
-      <Image
+      <Image //primera imagen que se muestra
         src={currentlyPlaying.albumImageUrl || '/fallback-image.png'} // URL de respaldo
         alt={currentlyPlaying.album || 'Álbum desconocido'}
         width={160} // Tamaño de la imagen
         height={160}
-        className="absolute z-10 border-2 border-neutral-300 -left-14 opacity-85 rounded-full animate-spin" // Clases adicionales
+        className="absolute z-10 border-2 border-neutral-300 -left-14 opacity-85 rounded-full animate-spin w-auto" // Clases adicionales
       />
-      <Image
+      <Image //segunda imagen que tiene blur y va atras de la principal
         src={currentlyPlaying.albumImageUrl || '/fallback-image.png'} // URL de respaldo
         alt={currentlyPlaying.album || 'Álbum desconocido'}
         width={170} // Tamaño de la imagen
         height={170}
-        className="absolute -top-3 blur-2xl -left-12  rounded-full animate-spin" // Clases adicionales
+        className="absolute -top-3 blur-2xl -left-12  rounded-full animate-spin w-auto" // Clases adicionales
       />
       <div className="absolute flex flex-col z-10 bottom-1 right-2  text-neutral-50">
         <p className="font-bold">{currentlyPlaying.title}</p>
