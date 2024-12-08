@@ -11,6 +11,11 @@ const nextConfig = {
         source: '/',
         destination: '/fr',
       },
+      // Excluir rutas de API de las redirecciones
+      {
+        source: '/api/:path*',
+        destination: '/api/:path*',
+      },
     ]
   },
 
@@ -40,6 +45,16 @@ const nextConfig = {
         ],
       },
     ]
+  },
+  // Configuración de dominios permitidos para imágenes externas (spotify)
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'i.scdn.co', // Dominio de Spotify
+        pathname: '/**', // Permitir todas las rutas dentro del dominio
+      },
+    ],
   },
 }
 

@@ -1,4 +1,5 @@
 // src/app/api/send/route.ts
+//api para la recepcion de mails de contactos en el portfolio
 
 import { EmailTemplate } from '@/app/_components/email-template'
 import { NextResponse } from 'next/server'

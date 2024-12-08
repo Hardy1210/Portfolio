@@ -19,6 +19,26 @@ export const config = {
     '/((?!_next|api|robots\\.txt|favicon\\.ico|sitemap\\.xml|static|.*\\..*).*)',
   ],
 }
+
+{
+  /**
+  export function middleware(request: NextRequest) {
+  const url = request.nextUrl
+
+  // Lógica para rutas específicas como /api/currently-playing
+  if (url.pathname === '/api/currently-playing') {
+    const response = NextResponse.next()
+    response.headers.set('Cache-Control', 'no-store, no-cache, must-revalidate')
+    response.headers.set('Pragma', 'no-cache')
+    response.headers.set('Expires', '0')
+    return response
+  }
+
+  // Lógica de internacionalización para el resto de las rutas
+  return I18nMiddleware(request)
+} */
+}
+
 {
   /* codigo para forzar el idioma que se vera para el usuuario
   // middleware.ts

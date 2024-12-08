@@ -120,6 +120,8 @@ const config: Config = {
         modalClose3D: 'modalClose3D 0.2s ease-out forwards',
         //animacion de bloques de layout fade in up
         fadeInUp: 'fadeInUp 0.7s ease-out forwards',
+        //animation de rotacion de album de spotify
+        spin: 'spin 70s linear infinite',
       },
       keyframes: {
         marquee: {
@@ -189,6 +191,11 @@ const config: Config = {
         fadeInUp: {
           '0%': { opacity: '0', transform: 'translateY(20px)' },
           '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        //animation de rotacion de album de spotify
+        spin: {
+          '0%': { transform: 'rotate(0deg)' },
+          '100%': { transform: 'rotate(360deg)' },
         },
       },
       //accecibilidad

@@ -73,6 +73,7 @@ import { MenuProvider } from '../_components/ContextNavbarFloatingNavButton/Menu
 import { FloatingNavButton } from '../_components/FloatingNavButton/FloatingNavButton'
 import { FollowCursorInvert } from '../_components/FollowCursorInvert/FollowCursorInvert'
 import LazyLoadWrapper from '../_components/LazyLoadWrapper'
+import SpotifyNowPlaying from '../_components/spotify/SpotifyNowPlaying'
 
 //importacion dinamica de un compenente si se nesecita como projectCard cuando este a la vista del usuario
 {
@@ -651,6 +652,9 @@ export default function Home() {
                     </div>
                   </div>
                 </FadeInSection>
+                <div>
+                  <SpotifyNowPlaying />
+                </div>
               </Section>
             </div>
 
