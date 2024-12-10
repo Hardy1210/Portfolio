@@ -14,6 +14,8 @@ const ModalProject = dynamic(() => import('../ModalProyect/ModalProject'), {
 })
 
 interface ProjectCardProps {
+  background?: string
+
   logoImgSrc: StaticImageData
   layerImageSrc: string
   layerImageAlt: string
@@ -37,6 +39,8 @@ interface ProjectCardProps {
 }
 
 const ProjectCard: FC<ProjectCardProps> = ({
+  background,
+
   logoImgSrc,
   layerImageSrc,
   layerImageAlt,
@@ -95,8 +99,9 @@ const ProjectCard: FC<ProjectCardProps> = ({
         <div
           className={cn(
             styles.secondary__layer,
-            'bg-custom-gradient dark:bg-dark-custom-modal-image-4',
+            !background && 'bg-custom-gradient',
           )}
+          style={background ? { background } : undefined}
           onClick={toggleModal}
         >
           <Image

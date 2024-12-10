@@ -4,6 +4,7 @@ import {
   Kalam,
   Ms_Madi,
   Satisfy,
+  Trade_Winds,
   Vujahday_Script,
 } from 'next/font/google'
 export const interSans = Inter({
@@ -27,6 +28,11 @@ export const kalam = Kalam({
   variable: '--font-satisfy',
 })
 export const vujahday = Vujahday_Script({
+  subsets: ['latin'],
+  weight: ['400'],
+  variable: '--font-satisfy',
+})
+export const tradeWinds = Trade_Winds({
   subsets: ['latin'],
   weight: ['400'],
   variable: '--font-satisfy',

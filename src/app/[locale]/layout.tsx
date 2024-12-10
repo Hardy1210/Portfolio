@@ -10,7 +10,6 @@ import { Metadata } from 'next'
 //cuidado con estos dos imports no los importas por que next se actuamlizo
 //import Head from 'next/head'
 //import StructuredData from '../_components/RichSnippets/StructuredData'
-import Script from 'next/script'
 import StructuredData from '../_components/RichSnippets/StructuredData'
 import Providers from './providers'
 
@@ -91,7 +90,6 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Script src="" />
           <Providers params={Promise.resolve({ locale: params.locale })}>
             {children}
           </Providers>

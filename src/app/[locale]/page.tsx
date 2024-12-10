@@ -165,7 +165,7 @@ export default function Home() {
     const darkModeActive = htmlElement.classList.contains('dark')
     setIsDarkMode(darkModeActive)
 
-    // Listener para detectar cambios dinámicos
+    // Listener para detectar cambios dinámicos para el darkmode
     const observer = new MutationObserver(() => {
       setIsDarkMode(htmlElement.classList.contains('dark'))
     })
@@ -177,6 +177,10 @@ export default function Home() {
 
     return () => observer.disconnect()
   }, [])
+  // Fonction utilitaire pour calculer le background dynamiquement de chaque img de projectCard
+  const getBackground = (isDarkMode: boolean, darkGradient: string) => {
+    return isDarkMode ? darkGradient : undefined
+  }
 
   return (
     <>
@@ -203,7 +207,7 @@ export default function Home() {
               <div
                 className={cn(
                   styles.bloque__vacio,
-                  'absolute -z-50 h-64 w-64 bg-[conic-gradient(transparent,rgb(0,0,0))] opacity-15 blur-2xl dark:bg-[conic-gradient(transparent,rgb(255,255,255))] md:left-36',
+                  'absolute left-1/3 -z-50 h-64 w-64 bg-[conic-gradient(transparent,rgb(0,0,0))] opacity-15 blur-2xl dark:bg-[conic-gradient(transparent,rgb(255,255,255))] md:left-36',
                 )}
               ></div>
               <div
@@ -217,7 +221,6 @@ export default function Home() {
                   alt="Robot hand light"
                   width={250}
                   height={325}
-                  priority
                   className={cn(
                     styles.img,
                     'w-96 object-cover  dark:hidden text-transparent',
@@ -264,26 +267,17 @@ export default function Home() {
                         'w-min text-7xl font-extrabold drop-shadow-xl dark:text-neutral-50 md:w-max',
                       )}
                     >
-                      {/*<span
-                        aria-hidden="true"
-                        className={cn(styles.simbol, 'dark:text-red-600')}
-                      >
-                        &lt;/&gt;
-                      </span> */}
                       <span className="sr-only">Hardy Lino</span>
                       <span
                         aria-hidden="true"
-                        className="text-foreground dark:text-yellow-500 hidden dark:inline"
+                        className={cn(
+                          styles.hardy__h,
+                          'text-foreground dark:text-yellow-500 ',
+                        )}
                       >
-                        &lt;
+                        H
                       </span>
-                      Hardy&nbsp;
-                      <span
-                        aria-hidden="true"
-                        className="text-foreground dark:text-yellow-500 hidden dark:inline"
-                      >
-                        /&gt;
-                      </span>
+                      ardy&nbsp;
                     </h1>
                     <h2
                       className={cn(
@@ -652,7 +646,7 @@ export default function Home() {
                     </div>
                   </div>
                 </FadeInSection>
-                <div>
+                <div className="">
                   <SpotifyNowPlaying />
                 </div>
               </Section>
@@ -694,6 +688,10 @@ export default function Home() {
                   <FadeInSection>
                     <LazyLoadWrapper>
                       <ProjectCard
+                        background={getBackground(
+                          isDarkMode,
+                          'linear-gradient(125deg, rgba(10,10,10,1) 19%, rgba(224,174,16,1) 53%, rgba(210,159,0,1) 63%, rgba(10,10,10,1) 88%)',
+                        )}
                         logoImgSrc={AbModalLogo}
                         layerImageSrc="/images/Argent-bank/arb-2.webp"
                         layerImageAlt="logo Argent Bank"
@@ -739,6 +737,10 @@ export default function Home() {
                   <FadeInSection>
                     <LazyLoadWrapper>
                       <ProjectCard
+                        background={getBackground(
+                          isDarkMode,
+                          'linear-gradient(125deg, rgba(10,10,10,1) 21%, rgba(156,45,250,1) 53%, rgba(156,45,250,1) 63%, rgba(10,10,10,1) 80%)',
+                        )}
                         logoImgSrc={KaModalLogo}
                         layerImageSrc="/images/Kasa/kasa.webp"
                         layerImageAlt="logo Kasa"
@@ -774,6 +776,10 @@ export default function Home() {
                   <FadeInSection>
                     <LazyLoadWrapper>
                       <ProjectCard
+                        background={getBackground(
+                          isDarkMode,
+                          'linear-gradient(19deg, rgba(10,10,10,1) 21%, rgba(226,63,46,1) 53%, rgba(226,63,46,1) 63%, rgba(10,10,10,1) 80%)',
+                        )}
                         logoImgSrc={OhModalLogo}
                         layerImageSrc="/images/ohmyfood/ohmyfood-w.webp"
                         layerImageAlt="logo Ohmyfood"
