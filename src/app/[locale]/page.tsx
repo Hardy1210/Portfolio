@@ -270,10 +270,7 @@ export default function Home() {
                       <span className="sr-only">Hardy Lino</span>
                       <span
                         aria-hidden="true"
-                        className={cn(
-                          styles.hardy__h,
-                          'text-foreground dark:text-yellow-500 ',
-                        )}
+                        className={cn(styles.hardy__h, 'text-foreground')}
                       >
                         H
                       </span>
@@ -606,7 +603,7 @@ export default function Home() {
                     >
                       {t('landing.content.about')}
                     </h2>
-                    <div className="-z-10 mt-2 absolute w-6 h-2 bg-foreground transform origin-left skew-x-[-35deg] dark:bg-yellow-500"></div>
+                    <div className="-z-10 mt-2 absolute w-6 h-2 bg-foreground transform origin-left skew-x-[-35deg] "></div>
                   </div>
                 </div>
 
@@ -667,7 +664,7 @@ export default function Home() {
                     >
                       {contentT('projects')}
                     </h2>
-                    <div className="-z-10 mt-2 absolute w-6 h-2 bg-foreground  transform origin-left skew-x-[-35deg] dark:bg-yellow-500"></div>
+                    <div className="-z-10 mt-2 absolute w-6 h-2 bg-foreground  transform origin-left skew-x-[-35deg] "></div>
                   </div>
                 </div>
 
@@ -690,7 +687,7 @@ export default function Home() {
                       <ProjectCard
                         background={getBackground(
                           isDarkMode,
-                          'linear-gradient(125deg, rgba(10,10,10,1) 19%, rgba(224,174,16,1) 53%, rgba(210,159,0,1) 63%, rgba(10,10,10,1) 88%)',
+                          'linear-gradient(126deg, rgba(10,10,10,1) 16%, rgba(147,196,16,1) 48%, rgba(10,10,10,1) 88%)',
                         )}
                         logoImgSrc={AbModalLogo}
                         layerImageSrc="/images/Argent-bank/arb-2.webp"
@@ -739,7 +736,7 @@ export default function Home() {
                       <ProjectCard
                         background={getBackground(
                           isDarkMode,
-                          'linear-gradient(125deg, rgba(10,10,10,1) 21%, rgba(156,45,250,1) 53%, rgba(156,45,250,1) 63%, rgba(10,10,10,1) 80%)',
+                          'linear-gradient(126deg, rgba(10,10,10,1) 16%, rgba(255,96,96,1) 44%, rgba(255,96,96,1) 57%, rgba(10,10,10,1) 86%)',
                         )}
                         logoImgSrc={KaModalLogo}
                         layerImageSrc="/images/Kasa/kasa.webp"
@@ -778,7 +775,7 @@ export default function Home() {
                       <ProjectCard
                         background={getBackground(
                           isDarkMode,
-                          'linear-gradient(19deg, rgba(10,10,10,1) 21%, rgba(226,63,46,1) 53%, rgba(226,63,46,1) 63%, rgba(10,10,10,1) 80%)',
+                          'linear-gradient(126deg, rgba(10,10,10,1) 16%, rgba(185,94,241,1) 44%, rgba(181,101,231,1) 57%, rgba(10,10,10,1) 86%)',
                         )}
                         logoImgSrc={OhModalLogo}
                         layerImageSrc="/images/ohmyfood/ohmyfood-w.webp"
@@ -814,6 +811,10 @@ export default function Home() {
                   <FadeInSection>
                     <LazyLoadWrapper>
                       <ProjectCard
+                        background={getBackground(
+                          isDarkMode,
+                          'linear-gradient(126deg, rgba(10,10,10,1) 16%, rgba(88,47,255,1) 44%, rgba(88,47,255,1) 57%, rgba(10,10,10,1) 86%)',
+                        )}
                         logoImgSrc={EventsModalLogo}
                         layerImageSrc="/images/724/724-w.webp"
                         layerImageAlt="logo 724 Events"
@@ -854,6 +855,10 @@ export default function Home() {
                       <LazyLoadWrapper>
                         <FadeInSection>
                           <ProjectCard
+                            background={getBackground(
+                              isDarkMode,
+                              'linear-gradient(126deg, rgba(10,10,10,1) 16%, rgba(247,116,21,1) 44%, rgba(247,116,16,1) 57%, rgba(10,10,10,1) 86%)',
+                            )}
                             logoImgSrc={NinaModalLOgo}
                             layerImageSrc="/images/nina/nina-w.webp"
                             layerImageAlt="logo Nina Carducci"
@@ -894,6 +899,10 @@ export default function Home() {
                       <LazyLoadWrapper>
                         <FadeInSection>
                           <ProjectCard
+                            background={getBackground(
+                              isDarkMode,
+                              'linear-gradient(126deg, rgba(10,10,10,1) 16%, rgba(255,195,11,1) 44%, rgba(255,210,0,1) 57%, rgba(10,10,10,1) 86%)',
+                            )}
                             logoImgSrc={SophModalLogo}
                             layerImageSrc="/images/sophie/so.webp"
                             layerImageAlt="logo Sophie Bluel"
@@ -932,12 +941,16 @@ export default function Home() {
                       <LazyLoadWrapper>
                         <FadeInSection>
                           <ProjectCard
+                            background={getBackground(
+                              isDarkMode,
+                              'linear-gradient(126deg, rgba(10,10,10,1) 16%, rgba(0,101,252,1) 44%, rgba(0,101,252,1) 57%, rgba(10,10,10,1) 86%)',
+                            )}
                             logoImgSrc={BookiModalLogo}
                             layerImageSrc="/images/booki/Booki-w.webp"
                             layerImageAlt="logo Booki"
-                            secondaryImageSrc="/images/booki/bo-1.webp"
+                            secondaryImageSrc="/images/booki/bo-6.webp"
                             secondaryImageAlt="MacBook avec le site Booki"
-                            headerImageSrc="/images/logo_images/ab.webp"
+                            headerImageSrc="/images/booki/bo-logo-1.webp"
                             headerImageAlt="Logo Booki"
                             icons={[
                               <HtmlIcon key="html" size={25} />,
@@ -990,7 +1003,7 @@ export default function Home() {
                       <h2 className="text-3xl font-semibold text-foreground">
                         {mySkills('skill')}
                       </h2>
-                      <div className="-z-10 mt-2 absolute w-6 h-2 bg-foreground  transform origin-left skew-x-[-35deg] dark:bg-yellow-500"></div>
+                      <div className="-z-10 mt-2 absolute w-6 h-2 bg-foreground  transform origin-left skew-x-[-35deg] "></div>
                     </div>
                   </div>
 

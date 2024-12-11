@@ -95,11 +95,13 @@ const ProjectCard: FC<ProjectCardProps> = ({
             className={cn(styles.image, '')}
           />
         </div>
-        {/* Capa secundaria con el evento de clic */}
+        {/* Capa secundaria con el evento de clic pero cin un background para darkMode
+        si no hay backgropund para dark mode entonces aplicamos el dark-custom-modal-image-4 con dark: */}
         <div
           className={cn(
             styles.secondary__layer,
-            !background && 'bg-custom-gradient',
+            'bg-custom-gradient',
+            !background && 'dark:bg-dark-custom-modal-image-4',
           )}
           style={background ? { background } : undefined}
           onClick={toggleModal}
@@ -109,7 +111,10 @@ const ProjectCard: FC<ProjectCardProps> = ({
             alt={secondaryImageAlt}
             width={700}
             height={412}
-            className={cn(styles.secondary__image, '')}
+            className={cn(
+              styles.secondary__image,
+              'drop-shadow-[0_20px_10px_rgba(0,0,0,0.5)]',
+            )}
           />
         </div>
       </div>
