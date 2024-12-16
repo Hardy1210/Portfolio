@@ -37,3 +37,5 @@ next-env.d.ts
 
 # Ignorar archivos de configuración de entorno
 .env.local
+# ignorar env de prisma
+.env

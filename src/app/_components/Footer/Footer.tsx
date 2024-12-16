@@ -6,6 +6,7 @@
 import { useI18n } from '@/locales/client'
 import { MailIcon } from 'lucide-react'
 import Link from 'next/link'
+import ButtonLike from '../ButtonLike/ButtonLike'
 import FooterForm from '../Form/FooterForm'
 import { GithubIcon } from '../icons/GithubIcon'
 import { LinkedInIcon } from '../icons/LinkedInIcon'
@@ -27,6 +28,8 @@ export const Footer: React.FC<FooterProps> = ({
 }) => {
   //traduccion internacionalization
   const t = useI18n()
+  //pour le button like
+  const slug = 'portfolio-page'
   return (
     <footer
       id="contact"
@@ -76,6 +79,7 @@ export const Footer: React.FC<FooterProps> = ({
           </div>
         </div>
       </div>
+      <ButtonLike slug={slug} />
       <div>
         <div className="pt-5 flex flex-col gap-3  md:flex-row justify-between items-center">
           <p className="">
