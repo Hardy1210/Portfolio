@@ -1,3 +1,6 @@
+//api fait pour les appel apis avec prisma pour  l'estocage de likes
+//tu peut reinitianilez le competuer dant ta base de donnees ou dans prisma studio via
+// la comande npx prisma studio
 import { PrismaClient } from '@prisma/client'
 import { NextApiRequest, NextApiResponse } from 'next'
 

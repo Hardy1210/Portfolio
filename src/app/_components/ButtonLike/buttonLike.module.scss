@@ -1,0 +1,34 @@
+.bg {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border: 4px solid white;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  //overflow: hidden;
+  .heart {
+    width: 100px;
+    height: 100px;
+    background: url('https://cssanimation.rocks/images/posts/steps/heart.png')
+      no-repeat;
+    background-position: left;
+    cursor: pointer;
+    position: absolute; /* Assure-toi que l'élément a une position relative */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centre parfaitement l'image */
+  }
+  /* Animation avec la classe 'is-active' */
+  .heart.liked {
+    animation: burst 1s steps(28) forwards; /* Applique l'animation avec steps */
+  }
+
+  @keyframes burst {
+    to {
+      background-position: -2800px 0; /* Déplace l'arrière-plan à la dernière frame */
+    }
+  }
+}

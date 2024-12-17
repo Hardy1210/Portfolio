@@ -643,7 +643,7 @@ export default function Home() {
                     </div>
                   </div>
                 </FadeInSection>
-                <div className="">
+                <div className="flex justify-center md:justify-end mt-7">
                   <SpotifyNowPlaying />
                 </div>
               </Section>

@@ -79,7 +79,9 @@ export const Footer: React.FC<FooterProps> = ({
           </div>
         </div>
       </div>
-      <ButtonLike slug={slug} />
+      <div className="flex justify-center">
+        <ButtonLike slug={slug} />
+      </div>
       <div>
         <div className="pt-5 flex flex-col gap-3  md:flex-row justify-between items-center">
           <p className="">
