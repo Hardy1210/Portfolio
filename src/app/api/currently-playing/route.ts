@@ -1,6 +1,7 @@
 //Este código define un endpoint en Next.js para obtener información en tiempo real
 //sobre la canción que estás escuchando actualmente en Spotify. Es una parte clave
 //de tu flujo de integración para mostrar esta información en tu portafolio.
+export const dynamic = 'force-dynamic'
 import { NextResponse } from 'next/server'
 
 const SPOTIFY_API_URL = 'https://api.spotify.com/v1/me/player'
@@ -69,7 +70,7 @@ export async function GET() {
 
   return new NextResponse(JSON.stringify(currentlyPlaying), {
     headers: {
-      'Cache-Control': 'no-store', // Deshabilitar caché en el backend
+      'Cache-Control': 'no-store, no-cache, must-revalidate, private', // Deshabilitar caché en el backend
     },
   })
 }

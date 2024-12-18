@@ -12,7 +12,7 @@ datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
 }
-
+//para generar el like en prisma
 model Like {
   id    Int    @id @default(autoincrement())
   slug  String @unique

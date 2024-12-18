@@ -22,6 +22,29 @@ export const config = {
 
 {
   /**
+   * 
+   * response.headers.set(
+      'Cache-Control',
+      'no-store, no-cache, must-revalidate, private',
+    )
+    return response
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
   export function middleware(request: NextRequest) {
   const url = request.nextUrl
 
