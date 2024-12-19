@@ -14,12 +14,13 @@ const ButtonLike: React.FC<ButtonLikeProps> = ({ slug }) => {
   // Charger les likes au chargement avec GET
   useEffect(() => {
     const fetchLikes = async () => {
-      if (!slug) {
-        console.error('Le slug est undefined!')
-        return
-      }
+      //pour debogue
+      //if (!slug) {
+      //  console.error('Le slug est undefined!')
+      //  return
+      //}
       // Vérifier l'URL dans la console pour s'assurer que le slug est bien présent
-      console.log('Requête GET URL:', `/api/likes/like?slug=${slug}`)
+      //console.log('Requête GET URL:', `/api/likes/like?slug=${slug}`)
       const res = await fetch(`/api/likes/like?slug=${slug}`, {
         // Utilisation de GET avec slug en paramètre
         method: 'GET',
@@ -34,10 +35,10 @@ const ButtonLike: React.FC<ButtonLikeProps> = ({ slug }) => {
   // Ajouter un like avec POST
   const handleLike = async () => {
     // Débogage pour s'assurer que slug est présent
-    if (!slug) {
-      console.error('Le slug est undefined!')
-      return
-    }
+    //if (!slug) {
+    //  console.error('Le slug est undefined!')
+    //  return
+    //}
     //stockee les likes par utilisateur
     //if (localStorage.getItem('hasLiked')) {
     // return
