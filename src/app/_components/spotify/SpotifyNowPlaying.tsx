@@ -15,24 +15,28 @@ export default function SpotifyNowPlaying() {
     useState<CurrentlyPlaying | null>(null)
 
   useEffect(() => {
+    let isMounted = true
+
     const fetchCurrentlyPlaying = async () => {
       try {
         const response = await fetch('/api/currently-playing', {
-          headers: { 'Cache-Control': 'no-store' }, // Evita caché del navegador
+          headers: { 'Cache-Control': 'no-store' },
         })
+        if (!response.ok) throw new Error('API request failed')
         const data = await response.json()
-        setCurrentlyPlaying(data)
-        //console.log('Current song:', data)
+        if (isMounted) setCurrentlyPlaying(data)
       } catch (error) {
-        //console.error('Error fetching currently playing track:', error)
+        console.error('Error fetching currently playing track:', error)
       }
     }
 
     fetchCurrentlyPlaying()
-
-    // Configura el intervalo para actualizar cada 10 segundos
     const interval = setInterval(fetchCurrentlyPlaying, 20000)
-    return () => clearInterval(interval) // Limpia el intervalo al desmontar el componente
+
+    return () => {
+      isMounted = false
+      clearInterval(interval)
+    }
   }, [])
 
   if (!currentlyPlaying || !currentlyPlaying.isPlaying) {
