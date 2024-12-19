@@ -1,7 +1,7 @@
 'use client'
 import { MoonIcon, SunIcon } from 'lucide-react'
 import { useTheme } from 'next-themes'
-
+//comoponente de shadcn parav el boton de modo osccuro
 //import { Button } from '../../components/ui/button'
 import {
   DropdownMenu,

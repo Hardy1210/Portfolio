@@ -73,6 +73,7 @@ import { MenuProvider } from '../_components/ContextNavbarFloatingNavButton/Menu
 import { FloatingNavButton } from '../_components/FloatingNavButton/FloatingNavButton'
 import { FollowCursorInvert } from '../_components/FollowCursorInvert/FollowCursorInvert'
 import LazyLoadWrapper from '../_components/LazyLoadWrapper'
+import SpotifyNowPlaying from '../_components/spotify/SpotifyNowPlaying'
 
 //importacion dinamica de un compenente si se nesecita como projectCard cuando este a la vista del usuario
 {
@@ -164,7 +165,7 @@ export default function Home() {
     const darkModeActive = htmlElement.classList.contains('dark')
     setIsDarkMode(darkModeActive)
 
-    // Listener para detectar cambios dinámicos
+    // Listener para detectar cambios dinámicos para el darkmode
     const observer = new MutationObserver(() => {
       setIsDarkMode(htmlElement.classList.contains('dark'))
     })
@@ -176,6 +177,10 @@ export default function Home() {
 
     return () => observer.disconnect()
   }, [])
+  // Fonction utilitaire pour calculer le background dynamiquement de chaque img de projectCard
+  const getBackground = (isDarkMode: boolean, darkGradient: string) => {
+    return isDarkMode ? darkGradient : undefined
+  }
 
   return (
     <>
@@ -202,7 +207,7 @@ export default function Home() {
               <div
                 className={cn(
                   styles.bloque__vacio,
-                  'absolute -z-50 h-64 w-64 bg-[conic-gradient(transparent,rgb(0,0,0))] opacity-15 blur-2xl dark:bg-[conic-gradient(transparent,rgb(255,255,255))] md:left-36',
+                  'absolute left-1/3 -z-50 h-64 w-64 bg-[conic-gradient(transparent,rgb(0,0,0))] opacity-15 blur-2xl dark:bg-[conic-gradient(transparent,rgb(255,255,255))] md:left-36',
                 )}
               ></div>
               <div
@@ -216,7 +221,6 @@ export default function Home() {
                   alt="Robot hand light"
                   width={250}
                   height={325}
-                  priority
                   className={cn(
                     styles.img,
                     'w-96 object-cover  dark:hidden text-transparent',
@@ -263,26 +267,14 @@ export default function Home() {
                         'w-min text-7xl font-extrabold drop-shadow-xl dark:text-neutral-50 md:w-max',
                       )}
                     >
-                      {/*<span
-                        aria-hidden="true"
-                        className={cn(styles.simbol, 'dark:text-red-600')}
-                      >
-                        &lt;/&gt;
-                      </span> */}
                       <span className="sr-only">Hardy Lino</span>
                       <span
                         aria-hidden="true"
-                        className="text-foreground dark:text-yellow-500 hidden dark:inline"
+                        className={cn(styles.hardy__h, 'text-foreground')}
                       >
-                        &lt;
+                        H
                       </span>
-                      Hardy&nbsp;
-                      <span
-                        aria-hidden="true"
-                        className="text-foreground dark:text-yellow-500 hidden dark:inline"
-                      >
-                        /&gt;
-                      </span>
+                      ardy&nbsp;
                     </h1>
                     <h2
                       className={cn(
@@ -611,7 +603,7 @@ export default function Home() {
                     >
                       {t('landing.content.about')}
                     </h2>
-                    <div className="-z-10 mt-2 absolute w-6 h-2 bg-foreground transform origin-left skew-x-[-35deg] dark:bg-yellow-500"></div>
+                    <div className="-z-10 mt-2 absolute w-6 h-2 bg-foreground transform origin-left skew-x-[-35deg] "></div>
                   </div>
                 </div>
 
@@ -651,6 +643,9 @@ export default function Home() {
                     </div>
                   </div>
                 </FadeInSection>
+                <div className="flex justify-center md:justify-end mt-7">
+                  <SpotifyNowPlaying />
+                </div>
               </Section>
             </div>
 
@@ -669,7 +664,7 @@ export default function Home() {
                     >
                       {contentT('projects')}
                     </h2>
-                    <div className="-z-10 mt-2 absolute w-6 h-2 bg-foreground  transform origin-left skew-x-[-35deg] dark:bg-yellow-500"></div>
+                    <div className="-z-10 mt-2 absolute w-6 h-2 bg-foreground  transform origin-left skew-x-[-35deg] "></div>
                   </div>
                 </div>
 
@@ -690,6 +685,10 @@ export default function Home() {
                   <FadeInSection>
                     <LazyLoadWrapper>
                       <ProjectCard
+                        background={getBackground(
+                          isDarkMode,
+                          'linear-gradient(126deg, rgba(10,10,10,1) 16%, rgba(147,196,16,1) 48%, rgba(10,10,10,1) 88%)',
+                        )}
                         logoImgSrc={AbModalLogo}
                         layerImageSrc="/images/Argent-bank/arb-2.webp"
                         layerImageAlt="logo Argent Bank"
@@ -735,6 +734,10 @@ export default function Home() {
                   <FadeInSection>
                     <LazyLoadWrapper>
                       <ProjectCard
+                        background={getBackground(
+                          isDarkMode,
+                          'linear-gradient(126deg, rgba(10,10,10,1) 16%, rgba(255,96,96,1) 44%, rgba(255,96,96,1) 57%, rgba(10,10,10,1) 86%)',
+                        )}
                         logoImgSrc={KaModalLogo}
                         layerImageSrc="/images/Kasa/kasa.webp"
                         layerImageAlt="logo Kasa"
@@ -770,6 +773,10 @@ export default function Home() {
                   <FadeInSection>
                     <LazyLoadWrapper>
                       <ProjectCard
+                        background={getBackground(
+                          isDarkMode,
+                          'linear-gradient(126deg, rgba(10,10,10,1) 16%, rgba(185,94,241,1) 44%, rgba(181,101,231,1) 57%, rgba(10,10,10,1) 86%)',
+                        )}
                         logoImgSrc={OhModalLogo}
                         layerImageSrc="/images/ohmyfood/ohmyfood-w.webp"
                         layerImageAlt="logo Ohmyfood"
@@ -804,6 +811,10 @@ export default function Home() {
                   <FadeInSection>
                     <LazyLoadWrapper>
                       <ProjectCard
+                        background={getBackground(
+                          isDarkMode,
+                          'linear-gradient(126deg, rgba(10,10,10,1) 16%, rgba(88,47,255,1) 44%, rgba(88,47,255,1) 57%, rgba(10,10,10,1) 86%)',
+                        )}
                         logoImgSrc={EventsModalLogo}
                         layerImageSrc="/images/724/724-w.webp"
                         layerImageAlt="logo 724 Events"
@@ -844,6 +855,10 @@ export default function Home() {
                       <LazyLoadWrapper>
                         <FadeInSection>
                           <ProjectCard
+                            background={getBackground(
+                              isDarkMode,
+                              'linear-gradient(126deg, rgba(10,10,10,1) 16%, rgba(247,116,21,1) 44%, rgba(247,116,16,1) 57%, rgba(10,10,10,1) 86%)',
+                            )}
                             logoImgSrc={NinaModalLOgo}
                             layerImageSrc="/images/nina/nina-w.webp"
                             layerImageAlt="logo Nina Carducci"
@@ -884,6 +899,10 @@ export default function Home() {
                       <LazyLoadWrapper>
                         <FadeInSection>
                           <ProjectCard
+                            background={getBackground(
+                              isDarkMode,
+                              'linear-gradient(126deg, rgba(10,10,10,1) 16%, rgba(255,195,11,1) 44%, rgba(255,210,0,1) 57%, rgba(10,10,10,1) 86%)',
+                            )}
                             logoImgSrc={SophModalLogo}
                             layerImageSrc="/images/sophie/so.webp"
                             layerImageAlt="logo Sophie Bluel"
@@ -922,12 +941,16 @@ export default function Home() {
                       <LazyLoadWrapper>
                         <FadeInSection>
                           <ProjectCard
+                            background={getBackground(
+                              isDarkMode,
+                              'linear-gradient(126deg, rgba(10,10,10,1) 16%, rgba(0,101,252,1) 44%, rgba(0,101,252,1) 57%, rgba(10,10,10,1) 86%)',
+                            )}
                             logoImgSrc={BookiModalLogo}
                             layerImageSrc="/images/booki/Booki-w.webp"
                             layerImageAlt="logo Booki"
-                            secondaryImageSrc="/images/booki/bo-1.webp"
+                            secondaryImageSrc="/images/booki/bo-6.webp"
                             secondaryImageAlt="MacBook avec le site Booki"
-                            headerImageSrc="/images/logo_images/ab.webp"
+                            headerImageSrc="/images/booki/bo-logo-1.webp"
                             headerImageAlt="Logo Booki"
                             icons={[
                               <HtmlIcon key="html" size={25} />,
@@ -980,7 +1003,7 @@ export default function Home() {
                       <h2 className="text-3xl font-semibold text-foreground">
                         {mySkills('skill')}
                       </h2>
-                      <div className="-z-10 mt-2 absolute w-6 h-2 bg-foreground  transform origin-left skew-x-[-35deg] dark:bg-yellow-500"></div>
+                      <div className="-z-10 mt-2 absolute w-6 h-2 bg-foreground  transform origin-left skew-x-[-35deg] "></div>
                     </div>
                   </div>
 

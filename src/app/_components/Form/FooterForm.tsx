@@ -50,7 +50,7 @@ const FooterForm: React.FC = () => {
       className={cn(styles.form, 'flex flex-col text-black')}
     >
       <div>
-        <label className="inline-block mb-2 text-foreground">Email</label>
+        <label className="inline-block mb-2 text-[#FFF]">Email</label>
         <div>
           <input
             type="email"
@@ -64,7 +64,7 @@ const FooterForm: React.FC = () => {
       </div>
 
       <div className="mt-5">
-        <label className="inline-block mb-2 text-foreground">Message</label>
+        <label className="inline-block mb-2 text-[#FFF]">Message</label>
         <div>
           <textarea
             value={message}

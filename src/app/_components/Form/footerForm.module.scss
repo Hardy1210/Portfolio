@@ -8,7 +8,7 @@
     //outline: none;
   }
   .button {
-    border: 1px solid hsl(var(--border));
+    border: 2px solid #fff;
     border-radius: var(--radius-xl);
     //max-width: 15rem;
     justify-content: center;
@@ -23,17 +23,6 @@
     &:hover {
       background-color: #a3a3a3; // hover:bg-neutral-700
       color: #0f0f0f; // hover:text-white
-    }
-
-    // Modo oscuro
-    @media (prefers-color-scheme: dark) {
-      background-color: rgba(156, 163, 175, 0.1); // dark:bg-neutral-400/10
-      color: #9ca3af; // dark:text-neutral-400
-
-      &:hover {
-        background-color: #9ca3af; // dark:hover:bg-neutral-400
-        color: #000000; // dark:hover:text-black
-      }
     }
   }
 }
