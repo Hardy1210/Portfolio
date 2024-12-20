@@ -13,22 +13,33 @@ const ButtonLike: React.FC<ButtonLikeProps> = ({ slug }) => {
 
   // Charger les likes au chargement avec GET
   useEffect(() => {
-    const fetchLikes = async () => {
-      //pour debogue
-      //if (!slug) {
-      //  console.error('Le slug est undefined!')
-      //  return
-      //}
-      // Vérifier l'URL dans la console pour s'assurer que le slug est bien présent
-      //console.log('Requête GET URL:', `/api/likes/like?slug=${slug}`)
-      const res = await fetch(`/api/likes/like?slug=${slug}`, {
-        // Utilisation de GET avec slug en paramètre
-        method: 'GET',
-        headers: { 'Content-Type': 'application/json' },
-      })
-      const data = await res.json()
-      setLikes(data.likes)
+    if (!slug) {
+      console.error('Le slug est undefined!')
+      return
     }
+
+    const fetchLikes = async () => {
+      try {
+        const res = await fetch(`/api/likes/like?slug=${slug}`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'Cache-Control': 'no-store',
+          },
+        })
+
+        if (!res.ok) {
+          console.error('Error en la respuesta GET:', res.status)
+          return
+        }
+
+        const data = await res.json()
+        setLikes(data.likes)
+      } catch (error) {
+        console.error('Error al obtener likes:', error)
+      }
+    }
+
     fetchLikes()
   }, [slug])
   {
@@ -76,13 +87,23 @@ const ButtonLike: React.FC<ButtonLikeProps> = ({ slug }) => {
       })
 
       if (!res.ok) {
-        // Manejar errores HTTP
-        console.error('Error en la respuesta:', res.status)
+        console.error('Error en la respuesta POST:', res.status)
         return
       }
 
-      const data = await res.json()
-      setLikes(data.likes)
+      // Realizamos un GET inmediato tras el POST
+      const updatedRes = await fetch(`/api/likes/like?slug=${slug}`, {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' },
+      })
+
+      if (!updatedRes.ok) {
+        console.error('Error en la respuesta GET:', updatedRes.status)
+        return
+      }
+
+      const updatedData = await updatedRes.json()
+      setLikes(updatedData.likes) // Sincroniza los likes con los datos más recientes
       setHasLiked(true)
     } catch (error) {
       console.error('Error al enviar like:', error)

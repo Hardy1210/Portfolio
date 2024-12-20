@@ -14,12 +14,14 @@ export default async function handler(
   const slug =
     req.method === 'POST' ? (req.body as { slug: string }).slug : req.query.slug
 
-  console.log("Slug reçu dans l'API:", slug) // Log para depuración
-
-  if (!slug) {
-    return res.status(400).json({ error: 'Slug is required' })
+  if (!slug || typeof slug !== 'string') {
+    console.error('Error: El slug es inválido o no está definido:', slug)
+    return res
+      .status(400)
+      .json({ error: 'El slug es obligatorio y debe ser un string.' })
   }
 
+  console.log("Slug reçu dans l'API:", slug)
   if (req.method === 'POST') {
     try {
       // Verificar si el registro ya existe
@@ -61,12 +63,10 @@ export default async function handler(
       }
     } catch (error) {
       console.error('Erreur Prisma lors du GET:', error) // Log del error
-      res
-        .status(500)
-        .json({
-          error: 'Erreur lors de la récupération des likes',
-          details: error,
-        })
+      res.status(500).json({
+        error: 'Erreur lors de la récupération des likes',
+        details: error,
+      })
     }
   } else {
     res.status(405).json({ message: 'Méthode non autorisée' })
