@@ -24,8 +24,8 @@ export async function GET() {
   /////////////////////////
 
   //No olvides cambiar esto en produccion poniendo el verdadero link del portfolio
-  const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
-  const tokenResponse = await fetch(`${SITE_URL}/api/token`, {
+
+  const tokenResponse = await fetch('http://www.hardylino.com/api/token', {
     headers: {
       'Cache-Control': 'no-store', // Deshabilitar caché en la solicitud al endpoint de token
     },
