@@ -4,7 +4,7 @@
 export const dynamic = 'force-dynamic'
 import { NextResponse } from 'next/server'
 
-const SPOTIFY_API_URL = 'https://api.spotify.com/v1/me/player'
+const SPOTIFY_API_URL = process.env.SPOTIFY_API_URL!
 
 export async function GET() {
   // Manejo para el entorno de build lo puedes quitar si hay conflicos en produccion
@@ -24,7 +24,8 @@ export async function GET() {
   /////////////////////////
 
   //No olvides cambiar esto en produccion poniendo el verdadero link del portfolio
-  const tokenResponse = await fetch('http://localhost:3000/api/token', {
+  const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
+  const tokenResponse = await fetch(`${SITE_URL}/api/token`, {
     headers: {
       'Cache-Control': 'no-store', // Deshabilitar caché en la solicitud al endpoint de token
     },
