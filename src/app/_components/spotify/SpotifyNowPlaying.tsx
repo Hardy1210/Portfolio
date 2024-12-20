@@ -40,7 +40,7 @@ export default function SpotifyNowPlaying() {
   }, [])
 
   if (!currentlyPlaying || !currentlyPlaying.isPlaying) {
-    return <p>No estoy escuchando música en este momento.</p>
+    return <p>No estoy escuchando música en este momento !.</p>
   }
 
   return (
