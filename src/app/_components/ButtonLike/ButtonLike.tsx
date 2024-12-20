@@ -31,7 +31,8 @@ const ButtonLike: React.FC<ButtonLikeProps> = ({ slug }) => {
     }
     fetchLikes()
   }, [slug])
-
+  {
+    /*
   // Ajouter un like avec POST
   const handleLike = async () => {
     // Débogage pour s'assurer que slug est présent
@@ -48,6 +49,11 @@ const ButtonLike: React.FC<ButtonLikeProps> = ({ slug }) => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ slug }), // Envoi du slug pour incrémenter
     })
+    if (!res.ok) {
+      // Manejar errores HTTP
+      console.error('Error en la respuesta:', res.status)
+      return
+    }
     const data = await res.json()
     setLikes(data.likes) // Mettre à jour les likes
     setHasLiked(true)
@@ -55,6 +61,30 @@ const ButtonLike: React.FC<ButtonLikeProps> = ({ slug }) => {
     //setear el localStorage para impedir otro like del usuario
     // localStorage.setItem('hasLiked', 'true')
   }
+  */
+  }
+  const handleLike = async () => {
+    try {
+      const res = await fetch(`/api/likes/like`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ slug }),
+      })
+
+      if (!res.ok) {
+        // Manejar errores HTTP
+        console.error('Error en la respuesta:', res.status)
+        return
+      }
+
+      const data = await res.json()
+      setLikes(data.likes)
+      setHasLiked(true)
+    } catch (error) {
+      console.error('Error al enviar like:', error)
+    }
+  }
+
   {
     /* dan lanimation du coeur lanimation va se decalnche juste avec le []
      et non avec ${}*/
