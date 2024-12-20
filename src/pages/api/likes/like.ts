@@ -15,7 +15,7 @@ export default async function handler(
     req.method === 'POST' ? (req.body as { slug: string }).slug : req.query.slug
 
   if (!slug || typeof slug !== 'string') {
-    console.error('Error: El slug es inválido o no está definido:', slug)
+    console.error('Error: El slug es inválido o no está definido !:', slug)
     return res
       .status(400)
       .json({ error: 'El slug es obligatorio y debe ser un string.' })
