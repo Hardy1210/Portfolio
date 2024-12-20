@@ -76,13 +76,23 @@ const ButtonLike: React.FC<ButtonLikeProps> = ({ slug }) => {
       })
 
       if (!res.ok) {
-        // Manejar errores HTTP
         console.error('Error en la respuesta:', res.status)
         return
       }
 
-      const data = await res.json()
-      setLikes(data.likes)
+      // Realiza un GET inmediatamente después del POST
+      const fetchRes = await fetch(`/api/likes/like?slug=${slug}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Cache-Control': 'no-store',
+        },
+      })
+
+      if (fetchRes.ok) {
+        const data = await fetchRes.json()
+        setLikes(data.likes)
+      }
       setHasLiked(true)
     } catch (error) {
       console.error('Error al enviar like:', error)
