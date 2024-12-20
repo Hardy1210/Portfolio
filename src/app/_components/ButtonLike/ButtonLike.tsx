@@ -64,6 +64,10 @@ const ButtonLike: React.FC<ButtonLikeProps> = ({ slug }) => {
   */
   }
   const handleLike = async () => {
+    if (!slug) {
+      console.error('Le slug est undefined!')
+      return
+    }
     try {
       const res = await fetch(`/api/likes/like`, {
         method: 'POST',
