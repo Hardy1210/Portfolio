@@ -5,18 +5,7 @@
 import { PrismaClient } from '@prisma/client'
 import { NextApiRequest, NextApiResponse } from 'next'
 
-// Aumentar tiempo máximo de ejecución de las consultas Prisma
-const prisma = new PrismaClient({
-  log: ['query', 'info', 'warn', 'error'], // Para ayudar con la depuración
-})
-
-// Extender el tiempo de espera en Vercel para Prisma (solo para la instancia actual)
-export const config = {
-  api: {
-    bodyParser: true,
-    externalResolver: true, // Permite resolver solicitudes externas más lentas
-  },
-}
+const prisma = new PrismaClient()
 
 export default async function handler(
   req: NextApiRequest,
@@ -33,40 +22,46 @@ export default async function handler(
 
   if (req.method === 'POST') {
     try {
-      console.time('Prisma POST Operation') // Medir tiempo de la operación
-
-      const like = await prisma.like.upsert({
+      // Verificar si el registro ya existe
+      const existingLike = await prisma.like.findUnique({
         where: { slug: slug as string },
-        update: { count: { increment: 1 } },
-        create: { slug: slug as string, count: 1 },
       })
 
-      console.timeEnd('Prisma POST Operation') // Log del tiempo tomado
-      return res.status(200).json({ likes: like.count })
+      let updatedLike
+      if (existingLike) {
+        // Si existe, incrementa el contador
+        updatedLike = await prisma.like.update({
+          where: { slug: slug as string },
+          data: { count: { increment: 1 } },
+        })
+      } else {
+        // Si no existe, crea el registro
+        updatedLike = await prisma.like.create({
+          data: { slug: slug as string, count: 1 },
+        })
+      }
+
+      res.status(200).json({ likes: updatedLike.count })
     } catch (error) {
-      console.error('Erreur Prisma lors du POST:', error)
-      return res
+      console.error('Erreur Prisma lors du POST:', error) // Log del error
+      res
         .status(500)
         .json({ error: 'Erreur lors de l’ajout du like', details: error })
     }
   } else if (req.method === 'GET') {
     try {
-      console.time('Prisma GET Operation') // Medir tiempo de la operación
-
       const like = await prisma.like.findUnique({
         where: { slug: slug as string },
       })
 
-      console.timeEnd('Prisma GET Operation') // Log del tiempo tomado
-
       if (like) {
-        return res.status(200).json({ likes: like.count })
+        res.status(200).json({ likes: like.count })
       } else {
-        return res.status(404).json({ error: 'Like non trouvé pour ce slug' })
+        res.status(404).json({ error: 'Like non trouvé pour ce slug' })
       }
     } catch (error) {
-      console.error('Erreur Prisma lors du GET:', error)
-      return res
+      console.error('Erreur Prisma lors du GET:', error) // Log del error
+      res
         .status(500)
         .json({
           error: 'Erreur lors de la récupération des likes',
@@ -74,6 +69,6 @@ export default async function handler(
         })
     }
   } else {
-    return res.status(405).json({ message: 'Méthode non autorisée' })
+    res.status(405).json({ message: 'Méthode non autorisée' })
   }
 }
