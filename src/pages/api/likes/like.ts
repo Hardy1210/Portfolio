@@ -15,9 +15,9 @@ export default async function handler(
 
   console.log("Slug reçu dans l'API:", slug) // Debugging le slug
 
-  //if (!slug) {
-  //return res.status(400).json({ error: 'slug is required' })
-  //}
+  if (!slug) {
+    return res.status(400).json({ error: 'slug is required' })
+  }
 
   if (req.method === 'POST') {
     try {
