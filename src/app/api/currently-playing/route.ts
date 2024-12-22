@@ -46,6 +46,7 @@ export async function GET() {
     headers: {
       Authorization: `Bearer ${accessToken}`,
       'Cache-Control': 'no-store', // Deshabilitar caché en la solicitud a Spotify
+      Pragma: 'no-cache',
     },
   })
 
