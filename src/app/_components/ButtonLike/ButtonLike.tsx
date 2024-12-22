@@ -83,9 +83,23 @@ const ButtonLike: React.FC<ButtonLikeProps> = ({ slug }) => {
         console.error('Error en la respuesta:', res.status)
         return
       }
+      //volver a extraer los likes para una actualizacion del cobntador de likes
+      // Hacer una solicitud GET para obtener el valor actualizado
+      const fetchRes = await fetch(`/api/likes/like?slug=${slug}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Cache-Control': 'no-store', // Desactivar la caché
+        },
+      })
 
-      const data = await res.json()
-      setLikes(data.likes)
+      if (fetchRes.ok) {
+        const data = await fetchRes.json()
+        setLikes(data.likes) // Actualizar el contador
+      } else {
+        console.error('Error en la respuesta GET:', fetchRes.status)
+      }
+
       setHasLiked(true)
     } catch (error) {
       console.error('Error al enviar like:', error)
