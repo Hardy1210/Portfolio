@@ -42,7 +42,7 @@ const ButtonLike: React.FC<ButtonLikeProps> = ({ slug }) => {
       return
     }
 
-    const maxLikes = 3
+    const maxLikes = 1
     const currentLikes = Number(localStorage.getItem('likesCount')) || 0
 
     if (currentLikes >= maxLikes) {
