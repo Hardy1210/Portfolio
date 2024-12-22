@@ -47,6 +47,7 @@ export async function GET() {
       Authorization: `Bearer ${accessToken}`,
       'Cache-Control': 'no-store', // Deshabilitar caché en la solicitud a Spotify
       Pragma: 'no-cache',
+      Expires: '0',
     },
   })
 
@@ -73,6 +74,7 @@ export async function GET() {
   return new NextResponse(JSON.stringify(currentlyPlaying), {
     headers: {
       'Cache-Control': 'no-store, no-cache, must-revalidate, private', // Deshabilitar caché en el backend
+      Expires: '0',
     },
   })
 }
