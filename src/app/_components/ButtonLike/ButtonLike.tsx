@@ -71,6 +71,12 @@ const ButtonLike: React.FC<ButtonLikeProps> = ({ slug }) => {
       console.error('Le slug est undefined!')
       return
     }
+    const maxLikes = 3
+    const currentLikes = Number(localStorage.getItem('likesCount')) || 0
+    if (currentLikes >= maxLikes) {
+      alert('Merci de ton enthousiasme 😅')
+      return
+    }
     try {
       const res = await fetch(`/api/likes/like`, {
         method: 'POST',
@@ -83,6 +89,9 @@ const ButtonLike: React.FC<ButtonLikeProps> = ({ slug }) => {
         console.error('Error en la respuesta:', res.status)
         return
       }
+      // Incrementar likes en localStorage
+      const updatedLocalLikes = currentLikes + 1
+      localStorage.setItem('likesCount', String(updatedLocalLikes))
       //volver a extraer los likes para una actualizacion del cobntador de likes
       // Hacer una solicitud GET para obtener el valor actualizado
       const fetchRes = await fetch(`/api/likes/like?slug=${slug}`, {
