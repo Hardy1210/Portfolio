@@ -35,49 +35,30 @@ const ButtonLike: React.FC<ButtonLikeProps> = ({ slug }) => {
     fetchLikes()
   }, [slug])
   {
-    /*
-  // Ajouter un like avec POST
-  const handleLike = async () => {
-    // Débogage pour s'assurer que slug est présent
-    //if (!slug) {
-    //  console.error('Le slug est undefined!')
-    //  return
-    //}
-    //stockee les likes par utilisateur
-    //if (localStorage.getItem('hasLiked')) {
-    // return
-    //}
-    const res = await fetch(`/api/likes/like`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ slug }), // Envoi du slug pour incrémenter
-    })
-    if (!res.ok) {
-      // Manejar errores HTTP
-      console.error('Error en la respuesta:', res.status)
-      return
-    }
-    const data = await res.json()
-    setLikes(data.likes) // Mettre à jour les likes
-    setHasLiked(true)
-
-    //setear el localStorage para impedir otro like del usuario
-    // localStorage.setItem('hasLiked', 'true')
-  }
-  */
   }
   const handleLike = async () => {
     if (!slug) {
       console.error('Le slug est undefined!')
       return
     }
+
     const maxLikes = 3
     const currentLikes = Number(localStorage.getItem('likesCount')) || 0
+
     if (currentLikes >= maxLikes) {
-      alert('Merci de ton enthousiasme 😅')
+      alert('Tu as déjà liké ma page, merci beaucoup pour ton soutien ❤️ !')
       return
     }
+
+    // Actualizar localmente antes de la solicitud
+    setLikes((prevLikes) => prevLikes + 1)
+    setHasLiked(true)
+    const updatedLocalLikes = currentLikes + 1
+    localStorage.setItem('likesCount', String(updatedLocalLikes))
+    localStorage.setItem(`hasLiked_${slug}`, 'true')
+
     try {
+      // Realizar la solicitud POST
       const res = await fetch(`/api/likes/like`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -85,32 +66,25 @@ const ButtonLike: React.FC<ButtonLikeProps> = ({ slug }) => {
       })
 
       if (!res.ok) {
-        // Manejar errores HTTP
-        console.error('Error en la respuesta:', res.status)
+        console.error('Error en la respuesta POST:', res.status)
         return
       }
-      // Incrementar likes en localStorage
-      const updatedLocalLikes = currentLikes + 1
-      localStorage.setItem('likesCount', String(updatedLocalLikes))
-      //volver a extraer los likes para una actualizacion del cobntador de likes
-      // Hacer una solicitud GET para obtener el valor actualizado
+
+      // Opcional: sincronizar likes reales desde el servidor
       const fetchRes = await fetch(`/api/likes/like?slug=${slug}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
-          'Cache-Control': 'no-store', // Desactivar la caché
+          'Cache-Control': 'no-store',
         },
       })
 
       if (fetchRes.ok) {
         const data = await fetchRes.json()
-        setLikes(data.likes) // Actualizar el contador
+        setLikes(data.likes)
       } else {
         console.error('Error en la respuesta GET:', fetchRes.status)
       }
-
-      setHasLiked(true)
-      localStorage.setItem(`hasLiked_${slug}`, 'true')
     } catch (error) {
       console.error('Error al enviar like:', error)
     }
