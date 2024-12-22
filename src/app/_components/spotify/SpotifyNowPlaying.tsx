@@ -20,7 +20,9 @@ export default function SpotifyNowPlaying() {
     const fetchCurrentlyPlaying = async () => {
       try {
         const response = await fetch('/api/currently-playing', {
-          headers: { 'Cache-Control': 'no-store' },
+          headers: {
+            'Cache-Control': 'no-store, no-cache, must-revalidate, private',
+          },
         })
         if (!response.ok) throw new Error('API request failed')
         const data = await response.json()

@@ -25,9 +25,9 @@ export async function GET() {
 
   //No olvides cambiar esto en produccion poniendo el verdadero link del portfolio
 
-  const tokenResponse = await fetch('/api/token', {
+  const tokenResponse = await fetch('https://www.hardylino.com/api/token', {
     headers: {
-      'Cache-Control': 'no-store', // Deshabilitar caché en la solicitud al endpoint de token
+      'Cache-Control': 'no-store, no-cache, must-revalidate, private', // Deshabilitar caché en la solicitud al endpoint de token
     },
   })
 
