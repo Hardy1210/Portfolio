@@ -110,6 +110,7 @@ const ButtonLike: React.FC<ButtonLikeProps> = ({ slug }) => {
       }
 
       setHasLiked(true)
+      localStorage.setItem(`hasLiked_${slug}`, 'true')
     } catch (error) {
       console.error('Error al enviar like:', error)
     }
