@@ -26,7 +26,7 @@ export default function SpotifyNowPlaying() {
         const data = await response.json()
         if (isMounted) setCurrentlyPlaying(data)
       } catch (error) {
-        console.error('Error fetching currently playing track:', error)
+        console.error('Error fetching currently playing track !:', error)
       }
     }
 
