@@ -70,7 +70,9 @@ const ButtonLike: React.FC<ButtonLikeProps> = ({ slug }) => {
         return
       }
 
-      // Opcional: sincronizar likes reales desde el servidor
+      {
+        /*
+        // Opcional: sincronizar likes reales desde el servidor
       const fetchRes = await fetch(`/api/likes/like?slug=${slug}`, {
         method: 'GET',
         headers: {
@@ -84,6 +86,7 @@ const ButtonLike: React.FC<ButtonLikeProps> = ({ slug }) => {
         setLikes(data.likes)
       } else {
         console.error('Error en la respuesta GET:', fetchRes.status)
+      } */
       }
     } catch (error) {
       console.error('Error al enviar like:', error)
