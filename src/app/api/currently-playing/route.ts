@@ -37,7 +37,7 @@ export async function GET() {
       },
     })
     const tokenData = await tokenResponse.json()
-    console.log('token !!!', tokenData)
+    //console.log('token !!!', tokenData)
     if (!tokenData.access_token) {
       console.error('No access token received from /api/token')
       return NextResponse.json(
@@ -49,10 +49,10 @@ export async function GET() {
     const accessToken = tokenData.access_token
 
     // Hacer solicitud a la API de Spotify
-    const response = await fetch(SPOTIFY_API_URL, {
+    const response = await fetch(`${SPOTIFY_API_URL}?timestamp=${Date.now()}`, {
       headers: {
         Authorization: `Bearer ${accessToken}`,
-        'Cache-Control': 'no-store',
+        'Cache-Control': 'no-store, no-cache, must-revalidate, private',
         Pragma: 'no-cache',
       },
     })
@@ -63,7 +63,7 @@ export async function GET() {
     }
 
     const data = await response.json()
-
+    //console.log('Spotify API response:', data)
     if (!data || !data.is_playing) {
       return NextResponse.json({ isPlaying: false })
     }
@@ -78,7 +78,7 @@ export async function GET() {
       album: data.item.album.name,
       albumImageUrl: data.item.album.images[0]?.url || null,
     }
-
+    //console.log(currentlyPlaying)
     return NextResponse.json(currentlyPlaying, {
       headers: {
         'Cache-Control': 'no-store',
