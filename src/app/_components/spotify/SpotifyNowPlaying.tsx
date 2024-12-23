@@ -15,18 +15,19 @@ export default function SpotifyNowPlaying() {
     useState<CurrentlyPlaying | null>(null)
 
   useEffect(() => {
-    let isMounted = true
-
     const fetchCurrentlyPlaying = async () => {
       try {
-        const response = await fetch('/api/currently-playing', {
-          headers: {
-            'Cache-Control': 'no-store, no-cache, must-revalidate, private',
+        const response = await fetch(
+          `/api/currently-playing?timestamp=${Date.now()}`,
+          {
+            headers: {
+              'Cache-Control': 'no-store, no-cache, must-revalidate, private',
+            },
           },
-        })
+        )
         if (!response.ok) throw new Error('API request failed')
         const data = await response.json()
-        if (isMounted) setCurrentlyPlaying(data)
+        setCurrentlyPlaying(data)
       } catch (error) {
         console.error('Error fetching currently playing track:', error)
       }
@@ -35,10 +36,7 @@ export default function SpotifyNowPlaying() {
     fetchCurrentlyPlaying()
     const interval = setInterval(fetchCurrentlyPlaying, 20000)
 
-    return () => {
-      isMounted = false
-      clearInterval(interval)
-    }
+    return () => clearInterval(interval)
   }, [])
 
   return (
