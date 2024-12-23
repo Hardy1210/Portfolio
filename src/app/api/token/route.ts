@@ -13,36 +13,69 @@ let accessToken: string | null = null
 let expiryTime: number | null = null
 
 export async function GET() {
-  if (accessToken && expiryTime && Date.now() < expiryTime) {
+  try {
+    // Log del estado actual del token
+    console.log('Estado actual del token:', {
+      accessToken,
+      expiryTime,
+      currentTime: Date.now(),
+    })
+
+    // Verificar si el token aún es válido
+    if (accessToken && expiryTime && Date.now() < expiryTime) {
+      console.log('Token válido, devolviendo el existente.')
+      return NextResponse.json({ access_token: accessToken })
+    }
+
+    // Configurar credenciales de Spotify
+    const clientId = process.env.SPOTIFY_CLIENT_ID!
+    const clientSecret = process.env.SPOTIFY_CLIENT_SECRET!
+    const refreshToken = process.env.SPOTIFY_REFRESH_TOKEN!
+
+    // Solicitar un nuevo token
+    const response = await fetch('https://accounts.spotify.com/api/token', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        Authorization: `Basic ${Buffer.from(
+          `${clientId}:${clientSecret}`,
+        ).toString('base64')}`,
+      },
+      body: new URLSearchParams({
+        grant_type: 'refresh_token',
+        refresh_token: refreshToken,
+      }),
+    })
+
+    // Manejar errores de la solicitud
+    if (!response.ok) {
+      console.error('Error al solicitar el token:', response.statusText)
+      return NextResponse.json(
+        { error: 'Failed to refresh token' },
+        { status: response.status },
+      )
+    }
+
+    // Procesar la respuesta del token
+    const data = await response.json()
+    console.log('Respuesta del token:', data)
+
+    // Guardar el nuevo token y el tiempo de expiración
+    accessToken = data.access_token
+    expiryTime = Date.now() + data.expires_in * 1000
+
+    console.log('Nuevo token obtenido:', {
+      accessToken,
+      expiresIn: data.expires_in,
+      expiryTime,
+    })
+
     return NextResponse.json({ access_token: accessToken })
-  }
-
-  const clientId = process.env.SPOTIFY_CLIENT_ID!
-  const clientSecret = process.env.SPOTIFY_CLIENT_SECRET!
-  const refreshToken = process.env.SPOTIFY_REFRESH_TOKEN! // Debes obtenerlo al autorizar tu app.
-
-  const response = await fetch('https://accounts.spotify.com/api/token', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
-      Authorization: `Basic ${Buffer.from(`${clientId}:${clientSecret}`).toString('base64')}`,
-    },
-    body: new URLSearchParams({
-      grant_type: 'refresh_token',
-      refresh_token: refreshToken,
-    }),
-  })
-
-  if (!response.ok) {
+  } catch (error) {
+    console.error('Error al manejar la solicitud del token:', error)
     return NextResponse.json(
-      { error: 'Failed to refresh token' },
+      { error: 'Internal server error' },
       { status: 500 },
     )
   }
-
-  const data = await response.json()
-  accessToken = data.access_token
-  expiryTime = Date.now() + data.expires_in * 1000
-
-  return NextResponse.json({ access_token: accessToken })
 }
