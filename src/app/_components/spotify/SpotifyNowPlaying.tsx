@@ -15,6 +15,8 @@ export default function SpotifyNowPlaying() {
     useState<CurrentlyPlaying | null>(null)
 
   useEffect(() => {
+    let isMounted = true
+
     const fetchCurrentlyPlaying = async () => {
       try {
         const response = await fetch(
@@ -27,7 +29,7 @@ export default function SpotifyNowPlaying() {
         )
         if (!response.ok) throw new Error('API request failed')
         const data = await response.json()
-        setCurrentlyPlaying(data)
+        if (isMounted) setCurrentlyPlaying(data)
       } catch (error) {
         console.error('Error fetching currently playing track:', error)
       }
@@ -36,7 +38,10 @@ export default function SpotifyNowPlaying() {
     fetchCurrentlyPlaying()
     const interval = setInterval(fetchCurrentlyPlaying, 20000)
 
-    return () => clearInterval(interval)
+    return () => {
+      isMounted = false
+      clearInterval(interval)
+    }
   }, [])
 
   return (

@@ -49,7 +49,11 @@ export async function GET() {
 
     // Manejar errores de la solicitud
     if (!response.ok) {
-      console.error('Error al solicitar el token:', response.statusText)
+      console.error(
+        'Error al solicitar el token:',
+        response.status,
+        await response.text(),
+      )
       return NextResponse.json(
         { error: 'Failed to refresh token' },
         { status: response.status },
@@ -58,7 +62,7 @@ export async function GET() {
 
     // Procesar la respuesta del token
     const data = await response.json()
-    console.log('Respuesta del token:', data)
+    //console.log('Respuesta del token:', data)
 
     // Guardar el nuevo token y el tiempo de expiración
     accessToken = data.access_token

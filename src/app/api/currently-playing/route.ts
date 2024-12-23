@@ -7,39 +7,18 @@ import { NextResponse } from 'next/server'
 const SPOTIFY_API_URL = process.env.SPOTIFY_API_URL!
 
 export async function GET() {
-  {
-    /* 
-    // Manejo para el entorno de build lo puedes quitar si hay conflicos en produccion
-    //es solo para que en npm run build no cause problemas
-    if (
-      process.env.NODE_ENV === 'production' &&
-      process.env.VERCEL_ENV === 'preview'
-    ) {
-      return NextResponse.json({
-        isPlaying: false,
-        title: 'Build mode - no live data',
-        artist: 'N/A',
-        album: 'N/A',
-        albumImageUrl: '',
-      })
-    }
-    /////////////////////////
-    
-    */
-  }
-  //No olvides cambiar esto en produccion poniendo el verdadero link del portfolio
   try {
-    // Obtener token
+    // Obtener token válido desde el endpoint /api/token
     const tokenResponse = await fetch('https://www.hardylino.com/api/token', {
       headers: {
-        'Cache-Control': 'no-store',
-        Pragma: 'no-cache',
+        'Cache-Control': 'no-store, no-cache, must-revalidate, private',
       },
     })
+
     const tokenData = await tokenResponse.json()
-    //console.log('token !!!', tokenData)
+
     if (!tokenData.access_token) {
-      console.error('No access token received from /api/token')
+      console.error('No se recibió un token de acceso válido.')
       return NextResponse.json(
         { error: 'Missing Spotify Access Token' },
         { status: 500 },
@@ -48,7 +27,7 @@ export async function GET() {
 
     const accessToken = tokenData.access_token
 
-    // Hacer solicitud a la API de Spotify
+    // Solicitar la canción actual
     const response = await fetch(`${SPOTIFY_API_URL}?timestamp=${Date.now()}`, {
       headers: {
         Authorization: `Bearer ${accessToken}`,
@@ -58,18 +37,21 @@ export async function GET() {
     })
 
     if (!response.ok || response.status === 204) {
-      console.error('Spotify API response failed:', response.status)
+      console.error(
+        'Error al obtener datos de Spotify:',
+        response.status,
+        await response.text(),
+      )
       return NextResponse.json({ isPlaying: false })
     }
 
     const data = await response.json()
-    //console.log('Spotify API response:', data)
+
     if (!data || !data.is_playing) {
       return NextResponse.json({ isPlaying: false })
     }
 
-    // Crear respuesta con datos de la canción actual
-    const currentlyPlaying = {
+    return NextResponse.json({
       isPlaying: true,
       title: data.item.name,
       artist: data.item.artists
@@ -77,16 +59,9 @@ export async function GET() {
         .join(', '),
       album: data.item.album.name,
       albumImageUrl: data.item.album.images[0]?.url || null,
-    }
-    //console.log(currentlyPlaying)
-    return NextResponse.json(currentlyPlaying, {
-      headers: {
-        'Cache-Control': 'no-store, no-cache, must-revalidate, private',
-        Pragma: 'no-cache',
-      },
     })
   } catch (error) {
-    console.error('Error in currently-playing API:', error)
+    console.error('Error en /api/currently-playing:', error)
     return NextResponse.json(
       { error: 'Failed to fetch data from Spotify' },
       { status: 500 },
