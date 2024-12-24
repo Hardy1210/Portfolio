@@ -5,11 +5,11 @@ export const dynamic = 'force-dynamic' // Fuerza la regeneración en cada solici
 import { NextResponse } from 'next/server'
 
 const SPOTIFY_API_URL = process.env.SPOTIFY_API_URL!
-const TOKEN_URL = 'https://www.hardylino.com/api/token'
+
 export async function GET() {
   try {
     // Obtener token válido desde el endpoint /api/token
-    const tokenResponse = await fetch(TOKEN_URL, {
+    const tokenResponse = await fetch('http://localhost:3000/api/token', {
       headers: {
         'Cache-Control': 'no-store, no-cache, must-revalidate, private',
       },
