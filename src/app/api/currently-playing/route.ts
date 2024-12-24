@@ -63,7 +63,7 @@ export async function GET() {
   } catch (error) {
     console.error('Error en /api/currently-playing:', error)
     return NextResponse.json(
-      { error: 'Failed to fetch data from Spotify' },
+      { error: 'Failed to fetch data from Spotify!' },
       { status: 500 },
     )
   }
