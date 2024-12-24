@@ -35,7 +35,7 @@ export async function GET() {
         Pragma: 'no-cache',
       },
     })
-
+    //mensaje sale envercel tambien
     if (!response.ok || response.status === 204) {
       console.error(
         'Error al obtener datos de Spotify:',
