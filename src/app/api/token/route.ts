@@ -7,22 +7,15 @@ Devuelve el token de acceso actualizado en formato JSON.
 Usos Comunes:
 Es útil para mantener la autenticación activa en integraciones con la API de Spotify sin necesidad de solicitar repetidamente autorización del usuario. */
 }
-// app/api/token/route.ts
+/**
+ * app/api/token/route.ts
+ * Solicita un nuevo token SIEMPRE, sin guardar nada en memoria.
+ */
 import { NextResponse } from 'next/server'
-
-// Variables globales. OJO: en Vercel, pueden perderse si la función se "apaga".
-let accessToken: string | null = null
-let expiryTime: number | null = null
 
 export async function GET() {
   try {
-    console.log('Estado actual del token en memoria:', {
-      accessToken,
-      expiryTime,
-      currentTime: Date.now(),
-    })
-
-    // 2. Credenciales de Spotify
+    // 1. Credenciales de Spotify
     const clientId = process.env.SPOTIFY_CLIENT_ID
     const clientSecret = process.env.SPOTIFY_CLIENT_SECRET
     const refreshToken = process.env.SPOTIFY_REFRESH_TOKEN
@@ -31,7 +24,7 @@ export async function GET() {
       throw new Error('Faltan variables de entorno de Spotify')
     }
 
-    // 3. Solicitar un nuevo token a Spotify
+    // 2. Solicitar un nuevo token a Spotify
     const response = await fetch('https://accounts.spotify.com/api/token', {
       method: 'POST',
       headers: {
@@ -44,39 +37,26 @@ export async function GET() {
         grant_type: 'refresh_token',
         refresh_token: refreshToken,
       }),
-      // Deshabilita caché (opcional, por buena práctica)
       next: { revalidate: 0 },
     })
 
     if (!response.ok) {
-      console.error(
-        'Error al solicitar el token:',
-        response.status,
-        await response.text(),
-      )
+      const errorText = await response.text()
+      console.error('Error al solicitar el token:', response.status, errorText)
       return NextResponse.json(
         { error: 'Failed to refresh token' },
         { status: response.status },
       )
     }
 
-    // 4. Procesar la respuesta
+    // 3. Procesar la respuesta
     const data = await response.json()
     if (!data.access_token || !data.expires_in) {
       throw new Error('La respuesta del token no contiene datos válidos')
     }
 
-    // 5. Guardar el nuevo token y el tiempo de expiración
-    accessToken = data.access_token
-    expiryTime = Date.now() + data.expires_in * 1000
-
-    console.log('Nuevo token obtenido:', {
-      accessToken,
-      expiresIn: data.expires_in,
-      expiryTime,
-    })
-
-    return NextResponse.json({ access_token: accessToken })
+    // 4. Retornar SIEMPRE un nuevo token
+    return NextResponse.json({ access_token: data.access_token })
   } catch (error) {
     console.error('Error al manejar la solicitud del token:', error)
     return NextResponse.json(
