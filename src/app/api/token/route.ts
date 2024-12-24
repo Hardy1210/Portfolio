@@ -22,12 +22,6 @@ export async function GET() {
       currentTime: Date.now(),
     })
 
-    // 1. Verificar si el token sigue siendo válido
-    if (accessToken && expiryTime && Date.now() < expiryTime) {
-      console.log('Token válido, devolviendo el existente.')
-      return NextResponse.json({ access_token: accessToken })
-    }
-
     // 2. Credenciales de Spotify
     const clientId = process.env.SPOTIFY_CLIENT_ID
     const clientSecret = process.env.SPOTIFY_CLIENT_SECRET
