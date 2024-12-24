@@ -20,7 +20,7 @@ export default function SpotifyNowPlaying() {
     const fetchCurrentlyPlaying = async () => {
       try {
         const response = await fetch(
-          `/api/currently-playing?timestamp=${Date.now()}`,
+          `https://www.hardylino.com/api/currently-playing?timestamp=${Date.now()}`,
           {
             headers: {
               'Cache-Control': 'no-store, no-cache, must-revalidate, private',
