@@ -37,9 +37,8 @@ export async function GET() {
         grant_type: 'refresh_token',
         refresh_token: refreshToken,
       }),
-      next: { revalidate: 0 },
     })
-
+    //console.log(response)
     if (!response.ok) {
       const errorText = await response.text()
       console.error('Error al solicitar el token:', response.status, errorText)

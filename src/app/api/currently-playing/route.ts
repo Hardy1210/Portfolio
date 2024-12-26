@@ -47,7 +47,7 @@ export async function GET() {
     }
 
     const data = await response.json()
-
+    //console.log(data)
     if (!data || !data.is_playing) {
       return NextResponse.json({ isPlaying: false })
     }
