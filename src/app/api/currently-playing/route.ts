@@ -14,9 +14,9 @@ export async function GET() {
         'Cache-Control': 'no-store, no-cache, must-revalidate, private',
       },
     })
-    console.log(tokenResponse)
+    //console.log(tokenResponse)
     const tokenData = await tokenResponse.json()
-    //console.log(tokenData)
+    console.log(tokenData)
     if (!tokenData.access_token) {
       console.error('No se recibió un token de acceso válido.')
       return NextResponse.json(
@@ -39,7 +39,7 @@ export async function GET() {
     //mensaje sale envercel tambien
     if (!response.ok || response.status === 204) {
       console.error(
-        'Error al obtener datos de Spotify !:',
+        'Error al obtener datos de Spotify:',
         response.status,
         await response.text(),
       )
