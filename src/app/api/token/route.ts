@@ -23,7 +23,9 @@ export async function GET() {
     if (!clientId || !clientSecret || !refreshToken) {
       throw new Error('Faltan variables de entorno de Spotify')
     }
-
+    {
+      /*SPOTIFY_TOKEN_URL=https://accounts.spotify.com/api/token */
+    }
     // 2. Solicitar un nuevo token a Spotify
     const response = await fetch('https://accounts.spotify.com/api/token', {
       method: 'POST',
