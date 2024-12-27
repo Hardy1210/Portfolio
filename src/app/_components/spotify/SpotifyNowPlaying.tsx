@@ -144,14 +144,14 @@ export default function SpotifyNowPlaying() {
       ) : (
         <div className="relative p-1 gap-3 flex flex-row items-end overflow-hidden w-60 h-28 bg-[#171717] rounded-lg">
           <Image
-            src={'/images/music_album/cat-sleeping.webp'}
+            src={'/images/music_album/cat1.webp'}
             alt="Last played album"
             width={160}
             height={160}
             className="absolute z-10 border-2 border-neutral-300 -left-28 top-0 opacity-85 rounded-full animate-spin w-auto"
           />
           <Image
-            src={'/images/music_album/cat-sleeping.webp'}
+            src={'/images/music_album/cat1.webp'}
             alt="Last played album"
             width={170}
             height={170}
