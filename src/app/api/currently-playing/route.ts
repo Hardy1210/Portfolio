@@ -14,9 +14,12 @@ export async function GET() {
         'Cache-Control': 'no-store, no-cache, must-revalidate, private',
       },
     })
+    if (!tokenResponse.ok) {
+      throw new Error(`Failed to get token: ${await tokenResponse.text()}`)
+    }
     //console.log(tokenResponse)
     const tokenData = await tokenResponse.json()
-    console.log(tokenData)
+    //console.log(tokenData)
     if (!tokenData.access_token) {
       console.error('No se recibió un token de acceso válido.')
       return NextResponse.json(
@@ -27,7 +30,7 @@ export async function GET() {
 
     const accessToken = tokenData.access_token
     //console.log(accessToken)
-    // Solicitar la canción actual
+    // Solicitar la canción actual actualmente token no es valido
     const response = await fetch(`${SPOTIFY_API_URL}?timestamp=${Date.now()}`, {
       headers: {
         Authorization: `Bearer ${accessToken}`,

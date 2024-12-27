@@ -37,6 +37,8 @@ export async function GET() {
         grant_type: 'refresh_token',
         refresh_token: refreshToken,
       }),
+      //vamos a quitar esto pra hacer la prueba de una hora
+      next: { revalidate: 0 },
     })
     //console.log(response)
     if (!response.ok) {
