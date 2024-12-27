@@ -11,7 +11,7 @@ import { NextResponse } from 'next/server'
 export async function GET() {
   try {
     // Obtener token válido desde el endpoint /api/token
-    const tokenResponse = await fetch('http://localhost:3000/api/token', {
+    const tokenResponse = await fetch('https://www.hardylino.com/api/token', {
       headers: {
         'Cache-Control': 'no-store, no-cache, must-revalidate, private',
       },
