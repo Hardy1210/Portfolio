@@ -23,7 +23,6 @@ export default function SpotifyNowPlaying() {
     if (savedLastPlayed) {
       setLastPlayed(JSON.parse(savedLastPlayed))
     }
-
     let isMounted = true
 
     const fetchCurrentlyPlaying = async () => {
@@ -104,32 +103,44 @@ export default function SpotifyNowPlaying() {
           width={40}
           className="z-10 mr-2 text-[#FFFF] dark:text-[#00DA5A]"
         />
-        <div className="flex flex-col z-10 text-neutral-50">
-          <a
-            href={songUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-bold text-sm hover:underline hover:text-[#00DA5A]"
+        <div className="flex flex-col justify-between z-10 text-neutral-50 min-h-[105px]">
+          <p
+            className={`text-xs  ml-11 ${isPlaying ? 'hidden' : 'block'}`}
             style={{
               textShadow:
                 '1px 1px 0 #000, -1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000',
             }}
           >
-            {track.title || 'Unknown Title'}
-          </a>
-          <a
-            href={artistUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-xs hover:underline hover:text-[#00DA5A]"
-            style={{
-              textShadow:
-                '1px 1px 0 #000, -1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000',
-            }}
-          >
-            {track.artist || 'Unknown Artist'} -{' '}
-            {track.album || 'Unknown Album'}
-          </a>
+            Dernière chanson écoutée
+          </p>
+
+          <div className="flex flex-col text-neutral-50">
+            <a
+              href={songUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-bold text-sm hover:underline hover:text-[#00DA5A]"
+              style={{
+                textShadow:
+                  '1px 1px 0 #000, -1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000',
+              }}
+            >
+              {track.title || 'Unknown Title'}
+            </a>
+            <a
+              href={artistUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs hover:underline hover:text-[#00DA5A]"
+              style={{
+                textShadow:
+                  '1px 1px 0 #000, -1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000',
+              }}
+            >
+              {track.artist || 'Unknown Artist'} -{' '}
+              {track.album || 'Unknown Album'}
+            </a>
+          </div>
         </div>
       </div>
     )
@@ -148,7 +159,7 @@ export default function SpotifyNowPlaying() {
             alt="Last played album"
             width={160}
             height={160}
-            className="absolute z-10 border-2 border-neutral-300 -left-28 top-0 opacity-85 rounded-full animate-spin w-auto"
+            className="absolute z-10 border-2 border-neutral-300 -left-20 top-0 opacity-85 rounded-full animate-spin w-52"
           />
           <Image
             src={'/images/music_album/cat1.webp'}
