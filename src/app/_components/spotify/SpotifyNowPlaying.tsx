@@ -80,7 +80,7 @@ export default function SpotifyNowPlaying() {
           rel="noopener noreferrer"
           className="z-10"
         >
-          <Image
+          <Image //primera imagen adelante
             src={track.albumImageUrl || '/images/music_album/cat-sleeping.webp'}
             alt={track.album || 'Unknown album'}
             width={160}
@@ -95,7 +95,7 @@ export default function SpotifyNowPlaying() {
           alt={track.album || 'Unknown album'}
           width={170}
           height={170}
-          className={`absolute -top-3 blur-2xl -left-12 rounded-full ${
+          className={`absolute -top-3 blur-2xl -left-16 rounded-full ${
             isPlaying ? 'animate-spin' : ''
           } w-auto`}
         />
@@ -105,7 +105,7 @@ export default function SpotifyNowPlaying() {
         />
         <div className="flex flex-col justify-between z-10 text-neutral-50 min-h-[105px]">
           <p
-            className={`text-xs  ml-11 ${isPlaying ? 'hidden' : 'block'}`}
+            className={`text-xs  ml-11 ${isPlaying ? 'invisible' : 'block'}`}
             style={{
               textShadow:
                 '1px 1px 0 #000, -1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000',
