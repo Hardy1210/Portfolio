@@ -42,47 +42,54 @@ const ButtonLike: React.FC<ButtonLikeProps> = ({ slug }) => {
       return
     }
 
-    // Vérifier si l'utilisateur a déjà liké
-    if (hasLiked) {
-      // L'utilisateur a déjà liké, retirer le like
-      setLikes((prevLikes) => prevLikes - 1)
-      setHasLiked(false)
-      localStorage.setItem(`hasLiked_${slug}`, 'false')
+    const maxLikes = 1
+    const currentLikes = Number(localStorage.getItem('likesCount')) || 0
 
-      try {
-        const res = await fetch(`/api/likes/like`, {
-          method: 'DELETE', // Ou utilisez PUT si DELETE n'est pas supporté
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ slug }),
-        })
+    if (currentLikes >= maxLikes) {
+      alert('Tu as déjà liké ma page, merci beaucoup pour ton soutien ❤️ !')
+      return
+    }
 
-        if (!res.ok) {
-          console.error('Erreur lors de la suppression du like:', res.status)
-          return
-        }
-      } catch (error) {
-        console.error('Erreur lors de la suppression du like:', error)
+    // Actualizar localmente antes de la solicitud
+    setLikes((prevLikes) => prevLikes + 1)
+    setHasLiked(true)
+    const updatedLocalLikes = currentLikes + 1
+    localStorage.setItem('likesCount', String(updatedLocalLikes))
+    localStorage.setItem(`hasLiked_${slug}`, 'true')
+
+    try {
+      // Realizar la solicitud POST
+      const res = await fetch(`/api/likes/like`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ slug }),
+      })
+
+      if (!res.ok) {
+        console.error('Error en la respuesta POST:', res.status)
+        return
       }
-    } else {
-      // L'utilisateur n'a pas encore liké, ajouter un like
-      setLikes((prevLikes) => prevLikes + 1)
-      setHasLiked(true)
-      localStorage.setItem(`hasLiked_${slug}`, 'true')
 
-      try {
-        const res = await fetch(`/api/likes/like`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ slug }),
-        })
+      {
+        /*
+        // Opcional: sincronizar likes reales desde el servidor
+      const fetchRes = await fetch(`/api/likes/like?slug=${slug}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Cache-Control': 'no-store',
+        },
+      })
 
-        if (!res.ok) {
-          console.error('Erreur lors de l’ajout du like:', res.status)
-          return
-        }
-      } catch (error) {
-        console.error('Erreur lors de l’ajout du like:', error)
+      if (fetchRes.ok) {
+        const data = await fetchRes.json()
+        setLikes(data.likes)
+      } else {
+        console.error('Error en la respuesta GET:', fetchRes.status)
+      } */
       }
+    } catch (error) {
+      console.error('Error al enviar like:', error)
     }
   }
 
@@ -97,10 +104,7 @@ const ButtonLike: React.FC<ButtonLikeProps> = ({ slug }) => {
           <button
             onClick={handleLike}
             className={cn(styles.heart, { [styles.liked]: hasLiked })}
-            aria-label={hasLiked ? 'Retirer le like' : 'Ajouter un like'}
-          >
-            <span className="sr-only">{hasLiked ? 'Unlike' : 'Like'}</span>
-          </button>
+          ></button>
         </div>
         <p className="mt-2">
           {likes} {likes === 1 ? 'Like' : 'Likes'}
