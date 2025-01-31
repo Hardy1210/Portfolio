@@ -11,11 +11,14 @@ import { NextResponse } from 'next/server'
 export async function GET() {
   try {
     // Obtener token válido desde el endpoint /api/token
-    const tokenResponse = await fetch('https://www.hardylino.com/api/token', {
-      headers: {
-        'Cache-Control': 'no-store, no-cache, must-revalidate, private',
+    const tokenResponse = await fetch(
+      'https://www.hardylino.com/api/callback',
+      {
+        headers: {
+          'Cache-Control': 'no-store, no-cache, must-revalidate, private',
+        },
       },
-    })
+    )
     if (!tokenResponse.ok) {
       throw new Error(`Failed to get token: ${await tokenResponse.text()}`)
     }
