@@ -28,42 +28,48 @@ const ButtonLike: React.FC<ButtonLikeProps> = ({ slug }) => {
   const visitorId = getVisitorId()
 
   // Cargar los likes al iniciar
+  // Cargar los likes al iniciar
   useEffect(() => {
     const fetchLikes = async () => {
       try {
-        const res = await fetch(`/api/likes/like?slug=${slug}`)
+        const res = await fetch(`/api/likes/like?slug=${slug}`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'Cache-Control': 'no-store', // Evitar caché
+          },
+        })
+
         if (!res.ok) {
           console.error(`Error al obtener los likes: ${res.status}`)
           return
         }
-        const data = await res.json()
-        setLikes(data.count)
 
-        // Comprobar si el usuario ya ha dado like
+        const data = await res.json()
+        setLikes(data.likes)
+
+        // Verificar si el visitante ya ha dado like
         const liked = localStorage.getItem(`hasLiked_${slug}`) === 'true'
         setHasLiked(liked)
       } catch (error) {
-        console.error('Error al obtener los likess:', error)
+        console.error('Error al obtener los likes:', error)
       }
     }
-    fetchLikes()
 
-    // Configurar intervalo para actualizar likes en tiempo reall
-    //const interval = setInterval(fetchLikes, 5000) // Cada 5 segundos
-    //return () => clearInterval(interval) // Limpiar intervalo cuando el componente se desmonte
+    fetchLikes()
   }, [slug])
 
-  // Función para alternar like y dislike con un solo botón
+  // Manejar el click para dar o quitar like
   const handleToggleLike = async () => {
-    if (!slug || !visitorId) {
-      console.error('El slug o el visitorId están indefinido')
+    if (!visitorId) {
+      console.error('visitorId no definido.')
       return
     }
 
     const method = hasLiked ? 'DELETE' : 'POST'
 
     try {
-      const res = await fetch(`/api/likes/like`, {
+      const res = await fetch('/api/likes/like', {
         method,
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ slug, visitorId }),
@@ -78,10 +84,10 @@ const ButtonLike: React.FC<ButtonLikeProps> = ({ slug }) => {
       }
 
       const data = await res.json()
-      setLikes(data.count)
+      setLikes(data.likes)
       setHasLiked(!hasLiked)
 
-      // Guardar estado en localStorage
+      // Guardar el estado en localStorage
       localStorage.setItem(`hasLiked_${slug}`, (!hasLiked).toString())
     } catch (error) {
       console.error(
