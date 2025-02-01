@@ -10,7 +10,12 @@ export default async function handler(
   res: NextApiResponse,
 ) {
   const { slug, visitorId } = req.method === 'GET' ? req.query : req.body
-
+  let isProcessing = false
+  if (isProcessing) {
+    return res.status(400).json({
+      error: 'Ya se está procesando una solicitud.',
+    })
+  }
   if (!slug || typeof slug !== 'string') {
     return res.status(400).json({
       error: 'El parámetro "slug" es obligatorio y debe ser un string.',
@@ -91,5 +96,7 @@ export default async function handler(
   } catch (error) {
     console.error('Error en la API de likes:', error)
     return res.status(500).json({ error: 'Error interno del servidor.' })
+  } finally {
+    isProcessing = false
   }
 }
