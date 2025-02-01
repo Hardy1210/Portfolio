@@ -19,12 +19,23 @@ export default async function handler(
 
   try {
     if (req.method === 'GET') {
+      // Obtener el número total de likes
       const count = await prisma.like.aggregate({
         _sum: { count: true },
         where: { slug },
       })
 
-      return res.status(200).json({ count: count._sum.count || 0 })
+      // Verificar si el usuario actual ha dado like
+      const userLike = visitorId
+        ? await prisma.like.findUnique({
+            where: { slug_visitorId: { slug, visitorId } },
+          })
+        : null
+
+      return res.status(200).json({
+        count: count._sum.count || 0,
+        hasLiked: !!userLike, // Devuelve true si el usuario ha dado like
+      })
     }
 
     if (!visitorId || typeof visitorId !== 'string') {
@@ -55,14 +66,9 @@ export default async function handler(
 
       return res.status(200).json({ count: count._sum.count || 0 })
     } else if (req.method === 'DELETE') {
-      console.log('delete requesto body', req.body)
       const existingLike = await prisma.like.findUnique({
         where: { slug_visitorId: { slug, visitorId } },
       })
-
-      if (!slug || !visitorId) {
-        return res.status(400).json({ error: 'Faltan slug o visitorId' })
-      }
 
       if (!existingLike) {
         return res.status(400).json({ error: 'No has dado like aún.' })
