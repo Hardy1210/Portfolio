@@ -25,24 +25,20 @@ const ButtonLike: React.FC<ButtonLikeProps> = ({ slug }) => {
   const [hasLiked, setHasLiked] = useState(false)
 
   // Obtener o generar el visitorId
-  const visitorId = getVisitorId()
+  const visitorId =
+    typeof window !== 'undefined' ? localStorage.getItem('visitorId') || '' : ''
 
-  // Cargar los likes al iniciar
-  // Cargar los likes al iniciar
+  // Cargar los likes y el estado inicial del botón
   useEffect(() => {
     const fetchLikes = async () => {
-      if (!slug) {
-        console.error('Slug no definido.')
-        return
-      }
       try {
-        const res = await fetch(`/api/likes/like?slug=${slug}`, {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-            'Cache-Control': 'no-store', // Evitar caché
+        const res = await fetch(
+          `/api/likes/like?slug=${slug}&visitorId=${visitorId}`,
+          {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' },
           },
-        })
+        )
 
         if (!res.ok) {
           console.error(`Error al obtener los likes: ${res.status}`)
@@ -51,9 +47,7 @@ const ButtonLike: React.FC<ButtonLikeProps> = ({ slug }) => {
 
         const data = await res.json()
         setLikes(data.count || 0)
-
-        // Verificar si el visitante ya ha dado like
-        setHasLiked(data.hasLiked || false) // Actualizar el estado de "hasLiked"
+        setHasLiked(data.hasLiked) // Actualiza el estado basado en la base de datos
       } catch (error) {
         console.error('Error al obtener los likes:', error)
       }
@@ -88,8 +82,7 @@ const ButtonLike: React.FC<ButtonLikeProps> = ({ slug }) => {
 
       const data = await res.json()
       setLikes(data.count || 0)
-
-      setHasLiked(!hasLiked) // Actualizar el estado de "hasLiked"
+      setHasLiked(!hasLiked)
     } catch (error) {
       console.error(
         `Error al ${hasLiked ? 'eliminar' : 'añadir'} el like:`,

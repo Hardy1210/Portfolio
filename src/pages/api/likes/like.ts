@@ -19,22 +19,22 @@ export default async function handler(
 
   try {
     if (req.method === 'GET') {
-      // Obtener el número total de likes
+      // Obtener el total de likes
       const count = await prisma.like.aggregate({
         _sum: { count: true },
         where: { slug },
       })
 
-      // Verificar si el usuario actual ha dado like
-      const userLike = visitorId
-        ? await prisma.like.findUnique({
-            where: { slug_visitorId: { slug, visitorId } },
-          })
-        : null
+      // Verificar si el usuario ya dio like
+      const hasLiked = visitorId
+        ? !!(await prisma.like.findUnique({
+            where: { slug_visitorId: { slug, visitorId: visitorId as string } },
+          }))
+        : false
 
       return res.status(200).json({
         count: count._sum.count || 0,
-        hasLiked: !!userLike, // Devuelve true si el usuario ha dado like
+        hasLiked, // Indica si el usuario ya dio like
       })
     }
 
@@ -44,6 +44,7 @@ export default async function handler(
       })
     }
 
+    // Manejo de POST y DELETE sigue igual
     if (req.method === 'POST') {
       const existingLike = await prisma.like.findUnique({
         where: { slug_visitorId: { slug, visitorId } },
