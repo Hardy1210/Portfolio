@@ -43,12 +43,12 @@ const ButtonLike: React.FC<ButtonLikeProps> = ({ slug }) => {
         const liked = localStorage.getItem(`hasLiked_${slug}`) === 'true'
         setHasLiked(liked)
       } catch (error) {
-        console.error('Error al obtener los likes:', error)
+        console.error('Error al obtener los likess:', error)
       }
     }
     fetchLikes()
 
-    // Configurar intervalo para actualizar likes en tiempo real
+    // Configurar intervalo para actualizar likes en tiempo reall
     //const interval = setInterval(fetchLikes, 5000) // Cada 5 segundos
     //return () => clearInterval(interval) // Limpiar intervalo cuando el componente se desmonte
   }, [slug])
