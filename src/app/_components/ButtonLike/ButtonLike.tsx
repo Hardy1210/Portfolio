@@ -46,7 +46,7 @@ const ButtonLike: React.FC<ButtonLikeProps> = ({ slug }) => {
         }
 
         const data = await res.json()
-        setLikes(data.likes)
+        setLikes(data.count || 0)
 
         // Verificar si el visitante ya ha dado like
         const liked = localStorage.getItem(`hasLiked_${slug}`) === 'true'
@@ -84,7 +84,7 @@ const ButtonLike: React.FC<ButtonLikeProps> = ({ slug }) => {
       }
 
       const data = await res.json()
-      setLikes(data.likes)
+      setLikes(data.count || 0)
       setHasLiked(!hasLiked)
 
       // Guardar el estado en localStorage
