@@ -2,21 +2,15 @@
 //tu peut reinitianilez le competuer dant ta base de donnees ou dans prisma studio via
 // la comande npx prisma studio
 // API para manejar likes con Prisma y almacenar en la base de datos
-import { prisma } from '@/lib/prisma'
+import { PrismaClient } from '@prisma/client'
 import { NextApiRequest, NextApiResponse } from 'next'
+
+const prisma = new PrismaClient()
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse,
 ) {
-  const { slug, visitorId } = req.body || req.query
-
-  if (!slug || typeof slug !== 'string') {
-    return res
-      .status(400)
-      .json({ error: 'El slug es obligatorio y debe ser una cadena.' })
-  }
-
   res.setHeader(
     'Cache-Control',
     'no-store, no-cache, must-revalidate, proxy-revalidate',
@@ -24,47 +18,95 @@ export default async function handler(
   res.setHeader('Pragma', 'no-cache')
   res.setHeader('Expires', '0')
 
-  try {
-    if (req.method === 'GET') {
-      // Obtener el número total de likes para el slug
-      const totalLikes = await prisma.like.aggregate({
-        _count: true,
-        where: { slug },
+  const { slug, visitorId } =
+    req.method === 'POST' || req.method === 'DELETE' ? req.body : req.query
+
+  if (
+    !slug ||
+    typeof slug !== 'string' ||
+    !visitorId ||
+    typeof visitorId !== 'string'
+  ) {
+    return res
+      .status(400)
+      .json({
+        error:
+          'El slug y el visitorId son obligatorios y deben ser cadenas válidas.',
       })
-      return res.status(200).json({ likes: totalLikes._count })
+  }
+
+  if (req.method === 'POST') {
+    try {
+      // Verificar si el registro ya existe
+      const existingLike = await prisma.like.findUnique({
+        where: {
+          slug_visitorId: { slug, visitorId },
+        },
+      })
+
+      if (existingLike) {
+        return res
+          .status(400)
+          .json({ error: 'Ya has dado like a este contenido.' })
+      }
+
+      // Crear un nuevo like
+      await prisma.like.create({
+        data: { slug, visitorId },
+      })
+
+      // Contar el total de likes
+      const count = await prisma.like.count({ where: { slug } })
+      return res.status(200).json({ count })
+    } catch (error) {
+      console.error('Error al añadir el like:', error)
+      return res
+        .status(500)
+        .json({ error: 'Error al añadir el like', details: error })
     }
-
-    if (req.method === 'POST') {
-      // Añadir un like si no existe ya
-      await prisma.like.upsert({
-        where: { slug_visitorId: { slug, visitorId } },
-        create: { slug, visitorId, count: 1 },
-        update: {}, // Si ya existe, no hace nada
+  } else if (req.method === 'DELETE') {
+    try {
+      // Verificar si el like existe
+      const existingLike = await prisma.like.findUnique({
+        where: {
+          slug_visitorId: { slug, visitorId },
+        },
       })
 
-      const totalLikes = await prisma.like.aggregate({
-        _count: true,
-        where: { slug },
-      })
-      return res.status(200).json({ likes: totalLikes._count })
-    }
+      if (!existingLike) {
+        return res
+          .status(404)
+          .json({ error: 'No existe un like para este visitante y contenido.' })
+      }
 
-    if (req.method === 'DELETE') {
-      // Quitar el like del visitante actual
+      // Eliminar el like
       await prisma.like.delete({
-        where: { slug_visitorId: { slug, visitorId } },
+        where: {
+          slug_visitorId: { slug, visitorId },
+        },
       })
 
-      const totalLikes = await prisma.like.aggregate({
-        _count: true,
-        where: { slug },
-      })
-      return res.status(200).json({ likes: totalLikes._count })
+      // Contar el total de likes
+      const count = await prisma.like.count({ where: { slug } })
+      return res.status(200).json({ count })
+    } catch (error) {
+      console.error('Error al eliminar el like:', error)
+      return res
+        .status(500)
+        .json({ error: 'Error al eliminar el like', details: error })
     }
-
-    return res.status(405).json({ error: 'Método no permitido.' })
-  } catch (error) {
-    console.error('Error en la API de likes:', error)
-    return res.status(500).json({ error: 'Error interno del servidor.' })
+  } else if (req.method === 'GET') {
+    try {
+      // Contar el total de likes
+      const count = await prisma.like.count({ where: { slug } })
+      return res.status(200).json({ count })
+    } catch (error) {
+      console.error('Error al obtener los likes:', error)
+      return res
+        .status(500)
+        .json({ error: 'Error al obtener los likes', details: error })
+    }
+  } else {
+    return res.status(405).json({ error: 'Método no permitido' })
   }
 }
