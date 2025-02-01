@@ -31,6 +31,10 @@ const ButtonLike: React.FC<ButtonLikeProps> = ({ slug }) => {
   // Cargar los likes al iniciar
   useEffect(() => {
     const fetchLikes = async () => {
+      if (!slug) {
+        console.error('Slug no definido.')
+        return
+      }
       try {
         const res = await fetch(`/api/likes/like?slug=${slug}`, {
           method: 'GET',
@@ -49,15 +53,14 @@ const ButtonLike: React.FC<ButtonLikeProps> = ({ slug }) => {
         setLikes(data.count || 0)
 
         // Verificar si el visitante ya ha dado like
-        const liked = localStorage.getItem(`hasLiked_${slug}`) === 'true'
-        setHasLiked(liked)
+        setHasLiked(data.hasLiked || false) // Actualizar el estado de "hasLiked"
       } catch (error) {
         console.error('Error al obtener los likes:', error)
       }
     }
 
     fetchLikes()
-  }, [slug])
+  }, [slug, visitorId])
 
   // Manejar el click para dar o quitar like
   const handleToggleLike = async () => {
@@ -85,10 +88,8 @@ const ButtonLike: React.FC<ButtonLikeProps> = ({ slug }) => {
 
       const data = await res.json()
       setLikes(data.count || 0)
-      setHasLiked(!hasLiked)
 
-      // Guardar el estado en localStorage
-      localStorage.setItem(`hasLiked_${slug}`, (!hasLiked).toString())
+      setHasLiked(!hasLiked) // Actualizar el estado de "hasLiked"
     } catch (error) {
       console.error(
         `Error al ${hasLiked ? 'eliminar' : 'añadir'} el like:`,
