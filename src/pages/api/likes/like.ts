@@ -12,11 +12,9 @@ export default async function handler(
   const { slug, visitorId } = req.method === 'GET' ? req.query : req.body
 
   if (!slug || typeof slug !== 'string') {
-    return res
-      .status(400)
-      .json({
-        error: 'El parámetro "slug" es obligatorio y debe ser un string.',
-      })
+    return res.status(400).json({
+      error: 'El parámetro "slug" es obligatorio y debe ser un string.',
+    })
   }
 
   try {
@@ -30,12 +28,9 @@ export default async function handler(
     }
 
     if (!visitorId || typeof visitorId !== 'string') {
-      return res
-        .status(400)
-        .json({
-          error:
-            'El parámetro "visitorId" es obligatorio y debe ser un string.',
-        })
+      return res.status(400).json({
+        error: 'El parámetro "visitorId" es obligatorio y debe ser un string.',
+      })
     }
 
     if (req.method === 'POST') {
@@ -60,9 +55,14 @@ export default async function handler(
 
       return res.status(200).json({ count: count._sum.count || 0 })
     } else if (req.method === 'DELETE') {
+      console.log('delete requesto body', req.body)
       const existingLike = await prisma.like.findUnique({
         where: { slug_visitorId: { slug, visitorId } },
       })
+
+      if (!slug || !visitorId) {
+        return res.status(400).json({ error: 'Faltan slug o visitorId' })
+      }
 
       if (!existingLike) {
         return res.status(400).json({ error: 'No has dado like aún.' })
