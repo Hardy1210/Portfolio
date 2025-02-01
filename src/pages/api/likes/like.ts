@@ -2,79 +2,66 @@
 //tu peut reinitianilez le competuer dant ta base de donnees ou dans prisma studio via
 // la comande npx prisma studio
 // API para manejar likes con Prisma y almacenar en la base de datos
-import { PrismaClient } from '@prisma/client'
+import { prisma } from '@/lib/prisma'
 import { NextApiRequest, NextApiResponse } from 'next'
-
-const prisma = new PrismaClient()
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse,
 ) {
-  res.setHeader(
-    'Cache-Control',
-    'no-store, no-cache, must-revalidate, proxy-revalidate',
-  )
-  res.setHeader('Pragma', 'no-cache')
-  res.setHeader('Expires', '0')
-  const slug =
-    req.method === 'POST' ? (req.body as { slug: string }).slug : req.query.slug
+  const { slug, visitorId } = req.method === 'GET' ? req.query : req.body
 
   if (!slug || typeof slug !== 'string') {
-    console.error('Error: El slug es inválido o no está definido !:', slug)
-    return res
-      .status(400)
-      .json({ error: 'El slug es obligatorio y debe ser un string.' })
+    return res.status(400).json({
+      error: 'El parámetro "slug" es obligatorio y debe ser un string.',
+    })
   }
 
-  console.log("Slug reçu dans l'API:", slug)
-  if (req.method === 'POST') {
-    try {
-      // Verificar si el registro ya existe
-      const existingLike = await prisma.like.findUnique({
-        where: { slug: slug as string },
-      })
+  try {
+    res.setHeader('Cache-Control', 'no-store, max-age=0')
 
-      let updatedLike
-      if (existingLike) {
-        // Si existe, incrementa el contador
-        updatedLike = await prisma.like.update({
-          where: { slug: slug as string },
-          data: { count: { increment: 1 } },
-        })
-      } else {
-        // Si no existe, crea el registro
-        updatedLike = await prisma.like.create({
-          data: { slug: slug as string, count: 1 },
+    if (req.method === 'GET') {
+      // Contar los likes para el slug
+      const count = await prisma.like.count({ where: { slug } })
+      return res.status(200).json({ count })
+    } else if (req.method === 'POST') {
+      if (!visitorId || typeof visitorId !== 'string') {
+        return res.status(400).json({
+          error:
+            'El parámetro "visitorId" es obligatorio y debe ser un string.',
         })
       }
-
-      res.status(200).json({ likes: updatedLike.count })
-    } catch (error) {
-      console.error('Erreur Prisma lors du POST:', error) // Log del error
-      res
+      // Añadir un like
+      await prisma.like.upsert({
+        where: { slug_visitorId: { slug, visitorId } },
+        update: {},
+        create: { slug, visitorId },
+      })
+      const count = await prisma.like.count({ where: { slug } })
+      return res.status(200).json({ count })
+    } else if (req.method === 'DELETE') {
+      if (!visitorId || typeof visitorId !== 'string') {
+        return res.status(400).json({
+          error:
+            'El parámetro "visitorId" es obligatorio y debe ser un string.',
+        })
+      }
+      // Quitar un like
+      await prisma.like.delete({
+        where: { slug_visitorId: { slug, visitorId } },
+      })
+      const count = await prisma.like.count({ where: { slug } })
+      return res.status(200).json({ count })
+    } else {
+      return res.status(405).json({ error: 'Método no permitido.' })
+    }
+  } catch (error: unknown) {
+    console.error('Error en la API de likes:', error)
+    if (error instanceof Error) {
+      return res
         .status(500)
-        .json({ error: 'Erreur lors de l’ajout du like', details: error })
+        .json({ error: 'Error interno del servidor.', details: error.message })
     }
-  } else if (req.method === 'GET') {
-    try {
-      const like = await prisma.like.findUnique({
-        where: { slug: slug as string },
-      })
-
-      if (like) {
-        res.status(200).json({ likes: like.count })
-      } else {
-        res.status(404).json({ error: 'Like non trouvé pour ce slug' })
-      }
-    } catch (error) {
-      console.error('Erreur Prisma lors du GET:', error) // Log del error
-      res.status(500).json({
-        error: 'Erreur lors de la récupération des likes',
-        details: error,
-      })
-    }
-  } else {
-    res.status(405).json({ message: 'Méthode non autorisée' })
+    return res.status(500).json({ error: 'Error interno del servidor.' })
   }
 }

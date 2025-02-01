@@ -7,89 +7,87 @@ interface ButtonLikeProps {
   slug: string
 }
 
+// Función para obtener o generar el `visitorId`
+const getVisitorId = () => {
+  if (typeof window !== 'undefined') {
+    let visitorId = localStorage.getItem('visitorId')
+    if (!visitorId) {
+      visitorId = crypto.randomUUID()
+      localStorage.setItem('visitorId', visitorId)
+    }
+    return visitorId
+  }
+  return null // Devuelve null si no está en el cliente
+}
+
 const ButtonLike: React.FC<ButtonLikeProps> = ({ slug }) => {
   const [likes, setLikes] = useState(0)
   const [hasLiked, setHasLiked] = useState(false)
 
-  // Charger les likes au chargement avec GET
+  // Obtener o generar el visitorId
+  const visitorId = getVisitorId()
+
+  // Cargar los likes al iniciar
   useEffect(() => {
     const fetchLikes = async () => {
       try {
-        const res = await fetch(`/api/likes/like?slug=${slug}`, {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-            'Cache-Control': 'no-store', // Desactiva el caché
-          },
-        })
+        const res = await fetch(`/api/likes/like?slug=${slug}`)
         if (!res.ok) {
-          console.error('Error al obtener los likes:', res.status)
+          console.error(`Error al obtener los likes: ${res.status}`)
           return
         }
         const data = await res.json()
-        setLikes(data.likes)
+        setLikes(data.count)
+
+        // Comprobar si el usuario ya ha dado like
+        const liked = localStorage.getItem(`hasLiked_${slug}`) === 'true'
+        setHasLiked(liked)
       } catch (error) {
-        console.error('Error al realizar el fetch de likes:', error)
+        console.error('Error al obtener los likes:', error)
       }
     }
     fetchLikes()
+
+    // Configurar intervalo para actualizar likes en tiempo real
+    //const interval = setInterval(fetchLikes, 5000) // Cada 5 segundos
+    //return () => clearInterval(interval) // Limpiar intervalo cuando el componente se desmonte
   }, [slug])
-  {
-  }
-  const handleLike = async () => {
-    if (!slug) {
-      console.error('Le slug est undefined!')
+
+  // Función para alternar like y dislike con un solo botón
+  const handleToggleLike = async () => {
+    if (!slug || !visitorId) {
+      console.error('El slug o el visitorId están indefinidos')
       return
     }
 
-    const maxLikes = 1
-    const currentLikes = Number(localStorage.getItem('likesCount')) || 0
-
-    if (currentLikes >= maxLikes) {
-      alert('Tu as déjà liké ma page, merci beaucoup pour ton soutien ❤️ !')
-      return
-    }
-
-    // Actualizar localmente antes de la solicitud
-    setLikes((prevLikes) => prevLikes + 1)
-    setHasLiked(true)
-    const updatedLocalLikes = currentLikes + 1
-    localStorage.setItem('likesCount', String(updatedLocalLikes))
-    localStorage.setItem(`hasLiked_${slug}`, 'true')
+    const method = hasLiked ? 'DELETE' : 'POST'
 
     try {
-      // Realizar la solicitud POST
       const res = await fetch(`/api/likes/like`, {
-        method: 'POST',
+        method,
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ slug }),
+        body: JSON.stringify({ slug, visitorId }),
       })
 
       if (!res.ok) {
-        console.error('Error en la respuesta POST:', res.status)
+        console.error(
+          `Error al ${hasLiked ? 'eliminar' : 'añadir'} el like:`,
+          res.status,
+        )
         return
       }
 
-      {
-        /*
-        // Opcional: sincronizar likes reales desde el servidor
-      const fetchRes = await fetch(`/api/likes/like?slug=${slug}`, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-          'Cache-Control': 'no-store',
-        },
-      })
+      const data = await res.json()
+      setLikes(data.count)
+      setHasLiked(!hasLiked)
 
-      if (fetchRes.ok) {
-        const data = await fetchRes.json()
-        setLikes(data.likes)
-      } else {
-        console.error('Error en la respuesta GET:', fetchRes.status)
-      } */
-      }
+      // Guardar estado en localStorage
+      localStorage.setItem(`hasLiked_${slug}`, (!hasLiked).toString())
     } catch (error) {
-      console.error('Error al enviar like:', error)
+      console.error(
+        `Error al ${hasLiked ? 'eliminar' : 'añadir'} el like:`,
+        error,
+      )
     }
   }
 
@@ -102,8 +100,9 @@ const ButtonLike: React.FC<ButtonLikeProps> = ({ slug }) => {
       <div className="py-10">
         <div className={cn(styles.bg, '')}>
           <button
-            onClick={handleLike}
+            onClick={handleToggleLike}
             className={cn(styles.heart, { [styles.liked]: hasLiked })}
+            aria-label={hasLiked ? 'Quitar like' : 'Dar like'}
           ></button>
         </div>
         <p className="mt-2">
