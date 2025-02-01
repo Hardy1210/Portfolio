@@ -24,13 +24,13 @@ const ButtonLike: React.FC<ButtonLikeProps> = ({ slug }) => {
   const [likes, setLikes] = useState(0)
   const [hasLiked, setHasLiked] = useState(false)
 
-  // Obtener o generar el visitorId
-  const visitorId =
-    typeof window !== 'undefined' ? localStorage.getItem('visitorId') || '' : ''
+  // Obtener o generar el visitorId al cargar el componente
+  const visitorId = getVisitorId()
 
   // Cargar los likes y el estado inicial del botón
   useEffect(() => {
     const fetchLikes = async () => {
+      if (!visitorId) return // Si no hay visitorId, no continúa
       try {
         const res = await fetch(
           `/api/likes/like?slug=${slug}&visitorId=${visitorId}`,
@@ -46,8 +46,8 @@ const ButtonLike: React.FC<ButtonLikeProps> = ({ slug }) => {
         }
 
         const data = await res.json()
-        setLikes(data.count || 0)
-        setHasLiked(data.hasLiked) // Actualiza el estado basado en la base de datos
+        setLikes(data.count || 0) // Total de likes
+        setHasLiked(data.hasLiked || false) // Si ya dio like
       } catch (error) {
         console.error('Error al obtener los likes:', error)
       }
