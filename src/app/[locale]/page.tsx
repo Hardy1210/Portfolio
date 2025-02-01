@@ -332,7 +332,7 @@ export default function Home() {
                     {isDarkMode ? <ButtonRgb /> : <Button />}
 
                     <a
-                      href="/CV-Hardy-LINO-2.pdf"
+                      href="/CV-HARDY-L-2.pdf"
                       target="_blank"
                       rel="noopener noreferrer"
                       className={cn(
