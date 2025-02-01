@@ -56,7 +56,7 @@ const ButtonLike: React.FC<ButtonLikeProps> = ({ slug }) => {
   // Función para alternar like y dislike con un solo botón
   const handleToggleLike = async () => {
     if (!slug || !visitorId) {
-      console.error('El slug o el visitorId están indefinidos')
+      console.error('El slug o el visitorId están indefinido')
       return
     }
 
