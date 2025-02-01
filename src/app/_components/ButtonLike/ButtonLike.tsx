@@ -30,13 +30,15 @@ const ButtonLike: React.FC<ButtonLikeProps> = ({ slug }) => {
   // Cargar los likes y el estado inicial del botón
   useEffect(() => {
     const fetchLikes = async () => {
-      if (!visitorId) return // Si no hay visitorId, no continúa
       try {
         const res = await fetch(
           `/api/likes/like?slug=${slug}&visitorId=${visitorId}`,
           {
             method: 'GET',
-            headers: { 'Content-Type': 'application/json' },
+            headers: {
+              'Content-Type': 'application/json',
+              'Cache-Control': 'no-store', // Desactiva el caché
+            },
           },
         )
 

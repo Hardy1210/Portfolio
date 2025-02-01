@@ -10,12 +10,7 @@ export default async function handler(
   res: NextApiResponse,
 ) {
   const { slug, visitorId } = req.method === 'GET' ? req.query : req.body
-  let isProcessing = false
-  if (isProcessing) {
-    return res.status(400).json({
-      error: 'Ya se está procesando una solicitud.',
-    })
-  }
+
   if (!slug || typeof slug !== 'string') {
     return res.status(400).json({
       error: 'El parámetro "slug" es obligatorio y debe ser un string.',
@@ -24,13 +19,12 @@ export default async function handler(
 
   try {
     if (req.method === 'GET') {
-      // Obtener el total de likes
+      // Obtener el total de likes y verificar si el usuario ya dio like
       const count = await prisma.like.aggregate({
         _sum: { count: true },
         where: { slug },
       })
 
-      // Verificar si el usuario ya dio like
       const hasLiked = visitorId
         ? !!(await prisma.like.findUnique({
             where: { slug_visitorId: { slug, visitorId: visitorId as string } },
@@ -39,7 +33,7 @@ export default async function handler(
 
       return res.status(200).json({
         count: count._sum.count || 0,
-        hasLiked, // Indica si el usuario ya dio like
+        hasLiked,
       })
     }
 
@@ -49,8 +43,8 @@ export default async function handler(
       })
     }
 
-    // Manejo de POST y DELETE sigue igual
     if (req.method === 'POST') {
+      // Verificar si el visitante ya dio like
       const existingLike = await prisma.like.findUnique({
         where: { slug_visitorId: { slug, visitorId } },
       })
@@ -96,7 +90,5 @@ export default async function handler(
   } catch (error) {
     console.error('Error en la API de likes:', error)
     return res.status(500).json({ error: 'Error interno del servidor.' })
-  } finally {
-    isProcessing = false
   }
 }
