@@ -11,7 +11,8 @@ model Like {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
   slug      String
   visitorId String
+  count     Int      @default(1) // Nuevo campo para contar likes manualmente
   createdAt DateTime @default(now())
 
-  @@unique([slug, visitorId]) // Índice compuesto único
+  @@unique([slug, visitorId]) // Restricción única por usuario y slug
 }
