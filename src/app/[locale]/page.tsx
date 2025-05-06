@@ -14,7 +14,6 @@ import Footer from '../_components/Footer/Footer'
 import { Header } from '../_components/Header/Header'
 import { ArrowUp } from '../_components/icons/ArrowUp'
 import { CssIcon } from '../_components/icons/CssIcon'
-import { FigmaIcon } from '../_components/icons/FigmaIcon'
 import { GithubIcon } from '../_components/icons/GithubIcon'
 import { GitLabIcon } from '../_components/icons/GitLabIcon'
 import { HtmlIcon } from '../_components/icons/HtmlIcon'
@@ -35,19 +34,14 @@ import { MongoDbIcon } from '../_components/icons/MongoDbIcon'
 import { NextIcon } from '../_components/icons/NextIcon'
 import { NodeJsIcon } from '../_components/icons/NodeJsIcon'
 import { NotionIcon } from '../_components/icons/NotionIcon'
-import { NpmIcon } from '../_components/icons/NpmIcon'
 import { PhotoshopIcon } from '../_components/icons/PhotoshopIcon'
-import { PostmanIcon } from '../_components/icons/PostmanIcon'
 import { ReactIcon } from '../_components/icons/ReactIcon'
 import { ReactRouterIcon } from '../_components/icons/ReactRouterIcon'
 import { ReduxIcon } from '../_components/icons/ReduxIcon'
 import { SassIcon } from '../_components/icons/SassIcon'
 import { SwaggerIcon } from '../_components/icons/SwaggerIcon'
 import { TailwindIcon } from '../_components/icons/TailwindIcon'
-import { TypescriptIcon } from '../_components/icons/TypescriptIcon'
-import { VercelIcon } from '../_components/icons/VercelIcon'
 import { ViteIcon } from '../_components/icons/ViteIcon'
-import { VsCodeIcon } from '../_components/icons/VsCodeIcon'
 import { WaveIcon } from '../_components/icons/WaveIcon'
 import { WebIcon } from '../_components/icons/WebIcon'
 import ProjectCard from '../_components/ProjectCard/ProjectCard'
@@ -71,8 +65,8 @@ import styles from './page.module.scss'
 import { ButtonRgb } from '../_components/Button/ButtonRgb'
 import { MenuProvider } from '../_components/ContextNavbarFloatingNavButton/MenuContext'
 import { FloatingNavButton } from '../_components/FloatingNavButton/FloatingNavButton'
-import { FollowCursorInvert } from '../_components/FollowCursorInvert/FollowCursorInvert'
 import LazyLoadWrapper from '../_components/LazyLoadWrapper'
+import Marquee from '../_components/marquee/Marquee'
 import SpotifyNowPlaying from '../_components/spotify/SpotifyNowPlaying'
 
 //importacion dinamica de un compenente si se nesecita como projectCard cuando este a la vista del usuario
@@ -185,7 +179,7 @@ export default function Home() {
   return (
     <>
       <div className={cn(styles.mainPrimary, 'relative')}>
-        <FollowCursorInvert className={cn(styles.cursor, 'hidden md:block')} />
+        {/**<FollowCursorInvert className={cn(styles.cursor, 'hidden md:block')} />   space-y-20 md:space-y-32  */}
         <MenuProvider>
           <Header />
           <FloatingNavButton className="fixed h-[70px] w-[70px] bottom-12 right-8" />
@@ -194,7 +188,7 @@ export default function Home() {
         <main
           className={cn(
             styles.main__container,
-            'space-y-20 md:space-y-32 pt-36 md:pt-48  px-4 overflow-hidden',
+            'pt-36 md:pt-36  space-y-20 md:space-y-32 px-4 overflow-hidden',
           )}
         >
           <Section className={cn(styles.intro, 'relative')}>
@@ -332,7 +326,7 @@ export default function Home() {
                     {isDarkMode ? <ButtonRgb /> : <Button />}
 
                     <a
-                      href="/CV-HARDY-L-2.pdf"
+                      href="/CV_12.pdf"
                       target="_blank"
                       rel="noopener noreferrer"
                       className={cn(
@@ -388,199 +382,204 @@ export default function Home() {
               </FadeInSection>
             </div>
           </Section>
-          {/*marquee*/}
-          <div>
-            <div className={cn(styles.marquee__container, 'overflow-hidden')}>
-              <div
-                className={cn(
-                  styles.marquee__icons,
-                  'flex w-full items-center whitespace-nowrap relative [mask-image:linear-gradient(to_right,rgba(0,0,0,0)_0%,rgb(0,0,0)_12.5%,rgb(0,0,0)_87.5%,rgba(0,0,0,0)_100%)] group',
-                )}
-              >
-                <ul
+          {/*marquee <LazyLoadWrapper>
+            <div>
+              <div className={cn(styles.marquee__container, 'overflow-hidden')}>
+                <div
                   className={cn(
-                    styles.marquee__ul,
-                    'inline-flex items-center animate-marquee group-hover:[animation-play-state:paused]',
+                    styles.marquee__icons,
+                    'flex w-full items-center whitespace-nowrap relative [mask-image:linear-gradient(to_right,rgba(0,0,0,0)_0%,rgb(0,0,0)_12.5%,rgb(0,0,0)_87.5%,rgba(0,0,0,0)_100%)] group',
                   )}
                 >
-                  <li className="mx-9">
-                    <GithubIcon size={70} />
-                    <p className={cn(styles.icon__title)}>GitHub</p>
-                  </li>
-                  <li className="mx-9">
-                    <ReactIcon size={70} />
-                    <p className={cn(styles.icon__title)}>React</p>
-                  </li>
-                  <li className="mx-9">
-                    <NextIcon size={70} />
-                    <p className={cn(styles.icon__title)}>Next.js</p>
-                  </li>
-                  <li className="mx-9">
-                    <TypescriptIcon size={70} />
-                    <p className={cn(styles.icon__title)}>TypeScript</p>
-                  </li>
-                  <li className="mx-9">
-                    <JavascriptIcon size={70} />
-                    <p className={cn(styles.icon__title)}>JavaScript</p>
-                  </li>
-                  <li className="mx-9">
-                    <FigmaIcon size={70} />
-                    <p className={cn(styles.icon__title)}>Figma</p>
-                  </li>
-                  <li className="mx-9">
-                    <HtmlIcon size={70} />
-                    <p className={cn(styles.icon__title)}>Html</p>
-                  </li>
-                  <li className="mx-9">
-                    <CssIcon size={70} />
-                    <p className={cn(styles.icon__title)}>Css</p>
-                  </li>
-                  <li className="mx-9">
-                    <MongoDbIcon size={70} />
-                    <p className={cn(styles.icon__title)}>MongoDB</p>
-                  </li>
-                  <li className="mx-9">
-                    <NotionIcon size={70} />
-                    <p className={cn(styles.icon__title)}>Notion</p>
-                  </li>
-                  <li className="mx-9">
-                    <TailwindIcon size={70} />
-                    <p className={cn(styles.icon__title)}>Tailwind</p>
-                  </li>
-                  <li className="mx-9">
-                    <SwaggerIcon size={70} />
-                    <p className={cn(styles.icon__title)}>Swagger</p>
-                  </li>
-                  <li className="mx-9">
-                    <SassIcon size={70} />
-                    <p className={cn(styles.icon__title)}>Sass</p>
-                  </li>
-                  <li className="mx-9">
-                    <VercelIcon size={70} />
-                    <p className={cn(styles.icon__title)}>Vercel</p>
-                  </li>
-                  <li className="mx-9">
-                    <NpmIcon size={70} />
-                    <p className={cn(styles.icon__title)}>Npm</p>
-                  </li>
-                  <li className="mx-9">
-                    <GitLabIcon size={70} />
-                    <p className={cn(styles.icon__title)}>Git Lab</p>
-                  </li>
-                  <li className="mx-9">
-                    <PostmanIcon size={70} />
-                    <p className={cn(styles.icon__title)}>Postman</p>
-                  </li>
-                  <li className="mx-9">
-                    <ReduxIcon size={70} />
-                    <p className={cn(styles.icon__title)}>Redux</p>
-                  </li>
-                  <li className="mx-9">
-                    <ViteIcon size={70} />
-                    <p className={cn(styles.icon__title)}>Vite</p>
-                  </li>
-                  <li className="mx-9">
-                    <VsCodeIcon size={70} />
-                    <p className={cn(styles.icon__title)}>Visual Studio</p>
-                  </li>
-                  <li className="mx-9">
-                    <NodeJsIcon size={70} />
-                    <p className={cn(styles.icon__title)}>Node.js</p>
-                  </li>
-                </ul>
-                <ul
-                  className={cn(
-                    styles.marquee__ull,
-                    'inline-flex absolute items-center animate-marquee2 group-hover:[animation-play-state:paused]',
-                  )}
-                >
-                  <li className="mx-9">
-                    <GithubIcon size={70} />
-                    <p className={cn(styles.icon__title)}>GitHub</p>
-                  </li>
-                  <li className="mx-9">
-                    <ReactIcon size={70} />
-                    <p className={cn(styles.icon__title)}>React</p>
-                  </li>
-                  <li className="mx-9">
-                    <NextIcon size={70} />
-                    <p className={cn(styles.icon__title)}>Next.js</p>
-                  </li>
-                  <li className="mx-9">
-                    <TypescriptIcon size={70} />
-                    <p className={cn(styles.icon__title)}>TypeScript</p>
-                  </li>
-                  <li className="mx-9">
-                    <JavascriptIcon size={70} />
-                    <p className={cn(styles.icon__title)}>JavaScript</p>
-                  </li>
-                  <li className="mx-9">
-                    <FigmaIcon size={70} />
-                    <p className={cn(styles.icon__title)}>Figma</p>
-                  </li>
-                  <li className="mx-9">
-                    <HtmlIcon size={70} />
-                    <p className={cn(styles.icon__title)}>Html</p>
-                  </li>
-                  <li className="mx-9">
-                    <CssIcon size={70} />
-                    <p className={cn(styles.icon__title)}>Css</p>
-                  </li>
-                  <li className="mx-9">
-                    <MongoDbIcon size={70} />
-                    <p className={cn(styles.icon__title)}>MongoDB</p>
-                  </li>
-                  <li className="mx-9">
-                    <NotionIcon size={70} />
-                    <p className={cn(styles.icon__title)}>Notion</p>
-                  </li>
-                  <li className="mx-9">
-                    <TailwindIcon size={70} />
-                    <p className={cn(styles.icon__title)}>Tailwind</p>
-                  </li>
-                  <li className="mx-9">
-                    <SwaggerIcon size={70} />
-                    <p className={cn(styles.icon__title)}>Swagger</p>
-                  </li>
-                  <li className="mx-9">
-                    <SassIcon size={70} />
-                    <p className={cn(styles.icon__title)}>Sass</p>
-                  </li>
-                  <li className="mx-9">
-                    <VercelIcon size={70} />
-                    <p className={cn(styles.icon__title)}>Vercel</p>
-                  </li>
-                  <li className="mx-9">
-                    <NpmIcon size={70} />
-                    <p className={cn(styles.icon__title)}>Npm</p>
-                  </li>
-                  <li className="mx-9">
-                    <GitLabIcon size={70} />
-                    <p className={cn(styles.icon__title)}>Git Lab</p>
-                  </li>
-                  <li className="mx-9">
-                    <PostmanIcon size={70} />
-                    <p className={cn(styles.icon__title)}>Postman</p>
-                  </li>
-                  <li className="mx-9">
-                    <ReduxIcon size={70} />
-                    <p className={cn(styles.icon__title)}>Redux</p>
-                  </li>
-                  <li className="mx-9">
-                    <ViteIcon size={70} />
-                    <p className={cn(styles.icon__title)}>Vite</p>
-                  </li>
-                  <li className="mx-9">
-                    <VsCodeIcon size={70} />
-                    <p className={cn(styles.icon__title)}>Visual Studio</p>
-                  </li>
-                  <li className="mx-9">
-                    <NodeJsIcon size={70} />
-                    <p className={cn(styles.icon__title)}>Node.js</p>
-                  </li>
-                </ul>
+                  <ul
+                    className={cn(
+                      styles.marquee__ul,
+                      'inline-flex items-center animate-marquee group-hover:[animation-play-state:paused]',
+                    )}
+                  >
+                    <li className="mx-9">
+                      <GithubIcon size={70} />
+                      <p className={cn(styles.icon__title)}>GitHub</p>
+                    </li>
+                    <li className="mx-9">
+                      <ReactIcon size={70} />
+                      <p className={cn(styles.icon__title)}>React</p>
+                    </li>
+                    <li className="mx-9">
+                      <NextIcon size={70} />
+                      <p className={cn(styles.icon__title)}>Next.js</p>
+                    </li>
+                    <li className="mx-9">
+                      <TypescriptIcon size={70} />
+                      <p className={cn(styles.icon__title)}>TypeScript</p>
+                    </li>
+                    <li className="mx-9">
+                      <JavascriptIcon size={70} />
+                      <p className={cn(styles.icon__title)}>JavaScript</p>
+                    </li>
+                    <li className="mx-9">
+                      <FigmaIcon size={70} />
+                      <p className={cn(styles.icon__title)}>Figma</p>
+                    </li>
+                    <li className="mx-9">
+                      <HtmlIcon size={70} />
+                      <p className={cn(styles.icon__title)}>Html</p>
+                    </li>
+                    <li className="mx-9">
+                      <CssIcon size={70} />
+                      <p className={cn(styles.icon__title)}>Css</p>
+                    </li>
+                    <li className="mx-9">
+                      <MongoDbIcon size={70} />
+                      <p className={cn(styles.icon__title)}>MongoDB</p>
+                    </li>
+                    <li className="mx-9">
+                      <NotionIcon size={70} />
+                      <p className={cn(styles.icon__title)}>Notion</p>
+                    </li>
+                    <li className="mx-9">
+                      <TailwindIcon size={70} />
+                      <p className={cn(styles.icon__title)}>Tailwind</p>
+                    </li>
+                    <li className="mx-9">
+                      <SwaggerIcon size={70} />
+                      <p className={cn(styles.icon__title)}>Swagger</p>
+                    </li>
+                    <li className="mx-9">
+                      <SassIcon size={70} />
+                      <p className={cn(styles.icon__title)}>Sass</p>
+                    </li>
+                    <li className="mx-9">
+                      <VercelIcon size={70} />
+                      <p className={cn(styles.icon__title)}>Vercel</p>
+                    </li>
+                    <li className="mx-9">
+                      <NpmIcon size={70} />
+                      <p className={cn(styles.icon__title)}>Npm</p>
+                    </li>
+                    <li className="mx-9">
+                      <GitLabIcon size={70} />
+                      <p className={cn(styles.icon__title)}>Git Lab</p>
+                    </li>
+                    <li className="mx-9">
+                      <PostmanIcon size={70} />
+                      <p className={cn(styles.icon__title)}>Postman</p>
+                    </li>
+                    <li className="mx-9">
+                      <ReduxIcon size={70} />
+                      <p className={cn(styles.icon__title)}>Redux</p>
+                    </li>
+                    <li className="mx-9">
+                      <ViteIcon size={70} />
+                      <p className={cn(styles.icon__title)}>Vite</p>
+                    </li>
+                    <li className="mx-9">
+                      <VsCodeIcon size={70} />
+                      <p className={cn(styles.icon__title)}>Visual Studio</p>
+                    </li>
+                    <li className="mx-9">
+                      <NodeJsIcon size={70} />
+                      <p className={cn(styles.icon__title)}>Node.js</p>
+                    </li>
+                  </ul>
+                  <ul
+                    className={cn(
+                      styles.marquee__ull,
+                      'inline-flex absolute items-center animate-marquee2 group-hover:[animation-play-state:paused]',
+                    )}
+                  >
+                    <li className="mx-9">
+                      <GithubIcon size={70} />
+                      <p className={cn(styles.icon__title)}>GitHub</p>
+                    </li>
+                    <li className="mx-9">
+                      <ReactIcon size={70} />
+                      <p className={cn(styles.icon__title)}>React</p>
+                    </li>
+                    <li className="mx-9">
+                      <NextIcon size={70} />
+                      <p className={cn(styles.icon__title)}>Next.js</p>
+                    </li>
+                    <li className="mx-9">
+                      <TypescriptIcon size={70} />
+                      <p className={cn(styles.icon__title)}>TypeScript</p>
+                    </li>
+                    <li className="mx-9">
+                      <JavascriptIcon size={70} />
+                      <p className={cn(styles.icon__title)}>JavaScript</p>
+                    </li>
+                    <li className="mx-9">
+                      <FigmaIcon size={70} />
+                      <p className={cn(styles.icon__title)}>Figma</p>
+                    </li>
+                    <li className="mx-9">
+                      <HtmlIcon size={70} />
+                      <p className={cn(styles.icon__title)}>Html</p>
+                    </li>
+                    <li className="mx-9">
+                      <CssIcon size={70} />
+                      <p className={cn(styles.icon__title)}>Css</p>
+                    </li>
+                    <li className="mx-9">
+                      <MongoDbIcon size={70} />
+                      <p className={cn(styles.icon__title)}>MongoDB</p>
+                    </li>
+                    <li className="mx-9">
+                      <NotionIcon size={70} />
+                      <p className={cn(styles.icon__title)}>Notion</p>
+                    </li>
+                    <li className="mx-9">
+                      <TailwindIcon size={70} />
+                      <p className={cn(styles.icon__title)}>Tailwind</p>
+                    </li>
+                    <li className="mx-9">
+                      <SwaggerIcon size={70} />
+                      <p className={cn(styles.icon__title)}>Swagger</p>
+                    </li>
+                    <li className="mx-9">
+                      <SassIcon size={70} />
+                      <p className={cn(styles.icon__title)}>Sass</p>
+                    </li>
+                    <li className="mx-9">
+                      <VercelIcon size={70} />
+                      <p className={cn(styles.icon__title)}>Vercel</p>
+                    </li>
+                    <li className="mx-9">
+                      <NpmIcon size={70} />
+                      <p className={cn(styles.icon__title)}>Npm</p>
+                    </li>
+                    <li className="mx-9">
+                      <GitLabIcon size={70} />
+                      <p className={cn(styles.icon__title)}>Git Lab</p>
+                    </li>
+                    <li className="mx-9">
+                      <PostmanIcon size={70} />
+                      <p className={cn(styles.icon__title)}>Postman</p>
+                    </li>
+                    <li className="mx-9">
+                      <ReduxIcon size={70} />
+                      <p className={cn(styles.icon__title)}>Redux</p>
+                    </li>
+                    <li className="mx-9">
+                      <ViteIcon size={70} />
+                      <p className={cn(styles.icon__title)}>Vite</p>
+                    </li>
+                    <li className="mx-9">
+                      <VsCodeIcon size={70} />
+                      <p className={cn(styles.icon__title)}>Visual Studio</p>
+                    </li>
+                    <li className="mx-9">
+                      <NodeJsIcon size={70} />
+                      <p className={cn(styles.icon__title)}>Node.js</p>
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
+          </LazyLoadWrapper>*/}
+
+          <div>
+            <Marquee />
           </div>
           {/*About*/}
           <div className={cn(styles.background__top, '')}></div>
@@ -644,7 +643,9 @@ export default function Home() {
                   </div>
                 </FadeInSection>
                 <div className="flex justify-center md:justify-end mt-7">
-                  <SpotifyNowPlaying />
+                  <FadeInSection>
+                    <SpotifyNowPlaying />
+                  </FadeInSection>
                 </div>
               </Section>
             </div>
@@ -1046,102 +1047,104 @@ export default function Home() {
           </Section>
 
           <Section>
-            <div className={cn(styles.techno__content, '')}>
-              <div className={cn(styles.technologies__utilises, '')}>
-                <p className="text-2xl">{mySkills('worked')}</p>
+            <FadeInSection>
+              <div className={cn(styles.techno__content, '')}>
+                <div className={cn(styles.technologies__utilises, '')}>
+                  <p className="text-2xl">{mySkills('worked')}</p>
 
-                <div className="mt-20">
-                  <div className="flex w-full items-center whitespace-nowrap relative [mask-image:linear-gradient(to_right,rgba(0,0,0,0)_0%,rgb(0,0,0)_12.5%,rgb(0,0,0)_87.5%,rgba(0,0,0,0)_100%)] group">
-                    <ul
-                      className={cn(
-                        styles.icon__skills,
-                        'my-7 inline-flex items-center animate-marquee group-hover:[animation-play-state:paused]',
-                      )}
-                    >
-                      <li className="mx-5">
-                        <GithubIcon size={70} />
-                        <p className={cn(styles.icon__title)}>GitHub</p>
-                      </li>
-                      <li className="mx-5">
-                        <TypeScriptIconColor size={70} />
-                        <p className={cn(styles.icon__title)}>TypeScript</p>
-                      </li>
-                      <li className="mx-5">
-                        <SwaggerIconColor size={70} />
-                        <p className={cn(styles.icon__title)}>Swagger</p>
-                      </li>
-                      <li className="mx-5">
-                        <NodeJsIconColor size={70} />
-                        <p className={cn(styles.icon__title)}>Node.js</p>
-                      </li>
-                      <li className="mx-5">
-                        <GitLabIcon size={70} />
-                        <p className={cn(styles.icon__title)}>Git Lab</p>
-                      </li>
-                      <li className="mx-5">
-                        <MongoDbIconColor size={70} />
-                        <p className={cn(styles.icon__title)}>MongoDB</p>
-                      </li>
-                      <li className="mx-5">
-                        <PostmanIconColor size={70} />
-                        <p className={cn(styles.icon__title)}>Postman</p>
-                      </li>
-                      <li className="mx-5">
-                        <FigmaIconColor size={70} />
-                        <p className={cn(styles.icon__title)}>Figma</p>
-                      </li>
-                      <li className="mx-5">
-                        <NotionIcon size={70} />
-                        <p className={cn(styles.icon__title)}>Notion</p>
-                      </li>
-                    </ul>
-                    <ul
-                      className={cn(
-                        styles.icon__skillss,
-                        'inline-flex absolute items-center animate-marquee2 group-hover:[animation-play-state:paused]',
-                      )}
-                    >
-                      <li className="mx-5">
-                        <GithubIcon size={70} />
-                        <p className={cn(styles.icon__title)}>GitHub</p>
-                      </li>
-                      <li className="mx-5">
-                        <TypeScriptIconColor size={70} />
-                        <p className={cn(styles.icon__title)}>TypeScript</p>
-                      </li>
-                      <li className="mx-5">
-                        <SwaggerIconColor size={70} />
-                        <p className={cn(styles.icon__title)}>Swagger</p>
-                      </li>
-                      <li className="mx-5">
-                        <NodeJsIconColor size={70} />
-                        <p className={cn(styles.icon__title)}>Node.js</p>
-                      </li>
-                      <li className="mx-5">
-                        <GitLabIcon size={70} />
-                        <p className={cn(styles.icon__title)}>Git Lab</p>
-                      </li>
-                      <li className="mx-5">
-                        <MongoDbIconColor size={70} />
-                        <p className={cn(styles.icon__title)}>MongoDB</p>
-                      </li>
-                      <li className="mx-5">
-                        <PostmanIconColor size={70} />
-                        <p className={cn(styles.icon__title)}>Postman</p>
-                      </li>
-                      <li className="mx-5">
-                        <FigmaIconColor size={70} />
-                        <p className={cn(styles.icon__title)}>Figma</p>
-                      </li>
-                      <li className="mx-5">
-                        <NotionIcon size={70} />
-                        <p className={cn(styles.icon__title)}>Notion</p>
-                      </li>
-                    </ul>
+                  <div className="mt-20">
+                    <div className="flex w-full items-center whitespace-nowrap relative [mask-image:linear-gradient(to_right,rgba(0,0,0,0)_0%,rgb(0,0,0)_12.5%,rgb(0,0,0)_87.5%,rgba(0,0,0,0)_100%)] group">
+                      <ul
+                        className={cn(
+                          styles.icon__skills,
+                          'my-7 inline-flex items-center animate-marquee group-hover:[animation-play-state:paused]',
+                        )}
+                      >
+                        <li className="mx-5">
+                          <GithubIcon size={70} />
+                          <p className={cn(styles.icon__title)}>GitHub</p>
+                        </li>
+                        <li className="mx-5">
+                          <TypeScriptIconColor size={70} />
+                          <p className={cn(styles.icon__title)}>TypeScript</p>
+                        </li>
+                        <li className="mx-5">
+                          <SwaggerIconColor size={70} />
+                          <p className={cn(styles.icon__title)}>Swagger</p>
+                        </li>
+                        <li className="mx-5">
+                          <NodeJsIconColor size={70} />
+                          <p className={cn(styles.icon__title)}>Node.js</p>
+                        </li>
+                        <li className="mx-5">
+                          <GitLabIcon size={70} />
+                          <p className={cn(styles.icon__title)}>Git Lab</p>
+                        </li>
+                        <li className="mx-5">
+                          <MongoDbIconColor size={70} />
+                          <p className={cn(styles.icon__title)}>MongoDB</p>
+                        </li>
+                        <li className="mx-5">
+                          <PostmanIconColor size={70} />
+                          <p className={cn(styles.icon__title)}>Postman</p>
+                        </li>
+                        <li className="mx-5">
+                          <FigmaIconColor size={70} />
+                          <p className={cn(styles.icon__title)}>Figma</p>
+                        </li>
+                        <li className="mx-5">
+                          <NotionIcon size={70} />
+                          <p className={cn(styles.icon__title)}>Notion</p>
+                        </li>
+                      </ul>
+                      <ul
+                        className={cn(
+                          styles.icon__skillss,
+                          'inline-flex absolute items-center animate-marquee2 group-hover:[animation-play-state:paused]',
+                        )}
+                      >
+                        <li className="mx-5">
+                          <GithubIcon size={70} />
+                          <p className={cn(styles.icon__title)}>GitHub</p>
+                        </li>
+                        <li className="mx-5">
+                          <TypeScriptIconColor size={70} />
+                          <p className={cn(styles.icon__title)}>TypeScript</p>
+                        </li>
+                        <li className="mx-5">
+                          <SwaggerIconColor size={70} />
+                          <p className={cn(styles.icon__title)}>Swagger</p>
+                        </li>
+                        <li className="mx-5">
+                          <NodeJsIconColor size={70} />
+                          <p className={cn(styles.icon__title)}>Node.js</p>
+                        </li>
+                        <li className="mx-5">
+                          <GitLabIcon size={70} />
+                          <p className={cn(styles.icon__title)}>Git Lab</p>
+                        </li>
+                        <li className="mx-5">
+                          <MongoDbIconColor size={70} />
+                          <p className={cn(styles.icon__title)}>MongoDB</p>
+                        </li>
+                        <li className="mx-5">
+                          <PostmanIconColor size={70} />
+                          <p className={cn(styles.icon__title)}>Postman</p>
+                        </li>
+                        <li className="mx-5">
+                          <FigmaIconColor size={70} />
+                          <p className={cn(styles.icon__title)}>Figma</p>
+                        </li>
+                        <li className="mx-5">
+                          <NotionIcon size={70} />
+                          <p className={cn(styles.icon__title)}>Notion</p>
+                        </li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </FadeInSection>
           </Section>
 
           <Section>
