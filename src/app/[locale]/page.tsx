@@ -49,7 +49,8 @@ import { Section } from '../_components/Section/Section'
 
 //componente que abarza los componentes que tendran animaciones
 import { useEffect, useRef, useState } from 'react'
-import FadeInSection from '../_components/FadeInSection/FadeInSection'
+
+import dynamic from 'next/dynamic'
 //skillcards y data
 //import { skillData } from '../skillData/skillData'
 //import { SkillCard } from '../_components/SkillCard/SkillCard'
@@ -84,6 +85,15 @@ const preloadImages = (imageUrls: string[]): void => {
     img.src = url
   })
 }
+
+const FadeInSection = dynamic(
+  () => import('../_components/FadeInSection/FadeInSection'),
+  {
+    ssr: false, // ne pas charger côté serveur
+    loading: () => <div />, // (optionnel) div vide ou skeleton
+  },
+)
+
 {
   /*const Span = ({ className, ...props }: ComponentPropsWithoutRef<'span'>) => {
   return <span className={cn(className, '')} {...props} />
@@ -212,23 +222,10 @@ export default function Home() {
               >
                 <Image
                   src="/images/m-1.webp"
-                  alt="Robot hand light"
-                  width={250}
-                  height={325}
-                  className={cn(
-                    styles.img,
-                    'w-96 object-cover  dark:hidden text-transparent',
-                  )}
-                />
-                <Image
-                  src="/images/m-1.webp"
                   alt="Robot hand dark"
-                  width={250}
-                  height={325}
-                  className={cn(
-                    styles.img,
-                    'hidden w-96 dark:block text-transparent',
-                  )}
+                  width={300}
+                  height={312}
+                  className={cn(styles.img, ' text-transparent')}
                 />
               </div>
               <div
