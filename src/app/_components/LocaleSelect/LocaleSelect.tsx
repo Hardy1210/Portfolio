@@ -56,7 +56,7 @@ export const LocaleSelect = () => {
     <div ref={ref} className={cn(styles.select__container, 'relative')}>
       <div
         className={cn(
-          'border border-neutral-300/90 dark:border-neutral-600/60 rounded-lg bg-neutral-100/50 bg-opacity-100 px-1 text-sm text-neutral-500 cursor-pointer flex items-center backdrop-blur-3xl dark:bg-neutral-950',
+          'border border-neutral-400 dark:border-neutral-600/60 rounded-lg bg-neutral-100/50 bg-opacity-100 px-1 text-sm text-neutral-500 cursor-pointer flex items-center backdrop-blur-3xl dark:bg-neutral-950',
           styles.selectedOption,
         )}
         onClick={toggleDropdown}
@@ -70,7 +70,7 @@ export const LocaleSelect = () => {
             />*/}
 
             {selectedOption.label}
-            <ArrowChDownIcon size={15} />
+            <ArrowChDownIcon size={19} className="" />
           </div>
         )}
       </div>

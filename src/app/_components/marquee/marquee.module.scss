@@ -1,0 +1,69 @@
+.marquee__container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.marquee__icons {
+  padding: 1.8rem 0;
+  position: relative;
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+  overflow: hidden;
+}
+
+.marquee__track {
+  display: flex;
+  align-items: center;
+  animation: marquee-scroll 60s linear infinite;
+  width: max-content; /* Esto es crucial */
+}
+
+.marquee__icons:hover .marquee__track {
+  animation-play-state: paused;
+}
+
+.icon__title {
+  position: absolute;
+  z-index: 98;
+  opacity: 0;
+  height: 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-top: 0.2rem;
+  text-align: center;
+  width: 100%;
+  transition:
+    opacity 0.2s ease-out,
+    height 0.2s ease-out;
+}
+
+li:hover .icon__title {
+  opacity: 1;
+  height: auto;
+}
+
+@keyframes marquee-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%); /* Desplaza solo la mitad */
+  }
+}
+
+/* Después de la animación, asegúrate de que el contenido se vea duplicado */
+.marquee__track::after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 100%;
+  width: 100%;
+  height: 100%;
+}

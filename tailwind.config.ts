@@ -26,6 +26,10 @@ const config: Config = {
       screens: {
         'custom-xs': { max: '344px' }, //mobiles galaxy fold
       },
+      //ventana visiblle en full
+      height: {
+        'screen-dynamic': '100dvh', // ou '100svh' (small viewport height)
+      },
       backgroundImage: {
         //fondo de layer para light mode
         'custom-gradient':
@@ -102,6 +106,9 @@ const config: Config = {
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)',
       },
+      willChange: {
+        transform: 'transform',
+      },
       animation: {
         marquee: 'marquee 60s linear infinite',
         marquee2: 'marquee2 60s linear infinite',
@@ -122,6 +129,11 @@ const config: Config = {
         fadeInUp: 'fadeInUp 0.7s ease-out forwards',
         //animation de rotacion de album de spotify
         spin: 'spin 70s linear infinite',
+      },
+      //scroll para marquee
+      scroll: {
+        '0%': { transform: 'translateX(0)' },
+        '100%': { transform: 'translateX(-100%)' },
       },
       keyframes: {
         marquee: {

@@ -16,6 +16,20 @@ export default function SpotifyNowPlaying() {
   const [currentlyPlaying, setCurrentlyPlaying] =
     useState<CurrentlyPlaying | null>(null)
   const [lastPlayed, setLastPlayed] = useState<CurrentlyPlaying | null>(null)
+  const [isVisible, setIsVisible] = useState(false)
+
+  useEffect(() => {
+    const el = document.getElementById('spotify-now-playing')
+    if (!el) return
+
+    const observer = new IntersectionObserver(([entry]) => {
+      setIsVisible(entry.isIntersecting)
+    })
+
+    observer.observe(el)
+
+    return () => observer.disconnect()
+  }, [])
 
   useEffect(() => {
     // Cargar la última canción reproducida desde sessionStorage al iniciar
@@ -29,11 +43,7 @@ export default function SpotifyNowPlaying() {
       try {
         const response = await fetch(
           `/api/currently-playing?timestamp=${Date.now()}`,
-          {
-            headers: {
-              'Cache-Control': 'no-store, no-cache, must-revalidate, private',
-            },
-          },
+          {},
         )
 
         if (!response.ok) throw new Error('API request failed')
@@ -73,7 +83,10 @@ export default function SpotifyNowPlaying() {
       `https://open.spotify.com/search/${encodeURIComponent(track.artist || '')}`
 
     return (
-      <div className="relative p-1 flex flex-row items-end overflow-hidden w-60 h-28 bg-[#171717] rounded-lg">
+      <div
+        id="spotify-now-playing"
+        className="relative p-1 flex flex-row items-end overflow-hidden w-60 h-28 bg-[#171717] rounded-lg"
+      >
         <a
           href={songUrl}
           target="_blank"
@@ -86,7 +99,7 @@ export default function SpotifyNowPlaying() {
             width={160}
             height={160}
             className={`absolute z-10 border-2 border-neutral-300 -left-28 top-0 opacity-85 rounded-full ${
-              isPlaying ? 'animate-spin' : ''
+              isPlaying && isVisible ? 'animate-spin will-change-transform' : ''
             } w-auto`}
           />
         </a>
@@ -96,7 +109,7 @@ export default function SpotifyNowPlaying() {
           width={170}
           height={170}
           className={`absolute -top-3 blur-2xl -left-16 rounded-full ${
-            isPlaying ? 'animate-spin' : ''
+            isPlaying && isVisible ? 'animate-spin will-change-transform' : ''
           } w-auto`}
         />
         <SpotifyIcon
