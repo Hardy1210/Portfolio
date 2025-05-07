@@ -13,7 +13,7 @@ const ButtonLike: React.FC<ButtonLikeProps> = ({ slug }) => {
   const [hasLiked, setHasLiked] = useState(false)
   const [visitorId, setVisitorId] = useState<string | null>(null)
 
-  // Initialiser le visitorId une seule fois côté client
+  // Initialiser le visitorId une seule fois côté clientt
   useEffect(() => {
     if (typeof window !== 'undefined') {
       let storedId = localStorage.getItem('visitorId')
