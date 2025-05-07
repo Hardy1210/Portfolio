@@ -73,19 +73,20 @@ export const metadata: Metadata = {
       fr: 'https://hardylino.com/fr',
     },
   },
->>>>>>> optimize-render-blocking
 }
 
 export default function RootLayout({
   children,
-}: {
-  children: React.ReactNode
-}) {
+  params,
+}: Readonly<{
+  children: ReactElement
+  params: {
+    locale: string
+  }
+}>) {
+  // Datos estructurados JSON-LD
   return (
-<<<<<<< HEAD
-    <html lang="en">
-      <body>{children}</body>
-=======
+
     <html lang={params.locale} className="h-full" suppressHydrationWarning>
       <body className={cn(interSans.className, 'antialiased')}>
         <StructuredData />
@@ -104,7 +105,7 @@ export default function RootLayout({
         <div id="modal-root"></div>
         <SpeedInsights />
       </body>
->>>>>>> optimize-render-blocking
+
     </html>
   )
 }
