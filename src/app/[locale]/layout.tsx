@@ -1,7 +1,7 @@
 import { cn } from '@/lib/utils'
 import { interSans } from '../../styles/fonts'
 import './globals.css'
-//themeProvider para el dark mode
+//themeProvider para el dark modee
 import { ThemeProvider } from '../_components/theme-provider'
 //providers parametrado en otro fichero para el idioma
 //import SEO from '../_components/SEO/SEO'
