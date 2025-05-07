@@ -66,6 +66,7 @@ import styles from './page.module.scss'
 import { ButtonRgb } from '../_components/Button/ButtonRgb'
 import { MenuProvider } from '../_components/ContextNavbarFloatingNavButton/MenuContext'
 import { FloatingNavButton } from '../_components/FloatingNavButton/FloatingNavButton'
+import { FollowCursor } from '../_components/FollowCursor/FollowCursor'
 import LazyLoadWrapper from '../_components/LazyLoadWrapper'
 import Marquee from '../_components/marquee/Marquee'
 import SpotifyNowPlaying from '../_components/spotify/SpotifyNowPlaying'
@@ -190,6 +191,12 @@ export default function Home() {
     <>
       <div className={cn(styles.mainPrimary, 'relative')}>
         {/**<FollowCursorInvert className={cn(styles.cursor, 'hidden md:block')} />   space-y-20 md:space-y-32  */}
+        <FollowCursor
+          className={cn(styles.cursor, 'hidden md:block')}
+          speed={0.03}
+          threshold={0.5}
+        />
+
         <MenuProvider>
           <Header />
           <FloatingNavButton className="fixed h-[70px] w-[70px] bottom-12 right-8" />

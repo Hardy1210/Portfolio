@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { SpotifyIcon } from '../icons/SpotifyIcon'
 
 type CurrentlyPlaying = {
@@ -17,19 +17,23 @@ export default function SpotifyNowPlaying() {
     useState<CurrentlyPlaying | null>(null)
   const [lastPlayed, setLastPlayed] = useState<CurrentlyPlaying | null>(null)
   const [isVisible, setIsVisible] = useState(false)
+  const containerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    const el = document.getElementById('spotify-now-playing')
-    if (!el) return
+    // Configuramos el observer usando un ref en lugar de getElementById
+    if (!containerRef.current) return
 
-    const observer = new IntersectionObserver(([entry]) => {
-      setIsVisible(entry.isIntersecting)
-    })
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting)
+      },
+      { threshold: 0.1 }, // Asegura que se activa con solo 10% de visibilidad
+    )
 
-    observer.observe(el)
+    observer.observe(containerRef.current)
 
     return () => observer.disconnect()
-  }, [])
+  }, [currentlyPlaying, lastPlayed]) // Reconfigura cuando cambia el estado
 
   useEffect(() => {
     // Cargar la última canción reproducida desde sessionStorage al iniciar
@@ -83,10 +87,7 @@ export default function SpotifyNowPlaying() {
       `https://open.spotify.com/search/${encodeURIComponent(track.artist || '')}`
 
     return (
-      <div
-        id="spotify-now-playing"
-        className="relative p-1 flex flex-row items-end overflow-hidden w-60 h-28 bg-[#171717] rounded-lg"
-      >
+      <div className="relative p-1 flex flex-row items-end overflow-hidden w-60 h-28 bg-[#171717] rounded-lg">
         <a
           href={songUrl}
           target="_blank"
@@ -118,7 +119,7 @@ export default function SpotifyNowPlaying() {
         />
         <div className="flex flex-col justify-between z-10 text-neutral-50 min-h-[105px]">
           <p
-            className={`text-xs  ml-11 ${isPlaying ? 'invisible' : 'block'}`}
+            className={`text-xs ml-11 ${isPlaying ? 'invisible' : 'block'}`}
             style={{
               textShadow:
                 '1px 1px 0 #000, -1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000',
@@ -160,7 +161,7 @@ export default function SpotifyNowPlaying() {
   }
 
   return (
-    <>
+    <div ref={containerRef} id="spotify-now-playing">
       {currentlyPlaying && currentlyPlaying.isPlaying ? (
         renderTrackInfo(currentlyPlaying, true)
       ) : lastPlayed ? (
@@ -172,18 +173,18 @@ export default function SpotifyNowPlaying() {
             alt="Last played album"
             width={160}
             height={160}
-            className="absolute z-10 border-2 border-neutral-300 -left-20 top-0 opacity-85 rounded-full animate-spin w-52"
+            className={`absolute z-10 border-2 border-neutral-300 -left-20 top-0 opacity-85 rounded-full ${isVisible ? 'animate-spin' : ''} w-52`}
           />
           <Image
             src={'/images/music_album/cat1.webp'}
             alt="Last played album"
             width={170}
             height={170}
-            className="absolute -top-3 blur-2xl -left-12  rounded-full animate-spin w-auto"
+            className={`absolute -top-3 blur-2xl -left-12 rounded-full ${isVisible ? 'animate-spin' : ''} w-auto`}
           />
           <SpotifyIcon
             width={40}
-            className="z-10 m-0 text-[#FFFF] dark:text-[#00DA5A] "
+            className="z-10 m-0 text-[#FFFF] dark:text-[#00DA5A]"
           />
           <div className="flex flex-col z-10 bottom-1 right-2 text-neutral-50">
             <p
@@ -198,6 +199,6 @@ export default function SpotifyNowPlaying() {
           </div>
         </div>
       )}
-    </>
+    </div>
   )
 }
