@@ -11,7 +11,7 @@ import { NextResponse } from 'next/server'
 export async function GET() {
   try {
     // Obtener token válido desde el endpoint /api/token
-    const tokenResponse = await fetch('/api/token', {
+    const tokenResponse = await fetch('https://www.hardylino.com/api/token', {
       headers: {
         'Cache-Control': 'no-store, no-cache, must-revalidate, private',
       },
@@ -32,7 +32,7 @@ export async function GET() {
 
     const accessToken = tokenData.access_token
     //console.log(accessToken)
-    // Solicitar la canción actual actualmente token no es validoo
+    // Solicitar la canción actual actualmente token no es valido
     const response = await fetch(
       `${'https://api.spotify.com/v1/me/player'}?timestamp=${Date.now()}`,
       {
