@@ -11,7 +11,7 @@ import { NextResponse } from 'next/server'
 export async function GET() {
   try {
     // Obtener token válido desde el endpoint /api/token
-    const tokenResponse = await fetch('https://www.hardylino.com/api/token', {
+    const tokenResponse = await fetch('/api/token', {
       headers: {
         'Cache-Control': 'no-store, no-cache, must-revalidate, private',
       },
@@ -33,16 +33,15 @@ export async function GET() {
     const accessToken = tokenData.access_token
     //console.log(accessToken)
     // Solicitar la canción actual actualmente token no es validoo
-    const response = await fetch(
-      `${'https://api.spotify.com/v1/me/player'}?timestamp=${Date.now()}`,
-      {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-          'Cache-Control': 'no-store, no-cache, must-revalidate, private',
-          Pragma: 'no-cache',
-        },
+    const SPOTIFY_API_URL =
+      process.env.SPOTIFY_API_URL || 'https://api.spotify.com/v1/me/player'
+    const response = await fetch(`${SPOTIFY_API_URL}?timestamp=${Date.now()}`, {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+        'Cache-Control': 'no-store, no-cache, must-revalidate, private',
+        Pragma: 'no-cache',
       },
-    )
+    })
     //console.log(response)
     //mensaje sale envercel tambien
     if (!response.ok || response.status === 204) {
