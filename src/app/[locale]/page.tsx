@@ -615,9 +615,8 @@ export default function Home() {
                     <div className="">
                       <div className="flex flex-col gap-6 text-center md:text-start text-lg md:text-xl px-5 md:pl-0  md:pr-10">
                         <p className="">
-                          {contentT('aboutText')}
-                          <strong>{contentT('aboutText2')}</strong>
-                          {contentT('aboutText3')}
+                          <strong>{contentT('aboutText')}</strong>
+                          {contentT('aboutText2')}
                         </p>
                         <p>
                           {contentT('aboutText4')}

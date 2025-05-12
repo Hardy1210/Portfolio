@@ -19,10 +19,10 @@ export default {
     },
     content: {
       about: 'About',
-      aboutText:
-        'Store manager and former classical guitar teacher passionate about teaching, I transitioned into',
-      aboutText2: ' front-end development',
-      aboutText3: ', a field that has always fascinated me.',
+      aboutText: 'Front-end developer passionate',
+      aboutText2:
+        ' about user experience and modern interfaces, I design creative and efficient web solutions.',
+      aboutText3: '',
       aboutText4: 'My diverse background in',
       aboutText5: ' management',
       aboutText6: ' music',

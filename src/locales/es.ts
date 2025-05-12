@@ -19,10 +19,10 @@ export default {
     },
     content: {
       about: 'Sobre mí',
-      aboutText:
-        'Gerente de supermercado y exprofesor de guitarra clásica apasionado por la enseñanza, decidí cambiar mi profesión por',
-      aboutText2: ' desarrollo front-end',
-      aboutText3: ', un campo que siempre me ha fascinado.',
+      aboutText: 'Desarrollador front-end apasionado',
+      aboutText2:
+        ' por la experiencia de usuario y las interfaces modernas, diseño soluciones web creativas y eficientes.',
+      aboutText3: '',
       aboutText4: 'Mi variado recorrido en',
       aboutText5: ' gestión',
       aboutText6: ' música',

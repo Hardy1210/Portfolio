@@ -18,10 +18,10 @@ export default {
     },
     content: {
       about: 'À propos',
-      aboutText:
-        "Responsable de magasin et ancien professeur de guitare classique passionné par l'enseignement, je me suis reconverti dans le",
-      aboutText2: ' développement front-end',
-      aboutText3: ", un domaine qui m'a toujours fasciné.",
+      aboutText: 'Développeur front-end passionné',
+      aboutText2:
+        ' par l’expérience utilisateur et les interfaces modernes, je conçois des solutions web à la fois créatives et efficaces.',
+      aboutText3: '',
       aboutText4: 'Mon parcours diversifié en',
       aboutText5: ' gestion',
       aboutText6: ' musique',
