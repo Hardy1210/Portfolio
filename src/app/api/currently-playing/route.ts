@@ -4,23 +4,26 @@
 export const dynamic = 'force-dynamic' // Fuerza la regeneración en cada solicitud
 import { NextResponse } from 'next/server'
 
+//const SPOTIFY_API_URL = process.env.SPOTIFY_API_URL!
+{
+  /*SPOTIFY_API_URL=https://api.spotify.com/v1/me/player */
+}
 export async function GET() {
   try {
-    // Usar URL relativa para obtener el token
-    const tokenResponse = await fetch('/api/token', {
+    // Obtener token válido desde el endpoint /api/token
+    const tokenResponse = await fetch('https://www.hardylino.com/api/token', {
       headers: {
         'Cache-Control': 'no-store, no-cache, must-revalidate, private',
       },
     })
-
     if (!tokenResponse.ok) {
       throw new Error(`Failed to get token: ${await tokenResponse.text()}`)
     }
-
+    //console.log(tokenResponse)
     const tokenData = await tokenResponse.json()
-
+    //console.log(tokenData)
     if (!tokenData.access_token) {
-      console.error('No se recibió un token de acceso válido.')
+      console.error('No se recibió un token de acceso válido!.')
       return NextResponse.json(
         { error: 'Missing Spotify Access Token' },
         { status: 500 },
@@ -28,20 +31,20 @@ export async function GET() {
     }
 
     const accessToken = tokenData.access_token
-
-    // Usar la URL de la API de Spotify desde variables de entorno
-    const SPOTIFY_API_URL =
-      process.env.SPOTIFY_API_URL || 'https://api.spotify.com/v1/me/player'
-
-    // Solicitar la canción actual
-    const response = await fetch(`${SPOTIFY_API_URL}?timestamp=${Date.now()}`, {
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-        'Cache-Control': 'no-store, no-cache, must-revalidate, private',
-        Pragma: 'no-cache',
+    //console.log(accessToken)
+    // Solicitar la canción actual actualmente token no es validoo
+    const response = await fetch(
+      `${'https://api.spotify.com/v1/me/player'}?timestamp=${Date.now()}`,
+      {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          'Cache-Control': 'no-store, no-cache, must-revalidate, private',
+          Pragma: 'no-cache',
+        },
       },
-    })
-
+    )
+    //console.log(response)
+    //mensaje sale envercel tambien
     if (!response.ok || response.status === 204) {
       console.error(
         'Error al obtener datos de Spotify:',
@@ -52,7 +55,7 @@ export async function GET() {
     }
 
     const data = await response.json()
-
+    //console.log(data)
     if (!data || !data.is_playing) {
       return NextResponse.json({ isPlaying: false })
     }
