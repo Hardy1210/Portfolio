@@ -32,7 +32,7 @@ export async function GET() {
 
     const accessToken = tokenData.access_token
     //console.log(accessToken)
-    // Solicitar la canción actual actualmente token no es valido
+    // Solicitar la canción actual actualmente token no es validoo
     const response = await fetch(
       `${'https://api.spotify.com/v1/me/player'}?timestamp=${Date.now()}`,
       {
