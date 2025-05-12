@@ -33,15 +33,16 @@ export async function GET() {
     const accessToken = tokenData.access_token
     //console.log(accessToken)
     // Solicitar la canción actual actualmente token no es validoo
-    const SPOTIFY_API_URL =
-      process.env.SPOTIFY_API_URL || 'https://api.spotify.com/v1/me/player'
-    const response = await fetch(`${SPOTIFY_API_URL}?timestamp=${Date.now()}`, {
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-        'Cache-Control': 'no-store, no-cache, must-revalidate, private',
-        Pragma: 'no-cache',
+    const response = await fetch(
+      `${'https://api.spotify.com/v1/me/player'}?timestamp=${Date.now()}`,
+      {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          'Cache-Control': 'no-store, no-cache, must-revalidate, private',
+          Pragma: 'no-cache',
+        },
       },
-    })
+    )
     //console.log(response)
     //mensaje sale envercel tambien
     if (!response.ok || response.status === 204) {
