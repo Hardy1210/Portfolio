@@ -5,8 +5,8 @@ import styles from './buttonRgb.module.scss'
 export const ButtonRgb = () => {
   const handleDownLoad = () => {
     const link = document.createElement('a')
-    link.href = '/CV_12.pdf'
-    link.download = 'CV_12.pdf'
+    link.href = '/CV-13.pdf'
+    link.download = 'CV-13.pdf'
     document.body.appendChild(link)
     link.click()
     document.body.removeChild(link)

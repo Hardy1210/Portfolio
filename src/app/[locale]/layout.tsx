@@ -11,7 +11,6 @@ import { Metadata } from 'next'
 //import Head from 'next/head'
 //import StructuredData from '../_components/RichSnippets/StructuredData'
 import StructuredData from '../_components/RichSnippets/StructuredData'
-import TopBanner from '../_components/top-banner/TopBanner'
 import Providers from './providers'
 
 import { ReactElement } from 'react'
@@ -91,7 +90,6 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <TopBanner />
           <Providers params={Promise.resolve({ locale: params.locale })}>
             {children}
           </Providers>
