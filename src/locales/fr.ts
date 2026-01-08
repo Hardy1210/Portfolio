@@ -11,7 +11,7 @@ export default {
       hi: 'Hey !',
       myNameIs: "Je m'appelle",
       name: '{name}',
-      dev: 'Développeur Front-end',
+      dev: 'Développeur Web',
       welcome:
         'Bienvenue dans mon portfolio, voici un aperçu de mon parcours en tant que développeur front-end.',
       read: 'Lire.',

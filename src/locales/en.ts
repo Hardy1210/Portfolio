@@ -12,7 +12,7 @@ export default {
       hi: 'Hi !',
       myNameIs: 'My name is',
       name: '{name}',
-      dev: 'Front-end developer.',
+      dev: 'Web Developer',
       welcome:
         'Welcome to my portfolio, showcasing my experience and growth as a front-end developer.',
       read: 'Read.',
