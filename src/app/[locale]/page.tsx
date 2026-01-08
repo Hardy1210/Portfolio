@@ -4,7 +4,9 @@ import Link from 'next/link'
 import EventsModalLogo from '../../../public/images/724/724-squo-2.webp'
 import AbModalLogo from '../../../public/images/Argent-bank/ab-logo-squo.webp'
 import BookiModalLogo from '../../../public/images/booki/booki-10.webp'
+import AbModalKale from '../../../public/images/kale/ka-modal.webp'
 import KaModalLogo from '../../../public/images/Kasa/k-squo-3.webp'
+import AbModalMarine from '../../../public/images/marine/ma-modal.webp'
 import NinaModalLOgo from '../../../public/images/nina/nina-squo.webp'
 import OhModalLogo from '../../../public/images/ohmyfood/oh-squo.webp'
 import SophModalLogo from '../../../public/images/sophie/soph-squo.webp'
@@ -67,6 +69,9 @@ import { ButtonRgb } from '../_components/Button/ButtonRgb'
 import { MenuProvider } from '../_components/ContextNavbarFloatingNavButton/MenuContext'
 import { FloatingNavButton } from '../_components/FloatingNavButton/FloatingNavButton'
 import { FollowCursor } from '../_components/FollowCursor/FollowCursor'
+import { BrevoIcon } from '../_components/icons/BrevoIcon'
+import { GsapIcon } from '../_components/icons/GsapIcon'
+import { TypescriptIcon } from '../_components/icons/TypescriptIcon'
 import LazyLoadWrapper from '../_components/LazyLoadWrapper'
 import Marquee from '../_components/marquee/Marquee'
 import SpotifyNowPlaying from '../_components/spotify/SpotifyNowPlaying'
@@ -114,6 +119,8 @@ export default function Home() {
   const projectCardKasa = useScopedI18n('landing.projectCardsKasa')
   const projectCardsOhMyFood = useScopedI18n('landing.projectCardsOhMyFood')
   const projectCard742 = useScopedI18n('landing.projectCards724')
+  const projectCardsKaleT = useScopedI18n('landing.projectCardsKale')
+  const projectCardsSavoirT = useScopedI18n('landing.projectCardsSavoir')
   //const projectCardNina = useScopedI18n('landing.projectCardsNina')
   //const projectCardSophie = useScopedI18n('landing.projectCardsSophi')
   //const projectCardBooki = useScopedI18n('landing.projectCardsBooki')
@@ -685,6 +692,102 @@ export default function Home() {
                   'grid grid-cols-1 gap-5 md:grid-cols-2',
                 )}
               >
+                <li className={cn(styles.fade)}>
+                  <FadeInSection>
+                    <LazyLoadWrapper>
+                      <ProjectCard
+                        background={getBackground(
+                          isDarkMode,
+                          'linear-gradient(111deg, rgba(10,10,10,1) 16%, rgba(185, 71, 115, 1) 52%, rgba(10,10,10,1) 88%)',
+                        )}
+                        logoImgSrc={AbModalKale}
+                        layerImageSrc="/images/kale/k-ll.webp"
+                        layerImageAlt="Kalé Virtual Studio visual identity background"
+                        secondaryImageSrc="/images/kale/k-1.webp"
+                        secondaryImageAlt="Kalé Virtual Studio website displayed on desktop screen"
+                        headerImageSrc="/images/kale/m-k.webp"
+                        headerImageAlt="Kalé Virtual Studio logo"
+                        icons={[
+                          <ReactIcon key="react" size={25} />,
+                          <SassIcon key="sass" size={25} />,
+                          <NextIcon key="next" size={25} />,
+                          <TypescriptIcon key="TypeScript" size={25} />,
+                          <TailwindIcon key="Tailwind" size={25} />,
+                          <GsapIcon key="gsap" size={25} />,
+                          <BrevoIcon key="brevo" size={25} />,
+                        ]}
+                        title="Kalé Virtual Studio"
+                        description={projectCardsKaleT('description')}
+                        modalDescription={projectCardsKaleT('modalDescription')}
+                        modalImgSrc="/images/kale/k-2.webp"
+                        modalImgAlt="Kalé Virtual Studio homepage on desktop"
+                        modalImgSecondSrc="/images/kale/k-3.webp"
+                        modalImgSecondAlt="Kalé Virtual Studio animated section detail"
+                        technologies={[
+                          'Next.js',
+                          'React',
+                          'TypeScript',
+                          'Tailwind CSS',
+                          'SCSS',
+                          'GSAP',
+                        ]}
+                        repoLink="https://www.kalevs.com"
+                        repoIcon={<GithubIcon size={20} />}
+                        repoLinkWeb="https://www.kalevs.com"
+                        repoWebIcon={<WebIcon size={20} />}
+                      />
+                    </LazyLoadWrapper>
+                  </FadeInSection>
+                </li>
+
+                <li className={cn(styles.fade)}>
+                  <FadeInSection>
+                    <LazyLoadWrapper>
+                      <ProjectCard
+                        background={getBackground(
+                          isDarkMode,
+                          'linear-gradient(111deg, rgba(10,10,10,1) 16%, rgba(254, 244, 234, 1) 48%, rgba(10,10,10,1) 88%)',
+                        )}
+                        logoImgSrc={AbModalMarine}
+                        layerImageSrc="/images/marine/m-l2.webp"
+                        layerImageAlt="Savoir Écouter Son Chien website hero section background"
+                        secondaryImageSrc="/images/marine/m-1.webp"
+                        secondaryImageAlt="Savoir Écouter Son Chien website displayed on laptop"
+                        headerImageSrc="/images/marine/m-m.webp"
+                        headerImageAlt="Savoir Écouter Son Chien logo"
+                        icons={[
+                          <ReactIcon key="react" size={25} />,
+                          <SassIcon key="sass" size={25} />,
+                          <NextIcon key="next" size={25} />,
+                          <TypescriptIcon key="TypeScript" size={25} />,
+                          <TailwindIcon key="Tailwind" size={25} />,
+                        ]}
+                        title="Savoir Écouter Son Chien"
+                        description={projectCardsSavoirT('description')}
+                        modalDescription={projectCardsSavoirT(
+                          'modalDescription',
+                        )}
+                        modalImgSrc="/images/marine/m-2.webp"
+                        modalImgAlt="Savoir Écouter Son Chien homepage on desktop"
+                        modalImgSecondSrc="/images/marine/m-22.webp"
+                        modalImgSecondAlt="Savoir Écouter Son Chien service section detail"
+                        technologies={[
+                          'Next.js',
+                          'React',
+                          'TypeScript',
+                          'Tailwind CSS',
+                          'SCSS',
+                          'Resend',
+                        ]}
+                        repoLink="https://github.com/Hardy1210/marine"
+                        repoIcon={<GithubIcon size={20} />}
+                        repoLinkWeb="https://savoirecoutersonchien.fr"
+                        repoWebIcon={<WebIcon size={20} />}
+                      />
+                    </LazyLoadWrapper>
+                  </FadeInSection>
+                </li>
+
                 <li className={cn(styles.fade)}>
                   <FadeInSection>
                     <LazyLoadWrapper>

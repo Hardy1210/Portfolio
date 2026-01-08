@@ -41,6 +41,19 @@ export default {
       contact: 'Contact',
       seeMore: 'Voir plus',
     },
+    projectCardsKale: {
+      description:
+        'Kalé Virtual Studio est un site vitrine présentant les services, projets et l’univers visuel du studio.',
+      modalDescription:
+        'Site vitrine de mon studio Kalé Virtual Studio, conçu comme une vitrine digitale soignée mettant en valeur les services, les projets et l’univers visuel du studio. Travail approfondi sur l’interface, les animations et les micro-interactions afin de proposer une expérience fluide et immersive, tout en restant performante et maintenable.',
+    },
+
+    projectCardsSavoir: {
+      description:
+        'Savoir Écouter Son Chien est un site vitrine professionnel pour une éducatrice canine, avec une structure claire et accessible.',
+      modalDescription:
+        'Site vitrine professionnel réalisé pour une éducatrice canine, avec une structure claire et accessible permettant de présenter les services, la méthode de travail et les informations pratiques. Mise en place d’un formulaire de contact avec envoi d’emails et travail sur les bases du référencement naturel (structure des pages, performance, accessibilité).',
+    },
     projectCardsArgent: {
       description:
         'Argent Bank est une application web qui permet aux utilisateurs de gérer facilement leurs informations personnelles une fois connectés.',

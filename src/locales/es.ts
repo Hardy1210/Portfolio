@@ -42,6 +42,19 @@ export default {
       contact: 'Contacto',
       seeMore: 'Ver más',
     },
+    projectCardsKale: {
+      description:
+        'Kalé Virtual Studio es un sitio web corporativo que presenta los servicios, proyectos y el universo visual del estudio.',
+      modalDescription:
+        'Sitio web corporativo de mi estudio Kalé Virtual Studio, diseñado como una vitrina digital cuidada que pone en valor los servicios, los proyectos y el universo visual del estudio. Trabajo detallado en la interfaz, las animaciones y las micro-interacciones para ofrecer una experiencia fluida e inmersiva, manteniendo un alto nivel de rendimiento y mantenibilidad.',
+    },
+
+    projectCardsSavoir: {
+      description:
+        'Savoir Écouter Son Chien es un sitio web corporativo para una educadora canina, con una estructura clara y accesible.',
+      modalDescription:
+        'Sitio web corporativo desarrollado para una educadora canina, con una estructura clara y accesible que permite presentar los servicios, la metodología de trabajo y la información práctica. Implementación de un formulario de contacto con envío de correos y trabajo sobre las bases del SEO (estructura de páginas, rendimiento y accesibilidad).',
+    },
     projectCardsArgent: {
       description:
         'Argent Bank es una aplicación web que permite a los usuarios gestionar fácilmente su información personal una vez iniciada la sesión.',

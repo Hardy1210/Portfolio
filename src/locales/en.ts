@@ -42,6 +42,20 @@ export default {
       contact: 'Contact',
       seeMore: 'See more',
     },
+    projectCardsKale: {
+      description:
+        'Kalé Virtual Studio is a showcase website presenting the studio’s services, projects, and visual identity.',
+      modalDescription:
+        'Showcase website for my studio Kalé Virtual Studio, designed as a polished digital presence highlighting the services, projects, and the studio’s visual identity. In-depth work on the interface, animations, and micro-interactions to deliver a smooth and immersive experience while staying performant and maintainable.',
+    },
+
+    projectCardsSavoir: {
+      description:
+        'Savoir Écouter Son Chien is a professional showcase website for a dog trainer, with a clear and accessible structure.',
+      modalDescription:
+        'Professional showcase website built for a dog trainer, with a clear and accessible structure to present services, training approach, and practical information. Implementation of a contact form with email delivery and work on SEO fundamentals (page structure, performance, accessibility).',
+    },
+
     projectCardsArgent: {
       description:
         'Argent Bank is a web application that allows users to easily manage their personal information once logged in.',
