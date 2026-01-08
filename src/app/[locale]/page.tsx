@@ -337,7 +337,7 @@ export default function Home() {
                     {isDarkMode ? <ButtonRgb /> : <Button />}
 
                     <a
-                      href="/CV-13.pdf"
+                      href="/CV-LINO-CANCHARI.pdf"
                       target="_blank"
                       rel="noopener noreferrer"
                       className={cn(

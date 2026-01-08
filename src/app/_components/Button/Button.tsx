@@ -5,8 +5,8 @@ import styles from './Button.module.scss'
 export const Button = () => {
   const handleDownLoad = () => {
     const link = document.createElement('a')
-    link.href = '/CV-13.pdf'
-    link.download = 'CV-13.pdf'
+    link.href = '/CV-LINO-CANCHARI.pdf'
+    link.download = 'CV-LINO-CANCHARI.pdf'
     document.body.appendChild(link)
     link.click()
     document.body.removeChild(link)
