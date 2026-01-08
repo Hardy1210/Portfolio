@@ -29,8 +29,19 @@ export const getCurrentlyPlaying = async (userToken: string) => {
     },
   )
 
-  if (response.status === 204 || response.status > 400) {
-    return { isPlaying: false } // Si no hay música en reproducción
+  if (response.status === 204) return { isPlaying: false }
+
+  if (response.status === 401) {
+    return { isPlaying: false, error: 'TOKEN_EXPIRED' }
+  }
+
+  if (response.status === 403) {
+    return { isPlaying: false, error: 'FORBIDDEN_OR_MISSING_SCOPE' }
+  }
+
+  if (!response.ok) {
+    const text = await response.text()
+    throw new Error(`Spotify error ${response.status}: ${text}`)
   }
 
   if (!response.ok) {

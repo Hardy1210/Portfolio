@@ -59,7 +59,10 @@ export async function GET() {
     }
 
     // 4. Retornar SIEMPRE un nuevo token
-    return NextResponse.json({ access_token: data.access_token })
+    return NextResponse.json({
+      access_token: data.access_token,
+      expires_in: data.expires_in,
+    })
   } catch (error) {
     console.error('Error al manejar la solicitud del token:', error)
     return NextResponse.json(

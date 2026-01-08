@@ -1,78 +1,87 @@
 //Este código define un endpoint en Next.js para obtener información en tiempo real
 //sobre la canción que estás escuchando actualmente en Spotify. Es una parte clave
 //de tu flujo de integración para mostrar esta información en tu portafolio.
-export const dynamic = 'force-dynamic' // Fuerza la regeneración en cada solicitud
+export const dynamic = 'force-dynamic'
 import { NextResponse } from 'next/server'
 
-//const SPOTIFY_API_URL = process.env.SPOTIFY_API_URL!
-{
-  /*SPOTIFY_API_URL=https://api.spotify.com/v1/me/player */
-}
-export async function GET() {
+export async function GET(request: Request) {
   try {
-    // Obtener token válido desde el endpoint /api/token
-    const tokenResponse = await fetch('https://www.hardylino.com/api/token', {
-      headers: {
-        'Cache-Control': 'no-store, no-cache, must-revalidate, private',
-      },
+    const origin = new URL(request.url).origin
+
+    // 1) Token desde TU endpoint (mismo origen: local o prod)
+    const tokenResponse = await fetch(`${origin}/api/token`, {
+      cache: 'no-store',
+      headers: { 'Cache-Control': 'no-store' },
     })
+
     if (!tokenResponse.ok) {
-      throw new Error(`Failed to get token: ${await tokenResponse.text()}`)
-    }
-    //console.log(tokenResponse)
-    const tokenData = await tokenResponse.json()
-    //console.log(tokenData)
-    if (!tokenData.access_token) {
-      console.error('No se recibió un token de acceso válido!.')
+      const txt = await tokenResponse.text()
       return NextResponse.json(
-        { error: 'Missing Spotify Access Token' },
+        { isPlaying: false, error: 'FAILED_TO_GET_TOKEN', details: txt },
         { status: 500 },
       )
     }
 
-    const accessToken = tokenData.access_token
-    //console.log(accessToken)
-    // Solicitar la canción actual actualmente token no es valido
+    const { access_token } = await tokenResponse.json()
+
+    if (!access_token) {
+      return NextResponse.json(
+        { isPlaying: false, error: 'MISSING_ACCESS_TOKEN' },
+        { status: 500 },
+      )
+    }
+
+    // 2) Endpoint correcto de Spotify
     const response = await fetch(
-      `${'https://api.spotify.com/v1/me/player'}?timestamp=${Date.now()}`,
+      'https://api.spotify.com/v1/me/player/currently-playing',
       {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-          'Cache-Control': 'no-store, no-cache, must-revalidate, private',
-          Pragma: 'no-cache',
-        },
+        headers: { Authorization: `Bearer ${access_token}` },
+        cache: 'no-store',
       },
     )
-    //console.log(response)
-    //mensaje sale envercel tambien
-    if (!response.ok || response.status === 204) {
-      console.error(
-        'Error al obtener datos de Spotify:',
-        response.status,
-        await response.text(),
-      )
+
+    if (response.status === 204) {
       return NextResponse.json({ isPlaying: false })
     }
 
+    if (response.status === 401) {
+      const text = await response.text()
+      return NextResponse.json(
+        { isPlaying: false, error: 'TOKEN_EXPIRED', details: text },
+        { status: 401 },
+      )
+    }
+
+    if (!response.ok) {
+      const text = await response.text()
+      return NextResponse.json(
+        {
+          isPlaying: false,
+          error: `SPOTIFY_${response.status}`,
+          details: text,
+        },
+        { status: response.status },
+      )
+    }
+
     const data = await response.json()
-    //console.log(data)
-    if (!data || !data.is_playing) {
+
+    if (!data?.is_playing || !data?.item) {
       return NextResponse.json({ isPlaying: false })
     }
 
     return NextResponse.json({
       isPlaying: true,
       title: data.item.name,
-      artist: data.item.artists
-        .map((artist: { name: string }) => artist.name)
-        .join(', '),
+      artist: data.item.artists.map((a: { name: string }) => a.name).join(', '),
       album: data.item.album.name,
-      albumImageUrl: data.item.album.images[0]?.url || null,
+      albumImageUrl: data.item.album.images?.[0]?.url || null,
+      songUrl: data.item.external_urls?.spotify || null,
     })
-  } catch (error) {
-    console.error('Error en /api/currently-playing:', error)
+  } catch (e) {
+    console.error(e)
     return NextResponse.json(
-      { error: 'Failed to fetch data from Spotify!' },
+      { isPlaying: false, error: 'SERVER_ERROR' },
       { status: 500 },
     )
   }
