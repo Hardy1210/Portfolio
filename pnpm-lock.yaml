@@ -4,9 +4,6 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
-overrides:
-  '@xhmikosr/decompress': '>=10.2.1'
-
 importers:
 
   .:
@@ -1189,8 +1186,8 @@ packages:
     resolution: {integrity: sha512-+PmQX0PiAYPMeVYe237LJAYvOMYW1j2rH5YROyS3b4CTVJum34HfRvKvAzozHAQG0TnHNdUfY9nCeUyRAs//cw==}
     engines: {node: '>=14.16'}
 
-  '@tokenizer/inflate@0.4.1':
-    resolution: {integrity: sha512-2mAv+8pkG6GIZiF1kNg1jAjh27IDxEPKwdGul3snfztFerfPGI1LjDezZp3i7BElXompqEtPmoPx6c2wgtWsOA==}
+  '@tokenizer/inflate@0.2.7':
+    resolution: {integrity: sha512-MADQgmZT1eKjp06jpI2yozxaU9uVs4GzzgSL+uEq7bVcJ9V1ZXQkeGNql1fsSI0gMy1vhvNTNbUqrx+pZfJVmg==}
     engines: {node: '>=18'}
 
   '@tokenizer/token@0.3.0':
@@ -1392,25 +1389,25 @@ packages:
     resolution: {integrity: sha512-DT2SAuHDeOw0G5bs7wZbQTbf4hd8pJ14tO0i4cWhRkIJfgRdKmMfkDilpaJ8uZyPA0NVRwasCNAmMJcWA67osw==}
     engines: {node: '>=18'}
 
-  '@xhmikosr/decompress-tar@9.0.1':
-    resolution: {integrity: sha512-4AkVR1SoqTxYY22IRRYKDeLirPIDGqMqYsqgjKYuwhgRcBb+yDP4t5Xph33UCzL/nahK/aADmlMEjTNstbX7kw==}
-    engines: {node: '>=20'}
+  '@xhmikosr/decompress-tar@8.1.0':
+    resolution: {integrity: sha512-m0q8x6lwxenh1CrsTby0Jrjq4vzW/QU1OLhTHMQLEdHpmjR1lgahGz++seZI0bXF3XcZw3U3xHfqZSz+JPP2Gg==}
+    engines: {node: '>=18'}
 
-  '@xhmikosr/decompress-tarbz2@9.0.2':
-    resolution: {integrity: sha512-m0DvZhE7remCxtS8xY2iHSjivT4v+iyYDdfNoeuu8Nm+7g8xEXdLKSyDEicu4u1ImJLLGEfjMuTLera/F6UGWw==}
-    engines: {node: '>=20'}
+  '@xhmikosr/decompress-tarbz2@8.1.0':
+    resolution: {integrity: sha512-aCLfr3A/FWZnOu5eqnJfme1Z1aumai/WRw55pCvBP+hCGnTFrcpsuiaVN5zmWTR53a8umxncY2JuYsD42QQEbw==}
+    engines: {node: '>=18'}
 
-  '@xhmikosr/decompress-targz@9.0.1':
-    resolution: {integrity: sha512-1JXu2b6yrpm5EuBoOzMU57B4qrHXJKWQQ7LlMynNEiz85mEjDciO3ayf//GXaTLLCEKiHjWlU3q3THjgf7uODA==}
-    engines: {node: '>=20'}
+  '@xhmikosr/decompress-targz@8.1.0':
+    resolution: {integrity: sha512-fhClQ2wTmzxzdz2OhSQNo9ExefrAagw93qaG1YggoIz/QpI7atSRa7eOHv4JZkpHWs91XNn8Hry3CwUlBQhfPA==}
+    engines: {node: '>=18'}
 
-  '@xhmikosr/decompress-unzip@8.2.1':
-    resolution: {integrity: sha512-2MS94QnmXQwjkKN8WyFiu1sU7J3rcWJcMze4kRYsX7tN+CXpUGECgkh4YSOhujpkWPuVlFudIziJHO/TxOqkQQ==}
-    engines: {node: '>=20'}
+  '@xhmikosr/decompress-unzip@7.1.0':
+    resolution: {integrity: sha512-oqTYAcObqTlg8owulxFTqiaJkfv2SHsxxxz9Wg4krJAHVzGWlZsU8tAB30R6ow+aHrfv4Kub6WQ8u04NWVPUpA==}
+    engines: {node: '>=18'}
 
-  '@xhmikosr/decompress@11.1.3':
-    resolution: {integrity: sha512-NiyhJq6z7ERsYghcnXZUI6ooDXgZtoB+G9eUsYhfSM4VLp2rKx9UxhKI1NEf1PqosrNPxG3bnSsr2UBVbNurlg==}
-    engines: {node: '>=20'}
+  '@xhmikosr/decompress@10.2.1':
+    resolution: {integrity: sha512-ceGT3K2JR73Usj5o+HM2RRZw0XPUes4rhb7uVTY9PefUQQMpuj8x+V29XVG09JnS7EOj9SIBhHn3K4bFNNb7hA==}
+    engines: {node: '>=18'}
 
   '@xhmikosr/downloader@15.0.1':
     resolution: {integrity: sha512-fiuFHf3Dt6pkX8HQrVBsK0uXtkgkVlhrZEh8b7VgoDqFf+zrgFBPyrwCqE/3nDwn3hLeNz+BsrS7q3mu13Lp1g==}
@@ -2050,6 +2047,9 @@ packages:
       picomatch:
         optional: true
 
+  fflate@0.8.3:
+    resolution: {integrity: sha512-tbZNuJrLwGUp3zshBtdy4W+ORxZuIh8a5ilyIEQDC5rY1f3U20JMry0Ll3WBzU58EZKsEuJFXhb5gwv8CsPvgA==}
+
   file-entry-cache@6.0.1:
     resolution: {integrity: sha512-7Gps/XWymbLk2QLYK4NzpMOrYjMhdIxXuIvy2QBsLE6ljuodKvdkWs/cpyJJ3CVIVpH0Oi1Hvg1ovbMzLdFBBg==}
     engines: {node: ^10.12.0 || >=12.0.0}
@@ -2058,9 +2058,9 @@ packages:
     resolution: {integrity: sha512-VZR5I7k5wkD0HgFnMsq5hOsSc710MJMu5Nc5QYsbe38NN5iPV/XTObYLc/cpttRTf6lX538+5uO1ZQRhYibiZQ==}
     engines: {node: '>=18'}
 
-  file-type@21.3.4:
-    resolution: {integrity: sha512-Ievi/yy8DS3ygGvT47PjSfdFoX+2isQueoYP1cntFW1JLYAuS4GD7NUPGg4zv2iZfV52uDyk5w5Z0TdpRS6Q1g==}
-    engines: {node: '>=20'}
+  file-type@20.5.0:
+    resolution: {integrity: sha512-BfHZtG/l9iMm4Ecianu7P8HRD2tBHLtjXinm4X62XBOYzi7CYA7jyqfJzOvXHqzVrVPYqBo2/GvbARMaaJkKVg==}
+    engines: {node: '>=18'}
 
   filename-reserved-regex@3.0.0:
     resolution: {integrity: sha512-hn4cQfU6GOT/7cFHXBqeBg2TbrMBgdD0kcjLhvSQYYwm3s4B6cjvBfb7nBALJLAXqmU5xajSa7X2NnUud/VCdw==}
@@ -4321,9 +4321,10 @@ snapshots:
     dependencies:
       defer-to-connect: 2.0.1
 
-  '@tokenizer/inflate@0.4.1':
+  '@tokenizer/inflate@0.2.7':
     dependencies:
       debug: 4.4.3
+      fflate: 0.8.3
       token-types: 6.1.2
     transitivePeerDependencies:
       - supports-color
@@ -4509,46 +4510,46 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@xhmikosr/decompress-tar@9.0.1':
+  '@xhmikosr/decompress-tar@8.1.0':
     dependencies:
-      file-type: 21.3.4
-      is-stream: 4.0.1
+      file-type: 20.5.0
+      is-stream: 2.0.1
       tar-stream: 3.1.7
     transitivePeerDependencies:
       - supports-color
 
-  '@xhmikosr/decompress-tarbz2@9.0.2':
+  '@xhmikosr/decompress-tarbz2@8.1.0':
     dependencies:
-      '@xhmikosr/decompress-tar': 9.0.1
-      file-type: 21.3.4
-      is-stream: 4.0.1
+      '@xhmikosr/decompress-tar': 8.1.0
+      file-type: 20.5.0
+      is-stream: 2.0.1
       seek-bzip: 2.0.0
       unbzip2-stream: 1.4.3
     transitivePeerDependencies:
       - supports-color
 
-  '@xhmikosr/decompress-targz@9.0.1':
+  '@xhmikosr/decompress-targz@8.1.0':
     dependencies:
-      '@xhmikosr/decompress-tar': 9.0.1
-      file-type: 21.3.4
-      is-stream: 4.0.1
+      '@xhmikosr/decompress-tar': 8.1.0
+      file-type: 20.5.0
+      is-stream: 2.0.1
     transitivePeerDependencies:
       - supports-color
 
-  '@xhmikosr/decompress-unzip@8.2.1':
+  '@xhmikosr/decompress-unzip@7.1.0':
     dependencies:
-      file-type: 21.3.4
-      get-stream: 9.0.1
+      file-type: 20.5.0
+      get-stream: 6.0.1
       yauzl: 3.4.0
     transitivePeerDependencies:
       - supports-color
 
-  '@xhmikosr/decompress@11.1.3':
+  '@xhmikosr/decompress@10.2.1':
     dependencies:
-      '@xhmikosr/decompress-tar': 9.0.1
-      '@xhmikosr/decompress-tarbz2': 9.0.2
-      '@xhmikosr/decompress-targz': 9.0.1
-      '@xhmikosr/decompress-unzip': 8.2.1
+      '@xhmikosr/decompress-tar': 8.1.0
+      '@xhmikosr/decompress-tarbz2': 8.1.0
+      '@xhmikosr/decompress-targz': 8.1.0
+      '@xhmikosr/decompress-unzip': 7.1.0
       graceful-fs: 4.2.11
       strip-dirs: 3.0.0
     transitivePeerDependencies:
@@ -4557,7 +4558,7 @@ snapshots:
   '@xhmikosr/downloader@15.0.1':
     dependencies:
       '@xhmikosr/archive-type': 7.0.0
-      '@xhmikosr/decompress': 11.1.3
+      '@xhmikosr/decompress': 10.2.1
       content-disposition: 0.5.4
       defaults: 3.0.0
       ext-name: 5.0.0
@@ -5387,6 +5388,8 @@ snapshots:
     optionalDependencies:
       picomatch: 4.0.2
 
+  fflate@0.8.3: {}
+
   file-entry-cache@6.0.1:
     dependencies:
       flat-cache: 3.2.0
@@ -5398,9 +5401,9 @@ snapshots:
       token-types: 6.0.0
       uint8array-extras: 1.4.0
 
-  file-type@21.3.4:
+  file-type@20.5.0:
     dependencies:
-      '@tokenizer/inflate': 0.4.1
+      '@tokenizer/inflate': 0.2.7
       strtok3: 10.3.5
       token-types: 6.1.2
       uint8array-extras: 1.4.0

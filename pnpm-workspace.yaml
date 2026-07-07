@@ -3,11 +3,6 @@
 packages:
   - '.'
 
-# fuerza la version parcheada de la dependencia transitiva de @swc/cli
-# (GHSA-mp2f-45pm-3cg9, extraccion de archivos fuera del directorio destino)
-overrides:
-  '@xhmikosr/decompress': '>=10.2.1'
-
 allowBuilds:
   '@parcel/watcher': true
   '@prisma/client': true
