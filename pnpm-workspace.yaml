@@ -1,3 +1,8 @@
+# requerido por pnpm 9 (Vercel): sin este campo falla con "packages field missing or empty"
+# no es un monorepo, el unico paquete es la raiz
+packages:
+  - '.'
+
 allowBuilds:
   '@parcel/watcher': true
   '@prisma/client': true
