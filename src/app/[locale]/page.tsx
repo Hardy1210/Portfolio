@@ -75,6 +75,8 @@ import { TypescriptIcon } from '../_components/icons/TypescriptIcon'
 import LazyLoadWrapper from '../_components/LazyLoadWrapper'
 import Marquee from '../_components/marquee/Marquee'
 import SpotifyNowPlaying from '../_components/spotify/SpotifyNowPlaying'
+import { SanityIcon } from '../_components/icons/Sanity'
+import { FigmaIcon } from '../_components/icons/FigmaIcon'
 
 //importacion dinamica de un compenente si se nesecita como projectCard cuando este a la vista del usuario
 {
@@ -121,6 +123,7 @@ export default function Home() {
   const projectCard742 = useScopedI18n('landing.projectCards724')
   const projectCardsKaleT = useScopedI18n('landing.projectCardsKale')
   const projectCardsSavoirT = useScopedI18n('landing.projectCardsSavoir')
+  const projectCardPpmT = useScopedI18n('landing.projectCardsPpm')
   //const projectCardNina = useScopedI18n('landing.projectCardsNina')
   //const projectCardSophie = useScopedI18n('landing.projectCardsSophi')
   //const projectCardBooki = useScopedI18n('landing.projectCardsBooki')
@@ -613,7 +616,7 @@ export default function Home() {
                     >
                       {t('landing.content.about')}
                     </h2>
-                    <div className="-z-10 mt-2 absolute w-6 h-2 bg-foreground transform origin-left skew-x-[-35deg] "></div>
+                    <div className="z-10 mt-2 absolute w-6 h-2 bg-foreground transform origin-left skew-x-[-35deg] "></div>
                   </div>
                 </div>
 
@@ -675,7 +678,7 @@ export default function Home() {
                     >
                       {contentT('projects')}
                     </h2>
-                    <div className="-z-10 mt-2 absolute w-6 h-2 bg-foreground  transform origin-left skew-x-[-35deg] "></div>
+                    <div className="z-10 mt-2 absolute w-6 h-2 bg-foreground  transform origin-left skew-x-[-35deg] "></div>
                   </div>
                 </div>
 
@@ -692,6 +695,54 @@ export default function Home() {
                   'grid grid-cols-1 gap-5 md:grid-cols-2',
                 )}
               >
+                <li className={cn(styles.fade)}>
+                  <FadeInSection>
+                    <LazyLoadWrapper>
+                      <ProjectCard
+                        background={getBackground(
+                          isDarkMode,
+                          'linear-gradient(111deg, rgba(10,10,10,1) 16%, rgba(228, 231, 0, 1) 52%, rgba(10,10,10,1) 88%)',
+                        )}
+                        logoImgSrc={AbModalKale}
+                        layerImageSrc="/images/ppm/ppm-layer.webp"
+                        layerImageAlt="Piles Power Mobilité website visual identity background"
+                        secondaryImageSrc="/images/ppm/ppm-mobil.webp"
+                        secondaryImageAlt="Piles Power Mobilité website displayed on mobile devices"
+                        headerImageSrc="/images/ppm/ppm-2.webp"
+                        headerImageAlt="Piles Power Mobilité brand logo"
+                        icons={[
+                          <ReactIcon key="react" size={25} />,
+                          <SassIcon key="sass" size={25} />,
+                          <NextIcon key="next" size={25} />,
+                          <TypescriptIcon key="TypeScript" size={25} />,
+                          <TailwindIcon key="Tailwind" size={25} />,
+                          <GsapIcon key="gsap" size={25} />,
+                          <FigmaIcon key="figma" size={25} />,
+                          <SanityIcon key="sanity" size={25} />,
+                        ]}
+                        title="Piles Power Mobilité"
+                        description={projectCardPpmT('description')}
+                        modalDescription={projectCardPpmT('modalDescription')}
+                        modalImgSrc="/images/ppm/ppm-mobl-2.webp"
+                        modalImgAlt="Piles Power Mobilité homepage on desktop"
+                        modalImgSecondSrc="/images/ppm/ppm.webp"
+                        modalImgSecondAlt="Piles Power Mobilité custom catalogue section detail"
+                        technologies={[
+                          'Next.js',
+                          'React',
+                          'TypeScript',
+                          'Tailwind CSS',
+                          'SCSS',
+                          'GSAP',
+                        ]}
+                        repoLink="https://pilespowermobilite.fr/"
+                        repoIcon={<GithubIcon size={20} />}
+                        repoLinkWeb="https://pilespowermobilite.fr/"
+                        repoWebIcon={<WebIcon size={20} />}
+                      />
+                    </LazyLoadWrapper>
+                  </FadeInSection>
+                </li>
                 <li className={cn(styles.fade)}>
                   <FadeInSection>
                     <LazyLoadWrapper>
@@ -914,44 +965,45 @@ export default function Home() {
                     </LazyLoadWrapper>
                   </FadeInSection>
                 </li>
-                <li className={cn(styles.fade)}>
-                  <FadeInSection>
-                    <LazyLoadWrapper>
-                      <ProjectCard
-                        background={getBackground(
-                          isDarkMode,
-                          'linear-gradient(126deg, rgba(10,10,10,1) 16%, rgba(88,47,255,1) 44%, rgba(88,47,255,1) 57%, rgba(10,10,10,1) 86%)',
-                        )}
-                        logoImgSrc={EventsModalLogo}
-                        layerImageSrc="/images/724/724-w.webp"
-                        layerImageAlt="logo 724 Events"
-                        secondaryImageSrc="/images/724/724-squo-6.webp"
-                        secondaryImageAlt="MacBook 724 Events"
-                        headerImageSrc="/images/724/724-logo.webp"
-                        headerImageAlt="Logo 724 Events"
-                        icons={[
-                          <JavascriptIcon key="javascript" size={25} />,
-                          <ReactIcon key="react" size={25} />,
-                          <NodeJsIcon key="node" size={25} />,
-                        ]}
-                        title="724 events"
-                        description={projectCard742('description')}
-                        modalDescription={projectCard742('modalDescription')}
-                        modalImgSrc="/images/724/724-squo-3.webp"
-                        modalImgAlt="MacBook 724 Events"
-                        modalImgSecondSrc="/images/724/724-squo-4.webp"
-                        modalImgSecondAlt="MacBook 724 Events"
-                        technologies={['React', 'JavaScript', 'Node.js']}
-                        repoLink="https://github.com/Hardy1210/742-eventss"
-                        repoIcon={<GithubIcon size={20} />}
-                        repoLinkWeb="https://hardy1210.github.io/742-eventss/"
-                        repoWebIcon={<WebIcon size={20} />}
-                      />
-                    </LazyLoadWrapper>
-                  </FadeInSection>
-                </li>
                 {showAll && (
                   <>
+                    <li className={cn(styles.fade)}>
+                      <FadeInSection>
+                        <LazyLoadWrapper>
+                          <ProjectCard
+                            background={getBackground(
+                              isDarkMode,
+                              'linear-gradient(126deg, rgba(10,10,10,1) 16%, rgba(88,47,255,1) 44%, rgba(88,47,255,1) 57%, rgba(10,10,10,1) 86%)',
+                            )}
+                            logoImgSrc={EventsModalLogo}
+                            layerImageSrc="/images/724/724-w.webp"
+                            layerImageAlt="logo 724 Events"
+                            secondaryImageSrc="/images/724/724-squo-6.webp"
+                            secondaryImageAlt="MacBook 724 Events"
+                            headerImageSrc="/images/724/724-logo.webp"
+                            headerImageAlt="Logo 724 Events"
+                            icons={[
+                              <JavascriptIcon key="javascript" size={25} />,
+                              <ReactIcon key="react" size={25} />,
+                              <NodeJsIcon key="node" size={25} />,
+                            ]}
+                            title="724 events"
+                            description={projectCard742('description')}
+                            modalDescription={projectCard742('modalDescription')}
+                            modalImgSrc="/images/724/724-squo-3.webp"
+                            modalImgAlt="MacBook 724 Events"
+                            modalImgSecondSrc="/images/724/724-squo-4.webp"
+                            modalImgSecondAlt="MacBook 724 Events"
+                            technologies={['React', 'JavaScript', 'Node.js']}
+                            repoLink="https://github.com/Hardy1210/742-eventss"
+                            repoIcon={<GithubIcon size={20} />}
+                            repoLinkWeb="https://hardy1210.github.io/742-eventss/"
+                            repoWebIcon={<WebIcon size={20} />}
+                          />
+                        </LazyLoadWrapper>
+                      </FadeInSection>
+                    </li>
+
                     <li
                       ref={newItemsRef}
                       className={cn(

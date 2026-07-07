@@ -42,6 +42,12 @@ export default {
       contact: 'Contacto',
       seeMore: 'Ver más',
     },
+    projectCardsPpm: {
+      description:
+        "Desarrollo de un sitio web corporativo y catálogo moderno para un taller especializado en la reparación de scooters eléctricos en Dijon.",
+      modalDescription:
+        "El diseño de este proyecto se basa en el desarrollo de un sitio web corporativo y catálogo moderno para Piles Power Mobilité, un taller especializado en la reparación de scooters eléctricos y el reacondicionamiento de baterías en Dijon. El objetivo principal era diseñar una interfaz fluida, rápida y completamente responsive para que los usuarios puedan descubrir los servicios, consultar los modelos disponibles y reservar una cita fácilmente. Se prestó especial atención a la optimización del SEO local y a la implementación de un sistema de gestión de contenidos intuitivo que permite al cliente actualizar su catálogo con total autonomía.",
+    },
     projectCardsKale: {
       description:
         'Kalé Virtual Studio es un sitio web corporativo que presenta los servicios, proyectos y el universo visual del estudio.',

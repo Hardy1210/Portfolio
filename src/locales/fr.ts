@@ -41,6 +41,12 @@ export default {
       contact: 'Contact',
       seeMore: 'Voir plus',
     },
+    projectCardsPpm: {
+      description:
+        "Développement d'un site vitrine et catalogue moderne pour un atelier spécialisé dans la réparation de trottinettes électriques à Dijon.",
+      modalDescription:
+        "La conception de ce projet est basée sur le développement d'un site vitrine et catalogue moderne pour Piles Power Mobilité, un atelier spécialisé dans la réparation de trottinettes électriques et le reconditionnement de batteries à Dijon. L'objectif principal était de concevoir une interface fluide, rapide et entièrement responsive pour permettre aux utilisateurs de découvrir les services, de consulter les modèles disponibles et de prendre rendez-vous facilement. Une attention particulière a été portée à l'optimisation SEO locale et à la mise en place d'un système de gestion de contenu intuitif permettant au client de mettre à jour son catalogue en toute autonomie.",
+    },
     projectCardsKale: {
       description:
         'Kalé Virtual Studio est un site vitrine présentant les services, projets et l’univers visuel du studio.',

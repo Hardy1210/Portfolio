@@ -86,6 +86,8 @@ const ProjectCard: FC<ProjectCardProps> = ({
       )}
     >
       <div className={cn(styles.layers__container, '')}>
+        {/* indicador visual de que la imagen es clicable (ripple en bucle) */}
+        <span className={cn(styles.click__hint, '')} aria-hidden="true" />
         <div className={cn(styles.layer, 'bg-neutral-900 dark:bg-neutral-950')}>
           <Image
             src={layerImageSrc}

@@ -42,6 +42,12 @@ export default {
       contact: 'Contact',
       seeMore: 'See more',
     },
+    projectCardsPpm: {
+      description:
+        "Development of a modern showcase website and catalog for a workshop specializing in electric scooter repairs in Dijon.",
+      modalDescription:
+        "The design of this project is based on developing a modern showcase website and catalog for Piles Power Mobilité, a workshop specialized in electric scooter repairs and battery reconditioning in Dijon. The main objective was to design a smooth, fast, and fully responsive interface allowing users to explore services, browse available models, and easily book appointments. Special focus was placed on local SEO optimization and implementing an intuitive content management system, enabling the client to update their catalog completely independently.",
+    },
     projectCardsKale: {
       description:
         'Kalé Virtual Studio is a showcase website presenting the studio’s services, projects, and visual identity.',
